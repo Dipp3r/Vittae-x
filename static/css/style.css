@@ -1,0 +1,5 @@
+input::placeholder {
+    font-weight:bold;
+    opacity: 1;
+    color:rgb(175, 70, 70);
+}
