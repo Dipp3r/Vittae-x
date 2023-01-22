@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+                backgroundImage: (theme) => ({
+                    'scene1': "{{url_for('static',filename='images/weathered_golden_monkey.png')}}",
+                }),
+              colors: {
+                coral: "#fa6067", //bottom gradient
+                L_blue: "#acd8e6", //top gradient
+              }
+            }
+          }
+        }
+      </script>
+    <title>Sign-up</title>
+</head>
+
+
+
+<body>
+    <section class="bg-gradient-to-tr from-L_blue to-coral/90 bg-cover h-screen">
+      {% block content %}{% endblock %}
+    </section>
+    
+</body>
+
+
+
+</html>
