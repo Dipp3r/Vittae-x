@@ -11,7 +11,8 @@
                 <input type="submit" value="Login" class="bg-white/30 h-6 duration-500 w-20 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/60 hover:scale-95 text-gray-600/40 rounded-xl">
             </div>   
         </form>
-        <div class="flex flex-row justify-center items-center pt-10">
+        <p class="text-sm font-thin p-2 text-red-600">{{error}}</p>
+        <div class="flex flex-row justify-center items-center ">
             <p class="text-sm font-thin">Dont have an account? </p>
             <form action="/new_acc" method="post" >
             <input type="submit" value="sign up" class="pl-1 pb-2 brightness-75 hover:brightness-125 text-sm font-thin text-blue-600">

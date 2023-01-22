@@ -1,20 +1,41 @@
-from flask import Flask,render_template,request,redirect,url_for,sessions
+from flask import g,Flask,render_template,request,redirect,url_for,sessions
+import sqlite3
 
+
+Database="login_info.db"
 
 app=Flask(__name__)
 
+con=sqlite3.connect(Database)
+
+def connection(query):
+    with sqlite3.connect(Database) as con:
+        cur=con.cursor()
+    cur.execute(query)
+    con.commit()
+    return con,cur.fetchall()
+
 app.secret_key="arun"
 @app.route("/")
-
 @app.route("/home")
 def home():
-    return render_template("login.html")
+    return render_template("login.html",error="")
 
 @app.route('/login',methods=["POST","GET"]) 
 def login():
     usr=request.form["username"]
     pwd=request.form["password"]
-    return render_template("home.html",info=usr)
+    con,row=connection("select password from login_info where username = "+'"'+usr+'"')
+    if len(row)==0:
+        fetched_pwd=""
+    else:
+        fetched_pwd=row[0][0]
+    if (fetched_pwd==pwd):
+        con.close()
+        return render_template("home.html",info=usr)
+    else:
+        con.close()
+        return render_template("login.html",error="*wrong password or username")
 
 @app.route('/new_acc',methods={"POST","GET"})
 def index():
@@ -38,7 +59,6 @@ def signup():
             return render_template('index.html',msg="Password must contain only letters, numbers and special characters ('@','$','+')")
     if (pwd in usr) or (usr in pwd):
         constraints["same_as_username"]=True
-    print(substrings,"\n"*3)
     for string in substrings:
         if len(string)>=2 and string.isalpha() and (string.lower() in usr.lower()):
             constraints["same_as_username"]=True
@@ -57,6 +77,9 @@ def signup():
         if not(pwd in usr) and not(usr in pwd):
             constraints["same_as_username"]=True
         if constraints["upper_case"]==True and constraints["lower_case"]==True and constraints["numeric"]==True and constraints["special_symbol"]==True:
+            QUERY="insert into login_info values("+'"'+usr+'"'+","+'"'+pwd+'"'+")"
+            con,row=connection(QUERY)
+            con.close()
             return render_template("login.html")
         else:
             error=""
