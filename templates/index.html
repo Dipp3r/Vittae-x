@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="flex justify-center items-center h-screen">
+        <div class="text-xl bg-L_blue/50 p-5 w-60 md:w-1/2 xl:w-1/4 h-96 rounded-xl transition-colors backdrop-blur-xl text-center bg-opacity-30 font-bold backdrop-blur-xl bg-clip-padding backdrop-filter z-50 smooth-effect 'style'=z-index:100 shadow-xl">
+            <h1 class="text-white font-bold text-xl md:text-2xl"> <p class="drop-shadow-xl pb-2">Create Account</p> </h1>
+            <div class="h-40 md:h-28 shadow-sm rounded-2xl bg-white/20  border-black/40 text-white drop-shadow-xl p-3 text-sm">
+                <h1>{{msg}}</h1>
+            </div>
+            <form action="/sign_up" method="post" class="pt-4">
+                <div  class="flex-col flex gap-0 space-y-0 items-center ">
+                    <input type="text" name="username" id="username" placeholder="Username" required class="hover:scale-110 transition transform duration-500 w-4/5 md:w-1/2 rounded-full bg-white/70 font-thin text-center text-md text-black px-3 border border-gray-500"><br>
+                    <input type="Password" name="password" id="passowrd" placeholder="Password" required class="hover:scale-110 transition transform duration-500 w-4/5 md:w-1/2 rounded-full bg-white/70 font-thin text-center text-md text-black px-3 border border-gray-500"><br> 
+                    <input type="submit" value="Sign up" class="bg-white/30 duration-500 w-24 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/60 hover:scale-95 text-gray-600/40 rounded-xl">
+                </div>   
+            </form>
+        </div>
+</section>
+{% endblock %}
