@@ -15,8 +15,9 @@
                     'scene1': "{{url_for('static',filename='images/weathered_golden_monkey.png')}}",
                 }),
               colors: {
-                coral: "#fa6067", //bottom gradient
-                L_blue: "#acd8e6", //top gradient
+                coral: "#BE1E2D", //bottom gradient
+                L_blue: "#58C4C4",
+                _blue: "#2B388F", //top gradient
               }
             }
           }
@@ -25,11 +26,12 @@
     <title>Sign-up</title>
 </head>
 
-
-
 <body>
-    <section class="bg-gradient-to-tr from-L_blue to-coral/90 bg-cover h-screen">
-      {% block content %}{% endblock %}
+    <nav class="w-full h-16 py-3 px-4 align-center bg-white rounded-b-xl shadow-md fixed">
+      <img src="../static/images/VITTAE_logo.png" alt="vittae logo" class="h-10">
+    </nav>
+    <section class=" h-screen">
+      {% block content %} {% endblock %}
     </section>
     
 </body>
