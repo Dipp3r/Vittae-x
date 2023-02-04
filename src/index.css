@@ -1,0 +1,34 @@
+/* #loginDiv,#regDiv{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-evenly;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 5px 1px;
+    width: 150px;
+    min-width: 200px;
+    max-width: 1000px;
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.buttonBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:5px 2px;
+}
+.inputBox p {
+    margin:2px 4px;
+    font-size: 15px;
+}
+.inputBox input{
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 4px 1px;
+    margin: 5px; 
+}*/
