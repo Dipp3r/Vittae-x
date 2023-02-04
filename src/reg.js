@@ -40,7 +40,7 @@ class RegisterComp extends React.Component {
         delete obj.Cpassword
   
         //sending data to server
-        fetch('registerData', {
+        fetch('signUp', {
           method: 'POST',
           body: JSON.stringify(obj),
           headers: {

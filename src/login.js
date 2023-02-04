@@ -40,7 +40,7 @@ class LoginComp extends React.Component{
                     break;
                 case 1:
                     string = 'successfully logged in!'
-                    window.location.replace("./main")
+                    // window.location.replace("./main")
                     break;
                 case 2:
                     string = 'forgot password?'

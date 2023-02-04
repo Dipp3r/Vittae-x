@@ -8,8 +8,38 @@ class MainComp extends React.Component{
 
         }
     }
+    getListOFCustomers(){
+        var CustomerList = []
+        var URL = ''
+        var listInHTML = ''
+        fetch(URL,{
+            method:'GET'
+        })
+        .then(response => response.json())
+        .then(raw_data=>{
+            console.log(raw_data)
+            var data = raw_data.data
+            for(var i = 0;i<data.length;i++){
+                listInHTML += `<div>
+                    <p>${data[i].name}</p>
+                    <p>${data[i].dataOfReg}</p>
+                    <p>${data[i].stage}</p>
+                </div>`
+            }
+        })
+    }
     render(){
-        return(<div><h1>HI</h1></div>)
+        return(<section>
+            <div id="listContainer">
+
+            </div>
+            <nav id="bottomNav">
+                <button>Add customer</button>
+                <button>Remuration</button>
+                <button>Incentive</button>
+            </nav>
+
+        </section>)
     }
 }
 
