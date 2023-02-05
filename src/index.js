@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 import LoginComp from './login.js';
 import RegisterComp from './reg.js';
@@ -25,13 +27,17 @@ class IndexComp extends React.Component{
     this.setState({currentStage:stage})
   }
   render(){
-    if (this.state.currentStage == 1){
-      return(<LoginComp changeStage={this.changeStage}/>)
-    }else if (this.state.currentStage == 2){
-      return (<RegisterComp changeStage={this.changeStage}/>)
-    }else if(this.state.currentStage == 3){
-      return(<MainComp />)
-    }
+    
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<LoginComp />}/>
+        <Route path='/register' element = {<RegisterComp />}/>
+        <Route path='/home' element = {<MainComp />}/>
+      </Routes>
+    
+    </BrowserRouter>
+  )
   }
 }
 

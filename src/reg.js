@@ -5,7 +5,7 @@ import checkString from './stringChecker';
 class RegisterComp extends React.Component {
     constructor() {
       super();
-      this.state = { userName: '', password: '', Cpassword: '', email: '', message: '' };
+      this.state = { name: '', password: '', Cpassword: '', email: '', message: '' };
       this.changeInVal = this.changeInVal.bind(this);
       this.sendRegData = this.sendRegData.bind(this);
     }
@@ -19,13 +19,13 @@ class RegisterComp extends React.Component {
      
 
       //checking 
-      if (!checkString(this.state.userName, 1)) {
+      if (!checkString(this.state.name, 1)) {
         this.setState({ message: 'incorrect user name!' })
         return
       } else if (!(checkString(this.state.email, 3))) {
         this.setState({ message: 'incorrect E-mailID!' })
         return
-      } else if ((this.state.email.slice(0, (this.state.email.match(/[@]/)).index).toLowerCase()) == this.state.userName.toLowerCase()) {
+      } else if ((this.state.email.slice(0, (this.state.email.match(/[@]/)).index).toLowerCase()) == this.state.name.toLowerCase()) {
         this.setState({ message: "user name and Email name shouldn't be same" })
         return
       } else if (!checkString(this.state.password, 2)) {
@@ -52,14 +52,14 @@ class RegisterComp extends React.Component {
             // console.log(data)
             var string = ''
             switch (data.status) {
-              case 3:
-                string = 'registration completed!!!'
-                this.props.changeStage(3)
-                break;
               case 4:
-                string = 'user name taken!'
+                string = 'registration completed!!!'
+                window.location.replace("./")
                 break;
               case 5:
+                string = 'user name taken!'
+                break;
+              case 6:
                 string = 'already registered!!'
                 break;
               default:
@@ -83,7 +83,7 @@ class RegisterComp extends React.Component {
                 <div className="text-xl bg-_blue/90 p-5 w-60 md:w-1/2 xl:w-1/4 h-1/2 md:h-96 rounded-xl transition-colors backdrop-blur-xl text-center bg-opacity-30 font-bold backdrop-blur-xl bg-clip-padding backdrop-filter z-50 smooth-effect 'style'=z-index:100 shadow-xl">
                     <div className='inputBox'>
                         <h3>Registration Form</h3>
-                        <input className={inputStyle} type='text' placeholder='Enter your user name' name='userName' value={this.state.userName} maxLength='50' onChange={this.changeInVal} required />
+                        <input className={inputStyle} type='text' placeholder='Enter your user name' name='name' value={this.state.name} maxLength='50' onChange={this.changeInVal} required />
                         <input className={inputStyle} type='email' placeholder='Enter your emailID' name='email' onChange={this.changeInVal} required />
                         <input className={inputStyle} type='password' placeholder='Enter your password' name='password' onChange={this.changeInVal} minLength='4' maxLength='30' required />
                         <input className={inputStyle} type='password' placeholder='Confirm your password' name='Cpassword' value={this.state.Cpassword} onChange={this.changeInVal} required />
