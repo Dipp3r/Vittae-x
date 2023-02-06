@@ -52,12 +52,14 @@ class LoginComp extends React.Component{
         })
     }
     render(){
-        console.log(this.props)
+        
     return(
+        
     <section>
         <nav className="w-full h-16 py-3 px-4 align-center bg-white rounded-b-xl shadow-md fixed">
         <img src={require("./images/VITTAE_logo.png")} alt="vittae logo" class="h-10"/>
         </nav>
+
         <div className="flex justify-center items-center h-screen">        
             <div id='loginMain' className="text-xl bg-_blue/90 p-5 w-60 md:w-1/2 xl:w-1/4 h-72 rounded-xl transition-colors backdrop-blur-xl text-center font-bold  bg-clip-padding backdrop-filter z-50 smooth-effect 'style'=z-index:100 shadow-xl">
                 <div className='inputBox'>
@@ -71,7 +73,7 @@ class LoginComp extends React.Component{
                 </div>
                 <div>
                     <p>Text here</p>
-                    <button onclick={window.location.replace("./home")} className="bg-white/70 h-8 duration-500 w-20 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/70 hover:scale-95 text-gray-600 rounded-xl">sign-up</button>
+                    <button  className="bg-white/70 h-8 duration-500 w-20 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/70 hover:scale-95 text-gray-600 rounded-xl">sign-up</button>
                 </div>
             </div>
         </div>

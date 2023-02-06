@@ -33,7 +33,7 @@ def home():
 def login():
     data = json.loads(request.data)
     print(data)
-
+    status = 0
     result = connection("SELECT userID from users where name = ?",(data['name'],))
     if len(result[1]) == 0:
         status = 1
