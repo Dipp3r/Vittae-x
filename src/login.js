@@ -83,7 +83,7 @@ class LoginComp extends React.Component{
                         <p className="text-Text_blue text-sm p-2">Password</p>
                         <div className="flex-row flex border-2 border-border_gray rounded-md">
                             <input type="password"  placeholder="Example123" className="password font-thin rounded-md p-2 w-full"/>
-                            <img id="" src="../static/images/eye.svg" className="m-2" alt="eye icon"/>
+                            <img id="" src="./images/eye.svg" className="m-2" alt="eye icon"/>
                         </div>
                     </div>
                     <div className="pl-3 mt-1">
