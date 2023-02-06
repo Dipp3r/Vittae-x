@@ -25,7 +25,6 @@ def genRandomID(len):
     return "".join([f'{math.floor(random.random()*10)}' for i in range(len) ])
 
 @app.route("/")
-@app.route("/home")
 def home():
     return render_template('index.html')
 

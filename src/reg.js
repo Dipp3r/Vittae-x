@@ -54,7 +54,7 @@ class RegisterComp extends React.Component {
             switch (data.status) {
               case 4:
                 string = 'registration completed!!!'
-                window.location.replace("./")
+                window.location.replace("./home")
                 break;
               case 5:
                 string = 'user name taken!'

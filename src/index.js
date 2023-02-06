@@ -12,26 +12,16 @@ class IndexComp extends React.Component{
   constructor(){
     super()
     this.state = {
-      currentStage:1
+
     }
-    this.changeStage = this.changeStage.bind(this);
   }
-  changeStage(e){
-    // console.log(typeof(e))
-    var stage = 1
-    if (Number.isInteger(e)){
-      stage = e
-    }else{
-      stage = e.target.value
-    }
-    this.setState({currentStage:stage})
-  }
+  
   render(){
     
   return(
     <BrowserRouter>
       <Routes>
-        <Route index element={<LoginComp />}/>
+        <Route path ="/" index element={<LoginComp />}/>
         <Route path='/register' element = {<RegisterComp />}/>
         <Route path='/home' element = {<MainComp />}/>
       </Routes>

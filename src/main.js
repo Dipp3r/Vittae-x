@@ -7,6 +7,7 @@ class MainComp extends React.Component{
         this.state = {
 
         }
+        this.getListOFCustomers = this.getListOFCustomers.bind(this);
     }
     getListOFCustomers(){
         var CustomerList = []
@@ -20,16 +21,21 @@ class MainComp extends React.Component{
             console.log(raw_data)
             var data = raw_data.data
             for(var i = 0;i<data.length;i++){
-                listInHTML += `<div>
+                var node = document.createElement('div')
+                node.innerHTML = `<div>
                     <p>${data[i].name}</p>
                     <p>${data[i].dataOfReg}</p>
                     <p>${data[i].stage}</p>
                 </div>`
+                document.body.querySelector('#listContainer').appendchild(node)
             }
         })
     }
     render(){
         return(<section>
+            <nav id="topNav">
+                <button>profile</button>
+            </nav>
             <div id="listContainer">
 
             </div>
