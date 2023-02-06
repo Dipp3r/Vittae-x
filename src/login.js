@@ -66,28 +66,43 @@ class LoginComp extends React.Component{
     render(){
         
     return(
-        
-    <section>
-        <nav className="w-full h-16 py-3 px-4 align-center bg-white rounded-b-xl shadow-md fixed">
-        <img src={require("./images/VITTAE_logo.png")} alt="vittae logo" class="h-10"/>
-        </nav>
-
-        <div className="flex justify-center items-center h-screen">        
-            <div id='loginMain' className="text-xl bg-_blue/90 p-5 w-60 md:w-1/2 xl:w-1/4 h-72 rounded-xl transition-colors backdrop-blur-xl text-center font-bold  bg-clip-padding backdrop-filter z-50 smooth-effect 'style'=z-index:100 shadow-xl">
-                <div className='inputBox'>
-                    <h3>Login Form</h3>
-                    <input type='text' placeholder='Enter your user name' name='name' onChange={this.changeInVal} maxLength='50' className="hover:scale-110 transition transform duration-500 w-4/5 md:w-1/2 rounded-full bg-white/70 font-thin text-center text-md text-black px-3 border border-gray-500"/>
-                    <input type='password' placeholder='Enter your password' name='password' onChange={this.changeInVal} minLength='4' maxLength='30' className="hover:scale-110 transition transform duration-500 w-4/5 md:w-1/2 rounded-full bg-white/70 font-thin text-center text-md text-black px-3 border border-gray-500"/>
-                    <p>{this.state.message}</p>
-                </div>
-                <div className='buttonBox'>
-                    <button onClick={this.sendLoginData} className="bg-white/70 h-8 duration-500 w-20 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/70 hover:scale-95 text-gray-600 rounded-xl">submit</button>
-                </div>
-                <div>
-                    <p>Text here</p>
-                    <button onClick={this.changeRoute} value='./register'  className="bg-white/70 h-8 duration-500 w-20 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/70 hover:scale-95 text-gray-600 rounded-xl">sign-up</button>
-                </div>
+        <section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
+        <div className="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
+            <div className="p-8">
+                <p className="text-Text_blue font-bold">SIGN IN</p>
             </div>
+            <div>
+                <div className="bg-white m-8 mt-0 mb-0 rounded-b-xl">
+                    
+                    <div>
+                        <p className="text-Text_blue text-sm p-2">Email or phone number</p>
+                        <input type="text" placeholder="example@gmail.com" className=" font-thin rounded-md p-2 w-full"/>
+                    </div>
+
+                    <div className="pt-5">
+                        <p className="text-Text_blue text-sm p-2">Password</p>
+                        <div className="flex-row flex border-2 border-border_gray rounded-md">
+                            <input type="password"  placeholder="Example123" className="password font-thin rounded-md p-2 w-full"/>
+                            <img id="" src="../static/images/eye.svg" className="m-2" alt="eye icon"/>
+                        </div>
+                    </div>
+                    <div className="pl-3 mt-1">
+                        <input type="checkbox" id="rember_me"/>
+                        <label for="remember_me" className="text-Text_blue"> Remember me</label>
+                    </div>
+                    
+                    <div className="mt-8">
+                        <button id="button" className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
+                            SIGN IN
+                        </button>
+                        <p className="mt-1 text-Text_blue underline text-sm float-right mr-1"> Forgot password?</p>
+                    </div>
+                    <div className="text-center">
+                        <hr className="bg-black mt-14 text-sm"/>
+                        <p className="text-xs text-gray-400 m-8">Need an account? <a className="text-Text_blue ml-1 underline text-xs"> Signup</a> </p>
+                    </div>
+                </div>
+            </div>          
         </div>
     </section>
     )
