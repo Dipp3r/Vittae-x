@@ -21,8 +21,8 @@ class IndexComp extends React.Component{
   return(
     <BrowserRouter>
       <Routes>
-        <Route path ="/login" index element={<LoginComp />}/>
-        <Route path='/'index element = {<RegisterComp />}/>
+        <Route path ="/" index element={<LoginComp />}/>
+        <Route path='/register'index element = {<RegisterComp />}/>
         <Route path='/main' element = {<MainComp />}/>
       </Routes>
     
