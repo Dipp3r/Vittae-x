@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
 
 
 import LoginComp from './login.js';
@@ -23,7 +23,7 @@ class IndexComp extends React.Component{
       <Routes>
         <Route path ="/" index element={<LoginComp />}/>
         <Route path='/register'index element = {<RegisterComp />}/>
-        <Route path='/main' element = {<MainComp />}/>
+        <Route path='/home' element = {<MainComp />}/>
       </Routes>
     
     </BrowserRouter>

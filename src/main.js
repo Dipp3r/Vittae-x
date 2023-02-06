@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { WithRouter } from './routingWrapper';
 
 class MainComp extends React.Component{
     constructor(){
@@ -49,4 +50,4 @@ class MainComp extends React.Component{
     }
 }
 
-export default MainComp
+export default WithRouter(MainComp)

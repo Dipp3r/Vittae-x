@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { redirect ,useNavigate} from 'react-router-dom';
+import { WithRouter } from './routingWrapper';
 import checkString from './stringChecker';
 
 class LoginComp extends React.Component{
@@ -8,12 +10,22 @@ class LoginComp extends React.Component{
         this.state = {name:'',password:'',message:''}
         this.changeInVal = this.changeInVal.bind(this)
         this.sendLoginData = this.sendLoginData.bind(this)
+        this.changeRoute = this.changeRoute.bind(this)
     }
     changeInVal(e){
         var obj = {};
         obj[e.target.name] = e.target.value.trim();
         this.setState(obj);
     } 
+    changeRoute(e){
+        var URL = ''
+        if (typeof(e) == 'string'){
+            URL = e
+        }else{
+            URL = e.target.value
+        }
+        this.props.navigate(URL)
+    }
     sendLoginData(e){
         if(this.state.name == '' | this.state.password == ''){
             this.setState({message:'fill all the fields'})
@@ -40,7 +52,7 @@ class LoginComp extends React.Component{
                     break;
                 case 2:
                     string = 'successfully logged in!'
-                    window.location.replace("./home")
+                    this.changeRoute("./home")
                     break;
                 case 3:
                     string = 'forgot password?'
@@ -73,7 +85,7 @@ class LoginComp extends React.Component{
                 </div>
                 <div>
                     <p>Text here</p>
-                    <button  className="bg-white/70 h-8 duration-500 w-20 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/70 hover:scale-95 text-gray-600 rounded-xl">sign-up</button>
+                    <button onClick={this.changeRoute} value='./register'  className="bg-white/70 h-8 duration-500 w-20 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/70 hover:scale-95 text-gray-600 rounded-xl">sign-up</button>
                 </div>
             </div>
         </div>
@@ -81,4 +93,4 @@ class LoginComp extends React.Component{
     )
     }
 }
-export default LoginComp;
+export default WithRouter(LoginComp);

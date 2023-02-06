@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import checkString from './stringChecker';
+import { WithRouter} from './routingWrapper';
 
 class RegisterComp extends React.Component {
     constructor() {
@@ -8,12 +9,23 @@ class RegisterComp extends React.Component {
       this.state = { name: '', password: '', Cpassword: '', email: '', message: '' };
       this.changeInVal = this.changeInVal.bind(this);
       this.sendRegData = this.sendRegData.bind(this);
+      this.changeRoute = this.changeRoute.bind(this);
     }
     changeInVal(e) {
       var obj = {};
       obj[e.target.name] = e.target.value.trim();
       this.setState(obj);
     }
+    changeRoute(e){
+      var URL = ''
+      if (typeof(e) == 'string'){
+          URL = e
+      }else{
+          URL = e.target.value
+      }
+      this.props.navigate('./register')
+  }
+  
     sendRegData() {
       // console.log(this.state)
      
@@ -54,7 +66,7 @@ class RegisterComp extends React.Component {
             switch (data.status) {
               case 4:
                 string = 'registration completed!!!'
-                window.location.replace("./home")
+                this.changeRoute("./home")
                 break;
               case 5:
                 string = 'user name taken!'
@@ -90,7 +102,7 @@ class RegisterComp extends React.Component {
                         <p>{this.state.message}</p>
                     </div>
                     <div className='buttonBox'>
-                        <button onClick={this.sendRegData} className="bg-white/70 duration-500 h-7 m-10 w-24 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/80 hover:scale-95 text-gray-600/80 rounded-xl">submit</button>
+                        <button onClick={this.changeRoute} value='/home' className="bg-white/70 duration-500 h-7 m-10 w-24 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/80 hover:scale-95 text-gray-600/80 rounded-xl">submit</button>
                     </div>
                 </div>
             </div>
@@ -99,4 +111,4 @@ class RegisterComp extends React.Component {
     }
   }
   
-export default RegisterComp
+export default WithRouter(RegisterComp)
