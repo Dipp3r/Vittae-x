@@ -130,7 +130,7 @@ class RegisterComp extends React.Component {
                     </button>
                 </div>
                 <div className="text-center">
-                    <p className="text-xs text-gray-400 m-8">Already have an account? <a value='../' onClick={this.props.navigate} className="text-Text_blue ml-1 underline text-xs"> Sign in</a> </p>
+                    <p className="text-xs text-gray-400 m-8">Already have an account? <a value='../login' onClick={this.props.navigate} className="text-Text_blue ml-1 underline text-xs"> Sign in</a> </p>
                 </div>
             </div>
         </div>          
