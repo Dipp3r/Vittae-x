@@ -24,9 +24,13 @@ class LoginComp extends React.Component{
         }else{
             URL = e.target.value
         }
+        console.log(URL)
         this.props.navigate(URL)
     }
+
     sendLoginData(e){
+        console.log('clicked')
+
         if(this.state.name == '' | this.state.password == ''){
             this.setState({message:'fill all the fields'})
             return
@@ -83,7 +87,7 @@ class LoginComp extends React.Component{
                         <p className="text-Text_blue text-sm p-2">Password</p>
                         <div className="flex-row flex border-2 border-border_gray rounded-md">
                             <input type="password"  placeholder="Example123" className="password font-thin rounded-md p-2 w-full"/>
-                            <img id="" src="./images/eye.svg" className="m-2" alt="eye icon"/>
+                            <img  src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
                         </div>
                     </div>
                     <div className="pl-3 mt-1">
@@ -92,14 +96,14 @@ class LoginComp extends React.Component{
                     </div>
                     
                     <div className="mt-8">
-                        <button id="button" className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
+                        <button id="button" onClick={this.sendLoginData} value="./register" className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
                             SIGN IN
                         </button>
-                        <p className="mt-1 text-Text_blue underline text-sm float-right mr-1"> Forgot password?</p>
+                        <a className="mt-1 text-Text_blue underline text-sm float-right mr-1"> Forgot password?</a>
                     </div>
                     <div className="text-center">
                         <hr className="bg-black mt-14 text-sm"/>
-                        <p className="text-xs text-gray-400 m-8">Need an account? <a className="text-Text_blue ml-1 underline text-xs"> Signup</a> </p>
+                        <p className="text-xs text-gray-400 m-8">Need an account? <a className="text-Text_blue ml-1 underline text-xs" onClick={this.changeRoute} value="./register"> Signup</a> </p>
                     </div>
                 </div>
             </div>          

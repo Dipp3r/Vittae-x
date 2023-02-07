@@ -10,10 +10,16 @@
         tailwind.config = {
           theme: {
             extend: {
+                backgroundImage: (theme) => ({
+                    'scene1': "{{url_for('static',filename='images/weathered_golden_monkey.png')}}",
+                }),
               colors: {
-                coral: "#BE1E2D", //bottom gradient
-                L_blue: "#58C4C4",
-                _blue: "#2B388F", //top gradient
+                Vittae_Red: "#BB2230",
+                Vittae_Violet: "#444584",
+                Vittae_Blue: "#1E2E5A",
+                text_blue: "#697DAB",
+                Text_blue: "#223F80",
+                border_gray: "#B8B8B8",
               }
             }
           }

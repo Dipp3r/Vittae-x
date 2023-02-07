@@ -1,34 +1,66 @@
-/* #loginDiv,#regDiv{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: space-evenly;
-    border: 2px solid black;
-    border-radius: 15px;
-    margin: 5px 1px;
-    width: 150px;
-    min-width: 200px;
-    max-width: 1000px;
+input::placeholder {
+    font-weight:normal;
+    opacity: 1;
 }
-.inputBox{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+
+input{
+    border:2px solid #B8B8B8;
+
 }
-.buttonBox{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:5px 2px;
+input:focus{
+    border-color: #223F80;
+
+    outline: none;
 }
-.inputBox p {
-    margin:2px 4px;
-    font-size: 15px;
+
+.password{
+    border:none;
 }
-.inputBox input{
-    border-radius: 5px;
-    border-width: 1px;
-    padding: 4px 1px;
-    margin: 5px; 
-}*/
+
+div :has( > .password:focus){
+    border: 2px solid #223F80;
+}
+
+/* to remove the feature to scroll through numbers in a number input field */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin:0;
+
+}
+
+/* this is applicable for firefox */
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+#samplephone{
+    font-weight: 550;
+}
+
+#p1{
+    font-weight: 620;
+    width: 280px;
+    line-height: 1.2;
+}
+
+.otp_num{
+    font-weight: 600;
+}
+
+hr{
+    border-width: 1.5px;
+    border-color: #B8B8B8;
+}
+
+.heading{
+    font-weight:500;
+}
+
+#button{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+a{
+    cursor:pointer;
+}

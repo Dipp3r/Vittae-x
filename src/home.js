@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { WithRouter } from './routingWrapper';
 
-class MainComp extends React.Component{
+class HomeComp extends React.Component{
     constructor(){
         super()
         this.state = {
@@ -50,4 +50,4 @@ class MainComp extends React.Component{
     }
 }
 
-export default WithRouter(MainComp)
+export default WithRouter(HomeComp)

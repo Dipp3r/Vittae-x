@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 import checkString from './stringChecker';
 import { WithRouter} from './routingWrapper';
 
@@ -87,26 +88,64 @@ class RegisterComp extends React.Component {
       // console.log(this.state)
       var inputStyle = "hover:scale-110 transition transform duration-500 w-4/5 md:w-1/2 rounded-full bg-white/70 font-thin text-center text-md text-black px-3 border border-gray-500"
       return (
-        <section>
-            <nav className="w-full h-16 py-3 px-4 align-center bg-white rounded-b-xl shadow-md fixed">
-                <img src={require("./images/VITTAE_logo.png")} alt="vittae logo" class="h-10"/>
-            </nav>
-            <div className="flex justify-center items-center h-screen"> 
-                <div className="text-xl bg-_blue/90 p-5 w-60 md:w-1/2 xl:w-1/4 h-1/2 md:h-96 rounded-xl transition-colors backdrop-blur-xl text-center bg-opacity-30 font-bold backdrop-blur-xl bg-clip-padding backdrop-filter z-50 smooth-effect 'style'=z-index:100 shadow-xl">
-                    <div className='inputBox'>
-                        <h3>Registration Form</h3>
-                        <input className={inputStyle} type='text' placeholder='Enter your user name' name='name' value={this.state.name} maxLength='50' onChange={this.changeInVal} required />
-                        <input className={inputStyle} type='email' placeholder='Enter your emailID' name='email' onChange={this.changeInVal} required />
-                        <input className={inputStyle} type='password' placeholder='Enter your password' name='password' onChange={this.changeInVal} minLength='4' maxLength='30' required />
-                        <input className={inputStyle} type='password' placeholder='Confirm your password' name='Cpassword' value={this.state.Cpassword} onChange={this.changeInVal} required />
-                        <p>{this.state.message}</p>
-                    </div>
-                    <div className='buttonBox'>
-                        <button onClick={this.changeRoute} value='/home' className="bg-white/70 duration-500 h-7 m-10 w-24 md:p-1 text-sm md:text-md hover:shadow-md hover:text-black/80 hover:scale-95 text-gray-600/80 rounded-xl">submit</button>
+        <section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
+    <div className="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
+        <div className="p-8 pt-4 pb-4">
+            <p className="heading text-Text_blue text-xl">SIGN UP</p>
+        </div>
+        <div>
+            <div className="bg-white m-8 mt-0 mb-0 rounded-b-xl">
+                
+                <div>
+                    <p className="text-Text_blue text-sm p-2">Name</p>
+                    <input type="text" placeholder="Example" className=" font-thin rounded-md p-2 w-full"/>
+                </div>
+
+                <div className="pt-3">
+                    <p className="text-Text_blue text-sm p-2">Email</p>
+                    <input type="text" placeholder="example@gmail.com" className=" font-thin rounded-md p-2 w-full"/>
+                </div>
+
+                <div className="pt-3">
+                    <p className="text-Text_blue text-sm p-2">Phone number</p>
+                    <input type="text" placeholder="1234567890" className=" font-thin rounded-md p-2 w-full"/>
+                </div>
+                
+
+                <div className="pt-3">
+                    <p className="text-Text_blue text-sm p-2">Password</p>
+                    <div className="flex-row flex border-2 border-border_gray rounded-md">
+                        <input type="password"  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
+                        <img id="" src="../static/images/eye.svg" className="m-2" alt="eye icon"/>
                     </div>
                 </div>
+
+                <div className="pt-3">
+                    <p className="text-Text_blue text-sm p-2">Confirm password</p>
+                    <div className="flex-row flex border-2 border-border_gray rounded-md">
+                        <input type="password"  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
+                        <img id="" src="../static/images/eye.svg" className="m-2" alt="eye icon"/>
+                    </div>
+                </div>
+
+                <div className="pl-2 mt-8">
+                    <input type="checkbox" id=""/>
+                    <label for="remember_me" className="text-border_gray"> I agree to the <a className="underline text-Text_blue">T&C</a></label>
+                </div>
+                
+                <div className="mt-2">
+                    <button id="button" className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
+                        SIGN UP
+                    </button>
+                </div>
+                <div className="text-center">
+                    <p className="text-xs text-gray-400 m-8">Already have an account? <a value='./' onClick={this.changeRoute} className="text-Text_blue ml-1 underline text-xs"> Sign in</a> </p>
+                </div>
             </div>
-        </section>
+        </div>          
+    </div>
+</section>
+
         )
     }
   }
