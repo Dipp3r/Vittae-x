@@ -14,7 +14,7 @@ class FirstComp extends React.Component{
                     <p id="p1" className="text-center text-text_blue mb-6">If we can look at something with words and sentences, explore it. VITTAE X</p>
                 </div>
 
-                <div id="getstarted" className="mb-12">
+                <div id="getstarted" className="mb-12  hover:scale-95 duration-500 transition-transform">
                     <button onClick={this.props.navigate} value="./login" className="button bg-gradient-to-r text-white font-bold text-xl text-center p-2 from-Vittae_Blue to-Vittae_Red via-Vittae_Violet w-64 h-12 rounded-xl">
                         Get Started
                     </button>
