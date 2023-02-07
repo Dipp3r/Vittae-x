@@ -10,23 +10,12 @@ class LoginComp extends React.Component{
         this.state = {name:'',password:'',message:''}
         this.changeInVal = this.changeInVal.bind(this)
         this.sendLoginData = this.sendLoginData.bind(this)
-        this.changeRoute = this.changeRoute.bind(this)
     }
     changeInVal(e){
         var obj = {};
         obj[e.target.name] = e.target.value.trim();
         this.setState(obj);
     } 
-    changeRoute(e){
-        var URL = ''
-        if (typeof(e) == 'string'){
-            URL = e
-        }else{
-            URL = e.target.value
-        }
-        console.log(URL)
-        this.props.navigate(URL)
-    }
 
     sendLoginData(e){
         console.log('clicked')
@@ -56,7 +45,7 @@ class LoginComp extends React.Component{
                     break;
                 case 2:
                     string = 'successfully logged in!'
-                    this.changeRoute("./home")
+                    this.props.navigate("./home")
                     break;
                 case 3:
                     string = 'forgot password?'
@@ -68,7 +57,7 @@ class LoginComp extends React.Component{
         })
     }
     render(){
-        
+        console.log(this.props)
     return(
         <section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
         <div className="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
@@ -103,7 +92,7 @@ class LoginComp extends React.Component{
                     </div>
                     <div className="text-center">
                         <hr className="bg-black mt-14 text-sm"/>
-                        <p className="text-xs text-gray-400 m-8">Need an account? <a className="text-Text_blue ml-1 underline text-xs" onClick={this.changeRoute} value="./register"> Signup</a> </p>
+                        <p className="text-xs text-gray-400 m-8">Need an account? <a className="text-Text_blue ml-1 underline text-xs" onClick={this.props.navigate} value="./register"> Signup</a> </p>
                     </div>
                 </div>
             </div>          

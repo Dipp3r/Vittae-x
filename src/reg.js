@@ -10,22 +10,13 @@ class RegisterComp extends React.Component {
       this.state = { name: '', password: '', Cpassword: '', email: '', message: '' };
       this.changeInVal = this.changeInVal.bind(this);
       this.sendRegData = this.sendRegData.bind(this);
-      this.changeRoute = this.changeRoute.bind(this);
+      
     }
     changeInVal(e) {
       var obj = {};
       obj[e.target.name] = e.target.value.trim();
       this.setState(obj);
     }
-    changeRoute(e){
-      var URL = ''
-      if (typeof(e) == 'string'){
-          URL = e
-      }else{
-          URL = e.target.value
-      }
-      this.props.navigate('./register')
-  }
   
     sendRegData() {
       // console.log(this.state)
@@ -67,7 +58,7 @@ class RegisterComp extends React.Component {
             switch (data.status) {
               case 4:
                 string = 'registration completed!!!'
-                this.changeRoute("./home")
+                this.props.navigate("./home")
                 break;
               case 5:
                 string = 'user name taken!'
@@ -116,7 +107,7 @@ class RegisterComp extends React.Component {
                     <p className="text-Text_blue text-sm p-2">Password</p>
                     <div className="flex-row flex border-2 border-border_gray rounded-md">
                         <input type="password"  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
-                        <img id="" src="../static/images/eye.svg" className="m-2" alt="eye icon"/>
+                        <img id="" src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
                     </div>
                 </div>
 
@@ -124,7 +115,7 @@ class RegisterComp extends React.Component {
                     <p className="text-Text_blue text-sm p-2">Confirm password</p>
                     <div className="flex-row flex border-2 border-border_gray rounded-md">
                         <input type="password"  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
-                        <img id="" src="../static/images/eye.svg" className="m-2" alt="eye icon"/>
+                        <img id="" src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
                     </div>
                 </div>
 
@@ -139,7 +130,7 @@ class RegisterComp extends React.Component {
                     </button>
                 </div>
                 <div className="text-center">
-                    <p className="text-xs text-gray-400 m-8">Already have an account? <a value='./' onClick={this.changeRoute} className="text-Text_blue ml-1 underline text-xs"> Sign in</a> </p>
+                    <p className="text-xs text-gray-400 m-8">Already have an account? <a value='../' onClick={this.props.navigate} className="text-Text_blue ml-1 underline text-xs"> Sign in</a> </p>
                 </div>
             </div>
         </div>          
