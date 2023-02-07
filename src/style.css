@@ -69,3 +69,7 @@ hr{
 .eye:hover path{
     stroke:#223F80;
 }
+
+a{
+    cursor:pointer;
+}
