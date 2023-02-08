@@ -6,11 +6,13 @@ import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
 import LoginComp from './login.js';
 import RegisterComp from './reg.js';
 import HomeComp  from './home.js';
-
+import FirstComp from './first.js';
 
 import './index.css'
 import MobileComp from './mobile.js';
 import EmailOTP from './email.js';
+
+
 class IndexComp extends React.Component{
   constructor(){
     super()
@@ -24,8 +26,9 @@ class IndexComp extends React.Component{
   return(
     <BrowserRouter>
       <Routes>
-        <Route path ="/" index element={<LoginComp />}/>
-        <Route path='/register'index element = {<RegisterComp />}/>
+        <Route path ="/" index element={<FirstComp />}/>
+        <Route path ="/login" element={<LoginComp />}/>
+        <Route path='/register' element = {<RegisterComp />}/>
         <Route path='/home' element = {<HomeComp />}/>
         <Route path='/mobileOTP' element={<MobileComp/>} />
         <Route path='/emailOTP' element={EmailOTP}/>

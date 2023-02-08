@@ -11,9 +11,7 @@ export const WithRouter = (Component) => {
       }else{
           URL = e.target.getAttribute("value")
       }   
-      console.log(URL)
-      console.log(e.target)
-      console.log(e.target.value)
+    
       navigate(URL)
     }
     return (

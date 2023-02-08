@@ -45,7 +45,7 @@ class LoginComp extends React.Component{
                     break;
                 case 2:
                     string = 'successfully logged in!'
-                    this.props.navigate("./home")
+                    this.props.navigate("../home")
                     break;
                 case 3:
                     string = 'forgot password?'
@@ -92,7 +92,7 @@ class LoginComp extends React.Component{
                     </div>
                     <div className="text-center">
                         <hr className="bg-black mt-14 text-sm"/>
-                        <p className="text-xs text-gray-400 m-8">Need an account? <a className="text-Text_blue ml-1 underline text-xs" onClick={this.props.navigate} value="./register"> Signup</a> </p>
+                        <p className="text-xs text-gray-400 m-8">Need an account? <a className="text-Text_blue ml-1 underline text-xs" onClick={this.props.navigate} value="../register"> Signup</a> </p>
                     </div>
                 </div>
             </div>          

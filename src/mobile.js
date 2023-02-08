@@ -1,7 +1,7 @@
 import React from "react"
 class MobileComp extends React.Component {
     constructor(){
-
+        super()
     }
     render(){
         return(<section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">

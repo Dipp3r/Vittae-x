@@ -2,7 +2,7 @@ import React from "react"
 
 class EmailComp extends React.Component {
     constructor(){
-
+        super()
     }
     render(){
 
