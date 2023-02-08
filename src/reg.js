@@ -20,7 +20,7 @@ class RegisterComp extends React.Component {
   
     sendRegData() {
       // console.log(this.state)
-     
+      this.props.navigate("../mobileOTP")
 
       //checking 
       if (!checkString(this.state.name, 1)) {
@@ -58,7 +58,7 @@ class RegisterComp extends React.Component {
             switch (data.status) {
               case 4:
                 string = 'registration completed!!!'
-                this.props.navigate("./home")
+                // this.props.navigate("./home")
                 break;
               case 5:
                 string = 'user name taken!'
@@ -125,7 +125,7 @@ class RegisterComp extends React.Component {
                 </div>
                 
                 <div className="mt-2">
-                    <button id="button" className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
+                    <button id="button" onClick={this.sendRegData} className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
                         SIGN UP
                     </button>
                 </div>
