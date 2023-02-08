@@ -21,7 +21,7 @@ class LoginComp extends React.Component{
         console.log('clicked')
 
         if(this.state.name == '' | this.state.password == ''){
-            this.setState({message:'fill all the fields'})
+            this.setState({message:'Fields are empty'})
             return
         }
         
