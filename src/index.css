@@ -58,10 +58,29 @@ hr{
 }
 
 .button{
+    transition-duration: 1.5s;
+    width: 260px;
+    height:50px;
+    font-weight:600;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+
+.button:hover{
+    box-shadow:none;
 }
 
 
 a{
     cursor:pointer;
+}
+
+
+.eye path{
+    stroke: #B8B8B8;
+    
+}
+
+.eye:hover path{
+    stroke:#223F80;
 }
