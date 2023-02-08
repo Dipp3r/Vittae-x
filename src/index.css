@@ -86,3 +86,16 @@ a{
 .eye:hover path{
     stroke:#223F80;
 }
+
+#password{
+    font-weight:400;
+}
+
+.invalid{
+    visibility: hidden;
+}
+
+
+li::marker{
+    font-size: 10px;
+}
