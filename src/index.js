@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
 
 import './index.css'
+import './index.css'
 
 import LoginComp from './login.js';
 import RegisterComp from './reg.js';
@@ -38,6 +39,7 @@ class IndexComp extends React.Component{
         <Route path='/newPass' element={<NewPassComp/>}/>
       </Routes>
 
+
     </BrowserRouter>
   )
   }
@@ -49,6 +51,7 @@ class IndexComp extends React.Component{
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
+    <IndexComp/>
     <IndexComp/>
   </div>
 );

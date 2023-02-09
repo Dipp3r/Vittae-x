@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express()
 const path = require('path')
-const port = 5000;
+const port = 2000;
 
 
 app.use(express.static(path.join(__dirname,'/', "build")));
@@ -26,9 +26,9 @@ function checkMobilOrMail(str){
     console.log(str)
     console.log('\n')
 }
-checkMobilOrMail('+911234567890')
-checkMobilOrMail('j1234567890')
-checkMobilOrMail('sample@mail.com')
+// checkMobilOrMail('+911234567890')
+// checkMobilOrMail('j1234567890')
+// checkMobilOrMail('sample@mail.com')
 
 app.get('/sendRegData',(req,res)=>{
     

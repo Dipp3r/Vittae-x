@@ -22,6 +22,8 @@ class RegisterComp extends React.Component {
       // console.log(this.state)
       this.props.navigate("../mobileOTP")
 
+      this.props.navigate("../mobileOTP")
+
       //checking 
       if (!checkString(this.state.name, 1)) {
         this.setState({ message: 'incorrect user name!' })
@@ -58,6 +60,7 @@ class RegisterComp extends React.Component {
             switch (data.status) {
               case 4:
                 string = 'registration completed!!!'
+                // this.props.navigate("./home")
                 // this.props.navigate("./home")
                 break;
               case 5:
