@@ -13,3 +13,4 @@ class MobileComp extends OTPComp{
 }
 
 export default WithRouter(MobileComp) 
+export default WithRouter(MobileComp) 

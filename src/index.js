@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
 
 import './index.css'
+import './index.css'
 
 import LoginComp from './login.js';
 import RegisterComp from './reg.js';
@@ -10,11 +11,14 @@ import HomeComp  from './home.js';
 import MobileComp from './mobile.js';
 import EmailOTP from './email.js';
 import ForgotPassword from './forgotPassword.js';
+import ForgotPassword from './forgotPassword.js';
 import FirstComp from './first.js';
 import {WithRouter } from './routingWrapper';
 import MobileOrMailOTP from './mobileOrMail';
 import NewPassComp from './newPass'
 class IndexComp extends React.Component{
+  constructor(props){
+    super(props)
   constructor(props){
     super(props)
     this.state = {
@@ -38,6 +42,7 @@ class IndexComp extends React.Component{
         <Route path='/newPass' element={<NewPassComp/>}/>
       </Routes>
 
+
     </BrowserRouter>
   )
   }
@@ -49,6 +54,7 @@ class IndexComp extends React.Component{
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
+    <IndexComp/>
     <IndexComp/>
   </div>
 );
