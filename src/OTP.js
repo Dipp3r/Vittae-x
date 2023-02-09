@@ -19,8 +19,9 @@ class OTPComp extends React.Component {
         var num = Number.parseInt(e.target.getAttribute('name'))
         var value = e.target.value
         var inputclass = document.body.querySelector('#inputBarContainer').children
-        // console.log(value == "",num)
-
+        // // console.log(value == "",num)
+        // value = Number.parseInt(value).split(-1)
+        // if(!Number.isInteger(value)) return;
         if(value == '' && num >0){
             inputclass[num-1].focus()
         }
@@ -90,7 +91,7 @@ class OTPComp extends React.Component {
         this.setTime(1,6)
     }
     render(){
-        var text = this.props.text.split(':')
+        var text = this.txt.split(':')
 
         return(<section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
         <div className="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
@@ -112,11 +113,11 @@ class OTPComp extends React.Component {
                     
     
                     <div className="pl-2 mt-14 text-center">
-                        {this.props.anchorTags}
+                        {this.anchorTags}
                     </div>
                     
                     <div className="mt-2 mb-10">
-                        <button id="button" type="submit" value="../home" onClick={this.props.navigate} className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 shadow-xl rounded-xl">
+                        <button id="button" type="submit" value={this.loc} onClick={this.props.navigate} className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 shadow-xl rounded-xl">
                             SUBMIT
                         </button>
                     </div>

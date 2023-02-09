@@ -79,19 +79,23 @@ class LoginComp extends React.Component{
                             <img  src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
                         </div>
                     </div>
-                    <div className="pl-3 mt-1">
-                        <input type="checkbox" id="rember_me"/>
-                        <label for="remember_me" className="text-Text_blue"> Remember me</label>
+                    <div class="tickBox ">
+                        <button value="0" class="tickButton">
+                            <svg width="12" height="10" viewBox="0 0 15 14" fill="none">
+                                <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <p  class="text-Text_blue"> Remember me</p>
                     </div>
                     
-                    <div className="mt-8">
-                        <button id="button" onClick={this.sendLoginData} value="./register" className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
+                    <div className="mt-1">
+                        <button id="button" style={{"margin":"0px"}} onClick={this.sendLoginData} value="./register" className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
                             SIGN IN
                         </button>
                         <a className="mt-1 text-Text_blue underline text-sm float-right mr-1" onClick={this.props.navigate} value="../forgotPassword"> Forgot password?</a>
                     </div>
                     <div className="text-center">
-                        <hr className="bg-black mt-14 text-sm"/>
+                        <hr className="mt-14"/>
                         <p className="text-xs text-gray-400 m-8">Need an account? <a className="text-Text_blue ml-1 underline text-xs" onClick={this.props.navigate} value="../register"> Signup</a> </p>
                     </div>
                 </div>

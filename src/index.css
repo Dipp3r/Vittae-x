@@ -1,3 +1,29 @@
+body{
+    margin: 0px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom:0px;
+    height:100vh;
+    width:100vw;
+}
+
+#root{
+    position: fixed;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+#root section{
+    overflow: auto;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 input::placeholder {
     font-weight:normal;
     opacity: 1;
@@ -11,6 +37,10 @@ input:focus{
     border-color: #223F80;
 
     outline: none;
+}
+
+.grayText{
+    color: #8B8B8B;
 }
 
 .password{
@@ -58,10 +88,194 @@ hr{
 }
 
 .button{
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background: linear-gradient(243.49deg, #BB2230 -0.34%, #BB2230 -0.33%, #444584 47.45%, #1E2E5A 96.1%);
+    transition-duration: 1s;
+    width: 100%;
+    height:50px;
+    margin: 40px 0px;
+    font-weight:400;
+    font-size:18px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+    color:white;
+    border-radius: 12px;
+}
+
+.button:hover{
+    box-shadow:none;
+    scale:0.95;
 }
 
 
 a{
     cursor:pointer;
 }
+
+.eye path{
+    stroke: #B8B8B8;
+    
+}
+
+.eye:hover path{
+    stroke:#223F80;
+}
+
+#password{
+    font-weight:400;
+}
+
+.invalid{
+    visibility: hidden;
+}
+
+
+li::marker{
+    font-size: 10px;
+}
+
+#dashboard {
+  height: 100%;
+  position: static;
+  background-color: #E4E4E4;
+}
+#dashboard .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 89px;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
+}
+#dashboard .navbar .profile {
+  border-radius: 100%;
+  margin: 20px;
+  width: 60px;
+  height: 60px;
+  background: #D9D9D9;
+}
+#dashboard .navbar .profile #profile {
+  height: 100%;
+  width: auto;
+}
+#dashboard .navbar .icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 110px;
+  height: 60px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+#dashboard .scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+#dashboard .scrolling-wrapper .cards {
+  display: inline-block;
+  background-color: white;
+  width: 220px;
+  height: 60px;
+  margin: 30px 20px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+#dashboard #statusBar {
+  width: 100vw;
+  background-color: transparent;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#dashboard #statusBar #statusButton {
+  width: 90%;
+  font-family: "Montserrat";
+  font-style: normal;
+  line-height: 15px;
+  align-items: flex-end;
+  color: #6D7593;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+#dashboard #statusBar #statusButton .statusButton {
+  width: 25%;
+  height: 32px;
+  font-weight: 580;
+  font-size: 12px;
+  text-align: center;
+}
+#dashboard #statusBar #statusButton .statusButton:focus {
+  color: #223F80;
+  border-bottom: 1px solid #223F80;
+}
+#dashboard #statusBar .menu {
+  padding: 20px;
+  height: 30px;
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#dashboard #statusBar .menu button:has(> svg) circle {
+  fill: #6D7593;
+}
+#dashboard #statusBar .menu button:hover:has(> svg) circle {
+  fill: #223F80;
+}
+#dashboard #statusBarEdge {
+  width: 100vw;
+  border: 1px solid rgba(37, 53, 100, 0.4);
+}
+#dashboard #searchBar {
+  margin: 30px 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(109, 117, 147, 0.22);
+  border-radius: 9px;
+}
+#dashboard #searchBar #icon {
+  margin: 5px;
+}
+#dashboard #searchBar #searchField {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #6D7593;
+  margin-right: 10px;
+}
+
+.tickBox {
+  padding-left: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+}
+.tickBox .tickButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 2px solid #B8B8B8;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  margin-top: 4px;
+}
+.tickBox .tickButton:focus {
+  background-color: #223F80;
+  border: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}/*# sourceMappingURL=main.css.map */

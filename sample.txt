@@ -1,0 +1,363 @@
+<section class="h-full flex flex-col justify-center items-center">
+        <div id="logo" class="mb-14">
+            <img src="../static/images/VITTAE.png" alt="Vittae official logo" class="h-20">
+        </div>
+
+        <div id="image" style="width:fit-content;" class="pt-10 items-center justify-center flex-col flex">
+            <img src="../static/images/sampleavatar.png" alt="Vittae official logo">
+            <p id="p1" class="text-center text-text_blue mb-6">If we can look at something with words and sentences, explore it. VITTAE X</p>
+        </div>
+
+        <button style="width:260px;margin-top:0px;" class="button">
+            Get Started
+        </button>
+
+    </section>
+
+//signin page
+    <section class="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
+        <div class="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
+            <div class="p-8 pb-4">
+                <p class="heading text-Text_blue text-xl p-2">SIGN IN</p>
+            </div>
+            <div>
+                <div class="bg-white m-8 mt-0 mb-0 rounded-b-xl">
+                    
+                    <div>
+                        <p class="text-Text_blue text-sm p-2">Email or phone number</p>
+                        <input type="text" placeholder="example@gmail.com" class=" font-thin rounded-md p-2 w-full">
+                    </div>
+
+                    <div class="pt-5">
+                        <p class="text-Text_blue text-sm p-2">Password</p>
+                        <div class="flex-row flex border-2 border-border_gray rounded-md">
+                            <input type="password"  placeholder="Example!123" class="password font-thin rounded-md p-2 w-full"/>
+                            <img  src="../static/images/eye.svg" class="m-2" alt="eye icon"/>
+                        </div>
+                    </div>
+
+                    <div class="tickBox ">
+                        <!-- when the value is 0 the bg is set transprent otherwise its set to dark blue -->
+                        <button value="0" class="tickButton">
+                            <svg width="12" height="10" viewBox="0 0 15 14" fill="none">
+                                <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <p  class="text-Text_blue"> Remember me</p>
+                    </div>
+                    
+                    <div class="mt-1">
+                        <button class="button" style="margin:0px;">
+                            SIGN IN
+                        </button>
+                        <p class="mt-1 text-Text_blue underline text-sm float-right mr-1"> Forgot password?</p>
+                    </div>
+                    <div class="text-center">
+                        <hr class="mt-14">
+                        <p class="text-xs text-gray-400 m-8">Need an account? <a class="text-Text_blue ml-1 underline text-xs"> Signup</a> </p>
+                    </div>
+                </div>
+            </div>          
+        </div>
+    </section> 
+
+
+
+
+    <section class="h-screen flex flex-col justify-start items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6 overflow-scroll">
+        <div class="bg-white sm:w-full min-w-md max-w-lg rounded-2xl mb-10 shadow-2xl">
+            <div class="p-8 pt-4 pb-4">
+                <p class="heading text-Text_blue text-xl">SIGN UP</p>
+            </div>
+            <div>
+                <div class="bg-white m-8 mt-0 mb-0 rounded-b-xl">
+                    
+                    <div>
+                        <p class="text-Text_blue text-sm p-2">Name</p>
+                        <input type="text" placeholder="Example" class=" font-thin rounded-md p-2 w-full"/>
+                        <p id="nameErr" class="invalid text-Text_blue text-xs ml-3 text-red-700">name</p>
+                    </div>
+
+                    <div class="mt-1">
+                        <p class="text-Text_blue text-sm p-2">Email</p>
+                        <input type="text" placeholder="example@gmail.com" class=" font-thin rounded-md p-2 w-full"/>
+                        <p id="emailErr" class="invalid text-Text_blue text-xs ml-3 text-red-700"></p>
+                    </div>
+
+                    <div class="mt-1">
+                        <p class="text-Text_blue text-sm p-2">Phone number</p>
+                        <input type="text" placeholder="1234567890" class=" font-thin rounded-md p-2 w-full"/>
+                        <p id="phoneErr" class="invalid text-Text_blue text-xs ml-3 text-red-700">* invalid name</p>
+                    </div>
+                    
+
+                    <div class="mt-1">
+                        <p class="text-Text_blue text-sm p-2">Password</p>
+                        <div class="flex-row flex border-2 border-border_gray rounded-md">
+                            <input type="password"  placeholder="Example!123" class="password font-thin rounded-md p-2 w-full"/>
+                            <img id="" src="../static/images/eye.svg" class="m-2" alt="eye icon">
+                        </div>
+                        <p id="passwordErr" class="invalid text-Text_blue text-xs ml-3 text-red-700">* invalid name</p>
+                    </div>
+
+                    <div class="ml-3">
+                        <p id="password" class="grayText text-sm mt-2">Password must contain at least</p>
+                        <div class="ml-4">
+                            <al class="grayText text-sm font-thin">
+                                <li>8 characters</li>
+                                <li>uppercase and lowercase</li>
+                                <li>number and a special character</li>
+                            </al>
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <p class="text-Text_blue text-sm p-2">Confirm password</p>
+                        <div class="flex-row flex border-2 border-border_gray rounded-md">
+                            <input type="password"  placeholder="Example!123" class="password font-thin rounded-md p-2 w-full"/>
+                            <img id="" src="../static/images/eye.svg" class="m-2" alt="eye icon">
+                        </div>
+                        <p id="confirmPasswordErr" class="invalid text-Text_blue text-xs ml-3 text-red-700">* invalid name</p>
+                    </div>
+
+
+                    <div class="tickBox" style="margin-top:20px;margin-bottom:10px;padding:0px;font-size: 12px;">
+                        <!-- when the value is 0 the bg is set transprent otherwise its set to dark blue -->
+                        <button value="0" class="tickButton" style="width: 15px;height: 15px;">
+                            <svg width="10" height="10" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <label for="remember_me" class="grayText mt-1"> I agree to the <a class="underline text-Text_blue">T&C</a></label>
+                    </div>
+                    
+                    <button class="button" style="margin-top:0px;">
+                        SIGN UP
+                    </button>
+                
+                </div>
+            </div>          
+        </div>
+    </section>
+
+
+
+
+
+    <section class="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
+        <div class="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
+            <div class="p-8 pt-4 pb-4">
+                <p class="heading text-Text_blue text-xl">ENTER OTP</p>
+                <p class="text-sm mt-2">An OTP is sent to your mobile</p>
+                <p id="samplephone" class="text-Text_blue text-sm">+91 82534 76354</p>
+            </div>
+            <div>
+                <div class="bg-white m-8 mt-0 mb-0 rounded-b-xl">
+                    
+                    <div class="flex flex-row gap-x-5 justify-center mt-6">
+                        <input type="number" maxlength="1" class="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                        <input type="number" maxlength="1" class="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                        <input type="number" maxlength="1" class="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                        <input type="number" maxlength="1" class="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                        
+                        <script>
+                            document.querySelectorAll('input[type="number"]').forEach(input =>{
+                                input.oninput = () =>{
+                                    let max =input.maxLength;
+                                    if(input.value.length > max) input.value = input.value.slice(0,max);
+                                };
+                            });
+                        </script>
+                        
+                    </div>
+                    <p class="float-right mr-12 mt-1 text-sm text-border_gray">00:00 <a class="underline text-Text_blue">Resend</a></p>
+                    
+
+                    <div class="pl-2 mt-14 text-center">
+                        <label for="remember_me" class="text-Text_blue underline"> Try using Email </label>
+                    </div>
+                    
+                    <button class="button" style="margin-top:10px;">
+                        SUBMIT
+                    </button>
+
+                </div>
+            </div>          
+        </div>
+    </section> 
+
+    <section class="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
+        <div class="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
+            <div class="p-8 pt-4 pb-4">
+                <p class="heading text-Text_blue text-xl">ENTER OTP</p>
+                <p class="text-sm mt-2">An OTP is sent to your email</p>
+                <p id="samplephone" class="text-Text_blue text-sm">example123@gmail.com</p>
+            </div>
+            <div>
+                <div class="bg-white m-8 mt-0 mb-0 rounded-b-xl">
+                    
+                    <div class="flex flex-row gap-x-5 justify-center mt-6">
+                        <input type="number" maxlength="1" class="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                        <input type="number" maxlength="1" class="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                        <input type="number" maxlength="1" class="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                        <input type="number" maxlength="1" class="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                        
+                        <script>
+                            document.querySelectorAll('input[type="number"]').forEach(input =>{
+                                input.oninput = () =>{
+                                    let max =input.maxLength;
+                                    if(input.value.length > max) input.value = input.value.slice(0,max);
+                                };
+                            });
+                        </script>
+                        
+                    </div>
+                    <p class="float-right mr-12 mt-1 text-sm text-border_gray">00:00 <a class="underline text-Text_blue">Resend</a></p>
+                    
+
+                    <div class="pl-2 mt-14 text-center">
+                        <label for="remember_me" class="text-Text_blue underline"> Try using mobile </label>
+                    </div>
+                    
+                    <button class="button" style="margin-top:10px;">
+                        SUBMIT
+                    </button>
+
+                </div>
+            </div>          
+        </div>
+    </section> 
+
+
+
+
+
+<section class="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
+    <div class="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
+        <div class="p-8 pt-4 pb-4">
+            <p class="heading text-Text_blue text-xl">FIND YOUR PROFILE</p>
+        </div>
+        <div>
+            <div class="bg-white m-8 mt-0 mb-0 rounded-b-xl">
+                
+                <div class="mt-4">
+                    <p class="text-Text_blue text-sm p-2">Email or phone number</p>
+                    <input type="text" placeholder="example@gmail.com" class=" font-thin rounded-md p-2 w-full">
+                </div>
+                
+                <button class="button">
+                    SIGN IN
+                </button>
+            </div>
+        </div>          
+    </div>
+</section>
+
+
+
+<section class="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
+    <div class="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
+        <div class="p-8 pt-4 pb-4 mt-4">
+            <p class="heading text-Text_blue">CREATE A STRONG PASSWORD</p>
+        </div>
+
+        <div class="ml-10">
+            <p id="password" class="grayText text-sm">Password must contain at least</p>
+            <div class="ml-4">
+                <al class="grayText text-sm font-thin">
+                    <li>8 characters</li>
+                    <li>uppercase and lowercase</li>
+                    <li>number and a special character</li>
+                </al>
+            </div>
+        </div>
+
+        <div>
+            <div class="bg-white m-8 mt-0 mb-0 rounded-b-xl">
+                
+                <div class="pt-3">
+                    <p class="text-Text_blue text-sm p-2">Password</p>
+                    <div class="flex-row flex border-2 border-border_gray rounded-md">
+                        <input type="password"  placeholder="Example!123" class="password font-thin rounded-md p-2 w-full"/>
+                        <img id="" src="../static/images/eye.svg" class="m-2" alt="eye icon">
+                    </div>
+                </div>
+
+                <div class="pt-3">
+                    <p class="text-Text_blue text-sm p-2">Confirm password</p>
+                    <div class="flex-row flex border-2 border-border_gray rounded-md">
+                        <input type="password"  placeholder="Example!123" class="password font-thin rounded-md p-2 w-full"/>
+                        <img id="" src="../static/images/eye.svg" class="m-2" alt="eye icon">
+                    </div>
+                </div>
+                
+    
+                    <button class="button">
+                        SUBMIT
+                    </button>
+
+            </div>
+        </div>          
+    </div>
+</section>
+
+    <section id="dashboard">
+        <nav class="navbar">
+            <div class="profile">
+                <img id="profile" src="../static/images/profile.png" alt=""/>
+            </div>
+
+            <div class="icons">
+
+                <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="19.3335" y="14.5" width="4.83333" height="8.45833" rx="2.41667" fill="#223F80" stroke="#223F80" stroke-width="2" stroke-linejoin="round"/>
+                    <rect x="4.8335" y="14.5" width="4.83333" height="8.45833" rx="2.41667" fill="#223F80" stroke="#223F80" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M4.8335 15.7083V19.3333" stroke="#223F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24.1665 15.7083V19.3333" stroke="#223F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M24.1668 15.7083C24.1668 12.8241 23.1484 10.058 21.3355 8.01856C19.5227 5.9791 17.0639 4.83334 14.5002 4.83334C11.9364 4.83334 9.47765 5.9791 7.6648 8.01856C5.85195 10.058 4.8335 12.8241 4.8335 15.7083" stroke="#223F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.7913 9.62971C8.17113 6.21122 11.0606 3.625 14.5002 3.625C17.9397 3.625 20.8292 6.21122 21.209 9.62971L21.5133 12.3681C21.5571 12.7627 21.579 12.96 21.6103 13.1539C21.7513 14.0288 22.0366 14.8741 22.4547 15.6555C22.5474 15.8287 22.6495 15.9989 22.8538 16.3394L23.5578 17.5127C24.3635 18.8556 24.7664 19.5271 24.4792 20.0344C24.1919 20.5417 23.4089 20.5417 21.8428 20.5417H7.15754C5.59143 20.5417 4.80837 20.5417 4.52114 20.0344C4.23392 19.5271 4.63679 18.8556 5.44255 17.5127L6.14653 16.3394C6.3508 15.9989 6.45293 15.8287 6.54563 15.6555C6.96369 14.8741 7.24904 14.0288 7.39001 13.1539C7.42127 12.96 7.44319 12.7627 7.48704 12.3681L7.7913 9.62971Z" fill="#223F80"/>
+                    <path d="M10.875 20.5417C10.875 21.0177 10.9688 21.4891 11.1509 21.9289C11.3331 22.3687 11.6001 22.7683 11.9367 23.1049C12.2734 23.4415 12.673 23.7085 13.1128 23.8907C13.5526 24.0729 14.024 24.1667 14.5 24.1667C14.976 24.1667 15.4474 24.0729 15.8872 23.8907C16.327 23.7085 16.7266 23.4415 17.0633 23.1049C17.3999 22.7683 17.6669 22.3687 17.8491 21.9289C18.0312 21.4891 18.125 21.0177 18.125 20.5417L14.5 20.5417H10.875Z" fill="#223F80"/>
+                </svg>
+                    
+            </div>
+        </nav>
+
+        <div class="scrolling-wrapper">
+            <div class="cards">
+            </div>
+            <div class="cards"></div>
+        </div>
+
+        <div id="statusBar">
+
+            <div id="statusButton">
+                <button class="statusButton">ALL</button>
+                <button class="statusButton">ACTIVE</button>
+                <button class="statusButton">PENDING</button>
+                <button class="statusButton">DEAD</button>
+            </div>
+
+            <div class="menu">
+                <button>
+                    <svg width="3" height="15" viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="1.5" cy="1.5" r="1.5" fill="none"/>
+                        <circle cx="1.5" cy="7.5" r="1.5" fill="none"/>
+                        <circle cx="1.5" cy="13.5" r="1.5" fill="none"/>
+                    </svg>
+                </button>
+
+            </div>
+
+        </div> 
+
+        <hr id="statusBarEdge"/>
+
+        <div id="searchBar">
+            <img id="icon" src="../static/images/search.svg" alt="eye icon">
+            <input type="text" id="searchField"/>
+        </div>
+    </section>

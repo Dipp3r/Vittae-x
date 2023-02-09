@@ -86,20 +86,22 @@ class RegisterComp extends React.Component {
         </div>
         <div>
             <div className="bg-white m-8 mt-0 mb-0 rounded-b-xl">
-                
                 <div>
                     <p className="text-Text_blue text-sm p-2">Name</p>
                     <input type="text" placeholder="Example" className=" font-thin rounded-md p-2 w-full"/>
+                    <p id="nameErr" className="invalid text-Text_blue text-xs ml-3 text-red-700">name</p>
                 </div>
 
-                <div className="pt-3">
+                <div className="mt-1">
                     <p className="text-Text_blue text-sm p-2">Email</p>
                     <input type="text" placeholder="example@gmail.com" className=" font-thin rounded-md p-2 w-full"/>
+                    <p id="emailErr" className="invalid text-Text_blue text-xs ml-3 text-red-700"></p>
                 </div>
 
-                <div className="pt-3">
+                <div className="mt-1">
                     <p className="text-Text_blue text-sm p-2">Phone number</p>
                     <input type="text" placeholder="1234567890" className=" font-thin rounded-md p-2 w-full"/>
+                    <p id="emailErr" className="invalid text-Text_blue text-xs ml-3 text-red-700"></p>
                 </div>
                 
 
@@ -109,29 +111,42 @@ class RegisterComp extends React.Component {
                         <input type="password"  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
                         <img id="" src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
                     </div>
+                    <p id="passwordErr" className="invalid text-Text_blue text-xs ml-3 text-red-700">* invalid name</p>
                 </div>
 
-                <div className="pt-3">
+                <div className="ml-3">
+                    <p id="password" className="grayText text-sm mt-2">Password must contain at least</p>
+                    <div className="ml-4">
+                        <al className="grayText text-sm font-thin">
+                            <li>8 characters</li>
+                            <li>uppercase and lowercase</li>
+                            <li>number and a special character</li>
+                        </al>
+                    </div>
+                </div>
+
+                <div className="mt-1">
                     <p className="text-Text_blue text-sm p-2">Confirm password</p>
                     <div className="flex-row flex border-2 border-border_gray rounded-md">
                         <input type="password"  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
                         <img id="" src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
                     </div>
-                </div>
-
-                <div className="pl-2 mt-8">
-                    <input type="checkbox" id=""/>
-                    <label for="remember_me" className="text-border_gray"> I agree to the <a className="underline text-Text_blue">T&C</a></label>
+                    <p id="confirmPasswordErr" className="invalid text-Text_blue text-xs ml-3 text-red-700">* invalid name</p>
                 </div>
                 
-                <div className="mt-2">
-                    <button id="button" onClick={this.sendRegData} className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
+                <div className="tickBox" style={{"margin-top":"20px","margin-bottom":"10px","padding":"0px","font-size": "12px"}}>
+                       
+                      <button value="0" className="tickButton" style={{"width": "15px","height": "15px"}}>
+                          <svg width="10" height="10" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                      </button>
+                      <label for="remember_me" className="grayText mt-1"> I agree to the <a className="underline text-Text_blue">T&C</a></label>
+                  </div>
+                
+                  <button className="button" onClick={this.props.navigate} value="../mobileOTP" style={{"margin-top":"0px"}}>
                         SIGN UP
                     </button>
-                </div>
-                <div className="text-center">
-                    <p className="text-xs text-gray-400 m-8">Already have an account? <a value='../login' onClick={this.props.navigate} className="text-Text_blue ml-1 underline text-xs"> Sign in</a> </p>
-                </div>
             </div>
         </div>          
     </div>

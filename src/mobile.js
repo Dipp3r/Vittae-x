@@ -5,9 +5,9 @@ import { WithRouter } from "./routingWrapper"
 class MobileComp extends OTPComp{
     constructor(props){
         super(props)
-        this.props.text= "mobile:+91 9123456780" 
-        this.props.anchorTags = <a className="text-Text_blue underline" onClick={this.props.navigate} value="../mailOTP"> Try using Email </a>
-    
+        this.txt= "mobile:+919123456780" 
+        this.anchorTags = <a className="text-Text_blue underline" onClick={this.props.navigate} value="../mailOTP"> Try using Email </a>
+        this.loc = '../home'
     }
     
 }

@@ -12,7 +12,8 @@ import EmailOTP from './email.js';
 import ForgotPassword from './forgotPassword.js';
 import FirstComp from './first.js';
 import {WithRouter } from './routingWrapper';
-
+import MobileOrMailOTP from './mobileOrMail';
+import NewPassComp from './newPass'
 class IndexComp extends React.Component{
   constructor(props){
     super(props)
@@ -33,6 +34,8 @@ class IndexComp extends React.Component{
         <Route path='/mobileOTP' element={<MobileComp />} />
         <Route path='/mailOTP' element={<EmailOTP  />}/>
         <Route path='/forgotPassword' element={<ForgotPassword/>}/>
+        <Route path='/mobileOrmailOTP' element={<MobileOrMailOTP/>}/>
+        <Route path='/newPass' element={<NewPassComp/>}/>
       </Routes>
 
     </BrowserRouter>
