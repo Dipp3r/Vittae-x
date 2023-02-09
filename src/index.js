@@ -11,14 +11,11 @@ import HomeComp  from './home.js';
 import MobileComp from './mobile.js';
 import EmailOTP from './email.js';
 import ForgotPassword from './forgotPassword.js';
-import ForgotPassword from './forgotPassword.js';
 import FirstComp from './first.js';
 import {WithRouter } from './routingWrapper';
 import MobileOrMailOTP from './mobileOrMail';
 import NewPassComp from './newPass'
 class IndexComp extends React.Component{
-  constructor(props){
-    super(props)
   constructor(props){
     super(props)
     this.state = {
