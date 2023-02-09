@@ -7,13 +7,12 @@ export const WithRouter = (Component) => {
     var changeRoute= (e) =>{
       var URL = ''
       if (typeof(e) == 'string'){
-          URL = e
+        URL = e
       }else{
-          URL = e.target.getAttribute("value")
+        e.preventDefault() 
+        URL = e.target.getAttribute("value")
       }   
       console.log(URL)
-      console.log(e.target)
-      console.log(e.target.value)
       navigate(URL)
     }
     return (
