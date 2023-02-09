@@ -97,7 +97,7 @@ class OTPComp extends React.Component {
             <div className="p-8 pt-4 pb-4">
                 <p className="heading text-Text_blue text-xl">ENTER OTP</p>
                 <p className="text-sm mt-2">An OTP is sent to your {text[0]}</p>
-                <p id="samplephone" className="text-Text_blue text-sm">text[1]</p>
+                <p id="samplephone" className="text-Text_blue text-sm">{text[1]}</p>
             </div>
             <div>
                 <div className="bg-white m-8 mt-0 mb-0 rounded-b-xl">

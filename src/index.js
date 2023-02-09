@@ -30,8 +30,8 @@ class IndexComp extends React.Component{
         <Route path ="/login" index element={<LoginComp />}/>
         <Route path='/register' element = {<RegisterComp />}/>
         <Route path='/home' element = {<HomeComp />}/>
-        <Route path='/mobileOTP' element={<MobileComp text={"mobile:+91 9123456780"} anchorTags={<a className="text-Text_blue underline" onClick={this.props.navigate} to="../mailOTP"> Try using Email </a>}/>} />
-        <Route path='/emailOTP' element={<EmailOTP text={'mail:example@mail.com'} anchorTags={<a className="text-Text_blue underline" onClick={this.props.navigate} to="../mobileOTP" > Try using mobile </a>} />}/>
+        <Route path='/mobileOTP' element={<MobileComp />} />
+        <Route path='/mailOTP' element={<EmailOTP  />}/>
         <Route path='/forgotPassword' element={<ForgotPassword/>}/>
       </Routes>
 
