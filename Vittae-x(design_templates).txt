@@ -326,10 +326,20 @@
             </div>
         </nav>
 
-        <div class="scrolling-wrapper">
+        <div class="scrolling-wrapperX">
             <div class="cards">
+                <div class="info">
+                    <p class="p1">$120.5</p>
+                    <p class="p2">Commissions from clients</p>
+                </div>
             </div>
-            <div class="cards"></div>
+
+            <div class="cards">
+                <div class="info">
+                    <p class="p1">86/100</p>
+                    <p class="p2">Number of customers</p>
+                </div>
+            </div>
         </div>
 
         <div id="statusBar">
@@ -360,4 +370,131 @@
             <img id="icon" src="../static/images/search.svg" alt="eye icon">
             <input type="text" id="searchField"/>
         </div>
+
+        <div id="labelBar">
+
+            <div id="labels">
+                <p class="label">Name</p>
+                <p class="label">Mobile</p>
+                <p class="label">Status</p>
+                <p class="label">Added Date</p>
+            </div>
+
+        </div> 
+
+        <div class="scrolling-wrapperY">
+            <div class="cards">
+                <div class="info">
+                    <p class="name">Deekay</p>
+                    <p class="mobile">+91 9443610472</p>
+                    <div class="flex-row">
+                        <svg class="down" width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="2.86855" cy="2" rx="2.05263" ry="2" fill="#6BDA7D"/>
+                        </svg>
+                        <p class="status">Active</p>
+                    </div>
+                    <p class="date">22/02/2023</p>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="info">
+                    <p class="name">Sam</p>
+                    <p class="mobile">+91 9443610472</p>
+                    <div class="flex-row">
+                        <svg class="down" width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="2.86855" cy="2" rx="2.05263" ry="2" fill="#6BDA7D"/>
+                        </svg>
+                        <p class="status">Inactive</p>
+                    </div>
+                    <p class="date">22/02/2023</p>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="info">
+                    <p class="name">Venkatan...</p>
+                    <p class="mobile">+91 5489642356</p>
+                    <div class="flex-row">
+                        <svg class="down" width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="2.86855" cy="2" rx="2.05263" ry="2" fill="#6BDA7D"/>
+                        </svg>
+                        <p class="status">Processing</p>
+                    </div>
+                    <p class="date">22/02/2023</p>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="info">
+                    <p class="name">Narayanan</p>
+                    <p class="mobile">+91 5489642356</p>
+                    <div class="flex-row">
+                        <svg class="down" width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="2.86855" cy="2" rx="2.05263" ry="2" fill="#6BDA7D"/>
+                        </svg>
+                        <p class="status">Active</p>
+                    </div>
+                    <p class="date">22/02/2023</p>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="info">
+                    <p class="name">dot</p>
+                    <p class="mobile">+91 5489642356</p>
+                    <div class="flex-row">
+                        <svg class="down" width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="2.86855" cy="2" rx="2.05263" ry="2" fill="#6BDA7D"/>
+                        </svg>
+                        <p class="status">Active</p>
+                    </div>
+                    <p class="date">22/02/2023</p>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="info">
+                    <p class="name">YOYOYO</p>
+                    <p class="mobile">+91 9443610472</p>
+                    <div class="flex-row">
+                        <svg class="down" width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="2.86855" cy="2" rx="2.05263" ry="2" fill="#6BDA7D"/>
+                        </svg>
+                        <p class="status">Active</p>
+                    </div>
+                    <p class="date">22/02/2023</p>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="info">
+                    <p class="name">adfnias</p>
+                    <p class="mobile">+91 9443610472</p>
+                    <div class="flex-row">
+                        <svg class="down" width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="2.86855" cy="2" rx="2.05263" ry="2" fill="#6BDA7D"/>
+                        </svg>
+                        <p class="status">Active</p>
+                    </div>
+                    <p class="date">22/02/2023</p>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="info">
+                    <p class="name">Deekay</p>
+                    <p class="mobile">+91 9443610472</p>
+                    <div class="flex-row">
+                        <svg class="down" width="5" height="4" viewBox="0 0 5 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="2.86855" cy="2" rx="2.05263" ry="2" fill="#6BDA7D"/>
+                        </svg>
+                        <p class="status">Active</p>
+                    </div>
+                    <p class="date">22/02/2023</p>
+                </div>
+            </div>
+
+            <div class="fixed">
+            </div>
     </section>
