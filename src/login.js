@@ -19,9 +19,9 @@ class LoginComp extends React.Component{
 
     sendLoginData(e){
         console.log('clicked')
-
+        this.props.navigate("../home")
         if(this.state.name == '' | this.state.password == ''){
-            this.setState({message:'Fields are empty'})
+            this.setState({message:'fill all the fields'})
             return
         }
         
@@ -88,7 +88,7 @@ class LoginComp extends React.Component{
                         <button id="button" onClick={this.sendLoginData} value="./register" className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
                             SIGN IN
                         </button>
-                        <a className="mt-1 text-Text_blue underline text-sm float-right mr-1"> Forgot password?</a>
+                        <a className="mt-1 text-Text_blue underline text-sm float-right mr-1" onClick={this.props.navigate} value="../forgotPassword"> Forgot password?</a>
                     </div>
                     <div className="text-center">
                         <hr className="bg-black mt-14 text-sm"/>
