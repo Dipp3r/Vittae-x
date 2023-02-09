@@ -58,6 +58,7 @@ hr{
 }
 
 .button{
+
     background: linear-gradient(243.49deg, #BB2230 -0.34%, #BB2230 -0.33%, #444584 47.45%, #1E2E5A 96.1%);
     transition-duration: 1.5s;
     width: 260px;
@@ -68,15 +69,9 @@ hr{
 }
 
 
-.button:hover{
-    box-shadow:none;
-}
-
-
 a{
     cursor:pointer;
 }
-
 
 .eye path{
     stroke: #B8B8B8;
@@ -99,3 +94,4 @@ a{
 li::marker{
     font-size: 10px;
 }
+

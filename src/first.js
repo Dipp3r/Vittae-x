@@ -15,7 +15,9 @@ class FirstComp extends React.Component{
                 </div>
 
                 <div id="getstarted" className="mb-12  hover:scale-95 duration-500 transition-transform">
+
                     <button onClick={this.props.navigate} value="./login" className="button text-white text-center p-2 from-Vittae_Blue to-Vittae_Red via-Vittae_Violet">
+
                         Get Started
                     </button>
                 </div>
