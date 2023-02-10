@@ -11,5 +11,5 @@ class EmailComp extends OTPComp {
     }
 }
 
-export default WithRouter(EmailComp)
+
 export default WithRouter(EmailComp)
