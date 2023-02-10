@@ -15,6 +15,7 @@ import FirstComp from './first.js';
 import {WithRouter } from './routingWrapper';
 import MobileOrMailOTP from './mobileOrMail';
 import NewPassComp from './newPass'
+import TermsAndConditionsComp from './termsAndConditions';
 class IndexComp extends React.Component{
   constructor(props){
     super(props)
@@ -31,6 +32,7 @@ class IndexComp extends React.Component{
       <Route path ="/" index element={<FirstComp />}/>
         <Route path ="/login" index element={<LoginComp />}/>
         <Route path='/register' element = {<RegisterComp />}/>
+        <Route path='/termsAndConditions' element={<TermsAndConditionsComp/>}/>
         <Route path='/home' element = {<HomeComp />}/>
         <Route path='/mobileOTP' element={<MobileComp />} />
         <Route path='/mailOTP' element={<EmailOTP  />}/>

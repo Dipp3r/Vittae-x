@@ -14,6 +14,7 @@ function checkMobilOrMail(str){
     if (str[0] == '+'){
         //removing +91 from the number
         str = str.slice(3,)
+        
     }
     if(/^[0-9]+$/ig.test(str)){
         console.log('digits')
@@ -30,8 +31,27 @@ function checkMobilOrMail(str){
 // checkMobilOrMail('j1234567890')
 // checkMobilOrMail('sample@mail.com')
 
-app.get('/sendRegData',(req,res)=>{
-    
+app.post('/signIn',(req,res)=>{
+    console.log(req.body)
+    res.send({'status':true})
+})
+
+app.post('/signUp',(req,res)=>{
+    console.log(req.body)
+    res.send({'status':true})
+})
+
+app.post('/verifyID',(req,res)=>{
+    console.log(req.body)
+    res.send({'status':true})
+})
+app.post('/sendOTP',(req,res)=>{
+    console.log(req.body)
+    res.send({'status':true})
+})
+app.post('/setNewPassword',(req,res)=>{
+    console.log(req.body)
+    res.send({'status':true})
 })
 
 app.listen(port,(err)=>{

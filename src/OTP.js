@@ -4,15 +4,20 @@ import { WithRouter } from "./routingWrapper";
 class OTPComp extends React.Component {
     constructor(props){
         super(props);
-        this.state = {OTP:["0","0","0","0"],
+        this.state = {OTP:["","","",""],
         min :"01",
         sec:"00",
-        intervalId:0
+        intervalId:0,
+        isTimeOut:false
         }
         this.changeInVal = this.changeInVal.bind(this)
         this.changeTimer = this.changeTimer.bind(this)
         this.setTime = this.setTime.bind(this)
-    }
+        this.submit = this.submit.bind(this)
+        this.reset = this.reset.bind(this)
+        this.submitLink = 'sendOTP'
+        this.loc = '../home'
+    }   
     changeInVal(e){
         // console.log(Number.parseInt(e.target.getAttribute('name')),e.target.value)
         var text = this.state.OTP
@@ -26,24 +31,43 @@ class OTPComp extends React.Component {
             inputclass[num-1].focus()
         }
         
-        text[num] = value
-        this.setState({OTP:text})
+        
         // console.log(text,this.state.OTP)
         
         if(inputclass[num].value == ""){
             inputclass[num].value = value[0]
-            console.log('zero')
+            text[num] = value[0]
         }else if (num <=2 && value.length > 1){
             inputclass[num].value = value[0]
             inputclass[num+1].value = value.slice(-1)
+            text[num] = value[0]
+            text[num+1] = value.slice(-1)
         }else{
             inputclass[num].value = ''
             inputclass[num].value = value.slice(-1)
+            text[num] = value.slice(-1)
         }
         
         if(num<=2 && value !== ''){
             inputclass[num+1].focus()
         }
+        this.setState({OTP:text})
+    }
+    reset(){
+        var obj = {OTPFor:this.props.txt}
+        fetch(this.submitLink,{
+            method:'POST',
+            body:JSON.stringify(obj),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then((response) => response.json())
+        .then((data)=>{
+           if (data.status){
+            this.setTime(1,6)
+           }
+        })
     }
     changeTimer(){
         var min = Number.parseInt(this.state.min);
@@ -72,6 +96,7 @@ class OTPComp extends React.Component {
         this.setState({min:min,sec:sec})
     }
     setTime(min,sec){
+        var isTimeOut = false
         if(min < 10){
             min = `0${min}`
         }else{
@@ -82,12 +107,33 @@ class OTPComp extends React.Component {
         }else{
             sec = `${sec}`
         }
+        if(min == 0 && sec == 0){
+            this.setState({isTimeOut:true});
+        }
         clearInterval(this.state.intervalId)
         var intervalId = setInterval(this.changeTimer,1000)
-        this.setState({min:min,sec:sec,intervalId:intervalId})
+        this.setState({min:min,sec:sec,intervalId:intervalId,isTimeOut:isTimeOut})
+    }
+    submit(){
+        if(this.state.isTimeOut) return
+
+        var obj = {OTP:this.state.OTP.join("")}
+        if(obj.OTP == '') return
+        fetch(this.submitLink,{
+            method:'POST',
+            body:JSON.stringify(obj),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then((response) => response.json())
+        .then((data)=>{
+           if (data.status) this.props.navigate(this.loc)
+        })
     }
     componentDidMount(){
-    //    exmaple
+        //exmaple
+        // this.reset()
         this.setTime(1,6)
     }
     render(){
@@ -109,7 +155,7 @@ class OTPComp extends React.Component {
                         <input type="number" name="2" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
                         <input type="number" name="3" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
                     </div>
-                    <p className="float-right mr-12 mt-1 text-sm text-border_gray">{this.state.min}:{this.state.sec} <a className="underline text-Text_blue">Resend</a></p>
+                    <p className="float-right mr-12 mt-1 text-sm text-border_gray">{this.state.min}:{this.state.sec} <a className="underline  text-Text_blue" onClick={this.getOTP}>Resend</a></p>
                     
     
                     <div className="pl-2 mt-14 text-center">
@@ -117,7 +163,7 @@ class OTPComp extends React.Component {
                     </div>
                     
                     <div className="mt-2 mb-10">
-                        <button id="button" type="submit" value={this.loc} onClick={this.props.navigate} className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 shadow-xl rounded-xl">
+                        <button id="button" type="submit" value={this.loc} onClick={this.submit} className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 shadow-xl rounded-xl">
                             SUBMIT
                         </button>
                     </div>

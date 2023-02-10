@@ -39,7 +39,7 @@ function checkString(string,num = 0){
     return bool
 }
 export default checkString;
-// console.log(checkString('ABCabc123#$',num = 2))
+// console.log(checkString('aBCabc123#$',num = 2))
 // console.log(checkString('ASWD34',num = 2))
 // console.log(checkString('adw44',num = 2))
-// console.log(checkString('famgmail.com',num = 3))
+// console.log(checkString('fam@gmail.com',num = 3))
