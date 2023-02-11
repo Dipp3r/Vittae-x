@@ -13,12 +13,9 @@ class FirstComp extends React.Component{
                     <img src={require("./images/sampleavatar.png")} alt="Vittae official logo"/>
                     <p id="p1" className="text-center text-text_blue mb-6">If we can look at something with words and sentences, explore it. VITTAE X</p>
                 </div>
-
-                <div id="getstarted" className="mb-12  hover:scale-95 duration-500 transition-transform">
-                    <button onClick={this.props.navigate} style={{"width":"260px","margin-top":"10px"}} value="./login" className="button">
-                        Get Started
-                    </button>
-                </div>
+                <button onClick={this.props.navigate} style={{"width":"260px","margin-top":"10px"}} value="./login" className="button">
+                    Get Started
+                </button>
             </section>
         )
     };

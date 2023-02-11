@@ -21,7 +21,6 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
 }
 
 input::placeholder {
@@ -92,7 +91,7 @@ hr{
 }
 
 .button{
-    background: linear-gradient(243.49deg, #BB2230 -0.34%, #BB2230 -0.33%, #444584 47.45%, #1E2E5A 96.1%);
+    background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
     transition-duration: 1s;
     width: 100%;
     transition-duration: 1s;
@@ -144,11 +143,17 @@ li::marker{
     font-size: 10px;
 }
 
-
 #dashboard {
+  font-family: "Montserrat";
+  font-style: normal;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
   position: static;
   background-color: #E4E4E4;
+  overflow: hidden;
 }
 #dashboard .navbar {
   display: flex;
@@ -167,7 +172,7 @@ li::marker{
   height: 60px;
   background: #D9D9D9;
 }
-#dashboard .navbar .profile #profile {
+#dashboard .navbar .profile #profileImg {
   height: 100%;
   width: auto;
 }
@@ -181,12 +186,33 @@ li::marker{
   margin-top: 20px;
   margin-right: 20px;
 }
-#dashboard .scrolling-wrapperX {
+#dashboard .navbar .icons .iconBox {
+  display: block;
+  position: relative;
+}
+#dashboard .navbar .icons .iconBox #notifCircle {
+  display: block;
+  position: absolute;
+  border-radius: 13px;
+  top: 0px;
+  right: 0px;
+  width: 13px;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 2px solid white;
+}
+#dashboard .navbar .icons .iconBox #notifCircle path {
+  fill: #BB2230;
+}
+#dashboard #main {
+  overflow: hidden;
+}
+#dashboard #main .scrolling-wrapperX {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
 }
-#dashboard .scrolling-wrapperX .cards {
+#dashboard #main .scrolling-wrapperX .cards {
   display: inline-block;
   background-color: white;
   width: 220px;
@@ -197,10 +223,10 @@ li::marker{
   font-family: "Montserrat";
   font-style: normal;
 }
-#dashboard .scrolling-wrapperX .cards .info {
+#dashboard #main .scrolling-wrapperX .cards .info {
   width: 100%;
 }
-#dashboard .scrolling-wrapperX .cards .info .p1 {
+#dashboard #main .scrolling-wrapperX .cards .info .p1 {
   width: 100% px;
   height: 22px;
   line-height: 22px;
@@ -212,7 +238,7 @@ li::marker{
   padding: 15px 20px;
   color: #223F80;
 }
-#dashboard .scrolling-wrapperX .cards .info .p2 {
+#dashboard #main .scrolling-wrapperX .cards .info .p2 {
   height: 11px;
   font-weight: 500;
   font-size: 10px;
@@ -220,7 +246,7 @@ li::marker{
   line-height: 12px;
   color: #6D7593;
 }
-#dashboard #statusBar {
+#dashboard #main #statusBar {
   width: 100vw;
   background-color: transparent;
   height: 30px;
@@ -229,7 +255,7 @@ li::marker{
   justify-content: space-evenly;
   align-items: center;
 }
-#dashboard #statusBar #statusButton {
+#dashboard #main #statusBar #statusButton {
   width: 90%;
   font-family: "Montserrat";
   font-style: normal;
@@ -241,18 +267,18 @@ li::marker{
   justify-content: flex-start;
   align-items: center;
 }
-#dashboard #statusBar #statusButton .statusButton {
+#dashboard #main #statusBar #statusButton .statusButton {
   width: 25%;
   height: 32px;
   font-weight: 580;
   font-size: 12px;
   text-align: center;
 }
-#dashboard #statusBar #statusButton .statusButton:focus {
+#dashboard #main #statusBar #statusButton .statusButton:focus {
   color: #223F80;
   border-bottom: 1px solid #223F80;
 }
-#dashboard #statusBar .menu {
+#dashboard #main #statusBar .menu {
   padding: 20px;
   height: 30px;
   width: 10%;
@@ -261,17 +287,17 @@ li::marker{
   justify-content: center;
   align-items: center;
 }
-#dashboard #statusBar .menu button:has(> svg) circle {
+#dashboard #main #statusBar .menu button:has(> svg) circle {
   fill: #6D7593;
 }
-#dashboard #statusBar .menu button:hover:has(> svg) circle {
+#dashboard #main #statusBar .menu button:hover:has(> svg) circle {
   fill: #223F80;
 }
-#dashboard #statusBarEdge {
+#dashboard #main #statusBarEdge {
   width: 100vw;
   border: 1px solid rgba(37, 53, 100, 0.4);
 }
-#dashboard #searchBar {
+#dashboard #main #searchBar {
   height: 40px;
   margin: 30px 50px;
   display: flex;
@@ -281,17 +307,17 @@ li::marker{
   background: rgba(109, 117, 147, 0.22);
   border-radius: 9px;
 }
-#dashboard #searchBar #icon {
+#dashboard #main #searchBar #icon {
   margin: 5px;
 }
-#dashboard #searchBar #searchField {
+#dashboard #main #searchBar #searchField {
   width: 100%;
   background-color: transparent;
   border: none;
   color: #6D7593;
   margin-right: 10px;
 }
-#dashboard #labelBar {
+#dashboard #main #labelBar {
   width: 100vw;
   background: rgba(34, 63, 128, 0.13);
   height: 40px;
@@ -301,7 +327,7 @@ li::marker{
   justify-content: space-evenly;
   align-items: center;
 }
-#dashboard #labelBar #labels {
+#dashboard #main #labelBar #labels {
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
@@ -311,7 +337,7 @@ li::marker{
   justify-content: center;
   align-items: center;
 }
-#dashboard #labelBar #labels .label {
+#dashboard #main #labelBar #labels .label {
   color: white;
   width: 25%;
   height: 40px;
@@ -323,13 +349,13 @@ li::marker{
   justify-content: center;
   align-items: center;
 }
-#dashboard .scrolling-wrapperY {
-  overflow-x: hidden;
-  overflow-y: scroll;
+#dashboard #main .scrolling-wrapperY {
+  height: 65%;
+  overflow: scroll;
   white-space: nowrap;
   padding: 8px;
 }
-#dashboard .scrolling-wrapperY .cards {
+#dashboard #main .scrolling-wrapperY .cards {
   height: 50px;
   background: #FFFFFF;
   box-shadow: 0px 4px 1px -2px rgba(0, 0, 0, 0.15);
@@ -339,7 +365,7 @@ li::marker{
   font-family: "Montserrat";
   font-style: normal;
 }
-#dashboard .scrolling-wrapperY .cards .info {
+#dashboard #main .scrolling-wrapperY .cards .info {
   height: 50px;
   width: 100%;
   display: flex;
@@ -347,7 +373,7 @@ li::marker{
   justify-content: space-around;
   align-items: center;
 }
-#dashboard .scrolling-wrapperY .cards .info .name {
+#dashboard #main .scrolling-wrapperY .cards .info .name {
   height: 16px;
   font-weight: 700;
   font-size: 10px;
@@ -356,7 +382,7 @@ li::marker{
   align-items: flex-end;
   color: #223F80;
 }
-#dashboard .scrolling-wrapperY .cards .info .mobile {
+#dashboard #main .scrolling-wrapperY .cards .info .mobile {
   height: 16px;
   font-weight: 700;
   font-size: 10px;
@@ -365,7 +391,7 @@ li::marker{
   align-items: flex-end;
   color: #223F80;
 }
-#dashboard .scrolling-wrapperY .cards .info .status {
+#dashboard #main .scrolling-wrapperY .cards .info .status {
   height: 16px;
   margin: 0px 3px;
   font-weight: 700;
@@ -375,7 +401,7 @@ li::marker{
   align-items: flex-end;
   color: #6BDA7D;
 }
-#dashboard .scrolling-wrapperY .cards .info .date {
+#dashboard #main .scrolling-wrapperY .cards .info .date {
   height: 16px;
   font-weight: 700;
   font-size: 10px;
@@ -383,6 +409,162 @@ li::marker{
   display: flex;
   align-items: flex-end;
   color: #929292;
+}
+#dashboard #addCustomer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(1.5px);
+          backdrop-filter: blur(1.5px);
+  display: flex;
+  display:none;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+}
+#dashboard #addCustomer #addBox {
+  height: 55%;
+  width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 15px;
+  background-color: white;
+}
+#dashboard #addCustomer #addBox #closeIcon {
+  border-radius: 20px;
+  height: 24px;
+  margin: 10px;
+  padding: 0px;
+}
+#dashboard #addCustomer #addBox #newClientTxt {
+  width: 100%;
+  font-weight: 1000;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+  color: #223F80;
+}
+#dashboard #addCustomer #addBox .inputFields {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#dashboard #addCustomer #addBox .inputFields .label {
+  width: 87%;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #223F80;
+  margin-left: 20px;
+}
+#dashboard #addCustomer #addBox .inputFields .field {
+  width: 87%;
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+#dashboard #addCustomer #addBox .inputFields .Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 80%;
+  height: 50px;
+  margin: 30px 20px;
+  font-weight: 500;
+  font-size: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+  opacity: 0.9;
+}
+#dashboard #addCustomer #addBox .inputFields .Button:hover{
+  box-shadow: none;
+  scale: 0.95;
+}
+
+#profile {
+  font-family: "Montserrat";
+  font-style: normal;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: static;
+  background-color: white;
+  overflow: hidden;
+}
+#profile #profileDiv {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#profile #profileDiv #profilePageImg {
+  height: 36%;
+}
+#profile #profileDiv #profileName {
+  position: fixed;
+  bottom: 75%;
+  font-weight: 800;
+  font-size: 40px;
+  color: #223F80;
+}
+#profile #profileMenu {
+  margin-top: 30px;
+  width: 75%;
+  height: 22%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 26px -4px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: none;
+}
+#profile #profileMenu .setting {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid #BBC2D0;
+  margin: 0px 30px;
+}
+#profile #profileMenu .setting p {
+  font-weight: 500;
+  font-size: 16px;
+  color: #223F80;
+}
+#profile #logOut {
+  margin-top: 40px;
+  width: 75%;
+  height: 8%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 26px -4px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 10px 40px;
+  transition-duration: 1s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#profile #logOut p {
+  font-weight: 600;
+  font-size: 16px;
+  color: #EB1414;
+}
+#profile #logOut:hover{
+  scale: 0.95;
 }
 
 .tickBox {
@@ -430,10 +612,20 @@ li::marker{
   position: fixed;
   bottom: 0;
   right: 0;
-  background-color: white;
-  height: 15%;
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  height: 10%;
   width: 100vw;
-  opacity: 0.4;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.fixed #add {
+  height: 55px;
+  position: fixed;
+  margin-bottom: 30px;
 }
 
 ::-webkit-scrollbar {
