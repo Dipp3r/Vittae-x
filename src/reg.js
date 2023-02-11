@@ -7,42 +7,94 @@ import { WithRouter} from './routingWrapper';
 class RegisterComp extends React.Component {
     constructor() {
       super();
-      this.state = { name: '', password: '', Cpassword: '', email: ''};
+      this.state = { 
+        name: '',
+        password: '',
+        cPassword: '',
+        mail: '',
+        passwordType:'password',
+        cPasswordType:'password',
+        nameErr:'',
+        mailErr:'',
+        passwordErr:'',
+        cPasswordErr:'',
+        mobileErr:'',
+        tAndC:false
+    }
       this.changeInVal = this.changeInVal.bind(this);
       this.submit = this.submit.bind(this);
-      
+      this.changeInputType = this.changeInputType.bind(this)
+      this.changeTAndC = this.changeTAndC.bind(this)
     }
     changeInVal(e) {
       var obj = {};
       obj[e.target.name] = e.target.value.trim();
       this.setState(obj);
     }
-  
+    changeInputType(e){
+        let obj = {}
+        if(this.state[e.target.getAttribute('value')]== 'password'){
+            obj[e.target.getAttribute('value')] = 'txt'
+        }else{
+            obj[e.target.getAttribute('value')] = 'password'
+        }
+        this.setState(obj)
+    }
+    changeTAndC(e){
+        let tAndC = false
+        if(this.state.tAndC){
+            tAndC = false
+            e.target.style.backgroundColor = '#FFFFFF'            
+        }else{
+            tAndC = true
+            e.target.style.backgroundColor = '#223F80'
+        }
+        this.setState({tAndC:tAndC})
+    }
     async submit() {
-      this.props.navigate("../mobileOTP")
+        console.log(this.state)
+        let checkRes = checkString(this.state.name,4)
+        let isErr = false
+        let nameErr = '',mailErr = '',mobileErr = '',passwordErr = '',cPasswordErr = ''
+        console.log(checkRes)
+        if(!checkRes.bool){
+            nameErr = checkRes.msg
+            isErr = true
+        }
+        if(!(checkRes = checkString(this.state.mail,2)).bool){
+            mailErr = checkRes.msg
+            isErr = true
+        }
+        if(!(checkRes = checkString(this.state.mobile,3)).bool){
+            mobileErr=checkRes.msg
+            isErr = true
+        }
+        if(!(checkRes = checkString(this.state.password,1)).bool){
+            passwordErr = checkRes.msg
+            isErr = true
+        }
+        if(!(checkRes = checkString(this.state.cPassword,1)).bool){
+            cPasswordErr = checkRes.msg
+            isErr = true
+        }
+        this.setState({
+            nameErr:nameErr,
+            mobileErr:mobileErr,
+            mailErr:mailErr,
+            passwordErr:passwordErr,
+            cPasswordErr:cPasswordErr
+        })
+        console.log(checkRes)
+        console.log(this.state)
+        if(isErr)return
+        console.log('checked')
 
-      //checking 
-      // if (!checkString(this.state.name, 1)) {
-      //   this.setState({ message: 'incorrect user name!' })
-      //   return
-      // } else if (!(checkString(this.state.email, 3))) {
-      //   this.setState({ message: 'incorrect E-mailID!' })
-      //   return
-      // } else if ((this.state.email.slice(0, (this.state.email.match(/[@]/)).index).toLowerCase()) == this.state.name.toLowerCase()) {
-      //   this.setState({ message: "user name and Email name shouldn't be same" })
-      //   return
-      // } else if (!checkString(this.state.password, 2)) {
-      //   this.setState({ message: 'password must contain a Uppercase alphabet,Lowercase alphabet,digit and special character' })
-      //   return
-      // } else if (this.state.password != this.state.Cpassword) {
-      //   this.setState({ message: 'confirm password again', Cpassword: '' })
-      //   return
-      // } else {
-
-
-
-        var obj = this.state
-        delete obj.Cpassword
+        let obj = {
+            name:this.state.name,
+            mail:this.state.mail,
+            password:this.state.password,
+            mobile:this.state.mobile
+        }
         //sending data to server
         fetch('signUp', {
           method: 'POST',
@@ -55,12 +107,10 @@ class RegisterComp extends React.Component {
           .then(data => {
             // console.log(data)
             if(data.status)   this.props.navigate("../mobileOTP")
-
           })
       }
     render() {
       // console.log(this.state)
-      var inputStyle = "hover:scale-110 transition transform duration-500 w-4/5 md:w-1/2 rounded-full bg-white/70 font-thin text-center text-md text-black px-3 border border-gray-500"
       return (
         <section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
     <div className="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
@@ -72,29 +122,29 @@ class RegisterComp extends React.Component {
                 <div>
                     <p className="text-Text_blue text-sm p-2">Name</p>
                     <input name='name' onChange={this.changeInVal} type="text" placeholder="Example" className=" font-thin rounded-md p-2 w-full"/>
-                    <p id="nameErr" className="invalid text-Text_blue text-xs ml-3 text-red-700">name</p>
+                    <p id="nameErr" className="text-Text_blue text-xs ml-3 text-red-700">{this.state.nameErr}</p>
                 </div>
 
                 <div className="mt-1">
                     <p className="text-Text_blue text-sm p-2">Email</p>
-                    <input  name='mail' onChange={this.changeInVal} type="text" placeholder="example@gmail.com" className=" font-thin rounded-md p-2 w-full"/>
-                    <p id="emailErr" className="invalid text-Text_blue text-xs ml-3 text-red-700"></p>
+                    <input  name='mail' onChange={this.changeInVal} type="mail" placeholder="example@gmail.com" className=" font-thin rounded-md p-2 w-full"/>
+                    <p id="emailErr" className="text-Text_blue text-xs ml-3 text-red-700">{this.state.mailErr}</p>
                 </div>
 
                 <div className="mt-1">
                     <p className="text-Text_blue text-sm p-2">Phone number</p>
-                    <input  name='mobile' onChange={this.changeInVal} type="tel" placeholder="1234567890" className=" font-thin rounded-md p-2 w-full"/>
-                    <p id="emailErr" className="invalid text-Text_blue text-xs ml-3 text-red-700"></p>
+                    <input  name='mobile' onChange={this.changeInVal} type="tel" className=" font-thin rounded-md p-2 w-full"/>
+                    <p id="emailErr" className="text-Text_blue text-xs ml-3 text-red-700">{this.state.mobileErr}</p>
                 </div>
                 
 
                 <div className="pt-3">
                     <p className="text-Text_blue text-sm p-2">Password</p>
                     <div className="flex-row flex border-2 border-border_gray rounded-md">
-                        <input  name='password' onChange={this.changeInVal} type="password"  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
-                        <img id="" src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
+                        <input  name='password' onChange={this.changeInVal} type={this.state.passwordType}  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
+                        <img id="" src={require("./images/eye.svg")} onClick={this.changeInputType} value ={'passwordType'} className="m-2" alt="eye icon"/>
                     </div>
-                    <p id="passwordErr" className="invalid text-Text_blue text-xs ml-3 text-red-700">* invalid name</p>
+                    <p id="passwordErr" className="text-Text_blue text-xs ml-3 text-red-700">{this.state.passwordErr}</p>
                 </div>
 
                 <div className="ml-3">
@@ -111,14 +161,14 @@ class RegisterComp extends React.Component {
                 <div className="mt-1">
                     <p className="text-Text_blue text-sm p-2">Confirm password</p>
                     <div className="flex-row flex border-2 border-border_gray rounded-md">
-                        <input  name='Cpassword' onChange={this.changeInVal} type="password"  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
-                        <img id="" src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
+                        <input  name='cPassword' onChange={this.changeInVal} type={this.state.cPasswordType}  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
+                        <img id="" src={require("./images/eye.svg")} onClick={this.changeInputType} value={'cPasswordType'} className="m-2" alt="eye icon"/>
                     </div>
-                    <p id="confirmPasswordErr" className="invalid text-Text_blue text-xs ml-3 text-red-700">* invalid name</p>
+                    <p id="confirmPasswordErr" className="text-Text_blue text-xs ml-3 text-red-700">{this.state.cPasswordErr}</p>
                 </div>
                 
                 <div className="tickBox" style={{"margin-top":"20px","margin-bottom":"10px","padding":"0px","font-size": "12px"}}>
-                      <button value="0" className="tickButton" style={{"width": "15px","height": "15px"}}>
+                      <button value="0" className="tickButton" style={{"width": "15px","height": "15px"}} onClick={this.changeTAndC}>
                           <svg width="10" height="10" viewBox="0 0 15 14" fill="none">
                               <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
