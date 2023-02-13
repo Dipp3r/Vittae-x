@@ -10,7 +10,7 @@ const cors = require("cors");
 const Pool = require('pg').Pool
 const pool = new Pool({
     user:"postgres",
-    password:"0000",
+    password:"prehsurath",
     host:"localhost",
     post:5432,
     database:"db"
@@ -43,37 +43,41 @@ app.post('/signIn',async(req,res)=>{
     try {
         const obj = req.body;
         let count=0;
-        console.log(obj)
+        let row = {}
         switch(obj.typeId){
             case 0:
                 // email
                 try {
-                    const User = await pool.query("SELECT userid FROM temp_users WHERE email = $1 AND password = $2",[obj.type,obj.password]);
+                    const User = await pool.query("SELECT userid FROM users WHERE email = $1 AND password = $2",[obj.type,obj.password]);
                     count = User.rowCount;
-                    session.userId = User.rows[0].userid
+                    row = User.rows[0]
                 } catch (err) {
                     console.error(err.message);
                 }
-
                 break
             case 1:
                 // phone
                 try {
-                    const User = await pool.query("SELECT userid FROM temp_users WHERE mobile = $1 AND password = $2",[obj.type,obj.password]);
+                    obj.type = obj.type.slice(-10);
+                    const User = await pool.query("SELECT userid FROM users WHERE mobile = $1 AND password = $2",[obj.type,obj.password]);
                     count = User.rowCount;
-                    session.userId = User.rows[0].userid; 
-                    // console.log(User)
+                    row = User.rows[0]
                 } catch (err) {
                     console.error(err.message);
                 }
                 break
         }
-        
+    
         if (count>0){
-            res.json({status:true});
+            if (obj.rememberMe){
+                console.log("tring to store in sessions");
+                console.log(row.userid);
+                session.userId = row.userid;
+            }
+            res.send({status:true});
         }
         else{
-            res.json({status:false});
+            res.send({status:false});
         }
     } catch (err) {
         console.error(err.message);
@@ -82,6 +86,7 @@ app.post('/signIn',async(req,res)=>{
     // res.send({'status':true})
     console.log(session)
 })
+
 app.get('/signIn',async(req,res)=>{
     console.log(req.session)
     let status = false
@@ -92,6 +97,7 @@ app.get('/signIn',async(req,res)=>{
     }
     res.send({status:status})
 } )
+
 app.post('/signUp',async(req,res)=>{
     console.log(req.body)
     try {
@@ -108,10 +114,38 @@ app.post('/signUp',async(req,res)=>{
     // res.send({'status':true})
 })
 
-app.post('/verifyID',(req,res)=>{
-    console.log(req.body)
-    res.send({'status':true})
+app.post('/verifyID',async(req,res)=>{
+    let type = req.body.type
+    let typeId = req.body.typeId
+    let obj = {status:false,msg:""}
+    switch(typeId){
+        case 0:
+            try {
+                const User = await pool.query("SELECT userid FROM users WHERE email = $1",[type]);
+                if (User.rowCount>0) {
+                    req.session.userId=User.rows[0].userid;
+                    obj.status=true;
+                }
+            } catch (err) {
+                obj.msg=err.message;
+            }
+            break
+        case 1:
+            try {
+                type=type.slice(-10);
+                const User = await pool.query("SELECT userid FROM users WHERE mobile = $1",[type]);
+                if (User.rowCount>0) {
+                    req.session.userId=User.rows[0].userid;
+                    obj.status=true;
+                }
+            } catch (err) {
+                obj.msg=err.message;
+            }
+            break
+    }
+    res.send(obj);
 })
+
 app.post('/sendOTP',(req,res)=>{
     console.log(req.body)
     let status = false
@@ -120,9 +154,20 @@ app.post('/sendOTP',(req,res)=>{
     }
     res.send({'status':status})
 })
-app.post('/setNewPassword',(req,res)=>{
-    console.log(req.body)
-    res.send({'status':true})
+
+app.post('/setNewPassword',async(req,res)=>{
+    const {password} = req.body
+    let response =  {status:false,msg:""};
+    session=req.session
+    try {
+        const User = await pool.query("UPDATE users SET password = $1 WHERE userid = $2",[password,session.userId]);
+        if(User.rowCount>0){
+            response.status = true;
+        }
+    } catch (err) {
+        response.msg = err;
+    }
+    res.send(response);
 })
 
 app.listen(port,(err)=>{

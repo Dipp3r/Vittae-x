@@ -28,7 +28,7 @@ function checkString(string,num = 0){
                 obj.msg = 'password must contain a digit '
                 return obj
             }else if(! /[\W]+/.test(string)){
-                obj.msg = 'password must contain a symbole'
+                obj.msg = 'password must contain a symbol'
                 return obj
             }else{
                 obj.bool = true

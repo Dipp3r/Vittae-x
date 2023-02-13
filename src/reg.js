@@ -54,6 +54,7 @@ class RegisterComp extends React.Component {
         this.setState({tAndC:tAndC})
     }
     async submit() {
+        console.log("signUp submitted")
         console.log(this.state)
         let checkRes = checkString(this.state.name,4)
         let isErr = false
@@ -79,6 +80,11 @@ class RegisterComp extends React.Component {
             cPasswordErr = checkRes.msg
             isErr = true
         }
+        if (!(this.state.cPassword===this.state.password)){
+            cPasswordErr = "Passwords do no match";
+            isErr = true;
+        }
+        
         this.setState({
             nameErr:nameErr,
             mobileErr:mobileErr,
