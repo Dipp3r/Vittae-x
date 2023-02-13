@@ -1,45 +1,100 @@
 function checkString(string,num = 0){
+    var obj = {bool:false,msg:''}
+    if(!string){
+        obj.msg = 'empty value'
+        return obj
+    }
     string = string.trim()
-    if (string.length === 0) return false
-    var bool =  true
+    if (string.length === 0){
+        obj.msg = 'empty value'
+        return obj
+    }
     /*
     num:
-    1 -> userName
-    2 -> password
-    3 -> email
+    1 -> password
+    2 -> email
+    3 -> mobile number
+    4 -> name
     */
-    if((/^\d/g.test(string))&(num === 1 | num === 3)){
-        //digits at the beginning for userName
-        bool = false
-        // console.log('case1')
+    switch(num){
+        case 1:
+            if(!/[a-z]+/.test(string)){
+                obj.msg = 'password must contain a small letter'
+                return obj
+            }else if (!/[A-Z]+/.test(string)){
+                obj.msg = 'password must contain a capital letter'
+                return obj
+            }else if(!/[0-9]+/.test(string)){
+                obj.msg = 'password must contain a digit '
+                return obj
+            }else if(! /[\W]+/.test(string)){
+                obj.msg = 'password must contain a symbole'
+                return obj
+            }else{
+                obj.bool = true
+                return obj            }
+            break;
+        case 2:
+            if(/^([\d]+)/.test(string)){
+                obj.msg = "email shouldn't begin with digit"
+                return obj
+            }else if(!/[\w]+[@]/.test(string)){
+                obj.msg = 'Invalid email'
+                return obj
+            }else if(! /[@].+[.].+/.test(string)){
+                obj.msg = 'Incorrect domain address'
+                return obj
+            }else{
+                obj.bool = true
+                return obj
+            }
+            break;
+        case 3:
+            if(string[0] == '+'){
+                string = string.slice(3,)
+            }
+            string  = string.trim()
+            // console.log(string)
+            if((!/^[\d]+$/.test(string))|(string.length != 10)){
+                obj.msg = 'Invalid mobile number'
+                return obj
+            }
+            obj.bool = true
+            return obj
+            break;
+        case 4:
+            if(!/^[a-zA-Z]+$/.test(string)){
+                obj.msg = 'Invalid name'
+            }else{
+                obj.bool = true
+            }
+            break;
+        default:
+            obj.bool = true
+            return obj
+            break;
     }
-    if((/\W/.test(string))&(num === 1)){
-        //not alpha numeric  === not [0-9a-zA-Z_]
-        bool = false
-        // console.log('case2')
-    }
-    if((/\s/.test(string))&(num === 2 | num === 1)){
-        bool = false
-        // console.log('case3')
-    }
-    if(num === 2){
-        if(!(/[a-z]/.test(string) & /\d/.test(string) & /\W/.test(string))){
-            bool = false
-            //console.log('case4')
-        }
-    }
-    if (num === 3){
-        if (string.split('@').length != 2){
-            bool = false
-        }else if (!((string.slice((string.match(/[@]/).index+1))).split('.').length === 2)){
-        //checking if the domain name cointains a single 'dot'('.')
-        bool = false
-        }
-    }
-    return bool
+    // console.log('\n')
+    return obj
 }
 export default checkString;
-// console.log(checkString('ABCabc123#$',num = 2))
-// console.log(checkString('ASWD34',num = 2))
-// console.log(checkString('adw44',num = 2))
-// console.log(checkString('famgmail.com',num = 3))
+// console.log('\npassword:')
+// console.log(checkString('!Qqwerty1',1))
+// console.log(checkString('aBC12abc#$',1))
+// console.log(checkString('ASWD34',1))
+// console.log(checkString('adyAZ5wer',1))
+// console.log(checkString('ady768wer',1))
+
+// console.log('\nmail:')
+// console.log(checkString('sample@gmail.com',2))
+// console.log(checkString('sample#$@gmail.com',2))
+// console.log(checkString('12sample@mail.com',2))
+// console.log(checkString('@gmail.com',2))
+// console.log(checkString('samplemail.com',2))
+// console.log(checkString('sample@mail',2))
+
+// console.log('\nmobile:')
+// console.log(checkString('1234567890',3))
+// console.log(checkString('+911234567890',3))
+// console.log(checkString('+91 1234567890',3))
+// console.log(checkString('+1234567890',3))

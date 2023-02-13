@@ -33,6 +33,7 @@ class HomeComp extends React.Component{
         })
     }
     render(){
+
         return(
             <section id="dashboard">
             <nav className="navbar">

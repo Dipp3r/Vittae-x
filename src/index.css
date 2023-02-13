@@ -585,10 +585,10 @@ li::marker{
   border-radius: 3px;
   margin-top: 4px;
 }
-.tickBox .tickButton:focus {
+/* .tickBox .tickButton:focus {
   background-color: #223F80;
   border: none;
-}
+} */
 
 .flex-row {
   display: flex;
