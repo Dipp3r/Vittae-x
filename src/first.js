@@ -33,11 +33,9 @@ class FirstComp extends React.Component{
                     <p id="p1" className="text-center text-text_blue mb-6">If we can look at something with words and sentences, explore it. VITTAE X</p>
                 </div>
 
-                <div id="getstarted" className="mb-12  hover:scale-95 duration-500 transition-transform">
-                    <button onClick={this.getStarted} style={{"width":"260px","margin-top":"10px"}}  className="button">
-                        Get Started
-                    </button>
-                </div>
+                <button onClick={this.getStarted} style={{"width":"260px","margin-top":"10px"}} className="button">
+                    Get Started
+                </button>
             </section>
         )
     };
