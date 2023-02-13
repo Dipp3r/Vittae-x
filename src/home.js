@@ -34,18 +34,7 @@ class HomeComp extends React.Component{
     }
     render(){
         return(<section>
-            <nav id="topNav">
-                <button>profile</button>
-            </nav>
-            <div id="listContainer">
-
-            </div>
-            <nav id="bottomNav">
-                <button>Add customer</button>
-                <button>Remuration</button>
-                <button>Incentive</button>
-            </nav>
-
+            <h1>HOME <br/>page here</h1>
         </section>)
     }
 }

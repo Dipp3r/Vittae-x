@@ -27,9 +27,11 @@ class RegisterComp extends React.Component {
       this.changeTAndC = this.changeTAndC.bind(this)
     }
     changeInVal(e) {
-      var obj = {};
-      obj[e.target.name] = e.target.value.trim();
-      this.setState(obj);
+        let value = e.target.value.trim()
+        if(e.target.name != 'name') e.target.value = value;
+        var obj = {};
+        obj[e.target.name] = value;
+        this.setState(obj);
     }
     changeInputType(e){
         let obj = {}

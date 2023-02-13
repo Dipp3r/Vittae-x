@@ -40,6 +40,7 @@ class LoginComp extends React.Component{
     async submit(e){
         console.log('clicked')
         let isErr = false
+        let typeId = 0
         let checkRes = checkString(this.state.password,1) 
         if(!checkRes.bool){
             this.setState({passwordErr:checkRes.msg})
@@ -49,6 +50,7 @@ class LoginComp extends React.Component{
         }
         checkRes = checkString(this.state.type,2)
         if(/[a-zA-Z]+/.test(this.state.type)){
+            typeId = 0
             checkRes = checkString(this.state.type,2)
             if(!checkRes.bool){
                 this.setState({typeErr:checkRes.msg})
@@ -57,6 +59,7 @@ class LoginComp extends React.Component{
                 this.setState({typeErr:""})
             }
         }else{
+            typeId = 1
             checkRes = checkString(this.state.type,3)
             if(!checkRes.bool){
                 this.setState({typeErr:checkRes.msg})
@@ -67,7 +70,12 @@ class LoginComp extends React.Component{
         }
         
         if((this.state.type == '' || this.state.password == '')||(this.state.typeErr != '' || this.state.passwordErr != '')) return
-        let obj = {type:this.state.type,password:this.state.password,rememberMe:this.state.rememberMe}
+        let obj = {
+            typeId:typeId,
+            type:this.state.type,
+            password:this.state.password,
+            rememberMe:this.state.rememberMe
+        }
         
         //sending data to the server
         fetch(this.submitLink,{
@@ -80,21 +88,7 @@ class LoginComp extends React.Component{
         .then((response) => response.json())
         .then(data => {
             console.log(data)
-            // let string = ''
-            // switch(data.status){
-            //     case 1:
-            //         string = 'not yet registered!!!'
-            //         break;
-            //     case 2:
-            //         string = 'successfully logged in!'
-            //         this.props.navigate("./home")
-            //         break;
-            //     case 3:
-            //         string = 'forgot password?'
-            //         break;
-            //     default:
-            //         string = ''
-            // }
+
             if(data.status == true){
                 this.props.navigate("../home")
             }
