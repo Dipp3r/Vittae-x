@@ -2,6 +2,25 @@ import React from "react";
 import { WithRouter } from "./routingWrapper";
 
 class FirstComp extends React.Component{
+    constructor(props){
+        super(props)
+        this.getStarted = this.getStarted.bind(this);
+    }
+    getStarted(){
+        fetch('/signIn',{
+            method:'GET'
+        })
+        .then((response) => response.json())
+        .then(data => {
+            console.log(data)
+
+            if(data.status == true){
+                this.props.navigate("./home")
+            }else{
+                this.props.navigate("./login")
+            }
+        })
+    }
     render(){
         return(
             <section className="flex flex-col h-screen justify-center items-center">
@@ -13,7 +32,8 @@ class FirstComp extends React.Component{
                     <img src={require("./images/sampleavatar.png")} alt="Vittae official logo"/>
                     <p id="p1" className="text-center text-text_blue mb-6">If we can look at something with words and sentences, explore it. VITTAE X</p>
                 </div>
-                <button onClick={this.props.navigate} style={{"width":"260px","margin-top":"10px"}} value="./login" className="button">
+
+                <button onClick={this.getStarted} style={{"width":"260px","margin-top":"10px"}} className="button">
                     Get Started
                 </button>
             </section>
