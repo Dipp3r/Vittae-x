@@ -576,6 +576,7 @@ li::marker{
 .tickBox .tickButton {
   display: flex;
   flex-direction: row;
+  background-color: #223F80;
   justify-content: center;
   align-items: center;
   margin: 10px;

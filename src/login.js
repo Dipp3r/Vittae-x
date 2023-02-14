@@ -7,7 +7,7 @@ import checkString from './stringChecker';
 class LoginComp extends React.Component{
     constructor(){
         super()
-        this.state = {type:'',password:'',typeErr:'',passwordErr:'',passwordInType:'password',rememberMe:false}
+        this.state = {type:'',password:'',typeErr:'',passwordErr:'',passwordInType:'password',rememberMe:true}
         this.submitLink = 'signIn'
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
