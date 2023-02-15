@@ -143,6 +143,422 @@ li::marker{
     font-size: 10px;
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+#getStartedPage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#getStartedPage #logoDiv {
+  margin-bottom: 40px;
+}
+#getStartedPage #logoDiv #logoImg {
+  height: 90px;
+}
+#getStartedPage #charImgDiv {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#getStartedPage #charImgDiv #p1 {
+  text-align: center;
+  color: #697DAB;
+  margin-bottom: 20px;
+}
+#getStartedPage #Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 260px;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 0px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+}
+#getStartedPage #Button:hover{
+  box-shadow: none;
+  scale: 0.95;
+}
+
+#signInPage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
+  padding: 20px 10px;
+}
+#signInPage #signInFormDiv {
+  background-color: white;
+  max-width: 400px;
+  border-radius: 12px;
+  width: 95%;
+  box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
+}
+#signInPage #signInFormDiv #signInTextDiv {
+  padding: 20px 30px;
+  padding-bottom: 10px;
+}
+#signInPage #signInFormDiv #signInTextDiv #signInText {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 22px;
+  padding: 10px;
+}
+#signInPage #signInFormDiv #fieldBox {
+  background-color: white;
+  margin: 10px 30px;
+}
+#signInPage #signInFormDiv #fieldBox #emailLable {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+}
+#signInPage #signInFormDiv #fieldBox #emailField {
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+  height: 50px;
+  font-weight: 400;
+}
+#signInPage #signInFormDiv #fieldBox #passwordDiv {
+  padding-top: 10px;
+  margin-top: 15px;
+}
+#signInPage #signInFormDiv #fieldBox #passwordDiv p {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+}
+#signInPage #signInFormDiv #fieldBox #passwordDiv #passwordBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: none;
+  align-items: none;
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  padding: 5px;
+  width: 100%;
+  height: 50px;
+}
+#signInPage #signInFormDiv #fieldBox #passwordDiv #passwordBox #passwordField {
+  font-weight: 400;
+  padding: 5px;
+  width: 100%;
+  border-radius: 12px;
+}
+#signInPage #signInFormDiv #fieldBox #passwordDiv #passwordBox img {
+  margin: 5px;
+}
+#signInPage #signInFormDiv #fieldBox .tickBox p {
+  color: #223F80;
+  font-size: 16px;
+}
+#signInPage #signInFormDiv #fieldBox #buttonDiv {
+  margin-top: 2px;
+}
+#signInPage #signInFormDiv #fieldBox #buttonDiv #Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 100%;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 0px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+}
+#signInPage #signInFormDiv #fieldBox #buttonDiv #Button:hover{
+  box-shadow: none;
+  scale: 0.95;
+}
+#signInPage #signInFormDiv #fieldBox #buttonDiv #forgotPwd {
+  margin: 8px;
+  color: #223F80;
+  text-decoration-line: underline;
+  font-size: 14px;
+  margin-right: 2px;
+  float: right;
+}
+#signInPage #signInFormDiv #fieldBox #accDiv {
+  text-align: center;
+}
+#signInPage #signInFormDiv #fieldBox #accDiv hr {
+  margin-top: 60px;
+}
+#signInPage #signInFormDiv #fieldBox #accDiv p {
+  font-size: small;
+  color: #B8B8B8;
+  margin: 25px;
+}
+#signInPage #signInFormDiv #fieldBox #accDiv p a {
+  color: #223F80;
+  margin-left: 2px;
+  text-decoration-line: underline;
+  font-size: small;
+}
+
+#phoneSignUpPg {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
+  padding: 20px 10px;
+}
+#phoneSignUpPg #phoneSignUpFormDiv {
+  background-color: white;
+  max-width: 400px;
+  border-radius: 12px;
+  width: 95%;
+  box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
+}
+#phoneSignUpPg #phoneSignUpFormDiv #phoneSignUpTextDiv {
+  padding: 20px 30px;
+  padding-bottom: 10px;
+}
+#phoneSignUpPg #phoneSignUpFormDiv #phoneSignUpTextDiv #phoneSignUpText {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 22px;
+  padding: 10px;
+}
+#phoneSignUpPg #phoneSignUpFormDiv #fieldBox {
+  background-color: white;
+  margin: 10px 30px;
+}
+#phoneSignUpPg #phoneSignUpFormDiv #fieldBox #mobileLable {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+}
+#phoneSignUpPg #phoneSignUpFormDiv #fieldBox #mobileField {
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+  height: 50px;
+  font-weight: 400;
+}
+#phoneSignUpPg #phoneSignUpFormDiv #fieldBox #Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 100%;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 40px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+}
+#phoneSignUpPg #phoneSignUpFormDiv #fieldBox #Button:hover{
+  box-shadow: none;
+  scale: 0.95;
+}
+
+#signUpPg {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
+  height: 100%;
+  padding: 100px 10px;
+  overflow-x: hidden;
+}
+#signUpPg #SignUpFormDiv {
+  background-color: white;
+  max-width: 400px;
+  border-radius: 12px;
+  width: 95%;
+  box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
+}
+#signUpPg #SignUpFormDiv #SignUpTextDiv {
+  padding: 20px 30px;
+  padding-bottom: 10px;
+}
+#signUpPg #SignUpFormDiv #SignUpTextDiv #SignUpText {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 22px;
+  padding: 10px;
+}
+#signUpPg #SignUpFormDiv #fieldBox {
+  background-color: white;
+  margin: 10px 30px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .label {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+  margin-top: 8px;
+}
+#signUpPg #SignUpFormDiv #fieldBox #mobileLabel {
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+  margin-top: 8px;
+  color: #929292;
+}
+#signUpPg #SignUpFormDiv #fieldBox .signUpField {
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  padding: 10px;
+  width: 100%;
+  height: 50px;
+  font-weight: 400;
+}
+#signUpPg #SignUpFormDiv #fieldBox .passwordDiv {
+  padding-top: 10px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .passwordDiv p {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: none;
+  align-items: none;
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  padding: 5px;
+  width: 100%;
+  height: 50px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox #numberLabel {
+  color: #B8B8B8;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox .passwordField {
+  font-weight: 400;
+  padding: 5px;
+  width: 100%;
+  border-radius: 12px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox img {
+  margin: 5px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .tickBox {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 0px;
+  font-size: 12px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .tickBox p {
+  color: #B8B8B8;
+  margin-top: 4px;
+  font-size: medium;
+}
+#signUpPg #SignUpFormDiv #fieldBox .tickBox p a {
+  text-decoration-line: underline;
+  color: #223F80;
+}
+#signUpPg #SignUpFormDiv #fieldBox .tickBox .tickButton {
+  margin-top: 8px;
+  width: 18px;
+  height: 18px;
+}
+#signUpPg #SignUpFormDiv #fieldBox .invalid {
+  color: #BB2230;
+  font-size: small;
+  margin-left: 8px;
+  visibility: visible;
+}
+#signUpPg #SignUpFormDiv #fieldBox #Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 100%;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 0px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+#signUpPg #SignUpFormDiv #fieldBox #Button:hover{
+  box-shadow: none;
+  scale: 0.95;
+}
+
+#otpPage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
+  padding: 20px 10px;
+}
+#otpPage #otpDiv {
+  background-color: white;
+  max-width: 400px;
+  border-radius: 12px;
+  width: 95%;
+  box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
+}
+#otpPage #otpDiv #otpTextDiv {
+  padding: 20px 30px;
+  padding-bottom: 10px;
+}
+#otpPage #otpDiv #otpTextDiv #otpText {
+  color: #223F80;
+  font-weight: 500;
+  font-size: 22px;
+  padding: 10px;
+}
+#otpPage #otpDiv #otpTextDiv #mobileText {
+  font-size: small;
+  margin-top: 5px;
+  padding-left: 10px;
+}
+#otpPage #otpDiv #Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 80%;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 30px 10%;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+}
+#otpPage #otpDiv #Button:hover{
+  box-shadow: none;
+  scale: 0.95;
+}
+
 #dashboard {
   font-family: "Montserrat";
   font-style: normal;
@@ -166,25 +582,31 @@ li::marker{
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
 }
 #dashboard .navbar .profile {
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
   border-radius: 100%;
   margin: 20px;
   width: 60px;
   height: 60px;
-  background: #D9D9D9;
+  background: #223F80;
 }
 #dashboard .navbar .profile #profileImg {
-  height: 100%;
-  width: auto;
+  height: 93%;
 }
 #dashboard .navbar .icons {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  width: 110px;
-  height: 60px;
-  margin-top: 20px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
   margin-right: 20px;
+}
+#dashboard .navbar .icons .icon {
+  margin: 8px;
 }
 #dashboard .navbar .icons .iconBox {
   display: block;
@@ -256,7 +678,7 @@ li::marker{
   align-items: center;
 }
 #dashboard #main #statusBar #statusButton {
-  width: 90%;
+  width: 100%;
   font-family: "Montserrat";
   font-style: normal;
   line-height: 15px;
@@ -297,9 +719,17 @@ li::marker{
   width: 100vw;
   border: 1px solid rgba(37, 53, 100, 0.4);
 }
-#dashboard #main #searchBar {
+#dashboard #main #searchBarDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+#dashboard #main #searchBarDiv #searchBar {
+  width: 80%;
   height: 40px;
-  margin: 30px 50px;
+  margin: 30px 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -307,10 +737,10 @@ li::marker{
   background: rgba(109, 117, 147, 0.22);
   border-radius: 9px;
 }
-#dashboard #main #searchBar #icon {
+#dashboard #main #searchBarDiv #searchBar #icon {
   margin: 5px;
 }
-#dashboard #main #searchBar #searchField {
+#dashboard #main #searchBarDiv #searchBar #searchField {
   width: 100%;
   background-color: transparent;
   border: none;
@@ -418,10 +848,10 @@ li::marker{
   -webkit-backdrop-filter: blur(1.5px);
           backdrop-filter: blur(1.5px);
   display: flex;
-  display:none;
   flex-direction: none;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 #dashboard #addCustomer #addBox {
   height: 55%;
@@ -470,22 +900,72 @@ li::marker{
   margin-top: 5px;
   margin-bottom: 20px;
 }
+#dashboard #addCustomer #addBox .inputFields .field:invalid:focus {
+  border: 1px solid red;
+}
 #dashboard #addCustomer #addBox .inputFields .Button {
   background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
   transition-duration: 1s;
   width: 80%;
   height: 50px;
+  font-family: "Montserrat";
   margin: 30px 20px;
   font-weight: 500;
   font-size: 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
   color: white;
   border-radius: 12px;
-  opacity: 0.9;
 }
 #dashboard #addCustomer #addBox .inputFields .Button:hover{
   box-shadow: none;
   scale: 0.95;
+}
+#dashboard #filter {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(1.5px);
+          backdrop-filter: blur(1.5px);
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+#dashboard #filter #filterBox {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 15px;
+  background-color: white;
+}
+#dashboard #filter #filterBox #closeIcon {
+  border-radius: 20px;
+  height: 24px;
+  margin: 10px;
+  padding: 0px;
+}
+#dashboard #filter #filterBox #filterLabels {
+  display: flex;
+  flex-direction: row;
+  justify-content: none;
+  align-items: none;
+  flex-wrap: wrap;
+  padding: 0px 10px;
+  padding-bottom: 40px;
+}
+#dashboard #filter #filterBox #filterLabels .fLabel {
+  font-weight: lighter;
+  font-size: 15px;
+  background-color: rgba(34, 63, 128, 0.4);
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
+  margin: 8px 8px;
+  padding: 5px 20px;
+  border-radius: 5px;
 }
 
 #profile {
@@ -500,6 +980,14 @@ li::marker{
   background-color: white;
   overflow: hidden;
 }
+#profile #backButton {
+  width: 100%;
+  padding: 30px 20px;
+  padding-bottom: 0px;
+}
+#profile #backButton button svg path {
+  fill: #223F80;
+}
 #profile #profileDiv {
   width: 100%;
   height: 25%;
@@ -508,13 +996,22 @@ li::marker{
   justify-content: center;
   align-items: center;
 }
-#profile #profileDiv #profilePageImg {
-  height: 36%;
+#profile #profileDiv #profileBox {
+  width: 118px;
+  height: 118px;
+  border-radius: 100%;
+  background-color: #223F80;
+  padding: 2px;
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+}
+#profile #profileDiv #profileBox #profilePageImg {
+  border-radius: 100%;
 }
 #profile #profileDiv #profileName {
-  position: fixed;
-  bottom: 75%;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 40px;
   color: #223F80;
 }
@@ -531,18 +1028,25 @@ li::marker{
   align-items: none;
 }
 #profile #profileMenu .setting {
+  border-radius: 15px;
+  padding: 10px;
+  margin: 0px 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
-  border-bottom: 1px solid #BBC2D0;
-  margin: 0px 30px;
 }
 #profile #profileMenu .setting p {
   font-weight: 500;
   font-size: 16px;
   color: #223F80;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#profile #profileMenu .setting p svg {
+  margin-right: 10px;
 }
 #profile #logOut {
   margin-top: 40px;
@@ -566,6 +1070,116 @@ li::marker{
 #profile #logOut:hover{
   scale: 0.95;
 }
+#profile #deleteButton {
+  position: fixed;
+  bottom: 10px;
+}
+#profile #deleteButton #delete {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #223F80;
+}
+
+#profileInfo {
+  font-family: "Montserrat";
+  font-style: normal;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: static;
+  background-color: white;
+  overflow: hidden;
+}
+#profileInfo #backButtonDiv {
+  width: 100%;
+  padding: 30px 20px;
+  padding-bottom: 0px;
+}
+#profileInfo #backButtonDiv #backButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+#profileInfo #backButtonDiv #backButton svg path {
+  fill: #223F80;
+}
+#profileInfo #backButtonDiv #backButton p {
+  color: #223F80;
+  margin-left: 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+#profileInfo #profileDiv {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#profileInfo #profileDiv #profileBox {
+  width: 118px;
+  height: 118px;
+  border-radius: 100%;
+  background-color: #223F80;
+  padding: 2px;
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+}
+#profileInfo #profileDiv #profileBox #profilePageImg {
+  border-radius: 100%;
+}
+#profileInfo .inputField {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#profileInfo .inputField .inputBox {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 10px 1px;
+}
+#profileInfo .inputField .field {
+  width: 80%;
+  padding: 10px;
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  border-radius: 15px;
+}
+#profileInfo #saveButton {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 80%;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 20px 30px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+}
+#profileInfo #saveButton:hover{
+  box-shadow: none;
+  scale: 0.95;
+}
 
 .tickBox {
   padding-left: 20px;
@@ -576,7 +1190,6 @@ li::marker{
 .tickBox .tickButton {
   display: flex;
   flex-direction: row;
-  background-color: #223F80;
   justify-content: center;
   align-items: center;
   margin: 10px;
@@ -586,10 +1199,10 @@ li::marker{
   border-radius: 3px;
   margin-top: 4px;
 }
-/* .tickBox .tickButton:focus {
+.tickBox .tickButton:focus {
   background-color: #223F80;
   border: none;
-} */
+}
 
 .flex-row {
   display: flex;
