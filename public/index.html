@@ -7,25 +7,8 @@
     <title>login page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-                backgroundImage: (theme) => ({
-                    'scene1': "{{url_for('static',filename='images/weathered_golden_monkey.png')}}",
-                }),
-              colors: {
-                Vittae_Red: "#BB2230",
-                Vittae_Violet: "#444584",
-                Vittae_Blue: "#1E2E5A",
-                text_blue: "#697DAB",
-                Text_blue: "#223F80",
-                border_gray: "#B8B8B8",
-              }
-            }
-          }
-        }
-        document.getElementById('root').style.height = window.innerHeight
-        document.getElementById('root').style.width = window.innerWidth
+        document.body.getElementById('root').style.height = window.innerHeight
+        document.body.getElementById('root').style.width = window.innerWidth
       </script>
     
 </head>

@@ -16,6 +16,7 @@ import {WithRouter } from './routingWrapper';
 import MobileOrMailOTP from './mobileOrMail';
 import NewPassComp from './newPass'
 import TermsAndConditionsComp from './termsAndConditions';
+import Profile from './profile';
 class IndexComp extends React.Component{
   constructor(props){
     super(props)
@@ -33,12 +34,14 @@ class IndexComp extends React.Component{
         <Route path ="/login" index element={<LoginComp />}/>
         <Route path='/register' element = {<RegisterComp />}/>
         <Route path='/termsAndConditions' element={<TermsAndConditionsComp/>}/>
-        <Route path='/home' element = {<HomeComp />}/>
         <Route path='/mobileOTP' element={<MobileComp />} />
         <Route path='/mailOTP' element={<EmailOTP  />}/>
         <Route path='/forgotPassword' element={<ForgotPassword/>}/>
         <Route path='/mobileOrmailOTP' element={<MobileOrMailOTP/>}/>
         <Route path='/newPass' element={<NewPassComp/>}/>
+
+        <Route path='/home' element = {<HomeComp />}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
 
 
@@ -53,7 +56,6 @@ class IndexComp extends React.Component{
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-    <IndexComp/>
     <IndexComp/>
   </div>
 );
