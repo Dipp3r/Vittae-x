@@ -10,7 +10,7 @@ const cors = require("cors");
 const Pool = require('pg').Pool
 const pool = new Pool({
     user:"postgres",
-    password:"prehsurath",
+    password:"0000",
     host:"localhost",
     post:5432,
     database:"db"
@@ -42,6 +42,8 @@ app.post('/signIn',async(req,res)=>{
     session = req.session
     try {
         const obj = req.body;
+        console.log(req.body)
+
         let count=0;
         let row = {}
         switch(obj.typeId){
@@ -51,6 +53,7 @@ app.post('/signIn',async(req,res)=>{
                     const User = await pool.query("SELECT userid FROM users WHERE email = $1 AND password = $2",[obj.type,obj.password]);
                     count = User.rowCount;
                     row = User.rows[0]
+                    console.log(User)
                 } catch (err) {
                     console.error(err.message);
                 }
@@ -82,9 +85,9 @@ app.post('/signIn',async(req,res)=>{
     } catch (err) {
         console.error(err.message);
     }
-    // console.log(req.body)
+    console.log(req.body)
     // res.send({'status':true})
-    console.log(session)
+    // console.log(session)
 })
 
 app.get('/signIn',async(req,res)=>{
@@ -115,8 +118,11 @@ app.post('/signUp',async(req,res)=>{
 })
 
 app.post('/verifyID',async(req,res)=>{
+    console.log(req.body);
     let type = req.body.type
+
     let typeId = req.body.typeId
+       
     let obj = {status:false,msg:""}
     switch(typeId){
         case 0:

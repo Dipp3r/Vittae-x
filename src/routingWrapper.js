@@ -9,8 +9,9 @@ export const WithRouter = (Component) => {
       if (typeof(e) == 'string'){
         URL = e
       }else{
-        e.preventDefault() 
-        URL = e.target.getAttribute("value")
+        URL = e.currentTarget.getAttribute("value")
+        console.log(e.currentTarget)
+        if(URL == null) URL = e.target.value
       }   
       console.log(URL)
       navigate(URL)
