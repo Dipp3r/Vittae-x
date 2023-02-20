@@ -16,7 +16,7 @@ class OTPComp extends React.Component {
         this.submit = this.submit.bind(this)
         this.reset = this.reset.bind(this)
         this.submitLink = 'sendOTP'
-        this.loc = '../home'
+        this.loc = '../'
     }   
     changeInVal(e){
         // console.log(Number.parseInt(e.target.getAttribute('name')),e.target.value)
@@ -136,36 +136,27 @@ class OTPComp extends React.Component {
         this.setTime(1,6)
     }
     render(){
-        var text = this.txt.split(':')
 
-        return(<section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
-        <div className="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
-            <div className="p-8 pt-4 pb-4">
-                <p className="heading text-Text_blue text-xl">ENTER OTP</p>
-                <p className="text-sm mt-2">An OTP is sent to your {text[0]}</p>
-                <p id="samplephone" className="text-Text_blue text-sm">{text[1]}</p>
+        return(<section id='otpPage'>
+        <div id='otpDiv'>
+            <div id="otpTextDiv" >
+                <p id="otpText">ENTER OTP</p>
+                <p id="mobileText">An OTP is sent to your mobile</p>
+                <p id="samplephone">{this.txt}</p>
             </div>
-            <div>
-                <div className="bg-white m-8 mt-0 mb-0 rounded-b-xl">
-                    
-                    <div className="flex flex-row gap-x-5 justify-center mt-6" id='inputBarContainer'>
-                        <input type="number" value={this.state.OTP[0]} name="0" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
-                        <input type="number" value={this.state.OTP[1]} name="1" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
-                        <input type="number" value={this.state.OTP[2]} name="2" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
-                        <input type="number" value={this.state.OTP[3]} name="3" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
-                    </div>
-                    <p className="float-right mr-12 mt-1 text-sm text-border_gray">{this.state.min}:{this.state.sec} <a className="underline  text-Text_blue" onClick={this.getOTP}>Resend</a></p>
-                    
-    
-                    <div className="pl-2 mt-14 text-center">
-                        {this.anchorTags}
-                    </div>
-                    
-                    <div className="mt-2 mb-10">
-                        <button id="button" type="submit" value={this.loc} onClick={this.submit} className="bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 shadow-xl rounded-xl">
-                            SUBMIT
-                        </button>
-                    </div>
+            <div id='otpBoxDiv'>
+                <div id='otpBox'>
+                    <input type="number" value={this.state.OTP[0]} name="0" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                    <input type="number" value={this.state.OTP[1]} name="1" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                    <input type="number" value={this.state.OTP[2]} name="2" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                    <input type="number" value={this.state.OTP[3]} name="3" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                </div>
+                <p id='otpTime'>{this.state.min}:{this.state.sec} <a className="underline  text-Text_blue" onClick={this.getOTP}>Resend</a></p>
+                
+                <div >
+                    <button id="button" type="submit" value={this.loc} onClick={this.submit}>
+                        SUBMIT
+                    </button>
                 </div>
             </div>          
         </div>
