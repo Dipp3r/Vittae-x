@@ -118,12 +118,10 @@ app.post('/signUp',async(req,res)=>{
 })
 
 app.post('/verifyID',async(req,res)=>{
-    console.log(req.body);
-    let type = req.body.type
-
-    let typeId = req.body.typeId
-       
-    let obj = {status:false,msg:""}
+    console.log(req.body);       
+    let obj = {status:true,msg:""}
+    res.send(obj);
+    return
     switch(typeId){
         case 0:
             try {
