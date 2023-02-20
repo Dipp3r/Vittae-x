@@ -198,7 +198,6 @@ section {
 }
 #signInPage #signInFormDiv {
   background-color: white;
-  max-width: 400px;
   border-radius: 12px;
   width: 95%;
   box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
@@ -322,7 +321,6 @@ section {
 }
 .phonePg #phoneSignUpFormDiv {
   background-color: white;
-  max-width: 400px;
   border-radius: 12px;
   width: 95%;
   box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
@@ -379,7 +377,6 @@ section {
 }
 #newPassword #phoneSignUpFormDiv {
   background-color: white;
-  max-width: 400px;
   border-radius: 12px;
   width: 95%;
   box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
@@ -481,7 +478,6 @@ section {
 }
 #signUpPg #SignUpFormDiv {
   background-color: white;
-  max-width: 400px;
   border-radius: 12px;
   width: 95%;
   box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
@@ -629,7 +625,11 @@ section {
 }
 
 #otpPage {
-  height: 100%;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -639,7 +639,6 @@ section {
 }
 #otpPage #otpDiv {
   background-color: white;
-  max-width: 400px;
   border-radius: 12px;
   width: 95%;
   box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
@@ -679,6 +678,20 @@ section {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+}
+#otpPage #otpDiv #otpBoxDiv #otpBox input {
+  font-size: 28px;
+  padding: 0px;
+  color: #223F80;
+  text-align: center;
+  font-weight: 700;
+  margin: 0px 10px;
+  width: 25%;
+  width: 46px;
+  height: 46px;
+  background: #FFFFFF;
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
 }
 #otpPage #otpDiv #otpBoxDiv #otpTime {
   float: right;
@@ -1184,9 +1197,106 @@ section {
   overflow: hidden;
   padding-top: 0px;
 }
+#profile #deleteAcc {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(1.5px);
+          backdrop-filter: blur(1.5px);
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+}
+#profile #deleteAcc #deleteAccDiv {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 15px;
+  background-color: white;
+}
+#profile #deleteAcc #deleteAccDiv #closeIcon {
+  border-radius: 20px;
+  height: 24px;
+  margin: 10px;
+  padding: 0px;
+}
+#profile #deleteAcc #deleteAccDiv p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  margin-left: 40px;
+  color: #223F80;
+}
+#profile #deleteAcc #deleteAccDiv p a {
+  color: #BB2230;
+}
+#profile #deleteAcc #deleteAccDiv #reasonBoxDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#profile #deleteAcc #deleteAccDiv #reasonTxt {
+  margin: 30px;
+  margin-top: 0px;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 130px;
+  border: 1px solid #616161;
+  border-radius: 12px;
+  width: 80%;
+}
+#profile #deleteAcc #deleteAccDiv #Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 80%;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 20px 30px;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+}
+#profile #deleteAcc #deleteAccDiv #Button:hover {
+  box-shadow: none;
+  scale: 0.95;
+}
+#profile #deleteAcc #deleteAccDiv #filterLabels {
+  display: flex;
+  flex-direction: row;
+  justify-content: none;
+  align-items: none;
+  flex-wrap: wrap;
+  padding: 0px 10px;
+  padding-bottom: 40px;
+}
+#profile #deleteAcc #deleteAccDiv #filterLabels .fLabel {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  background-color: rgba(34, 63, 128, 0.4);
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
+  margin: 8px 8px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+#profile #deleteAcc #deleteAccDiv #filterLabels .fLabel:focus {
+  background: #223F80;
+}
 #profile #backButton {
   width: 100%;
-  padding: 30px 20px;
+  margin: 15px;
+  padding-left: 20px;
   padding-bottom: 0px;
 }
 #profile #backButton button svg path {
@@ -1201,8 +1311,6 @@ section {
   align-items: center;
 }
 #profile #profileDiv #profileBox {
-  width: 118px;
-  height: 118px;
   border-radius: 100%;
   background-color: #223F80;
   padding: 2px;
@@ -1212,6 +1320,8 @@ section {
   align-items: center;
 }
 #profile #profileDiv #profileBox #profilePageImg {
+  height: 118px;
+  width: 118px;
   border-radius: 100%;
 }
 #profile #profileDiv #profileName {
@@ -1275,7 +1385,7 @@ section {
   scale: 0.95;
 }
 #profile #deleteButton {
-  position: fixed;
+  position: absolute;
   bottom: 10px;
 }
 #profile #deleteButton #delete {
@@ -1421,6 +1531,11 @@ section {
   scale: 0.95;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
 #home {
   font-family: "Montserrat";
   font-style: normal;
@@ -1496,7 +1611,7 @@ section {
   width: 100%;
 }
 #home #main #perks {
-  height: 13%;
+  height: 96px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -1506,20 +1621,22 @@ section {
 #home #main #perks #perk {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 50%;
   height: 100%;
+  padding-top: 20px;
   background-color: white;
 }
 #home #main #perks #perk p {
+  margin-top: 0px;
+  width: 147px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  line-height: 22px;
   color: #223F80;
-  line-height: 15px;
+  line-height: 10px;
   text-align: center;
 }
 #home #main #perks #perk .description {
@@ -1530,6 +1647,172 @@ section {
 #home #main #perks .incentive {
   margin-left: 2px;
 }
+#home #main #reminderDiv {
+  margin-top: 20px;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 30%;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+#home #main #reminderDiv #calendar {
+  background-color: white;
+  border-bottom: 1px solid #9d9d9d;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#home #main #reminderDiv #calendar #months {
+  padding: 0px 10px;
+  padding-right: 0px;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#home #main #reminderDiv #calendar #months p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #363636;
+}
+#home #main #reminderDiv #calendar #months #monthView {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 11px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: #223F80;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#home #main #reminderDiv #calendar #months #monthView img {
+  margin-left: 5px;
+}
+#home #main #reminderDiv #calendar .week {
+  padding: 0px 0px;
+  margin: 0px;
+  height: 80px;
+  overflow: scroll;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#home #main #reminderDiv #calendar .week .dates {
+  margin: 0px 10px;
+  padding-top: 0px;
+  margin-top: 0px;
+  height: 50px;
+  width: 100vw;
+  padding: 5px 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+#home #main #reminderDiv #calendar .week .dates .date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 4px;
+}
+#home #main #reminderDiv #calendar .week .dates .date #day {
+  display: flex;
+  margin: 4px 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #B8B8B8;
+}
+#home #main #reminderDiv #calendar .week .dates .date #date {
+  padding: 2px;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  background: #223F80;
+  border-radius: 3px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+  margin: 0px;
+}
+#home #main #reminderDiv #calendar .week .dates .date #reminderOverlay {
+  margin: 0px 0px;
+  padding: 0px;
+  height: 5px;
+  width: 5px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #223F80;
+}
+#home #main #reminderDiv #tasks {
+  min-height: 100px;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  background: red;
+}
+#home #main #reminderDiv #tasks .task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#home #main #reminderDiv #tasks .task .label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: #223F80;
+}
+#home #main #overdueDiv {
+  margin-top: 20px;
+  background-color: white;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#home #main #overdueDiv p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: #BB2230;
+}
 #home #main .fixed {
   position: fixed;
   bottom: 0;
@@ -1537,9 +1820,8 @@ section {
   -webkit-backdrop-filter: blur(1px);
           backdrop-filter: blur(1px);
   height: 60px;
-  padding: 0px 20px;
+  padding: 5px 20px;
   width: 100%;
-  max-width: 400px;
   box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
@@ -1547,7 +1829,8 @@ section {
   align-items: center;
 }
 #home #main .fixed .downIconDiv {
-  padding: 5px 30px;
+  margin: 10px;
+  padding: 0px 20px;
   color: #223F80;
   stroke: #223F80;
   border-radius: 13px;
@@ -1596,7 +1879,6 @@ section {
   margin-top: 4px;
 }
 
-
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -1617,6 +1899,17 @@ section {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  min-height: 50px;
+  padding: 5px;
+  text-align: left;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 18px;
 }
 
 input[type=date]::-webkit-calendar-picker-indicator {
