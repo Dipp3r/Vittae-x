@@ -110,7 +110,7 @@ a{
 }
 
 .invalid{
-    visibility: hidden;
+    visibility: visible;
 }
 
 
@@ -134,7 +134,7 @@ body {
 
 #root {
   position: fixed;
-  overflow: hidden;
+  overflow: hidden auto;
   height: 100vh;
   width: 100vw;
 }
@@ -311,7 +311,7 @@ section {
 }
 
 .phonePg {
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -473,7 +473,7 @@ section {
   align-items: center;
   background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
   height: 100%;
-  padding: 100px 10px;
+  padding: 28px 10px;
   overflow-x: hidden;
 }
 #signUpPg #SignUpFormDiv {
@@ -1916,7 +1916,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: black;
   opacity: 1;
   display: block;
-  background: url("../images/calendar.svg") no-repeat;
+  background: url("./images/calendar.svg") no-repeat;
   width: 20px;
   height: 20px;
   border-width: thin;

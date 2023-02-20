@@ -4,7 +4,7 @@ import checkString from "./stringChecker";
 class ForgotPassword extends React.Component{
     constructor(props){
         super(props)
-        this.state = {type:''}
+        this.state = {}
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
         this.submitLink = 'verifyID'
@@ -16,40 +16,12 @@ class ForgotPassword extends React.Component{
     }
     async submit(){
         let navigationURL = "../mobileOrMailOTP"
-        let obj = this.state
-        let typeId = 0
-        let checkRes
-        if(this.state.type == ''||this.state.type == " ") return
-        if(/[a-zA-Z]+/.test(this.state.type)){
-            typeId = 0
-            checkRes = checkString(this.state.type,2)
-            console.log(checkRes)
-            if(!checkRes.bool){
-                this.setState({typeErr:checkRes.msg})
-                return
-            }else{
-                this.setState({typeErr:""})
-            }
-        }else{
-            typeId = 1
-            checkRes = checkString(this.state.type,3)
-            console.log(checkRes)
-            if(!checkRes.bool){
-                this.setState({typeErr:checkRes.msg})
-                return
-            }else{
-                this.setState({typeErr:""})
-            }
-        }
-        console.log('HERE')
-        console.log(obj)
-        obj.typeId = typeId
-        localStorage.setItem('typeId',`${typeId}`)
-        if(typeId == 0){
-            localStorage.setItem('mail',`${this.state.type}`)
-        }else {
-            localStorage.setItem('mobile',`${this.state.type}`)
-        }
+        let obj = {}
+        let checkRes = checkString(this.state.number,3)
+        console.log(checkRes)
+        this.setState({numberErr:checkRes.msg})
+        if(!checkRes.bool)  return
+        obj = {number: this.state.number}
         console.log(obj)
         fetch(this.submitLink,{
             method:'POST',
@@ -60,31 +32,27 @@ class ForgotPassword extends React.Component{
         })
         .then((response) => response.json())
         .then((data)=>{
+            console.log(data)
             if(data.status) this.props.navigate(navigationURL)
         })
     }
     render(){
+        console.log(this.state)
         return(       
-        <section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
-            <div className="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
-                <div className="p-8 pt-4 pb-4">
-                    <p className="heading text-Text_blue text-xl">FIND YOUR PROFILE</p>
+            
+        <section class="phonePg">
+            <div id="phoneSignUpFormDiv">
+                <div id="phoneSignUpTextDiv">
+                <p id="phoneSignUpText">SIGN UP</p>
                 </div>
-                <div>
-                    <div className="bg-white m-8 mt-0 mb-0 rounded-b-xl">
-                        
-                        <div className="mt-4">
-                            <p className="text-Text_blue text-sm p-2">Email or phone number</p>
-                            <input type="text" onChange={this.changeInVal} name='type' placeholder="example@gmail.com" className=" font-thin rounded-md p-2 w-full"/>
-                        </div>
-                        
-                        <button className="button" onClick={this.submit} >
-                            SIGN IN
-                        </button>
-                    </div>
-                </div>          
+                <div id="fieldBox">
+                <p id="mobileLable">Mobile number</p>
+                <input onChange={this.changeInVal} name='number' type="number" min={0} max={9999999999} placeholder="1234567890" id="mobileField" />
+                <p>{this.state.numberErr}</p>
+                <button id="Button" onClick={this.submit}>SIGN UP</button>
+                </div>
             </div>
-        </section> 
+        </section>
         )
     }
 }

@@ -23,19 +23,19 @@ class FirstComp extends React.Component{
     }
     render(){
         return(
-            <section className="flex flex-col h-screen justify-center items-center">
-                <div id="logo" className="pt-20 mb-10 mt-4">
-                    <img src={require("./images/VITTAE.png")} alt="Vittae official logo" className="h-28"/>
-                </div>
+            <section id="getStartedPage">
+            <div id="logoDiv">
+                <img id="logoImg" src={require("./images/VITTAE.png")} alt="Vittae official logo" />
+            </div>
 
-                <div id="image" className="pt-10 items-center justify-center flex-col flex">
-                    <img src={require("./images/sampleavatar.png")} alt="Vittae official logo"/>
-                    <p id="p1" className="text-center text-text_blue mb-6">If we can look at something with words and sentences, explore it. VITTAE X</p>
-                </div>
+            <div id="charImgDiv">
+                <img src={require("./images/sampleavatar.png")} alt="Vittae official logo" />
+                <p id="p1">If we can look at something with words and sentences, explore it. VITTAE X</p>
+            </div>
 
-                <button onClick={this.getStarted} style={{"width":"260px","margin-top":"10px"}} className="button">
-                    Get Started
-                </button>
+            <button id="Button" onClick={this.getStarted}  >
+                Get Started
+            </button>
             </section>
         )
     };
