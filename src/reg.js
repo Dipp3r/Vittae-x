@@ -27,6 +27,9 @@ class RegisterComp extends React.Component {
       this.changeTAndC = this.changeTAndC.bind(this)
     }
     changeInVal(e) {
+        if(e.keyCode == 13){
+          this.submit()
+        }
         let value = e.target.value.trim()
         if(e.target.name != 'name') e.target.value = value;
         var obj = {};
@@ -37,7 +40,7 @@ class RegisterComp extends React.Component {
         let obj = {}
         if(this.state[e.target.getAttribute('value')]== 'password'){
             obj[e.target.getAttribute('value')] = 'txt'
-            e.currentTarget.src = require('./images/eye_off.svg')
+            e.currentTarget.src = require('./images/eye_off.svg')  
         }else{
             obj[e.target.getAttribute('value')] = 'password'
             e.currentTarget.src = require('./images/eye.svg')
@@ -59,6 +62,7 @@ class RegisterComp extends React.Component {
     }
     async submit() {
         console.log("signUp submitted")
+        
         console.log(this.state)
         let checkRes = checkString(this.state.name,4)
         let isErr = false

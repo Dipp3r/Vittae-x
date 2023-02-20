@@ -16,6 +16,10 @@ class LoginComp extends React.Component{
     }   
     changeInVal(e){
         let obj = {};
+        // console.log(e.keyCode)
+        if(e.keyCode == 13){
+          this.submit()
+        }
         if(e.currentTarget.name == 'mobile'){
             // console.log(e.currentTarget.value)
            if(/\D/.test(e.currentTarget.value.slice(-1))){
@@ -96,12 +100,12 @@ class LoginComp extends React.Component{
     </div>
     <div id="fieldBox">
       <p id="emailLable" >Mobile number</p>
-      <input onChange={this.changeInVal} value={this.state.mobile} name='mobile'  type="tel" placeholder="1234567890" id="emailField" />
+      <input onChange={this.changeInVal} onKeyDown={this.changeInVal} value={this.state.mobile} name='mobile'  type="tel" placeholder="1234567890" id="emailField" />
         <p class="invalid">{this.state.mobileErr}</p>
       <div id="passwordDiv">
         <p>Password</p>
         <div id="passwordBox">
-          <input onChange={this.changeInVal} name='password'  type={this.state.passwordInType} placeholder="Example!123" id="passwordField" class="password" value={this.state.password}  />
+          <input onChange={this.changeInVal} onKeyDown={this.changeInVal} name='password'  type={this.state.passwordInType} placeholder="Example!123" id="passwordField" class="password" value={this.state.password}  />
           <img src={require("./images/eye.svg")} alt="eye" onClick ={this.changePasswordVis} />
         </div>
         <p class="invalid" >{this.state.passwordErr}</p>
@@ -126,7 +130,7 @@ class LoginComp extends React.Component{
 
       <div id="accDiv">
         <hr />
-        <p>Need an account?<a onClick={this.props.navigate} value="../register">Signup</a></p>
+        <p>Need an account?<a onClick={this.props.navigate} value="../mobileSignUp">Signup</a></p>
       </div>
     </div>
   </div>
