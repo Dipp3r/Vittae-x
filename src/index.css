@@ -135,7 +135,7 @@ body {
 
 #root {
   position: fixed;
-  overflow: hidden auto;
+  overflow: hidden;
   height: 100vh;
   width: 100vw;
 }
@@ -312,7 +312,7 @@ section {
 }
 
 .phonePg {
-  /* height: 100%; */
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -474,7 +474,7 @@ section {
   align-items: center;
   background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
   height: 100%;
-  padding: 28px 10px;
+  padding: 100px 10px;
   overflow-x: hidden;
 }
 #signUpPg #SignUpFormDiv {
@@ -816,10 +816,13 @@ section {
   align-items: center;
 }
 #dashboard #main #statusBar #statusButton .statusButton {
-  width: 25%;
-  height: 32px;
-  font-weight: 580;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
   font-size: 12px;
+  color: #6D7593;
+  width: 33.333%;
+  height: 32px;
   text-align: center;
 }
 #dashboard #main #statusBar #statusButton .statusButton:focus {
@@ -828,9 +831,8 @@ section {
 }
 #dashboard #main #statusBarEdge {
   width: 100vw;
-  position: fixed;
-  top: 120px;
-  border: 1px solid rgba(37, 53, 100, 0.4);
+  margin: 0px;
+  border: 0.5px solid rgba(37, 53, 100, 0.4);
 }
 #dashboard #main #searchBarDiv {
   display: flex;
@@ -894,10 +896,11 @@ section {
 }
 #dashboard #main .scrolling-wrapperY {
   height: 100%;
-  width: 100%;
-  overflow: scroll;
+  width: 97%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   white-space: nowrap;
-  padding: 10px 13px;
+  padding: 10px 25px;
   margin-bottom: 74px;
 }
 #dashboard #main .scrolling-wrapperY .cards {
@@ -965,13 +968,12 @@ section {
 #dashboard #main .fixed {
   position: fixed;
   bottom: 0;
-  right: 0;
   background-color: white;
   -webkit-backdrop-filter: blur(1px);
           backdrop-filter: blur(1px);
   height: 60px;
-  padding: 0px 20px;
-  width: 100vw;
+  padding: 5px 20px;
+  width: 100%;
   box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
@@ -979,7 +981,8 @@ section {
   align-items: center;
 }
 #dashboard #main .fixed .downIconDiv {
-  padding: 5px 30px;
+  margin: 10px;
+  padding: 0px 20px;
   color: #223F80;
   stroke: #223F80;
   border-radius: 13px;
@@ -1602,13 +1605,14 @@ button {
   fill: #BB2230;
 }
 #home #main {
+  padding-bottom: 90px;
   margin-top: 2px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow: hidden;
-  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   width: 100%;
 }
 #home #main #perks {
@@ -1650,9 +1654,7 @@ button {
 }
 #home #main #reminderDiv {
   margin-top: 20px;
-  height: -moz-fit-content;
-  height: fit-content;
-  min-height: 30%;
+  height: auto;
   width: 100%;
   background-color: transparent;
   display: flex;
@@ -1766,23 +1768,52 @@ button {
   color: #223F80;
 }
 #home #main #reminderDiv #tasks {
-  min-height: 100px;
+  padding: 15px 15px;
+  min-height: 150px;
   height: -moz-fit-content;
   height: fit-content;
   width: 100%;
-  background: red;
+  background: white;
 }
-#home #main #reminderDiv #tasks .task {
+#home #main #reminderDiv #tasks #taskEmpty {
+  display: none;
+  margin-top: 70px;
+  text-align: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #B8B8B8;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task {
+  margin: 20px 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-#home #main #reminderDiv #tasks .task .label {
+#home #main #reminderDiv #tasks #nonEmpty .task .desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task .desc #title {
+  margin: 0px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  color: #363636;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task .desc #deets {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task .desc #deets #name {
+  margin: 0px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
@@ -1791,13 +1822,51 @@ button {
   display: flex;
   align-items: flex-end;
   text-align: center;
+  color: #A2A2A4;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task .desc #deets #due {
+  margin: 0px;
+  margin-left: 5px;
+  color: white;
+  padding: 3px 4px;
+  background: rgba(34, 63, 128, 0.3);
+  border-radius: 6px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 8px;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task .desc #deets #due #num_days {
+  font-weight: 700;
+  color: #414141;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task .desc #day {
+  margin-top: 3px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 8px;
+  color: #363636;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task .label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
   color: #223F80;
+}
+#home #main #reminderDiv #tasks #nonEmpty .task .label p {
+  margin-left: 5px;
 }
 #home #main #overdueDiv {
   margin-top: 20px;
   background-color: white;
   width: 100%;
-  padding: 10px 20px;
+  padding: 0px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1814,7 +1883,7 @@ button {
   text-align: center;
   color: #BB2230;
 }
-#home #main .fixed {
+#home .fixed {
   position: fixed;
   bottom: 0;
   background-color: white;
@@ -1829,7 +1898,7 @@ button {
   justify-content: space-around;
   align-items: center;
 }
-#home #main .fixed .downIconDiv {
+#home .fixed .downIconDiv {
   margin: 10px;
   padding: 0px 20px;
   color: #223F80;
@@ -1840,13 +1909,13 @@ button {
   justify-content: center;
   align-items: center;
 }
-#home #main .fixed .downIconDiv:hover {
+#home .fixed .downIconDiv:hover {
   background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
   color: white;
   stroke: white;
   opacity: 0.93;
 }
-#home #main .fixed .downIconDiv p {
+#home .fixed .downIconDiv p {
   font-family: "Montserrat";
   font-style: normal;
   color: inherit;
@@ -1854,11 +1923,623 @@ button {
   font-size: 16px;
   margin-left: 10px;
 }
-#home #main .fixed .downIconDiv svg path {
+#home .fixed .downIconDiv svg path {
   stroke: inherit;
 }
-#home #main .fixed .downIconDiv svg circle {
+#home .fixed .downIconDiv svg circle {
   stroke: inherit;
+}
+
+#Tasks {
+  font-family: "Montserrat";
+  font-style: normal;
+  position: static;
+  padding: 0px;
+  background-color: white;
+  overflow: hidden;
+}
+#Tasks #navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #223F80;
+  width: 100%;
+  height: 54px;
+}
+#Tasks #navBar p {
+  padding-right: 40px;
+  text-align: center;
+  color: white;
+  width: 90%;
+}
+#Tasks #navBar button {
+  margin-left: 5px;
+}
+#Tasks #statusBar {
+  width: 100vw;
+  background-color: transparent;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#Tasks #statusBar #statusButton {
+  width: 100%;
+  font-family: "Montserrat";
+  font-style: normal;
+  line-height: 15px;
+  align-items: flex-end;
+  color: #6D7593;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+#Tasks #statusBar #statusButton .statusButton {
+  margin-top: 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #6D7593;
+  width: 33.333%;
+  height: 32px;
+  text-align: center;
+}
+#Tasks #statusBar #statusButton .statusButton:focus {
+  color: #223F80;
+  border-bottom: 1px solid #223F80;
+}
+#Tasks #statusBarEdge {
+  width: 100vw;
+  margin: 0px;
+  border: 1px solid rgba(37, 53, 100, 0.4);
+}
+#Tasks #main {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100%;
+}
+#Tasks #main #tasks {
+  width: 100%;
+  background: white;
+}
+#Tasks #main #tasks #taskEmpty {
+  display: none;
+  margin-top: 70px;
+  text-align: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #B8B8B8;
+}
+#Tasks #main #tasks #nonEmpty .task {
+  margin: 25px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#Tasks #main #tasks #nonEmpty .task .desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#Tasks #main #tasks #nonEmpty .task .desc #title {
+  margin: 0px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  color: #363636;
+}
+#Tasks #main #tasks #nonEmpty .task .desc #name {
+  margin: 0px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: #A2A2A4;
+}
+#Tasks #main #tasks #nonEmpty .task .desc #day {
+  margin-top: 3px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 8px;
+  color: #BB2230;
+}
+#Tasks #main #tasks #nonEmpty .task .label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  color: #223F80;
+}
+#Tasks #main #tasks #nonEmpty .task .label p {
+  margin-left: 5px;
+}
+
+#Client {
+  font-family: "Montserrat";
+  font-style: normal;
+  position: static;
+  padding: 0px;
+  background-color: #E4E4E4;
+  overflow: hidden;
+}
+#Client .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 89px;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
+}
+#Client .navbar .profile {
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  margin: 20px;
+  width: 60px;
+  height: 60px;
+  background: #223F80;
+}
+#Client .navbar .profile #profileImg {
+  border-radius: 100%;
+  height: 93%;
+}
+#Client .navbar .icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  margin-right: 20px;
+}
+#Client .navbar .icons .icon {
+  margin: 8px;
+}
+#Client .navbar .icons .iconBox {
+  display: block;
+  position: relative;
+}
+#Client .navbar .icons .iconBox #notifCircle {
+  display: block;
+  position: absolute;
+  border-radius: 13px;
+  top: 0px;
+  right: 0px;
+  width: 13px;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 2px solid white;
+}
+#Client .navbar .icons .iconBox #notifCircle path {
+  fill: #BB2230;
+}
+#Client #main {
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  padding: 0px 10px;
+}
+#Client #main #info {
+  height: 120px;
+  width: 100vw;
+  background: linear-gradient(31.88deg, #223F80 -3.29%, #444584 51.7%, #BB2230 109.03%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+#Client #main #info #portion1 {
+  height: 65px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#Client #main #info #portion1 #portion1Left {
+  margin: 15px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#Client #main #info #portion1 #portion1Left #deets {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+#Client #main #info #portion1 #portion1Left #deets p {
+  margin: 0px;
+  padding: 0px;
+}
+#Client #main #info #portion1 #portion1Left #deets #name {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #FFFFFF;
+}
+#Client #main #info #portion1 #portion1Left #deets #designation {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #C2C2C2;
+}
+#Client #main #info #portion1 #portion1Left #deets #statusDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px;
+}
+#Client #main #info #portion1 #portion1Left #deets #statusDiv #statusDot {
+  margin-bottom: 4px;
+  margin-right: 4px;
+  font-size: 15px;
+  font-weight: 900;
+  color: #6BDA7D;
+}
+#Client #main #info #portion1 #portion1Left #deets #statusDiv #statusTxt {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  color: #6BDA7D;
+}
+#Client #main #info #portion1 #portion1Right {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+#Client #main #info #portion1 #portion1Right #dateBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+#Client #main #info #portion1 #portion1Right #dateBox #dateTxt {
+  text-align: center;
+  padding: 4px 8px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 8px;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+}
+#Client #main #info #portion1 #portion1Right #edit {
+  display: none;
+  text-align: center;
+  padding: 3px 15px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #223F80;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.3);
+  border-radius: 9px;
+}
+#Client #main #info #portion2 {
+  width: 100%;
+  padding: 15px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+#Client #main #info #portion2 .contact {
+  margin: 0px 5px;
+  height: 25px;
+  width: 65px;
+  border: 2px solid #FFFFFF;
+  border-radius: 17px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#Client #main #info #portion2 .contact p {
+  color: white;
+}
+#Client #main #statusBar {
+  width: 100vw;
+  background-color: transparent;
+  height: 37px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#Client #main #statusBar #statusButton {
+  width: 100%;
+  font-family: "Montserrat";
+  font-style: normal;
+  line-height: 15px;
+  align-items: flex-end;
+  color: #6D7593;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+#Client #main #statusBar #statusButton .statusButton {
+  height: 40px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #6D7593;
+  width: 33.333%;
+  text-align: center;
+}
+#Client #main #statusBar #statusButton .statusButton:focus {
+  color: #223F80;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(34, 64, 128, 0.7176470588);
+}
+#Client #main #statusBarEdge {
+  width: 100vw;
+  margin: 0px;
+  border: 1px solid rgba(37, 53, 100, 0.4);
+}
+#Client #main .fixed {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  height: 56px;
+  padding: 5px 20px;
+  width: 100%;
+  box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#Client #main .fixed .downIconDiv {
+  margin: 10px;
+  padding: 0px 20px;
+  color: #223F80;
+  stroke: #223F80;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#Client #main .fixed .downIconDiv:hover {
+  background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
+  color: white;
+  stroke: white;
+  opacity: 0.93;
+}
+#Client #main .fixed .downIconDiv p {
+  font-family: "Montserrat";
+  font-style: normal;
+  color: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 10px;
+}
+#Client #main .fixed .downIconDiv svg path {
+  stroke: inherit;
+}
+#Client #main .fixed .downIconDiv svg circle {
+  stroke: inherit;
+}
+#Client #main #add {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 75px;
+  right: 60px;
+}
+#Client #main #add img {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0px;
+}
+#Client #addCustomer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(1.5px);
+          backdrop-filter: blur(1.5px);
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+#Client #addCustomer #addBox {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 15px;
+  background-color: white;
+}
+#Client #addCustomer #addBox #closeIcon {
+  border-radius: 20px;
+  height: 24px;
+  margin: 10px;
+  padding: 0px;
+}
+#Client #addCustomer #addBox .inputFields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Client #addCustomer #addBox .inputFields .label {
+  width: 87%;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #223F80;
+  margin-left: 20px;
+}
+#Client #addCustomer #addBox .inputFields .field {
+  width: 87%;
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+#Client #addCustomer #addBox .inputFields .dropDownDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#Client #addCustomer #addBox .inputFields .dropDownDiv select {
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  padding: 0px;
+}
+#Client #addCustomer #addBox .inputFields .dropDownDiv select:focus {
+  outline: none;
+}
+#Client #addCustomer #addBox .inputFields #dobField {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+}
+#Client #addCustomer #addBox .inputFields #dobField #calendarDiv {
+  margin-top: 8px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #223F80;
+  border-radius: 12px;
+  height: 47px;
+  width: 47px;
+}
+#Client #addCustomer #addBox .inputFields .field:invalid:focus {
+  border: 1px solid red;
+}
+#Client #addCustomer #addBox .inputFields .Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 80%;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 30px 20px;
+  font-weight: 500;
+  font-size: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+}
+#Client #addCustomer #addBox .inputFields .Button:hover {
+  box-shadow: none;
+  scale: 0.95;
+}
+#Client #filter {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(1.5px);
+          backdrop-filter: blur(1.5px);
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+#Client #filter #filterBox {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 15px;
+  background-color: white;
+}
+#Client #filter #filterBox #closeIcon {
+  border-radius: 20px;
+  height: 24px;
+  margin: 10px;
+  padding: 0px;
+}
+#Client #filter #filterBox #filterLabels {
+  display: flex;
+  flex-direction: row;
+  justify-content: none;
+  align-items: none;
+  flex-wrap: wrap;
+  padding: 0px 10px;
+  padding-bottom: 40px;
+}
+#Client #filter #filterBox #filterLabels .fLabel {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  background-color: rgba(34, 63, 128, 0.4);
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
+  margin: 8px 8px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+#Client #filter #filterBox #filterLabels .fLabel:focus {
+  background: #223F80;
 }
 
 .tickBox {
@@ -1917,7 +2598,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: black;
   opacity: 1;
   display: block;
-  background: url("./images/calendar.svg") no-repeat;
+  background: url("../images/calendar.svg") no-repeat;
   width: 20px;
   height: 20px;
   border-width: thin;
