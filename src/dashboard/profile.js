@@ -17,7 +17,7 @@ class Profile extends React.Component{
       return(
 <section id="profile">
   <div id="backButton">
-    <button onClick={this.props.navigate} value='../home'>
+    <button onClick={this.props.navigate} value='../dashboard'>
       <svg
         width="25"
         height="25"
@@ -44,7 +44,7 @@ class Profile extends React.Component{
     <p id="profileName">Ramen</p>
   </div>
   <div id="profileMenu">
-    <div className="setting" onClick={this.props.navigate} value='../personalInfo'>
+    <div className="setting" onClick={this.props.navigate} value='../profileinfo'>
       <p>
         <svg
           width="24"
