@@ -1,6 +1,6 @@
 import React, { createElement } from 'react';
 import ReactDOM from 'react-dom/client';
-import { WithRouter } from './routingWrapper';
+import { WithRouter } from '../routingWrapper';
 
 class HomeComp extends React.Component{
     constructor(){
@@ -105,7 +105,8 @@ class HomeComp extends React.Component{
     }
     render(){
         console.log(this.state)
-        return(<section id="dashboard">
+        return(
+    <section id="dashboard">
         <nav className="navbar">
             <div className="profile" onClick={this.props.navigate} value='../profile'>
                 <img id="profileImg" src={require("./images/profile.png")} value='../profile' alt=""/>
@@ -145,22 +146,6 @@ class HomeComp extends React.Component{
         </nav>
 
         <div id="main">
-            <div className="scrolling-wrapperX">
-                <div className="cards">
-                    <div className="info">
-                        <p className="p1">$120.5</p>
-                        <p className="p2">Commissions from clients</p>
-                    </div>
-                </div>
-    
-                <div className="cards">
-                    <div className="info">
-                        <p className="p1">86/100</p>
-                        <p className="p2">Number of customers</p>
-                    </div>
-                </div>
-            </div>
-    
             <div id="statusBar">
     
                 <div id="statusButton">
@@ -396,56 +381,87 @@ class HomeComp extends React.Component{
                 </svg>
             </button>
         </div>
-    </div>
-
-        <div id="addCustomer">
-            <div id="addBox">
-                <button id="closeIcon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" >
-                        <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25"/>
-                        <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <p id="newClientTxt">ADD NEW CLIENT</p>
-
-                <div className="inputFields">
-                    <p className="label">Name</p>
-                    <input required className="field" type="text"/>
-
-                    <p className="label">Mobile number</p>
-                    <input className="field" type="number"/>
-
-                    <p className="label">Email ID</p>
-                    <input className="field" type="email" id="email"/>
-
-                    <button type="submit" id="submit" className="Button">
-                        ADD CLIENT
-                    </button>
-                </div>
-            </div>
         </div>
 
-        <div id="filter">
-            <div id="filterBox">
-                <button id="closeIcon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" >
-                        <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25"/>
-                        <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+        <div id="addCustomer">
+        <div id="addBox">
+            <button id="closeIcon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
+                <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
 
-                <div id="filterLabels">
-                    <p className="fLabel">xxxxxx</p>
-                    <p className="fLabel">askdba</p>
-                    <p className="fLabel">asd</p>
-                    <p className="fLabel">asdasdfawvf</p>
-                    <p className="fLabel">asdasd</p>
-                </div>    
+            <div class="inputFields">
+                <p class="label">Name</p>
+                <input required class="field" type="text"/>
+
+                <p class="label">Designation</p>
+                <input class="field" type="text"/>
+
+                <p class="label">Mobile number</p>
+                <input class="field" type="number"/>
+
+                <p class="label">Email ID</p>
+                <input class="field" type="email" id="email"/>
+
+                <p class="label">Gender</p>
+                <div class="dropDownDiv field">
+                <select name="gender">
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                    <option value="2">Other</option>
+                </select>
+                <img src={require("../images/arwDwn.png")} alt=""/>
                 </div>
+
+            <p class="label">Date of Birth</p>
+            <div id="dobField">
+            <input type="date" class="field" />
             </div>
-        </section>
+
+            <p class="label">Marital status</p>
+            <div class="dropDownDiv field">
+            <select class="select" name="gender">
+                <option value="" disabled selected>Select your option</option>
+                <option value="0">Single</option>
+                <option value="1">Married</option>
+                <option value="2">Widowed</option>
+                <option value="3">Divorced</option>
+            </select>
+            <img src={require("../images/arwDwn.png")} alt=""/>
+            </div>
+
+
+            <button class="Button">
+            ADD CLIENT
+            </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="filter">
+    <div id="filterBox">
+      <button id="closeIcon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
+          <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div id="filterLabels">
+        <button class="fLabel">xxxxxx</button>
+        <button class="fLabel">askdba</button>
+        <button class="fLabel">asd</button>
+        <button class="fLabel">asdasdfawvf</button>
+        <button class="fLabel">asdasd</button>
+      </div>
+    </div>
+  </div>
+</section>
         )
     }
 }

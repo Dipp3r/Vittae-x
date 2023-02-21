@@ -23,7 +23,7 @@ class OTPComp extends React.Component {
         var text = this.state.OTP
         var num = Number.parseInt(e.target.getAttribute('name'))
         var value = e.target.value
-        var inputclass = document.body.querySelector('#inputBarContainer').children
+        var inputclass = document.body.querySelector('#otpBox').children
         // // console.log(value == "",num)
         // value = Number.parseInt(value).split(-1)
         // if(!Number.isInteger(value)) return;
@@ -146,15 +146,15 @@ class OTPComp extends React.Component {
             </div>
             <div id='otpBoxDiv'>
                 <div id='otpBox'>
-                    <input type="number" value={this.state.OTP[0]} name="0" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
-                    <input type="number" value={this.state.OTP[1]} name="1" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
-                    <input type="number" value={this.state.OTP[2]} name="2" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
-                    <input type="number" value={this.state.OTP[3]} name="3" onChange={this.changeInVal} className="otp_num text-Text_blue w-10 h-10 rounded-lg text-center text-2xl"/>
+                    <input type="number" value={this.state.OTP[0]} name="0" onChange={this.changeInVal} />
+                    <input type="number" value={this.state.OTP[1]} name="1" onChange={this.changeInVal} />
+                    <input type="number" value={this.state.OTP[2]} name="2" onChange={this.changeInVal} />
+                    <input type="number" value={this.state.OTP[3]} name="3" onChange={this.changeInVal} />
                 </div>
-                <p id='otpTime'>{this.state.min}:{this.state.sec} <a className="underline  text-Text_blue" onClick={this.getOTP}>Resend</a></p>
+                <p id='otpTime'>{this.state.min}:{this.state.sec} <a onClick={this.getOTP}>Resend</a></p>
                 
                 <div >
-                    <button id="button" type="submit" value={this.loc} onClick={this.submit}>
+                    <button id="Button" type="submit" value={this.loc} onClick={this.submit}>
                         SUBMIT
                     </button>
                 </div>

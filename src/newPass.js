@@ -5,23 +5,39 @@ import checkString from "./stringChecker";
 class NewPassComp extends React.Component{
     constructor(props){
         super(props)
-        this.state = {password:'',cPassword:''}
+        this.state = {password:'',cPassword:'',passType:'password',cPassType:'password'}
         this.submitLink = 'setNewPassword'
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
+        this.changePasswordVis = this.changePasswordVis.bind(this)
+    }
+    changePasswordVis(e){
+        let state = this.state[e.currentTarget.name] == 'password'?'text':'password'
+        let obj = {}
+        obj[e.currentTarget.name] = state
+        this.setState(obj)
     }
     changeInVal(e){
+        if(e.keyCode == 13){
+            this.submit()
+          }
         var obj = {};
-        obj[e.target.name] = e.target.value.trim();
+        obj[e.currentTarget.name] = e.target.value.trim();
         this.setState(obj);
     }
     submit(){
         if(this.state.password == '') return
-        if(!checkString(this.state.password,2)) return
+        let isErr = false
+        let passCheck = checkString(this.state.password,2)
+        let cPassCheck = checkString(this.state.cPassword,2)
+        if (!cPassCheck.bool) isErr = true
+        if(!passCheck.bool) isErr = true
         if(this.state.password !== this.state.cPassword){
-            this.setState({cPassword:""})
-            return
+            isErr = true
+            this.setState({cPassword:""})            
         }
+        if(isErr) return
+        this.setState({passwordErr:passCheck,cPasswordErr:cPassCheck})
         var obj = {password:this.state.password}
         //sending data to the server
         fetch(this.submitLink,{
@@ -33,43 +49,46 @@ class NewPassComp extends React.Component{
         })
         .then((response) => response.json())
         .then((data)=>{
-            if(data.status) this.props.navigate("../login")
+        if(data.status) this.props.navigate("../login")
         })
     }
     render(){
         return(
-<section className="h-screen flex flex-col justify-center items-center bg-gradient-to-tr from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 pt-20 pb-20 p-6">
-    <div className="bg-white max-w-sm rounded-2xl w-full shadow-2xl">
-        <div className="p-8 pt-4 pb-4 mt-4 text-center">
-            <p className="heading text-Text_blue text-xl">CREATE A STRONG PASSWORD</p>
+<section id="newPassword">
+    <div id="phoneSignUpFormDiv">
+        <div id="phoneSignUpTextDiv">
+            <p id="phoneSignUpText">CREATE A STRONG PASSWORD</p>
         </div>
-        <div>
-            <div className="bg-white m-8 mt-0 mb-0 rounded-b-xl">
-                
-                <div className="pt-3">
-                    <p className="text-Text_blue text-sm p-2">Password</p>
-                    <div className="flex-row flex border-2 border-border_gray rounded-md">
-                        <input type="password" onChange={this.changeInVal} name="password" placeholder="Example!123" value={this.state.password} className="password font-thin rounded-md p-2 w-full"/>
-                        <img id="" src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
-                    </div>
-                </div>
 
-                <div className="pt-3">
-                    <p className="text-Text_blue text-sm p-2">Confirm password</p>
-                    <div className="flex-row flex border-2 border-border_gray rounded-md">
-                        <input type="password" onChange={this.changeInVal} name="cPassword" value={this.state.cPassword}  placeholder="Example!123" className="password font-thin rounded-md p-2 w-full"/>
-                        <img id="" src={require("./images/eye.svg")} className="m-2" alt="eye icon"/>
-                    </div>
-                </div>
-                
-                <div className="mt-12 mb-14">
-                    <button onClick={this.submit}  type="submit" className="button bg-gradient-to-r text-white font-normal text-md text-center p-2 from-Vittae_Blue/90 to-Vittae_Red/90 via-Vittae_Violet/90 w-full h-12 rounded-xl">
-                        SIGN IN
-                    </button>
-                </div>
-            </div>
-        </div>          
+    <div id="constraintDiv">
+        <p id="title">Password must contain at least</p>
+        <div id="constraints">
+            <al id="constraintText">
+                <li>8 characters</li>
+                <li>uppercase and lowercase</li>
+            </al>
+        </div>
     </div>
+
+    <div className="passwordDiv">
+        <p>New password</p>
+        <div className="passwordBox">
+            <input type="password" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='password' placeholder="Example!123" className="passwordField password" />
+            <img src={require("./images/eye.svg")} onClick={this.changePasswordVis} name="passType" alt="eye icon" />
+        </div>
+    </div>
+    <p className="invalid">{this.state.passwordErr}</p>
+    <div className="passwordDiv">
+      <p>Confirm password</p>
+      <div className="passwordBox">
+        <input type="password"  onChange={this.changeInVal} onKeyDown={this.changeInVal}  placeholder="Example!123" className="passwordField password" />
+        <img src={require("./images/eye.svg")} onClick={this.changePasswordVis} name="cPassType"  alt="eye icon" />
+      </div>
+    </div>
+    <p className="invalid">{this.state.cPasswordErr}</p>
+
+    <button id="Button" onClick={this.submit}>SIGN IN</button>
+  </div>
 </section>
         )
     };

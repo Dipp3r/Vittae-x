@@ -1,5 +1,5 @@
 import React from "react";
-import { WithRouter } from "./routingWrapper";
+import { WithRouter } from "../routingWrapper";
 
 class Profile extends React.Component{
     constructor(props){
@@ -36,7 +36,7 @@ class Profile extends React.Component{
   <div id="profileDiv">
     <div id="profileBox">
       <img
-        src={require("./images/profile.png")}
+        src={require("../images/profile.png")}
         id="profilePageImg"
         alt="profile picture"
       />
@@ -44,7 +44,7 @@ class Profile extends React.Component{
     <p id="profileName">Ramen</p>
   </div>
   <div id="profileMenu">
-    <div class="setting" onClick={this.props.navigate} value='../personalInfo'>
+    <div className="setting" onClick={this.props.navigate} value='../personalInfo'>
       <p>
         <svg
           width="24"
@@ -70,7 +70,7 @@ class Profile extends React.Component{
       </svg>
     </div>
 
-    <div class="setting" onClick={this.props.navigate} value='../termsAndConditions'>
+    <div className="setting" onClick={this.props.navigate} value='../termsAndConditions'>
       <p>
         <svg
           width="24"

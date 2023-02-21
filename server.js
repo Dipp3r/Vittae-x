@@ -161,7 +161,11 @@ app.post('/sendOTP',(req,res)=>{
 
 app.post('/setNewPassword',async(req,res)=>{
     const {password} = req.body
+    console.log(req.body)
+
     let response =  {status:false,msg:""};
+    res.send({status:true,msg:''})
+    return
     session=req.session
     try {
         const User = await pool.query("UPDATE users SET password = $1 WHERE userid = $2",[password,session.userId]);

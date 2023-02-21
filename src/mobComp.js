@@ -44,14 +44,14 @@ class MobComp extends React.Component{
         console.log(this.state)
         return(       
             
-        <section class="phonePg">
+        <section className="phonePg">
             <div id="phoneSignUpFormDiv">
                 <div id="phoneSignUpTextDiv">
                 <p id="phoneSignUpText">{this.title}</p>
                 </div>
                 <div id="fieldBox">
                 <p id="mobileLable">Mobile number</p>
-                <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onKeyDown={this.changeInVal} name='number' type="number" min={0} max={9999999999} placeholder="1234567890" id="mobileField" />
+                <input onChange={this.changeInVal} onKeyDown={this.changeInVal} name='number' type="number" min={0} max={9999999999} placeholder="1234567890" id="mobileField" />
                 <p>{this.state.numberErr}</p>
                 <button id="Button" onClick={this.submit}>SIGN UP</button>
                 </div>
