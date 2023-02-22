@@ -9,7 +9,6 @@ import LoginComp from './login.js';
 import SignUpMobComp from './signUpMob'
 import SignUpOTP from './signUpOTP';
 import RegisterComp from './reg.js';
-import HomeComp  from './home.js';
 
 import ForgotPassword from './forgotPassword.js';
 import FirstComp from './first.js';
@@ -17,10 +16,12 @@ import {WithRouter } from './routingWrapper';
 
 import NewPassComp from './newPass.js'
 import TermsAndConditionsComp from './termsAndConditions.js';
-import Profile from './profile.js';
 
 import ForgotOTP from './forgotOTP';
 
+
+import DashboardComp  from './dashboard/dashboard.js';
+import Profile from './dashboard/profile.js';
 
 class IndexComp extends React.Component{
   constructor(props){
@@ -47,7 +48,7 @@ class IndexComp extends React.Component{
         <Route path='/newPass' element={<NewPassComp/>}/>
 
 
-        <Route path='/home' element = {<HomeComp />}/>
+        <Route path='/dashboard' element = {<DashboardComp />}/>
         <Route path='/profile' element={<Profile/>}/>
       </Routes>
 

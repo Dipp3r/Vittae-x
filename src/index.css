@@ -312,7 +312,7 @@ section {
 }
 
 .phonePg {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -448,6 +448,7 @@ section {
 #newPassword #phoneSignUpFormDiv .invalid {
   padding-left: 30px;
   visibility: visible;
+  color:red;
 }
 #newPassword #phoneSignUpFormDiv #Button {
   background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
@@ -896,12 +897,12 @@ section {
 }
 #dashboard #main .scrolling-wrapperY {
   height: 100%;
-  width: 97%;
+  width: 100vw;
   overflow-y: scroll;
   overflow-x: hidden;
   white-space: nowrap;
-  padding: 10px 25px;
-  margin-bottom: 74px;
+  padding: 10px 5px;
+  margin-bottom: 50px;
 }
 #dashboard #main .scrolling-wrapperY .cards {
   height: 60px;
@@ -982,7 +983,7 @@ section {
 }
 #dashboard #main .fixed .downIconDiv {
   margin: 10px;
-  padding: 0px 20px;
+  padding: 8px 20px;
   color: #223F80;
   stroke: #223F80;
   border-radius: 13px;
@@ -991,13 +992,20 @@ section {
   justify-content: center;
   align-items: center;
 }
-#dashboard #main .fixed .downIconDiv:hover {
+#dashboard #main .fixed .downIconDivClick {
+  margin: 10px;
+  padding: 8px 20px;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
   color: white;
   stroke: white;
   opacity: 0.93;
 }
-#dashboard #main .fixed .downIconDiv p {
+#dashboard #main .fixed .downIconDiv p , #dashboard #main .fixed .downIconDivClick p {
   font-family: "Montserrat";
   font-style: normal;
   color: inherit;
@@ -1009,6 +1017,12 @@ section {
   stroke: inherit;
 }
 #dashboard #main .fixed .downIconDiv svg circle {
+  stroke: inherit;
+}
+#dashboard #main .fixed .downIconDivClick svg path {
+  stroke: inherit;
+}
+#dashboard #main .fixed .downIconDivClick svg circle {
   stroke: inherit;
 }
 #dashboard #main #add {
@@ -1540,7 +1554,7 @@ button {
   border: none;
 }
 
-#home {
+#dashboard {
   font-family: "Montserrat";
   font-style: normal;
   position: static;
@@ -1548,7 +1562,7 @@ button {
   background-color: #E4E4E4;
   overflow: hidden;
 }
-#home .navbar {
+#dashboard .navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1558,7 +1572,7 @@ button {
   height: 89px;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
 }
-#home .navbar .profile {
+#dashboard .navbar .profile {
   display: flex;
   flex-direction: none;
   justify-content: center;
@@ -1569,11 +1583,11 @@ button {
   height: 60px;
   background: #223F80;
 }
-#home .navbar .profile #profileImg {
+#dashboard .navbar .profile #profileImg {
   border-radius: 100%;
   height: 93%;
 }
-#home .navbar .icons {
+#dashboard .navbar .icons {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -1583,14 +1597,14 @@ button {
   height: 100%;
   margin-right: 20px;
 }
-#home .navbar .icons .icon {
+#dashboard .navbar .icons .icon {
   margin: 8px;
 }
-#home .navbar .icons .iconBox {
+#dashboard .navbar .icons .iconBox {
   display: block;
   position: relative;
 }
-#home .navbar .icons .iconBox #notifCircle {
+#dashboard .navbar .icons .iconBox #notifCircle {
   display: block;
   position: absolute;
   border-radius: 13px;
@@ -1601,10 +1615,10 @@ button {
   height: fit-content;
   border: 2px solid white;
 }
-#home .navbar .icons .iconBox #notifCircle path {
+#dashboard .navbar .icons .iconBox #notifCircle path {
   fill: #BB2230;
 }
-#home #main {
+#dashboard #main {
   padding-bottom: 90px;
   margin-top: 2px;
   display: flex;
@@ -1615,7 +1629,7 @@ button {
   overflow-x: hidden;
   width: 100%;
 }
-#home #main #perks {
+#dashboard #main #perks {
   height: 96px;
   width: 100%;
   display: flex;
@@ -1623,17 +1637,17 @@ button {
   justify-content: none;
   align-items: none;
 }
-#home #main #perks #perk {
+#dashboard #main #perks #perk {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 50%;
   height: 100%;
   padding-top: 20px;
   background-color: white;
 }
-#home #main #perks #perk p {
+#dashboard #main #perks #perk p {
   margin-top: 0px;
   width: 147px;
   font-family: "Montserrat";
@@ -1644,15 +1658,15 @@ button {
   line-height: 10px;
   text-align: center;
 }
-#home #main #perks #perk .description {
+#dashboard #main #perks #perk .description {
   font-weight: 500;
   font-size: 10px;
   color: #616161;
 }
-#home #main #perks .incentive {
+#dashboard #main #perks .incentive {
   margin-left: 2px;
 }
-#home #main #reminderDiv {
+#dashboard #main #reminderDiv {
   margin-top: 20px;
   height: auto;
   width: 100%;
@@ -1662,7 +1676,7 @@ button {
   justify-content: start;
   align-items: center;
 }
-#home #main #reminderDiv #calendar {
+#dashboard #main #reminderDiv #calendar {
   background-color: white;
   border-bottom: 1px solid #9d9d9d;
   width: 100vw;
@@ -1670,8 +1684,9 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding:10px;
 }
-#home #main #reminderDiv #calendar #months {
+#dashboard #main #reminderDiv #calendar #months {
   padding: 0px 10px;
   padding-right: 0px;
   width: 95%;
@@ -1680,14 +1695,14 @@ button {
   justify-content: space-between;
   align-items: center;
 }
-#home #main #reminderDiv #calendar #months p {
+#dashboard #main #reminderDiv #calendar #months p {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   color: #363636;
 }
-#home #main #reminderDiv #calendar #months #monthView {
+#dashboard #main #reminderDiv #calendar #months #monthView {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
@@ -1702,10 +1717,10 @@ button {
   justify-content: center;
   align-items: center;
 }
-#home #main #reminderDiv #calendar #months #monthView img {
+#dashboard #main #reminderDiv #calendar #months #monthView img {
   margin-left: 5px;
 }
-#home #main #reminderDiv #calendar .week {
+#dashboard #main #reminderDiv #calendar .week {
   padding: 0px 0px;
   margin: 0px;
   height: 80px;
@@ -1714,9 +1729,9 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 }
-#home #main #reminderDiv #calendar .week .dates {
+#dashboard #main #reminderDiv #calendar .week .dates {
   margin: 0px 10px;
   padding-top: 0px;
   margin-top: 0px;
@@ -1728,14 +1743,14 @@ button {
   justify-content: start;
   align-items: center;
 }
-#home #main #reminderDiv #calendar .week .dates .date {
+#dashboard #main #reminderDiv #calendar .week .dates .date {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0px 4px;
 }
-#home #main #reminderDiv #calendar .week .dates .date #day {
+#dashboard #main #reminderDiv #calendar .week .dates .date #day {
   display: flex;
   margin: 4px 10px;
   font-family: "Montserrat";
@@ -1744,8 +1759,8 @@ button {
   font-size: 12px;
   color: #B8B8B8;
 }
-#home #main #reminderDiv #calendar .week .dates .date #date {
-  padding: 2px;
+#dashboard #main #reminderDiv #calendar .week .dates .date #date {
+  padding: 3px;
   width: 18px;
   height: 18px;
   text-align: center;
@@ -1754,11 +1769,11 @@ button {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 10px;
   color: #FFFFFF;
   margin: 0px;
 }
-#home #main #reminderDiv #calendar .week .dates .date #reminderOverlay {
+#dashboard #main #reminderDiv #calendar .week .dates .date #reminderOverlay {
   margin: 0px 0px;
   padding: 0px;
   height: 5px;
@@ -1767,7 +1782,7 @@ button {
   font-weight: 900;
   color: #223F80;
 }
-#home #main #reminderDiv #tasks {
+#dashboard #main #reminderDiv #tasks {
   padding: 15px 15px;
   min-height: 150px;
   height: -moz-fit-content;
@@ -1775,7 +1790,7 @@ button {
   width: 100%;
   background: white;
 }
-#home #main #reminderDiv #tasks #taskEmpty {
+#dashboard #main #reminderDiv #tasks #taskEmpty {
   display: none;
   margin-top: 70px;
   text-align: center;
@@ -1785,20 +1800,20 @@ button {
   font-size: 12px;
   color: #B8B8B8;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task {
   margin: 20px 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .desc {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .desc #title {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #title {
   margin: 0px;
   font-family: "Montserrat";
   font-style: normal;
@@ -1806,13 +1821,13 @@ button {
   font-size: 15px;
   color: #363636;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .desc #deets {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #deets {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .desc #deets #name {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #deets #name {
   margin: 0px;
   font-family: "Montserrat";
   font-style: normal;
@@ -1824,7 +1839,7 @@ button {
   text-align: center;
   color: #A2A2A4;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .desc #deets #due {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #deets #due {
   margin: 0px;
   margin-left: 5px;
   color: white;
@@ -1836,11 +1851,11 @@ button {
   font-weight: 500;
   font-size: 8px;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .desc #deets #due #num_days {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #deets #due #num_days {
   font-weight: 700;
   color: #414141;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .desc #day {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #day {
   margin-top: 3px;
   font-family: "Montserrat";
   font-style: normal;
@@ -1848,7 +1863,7 @@ button {
   font-size: 8px;
   color: #363636;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .label {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .label {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1859,10 +1874,10 @@ button {
   font-size: 10px;
   color: #223F80;
 }
-#home #main #reminderDiv #tasks #nonEmpty .task .label p {
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .label p {
   margin-left: 5px;
 }
-#home #main #overdueDiv {
+#dashboard #main #overdueDiv {
   margin-top: 20px;
   background-color: white;
   width: 100%;
@@ -1872,7 +1887,7 @@ button {
   justify-content: space-between;
   align-items: center;
 }
-#home #main #overdueDiv p {
+#dashboard #main #overdueDiv p {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
@@ -1883,7 +1898,7 @@ button {
   text-align: center;
   color: #BB2230;
 }
-#home .fixed {
+#dashboard .fixed {
   position: fixed;
   bottom: 0;
   background-color: white;
@@ -1898,7 +1913,7 @@ button {
   justify-content: space-around;
   align-items: center;
 }
-#home .fixed .downIconDiv {
+#dashboard .fixed .downIconDiv {
   margin: 10px;
   padding: 0px 20px;
   color: #223F80;
@@ -1909,13 +1924,13 @@ button {
   justify-content: center;
   align-items: center;
 }
-#home .fixed .downIconDiv:hover {
+#dashboard .fixed .downIconDiv:hover {
   background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
   color: white;
   stroke: white;
   opacity: 0.93;
 }
-#home .fixed .downIconDiv p {
+#dashboard .fixed .downIconDiv p {
   font-family: "Montserrat";
   font-style: normal;
   color: inherit;
@@ -1923,10 +1938,10 @@ button {
   font-size: 16px;
   margin-left: 10px;
 }
-#home .fixed .downIconDiv svg path {
+#dashboard .fixed .downIconDiv svg path {
   stroke: inherit;
 }
-#home .fixed .downIconDiv svg circle {
+#dashboard .fixed .downIconDiv svg circle {
   stroke: inherit;
 }
 
@@ -2598,7 +2613,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: black;
   opacity: 1;
   display: block;
-  background: url("../images/calendar.svg") no-repeat;
+  background: url("./images/calendar.svg") no-repeat;
   width: 20px;
   height: 20px;
   border-width: thin;
