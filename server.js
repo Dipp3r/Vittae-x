@@ -40,6 +40,9 @@ function getRandomId(len){
 let session;
 app.post('/signIn',async(req,res)=>{
     session = req.session
+    console.log(req.body)
+    res.send({status:true,msg:''})
+    return
     try {
         const obj = req.body;
         console.log(req.body)
@@ -103,6 +106,8 @@ app.get('/signIn',async(req,res)=>{
 
 app.post('/signUp',async(req,res)=>{
     console.log(req.body)
+    res.send({status:true,msg:''})
+    return
     try {
         let {name,mail,mobile,password } = req.body;
         mobile = Number.parseInt(mobile)
@@ -160,11 +165,10 @@ app.post('/sendOTP',(req,res)=>{
 })
 
 app.post('/setNewPassword',async(req,res)=>{
-    const {password} = req.body
+    // const {password} = req.body
     console.log(req.body)
-
-    let response =  {status:false,msg:""};
-    res.send({status:true,msg:''})
+    // let response =  {status:false,msg:""};
+    res.send({'status':true})
     return
     session=req.session
     try {

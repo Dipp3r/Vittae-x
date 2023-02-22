@@ -7,6 +7,15 @@ class ContactsComp extends React.Component {
         {name:'bbb',mobile:'1234567812',status:'active',date:'01/02/2002'},
         {name:'ccc',mobile:'1234567820',status:'active',date:'01/02/2002'},
         {name:'ddd',mobile:'1234547890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
         {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'}];
         this.displayCustomer = this.displayCustomer.bind(this)
     }

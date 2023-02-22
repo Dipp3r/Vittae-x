@@ -20,6 +20,9 @@ class OTPComp extends React.Component {
     }   
     changeInVal(e){
         // console.log(Number.parseInt(e.target.getAttribute('name')),e.target.value)
+        if(e.keyCode == 13){
+            this.submit()
+          }
         var text = this.state.OTP
         var num = Number.parseInt(e.target.getAttribute('name'))
         var value = e.target.value
@@ -146,10 +149,10 @@ class OTPComp extends React.Component {
             </div>
             <div id='otpBoxDiv'>
                 <div id='otpBox'>
-                    <input type="number" value={this.state.OTP[0]} name="0" onChange={this.changeInVal} />
-                    <input type="number" value={this.state.OTP[1]} name="1" onChange={this.changeInVal} />
-                    <input type="number" value={this.state.OTP[2]} name="2" onChange={this.changeInVal} />
-                    <input type="number" value={this.state.OTP[3]} name="3" onChange={this.changeInVal} />
+                    <input type="number" value={this.state.OTP[0]} name="0" onKeyDown={this.changeInVal} onChange={this.changeInVal} />
+                    <input type="number" value={this.state.OTP[1]} name="1" onKeyDown={this.changeInVal}   onChange={this.changeInVal} />
+                    <input type="number" value={this.state.OTP[2]} name="2" onKeyDown={this.changeInVal}   onChange={this.changeInVal} />
+                    <input type="number" value={this.state.OTP[3]} name="3" onKeyDown={this.changeInVal}   onChange={this.changeInVal} />
                 </div>
                 <p id='otpTime'>{this.state.min}:{this.state.sec} <a onClick={this.getOTP}>Resend</a></p>
                 

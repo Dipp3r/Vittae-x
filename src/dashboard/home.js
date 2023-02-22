@@ -23,11 +23,11 @@ class HomeComp extends React.Component{
             day = document.createElement('p')
             day.id = 'day'
             remainder = document.createElement('P')
-            remainder.id = 'remainder'
+            remainder.id = 'reminderOverlay'
             remainder.innerText = '.'
             let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
             day.innerText = dayName[dt.getDay()].slice(0,3)
-            date.innerText = dt.getDate()
+            date.innerText = dt.getDate() < 10?`0${dt.getDate()}`:dt.getDate();
             dateDiv.append(day)
             dateDiv.append(date)
             dateDiv.append(remainder)
@@ -39,6 +39,35 @@ class HomeComp extends React.Component{
     }
     componentDidMount(){
         this.generateDates('2022-01-01','2022-01-12')
+    }
+    generateTasks(){
+      // <div className="task">
+
+      //     <div className="desc">
+      //       <p id="title">Follow up call</p>
+      //       <div id="deets">
+      //         <p id="name">Deekay</p>
+      //         <p id="due">
+      //           Due in <a id="num_days">3 days</a>
+      //         </p>
+      //       </div>
+      //       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
+      //     </div>
+  
+      //     <button className="label">
+      //       <img src={require("../images/Check_ring.svg")} alt="completed"/>
+      //       <p>Completed</p>
+      //     </button>
+  
+      //     <button  className="label">
+      //       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
+      //       <p>Snooze</p>
+      //     </button>
+      //   </div>
+
+      let task = document.createElement('div')
+      task.id = 'task'
+      
     }
     render(){
         return(
@@ -143,29 +172,7 @@ class HomeComp extends React.Component{
         <p>Not task for this day</p>
       </div>
       <div id="nonEmpty">
-        <div className="task">
-
-          <div className="desc">
-            <p id="title">Follow up call</p>
-            <div id="deets">
-              <p id="name">Deekay</p>
-              <p id="due">
-                Due in <a id="num_days">3 days</a>
-              </p>
-            </div>
-            <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-          </div>
-  
-          <button className="label">
-            <img src={require("../images/Check_ring.svg")} alt="completed"/>
-            <p>Completed</p>
-          </button>
-  
-          <button  className="label">
-            <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-            <p>Snooze</p>
-          </button>
-        </div>
+        
   
         <div className="task">
   

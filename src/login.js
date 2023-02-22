@@ -86,7 +86,7 @@ class LoginComp extends React.Component{
             console.log(data)
 
             if(data.status == true){
-                this.props.navigate("../home")
+                this.props.navigate("../dashboard")
             }
         })
     }

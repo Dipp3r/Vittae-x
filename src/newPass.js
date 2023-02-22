@@ -5,14 +5,21 @@ import checkString from "./stringChecker";
 class NewPassComp extends React.Component{
     constructor(props){
         super(props)
-        this.state = {password:'',cPassword:'',passType:'password',cPassType:'password'}
+        this.state = {password:'',cPassword:'',passType:'password',cPassType:'password',cPasswordErr:'',passwordErr:''}
         this.submitLink = 'setNewPassword'
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
         this.changePasswordVis = this.changePasswordVis.bind(this)
     }
     changePasswordVis(e){
-        let state = this.state[e.currentTarget.name] == 'password'?'text':'password'
+        let state 
+        if(this.state[e.currentTarget.name] == 'password'){
+            state = 'text'
+            e.currentTarget.src = require("./images/eye_off.svg")
+        }else{
+            state = 'password'
+            e.currentTarget.src = require("./images/eye.svg")
+        }
         let obj = {}
         obj[e.currentTarget.name] = state
         this.setState(obj)
@@ -26,18 +33,22 @@ class NewPassComp extends React.Component{
         this.setState(obj);
     }
     submit(){
-        if(this.state.password == '') return
+        console.log('submit clicked')
         let isErr = false
-        let passCheck = checkString(this.state.password,2)
-        let cPassCheck = checkString(this.state.cPassword,2)
+        let passCheck = checkString(this.state.password,1)
+        let cPassCheck = checkString(this.state.cPassword,1)
         if (!cPassCheck.bool) isErr = true
+        console.log('cpass',isErr)
         if(!passCheck.bool) isErr = true
+        console.log('pass',isErr)
         if(this.state.password !== this.state.cPassword){
             isErr = true
             this.setState({cPassword:""})            
         }
+        console.log(isErr)
         if(isErr) return
-        this.setState({passwordErr:passCheck,cPasswordErr:cPassCheck})
+        this.setState({passwordErr:passCheck.msg,cPasswordErr:cPassCheck.msg})
+
         var obj = {password:this.state.password}
         //sending data to the server
         fetch(this.submitLink,{
@@ -48,11 +59,16 @@ class NewPassComp extends React.Component{
             }
         })
         .then((response) => response.json())
-        .then((data)=>{
-        if(data.status) this.props.navigate("../login")
+        .then(data => {
+            console.log(data)
+            if(data.status == true){
+                this.props.navigate("../login")
+            }
         })
+        
     }
     render(){
+        console.log(this.state)
         return(
 <section id="newPassword">
     <div id="phoneSignUpFormDiv">
@@ -73,15 +89,16 @@ class NewPassComp extends React.Component{
     <div className="passwordDiv">
         <p>New password</p>
         <div className="passwordBox">
-            <input type="password" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='password' placeholder="Example!123" className="passwordField password" />
+            <input type={this.state.passType} onKeyDown={this.changeInVal} onChange={this.changeInVal} name='password' placeholder="Example!123" className="passwordField password" />
             <img src={require("./images/eye.svg")} onClick={this.changePasswordVis} name="passType" alt="eye icon" />
+        
         </div>
     </div>
     <p className="invalid">{this.state.passwordErr}</p>
     <div className="passwordDiv">
       <p>Confirm password</p>
       <div className="passwordBox">
-        <input type="password"  onChange={this.changeInVal} onKeyDown={this.changeInVal}  placeholder="Example!123" className="passwordField password" />
+        <input type={this.state.cPassType}  onChange={this.changeInVal} onKeyDown={this.changeInVal}  placeholder="Example!123" className="passwordField password" name="cPassword" />
         <img src={require("./images/eye.svg")} onClick={this.changePasswordVis} name="cPassType"  alt="eye icon" />
       </div>
     </div>

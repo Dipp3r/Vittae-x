@@ -31,9 +31,9 @@ class RegisterComp extends React.Component {
           this.submit()
         }
         let value = e.target.value.trim()
-        if(e.target.name != 'name') e.target.value = value;
+        if(e.currentTarget.name != 'name') e.currentTarget.value = value;
         var obj = {};
-        obj[e.target.name] = value;
+        obj[e.currentTarget.name] = value;
         this.setState(obj);
     }
     changeInputType(e){
@@ -67,27 +67,28 @@ class RegisterComp extends React.Component {
         let checkRes = checkString(this.state.name,4)
         let isErr = false
         let nameErr = '',mailErr = '',mobileErr = '',passwordErr = '',cPasswordErr = ''
-        console.log(checkRes)
+        // console.log(checkRes)
         if(!checkRes.bool){
             nameErr = checkRes.msg
             isErr = true
         }
+        if(!this.state.tAndC) isErr = true
+        // console.log(isErr)
         if(!(checkRes = checkString(this.state.mail,2)).bool){
             mailErr = checkRes.msg
             isErr = true
         }
-        if(!(checkRes = checkString(this.state.mobile,3)).bool){
-            mobileErr=checkRes.msg
-            isErr = true
-        }
+        // console.log(isErr)
         if(!(checkRes = checkString(this.state.password,1)).bool){
             passwordErr = checkRes.msg
             isErr = true
         }
+        // console.log(isErr)
         if(!(checkRes = checkString(this.state.cPassword,1)).bool){
             cPasswordErr = checkRes.msg
             isErr = true
         }
+        // console.log(isErr)
         if (!(this.state.cPassword===this.state.password)){
             cPasswordErr = "Passwords do no match";
             isErr = true;
@@ -100,7 +101,7 @@ class RegisterComp extends React.Component {
             passwordErr:passwordErr,
             cPasswordErr:cPasswordErr
         })
-        console.log(checkRes)
+        console.log(isErr)
         console.log(this.state)
         if(isErr)return
         console.log('checked')
@@ -122,7 +123,7 @@ class RegisterComp extends React.Component {
           .then((response) => response.json())
           .then(data => {
             // console.log(data)
-            if(data.status)   this.props.navigate("../mobileOTP")
+            if(data.status)   this.props.navigate("../dashboard")
           })
       }
     render() {
@@ -169,11 +170,11 @@ class RegisterComp extends React.Component {
       <div className="passwordDiv">
         <p>Confirm password</p>
         <div className="passwordBox">
-          <input type={this.state.cPasswordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='Cpassword'/>
+          <input type={this.state.cPasswordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='cPassword'/>
           <img src={require("./images/eye.svg")} alt="eye icon" onClick={this.changeInputType} value ={'cPasswordType'} />
         </div>
       </div>
-      <p className="invalid">{this.state.cPasswordErr}</p>
+      <p className=" invalid">{this.state.cPasswordErr}</p>
 
       <div className="tickBox">
         {/* <!-- when the value is 0 the bg is set transprent otherwise its set to dark blue --> */}
