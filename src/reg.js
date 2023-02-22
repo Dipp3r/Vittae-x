@@ -31,9 +31,9 @@ class RegisterComp extends React.Component {
           this.submit()
         }
         let value = e.target.value.trim()
-        if(e.target.name != 'name') e.target.value = value;
+        if(e.currentTarget.name != 'name') e.currentTarget.value = value;
         var obj = {};
-        obj[e.target.name] = value;
+        obj[e.currentTarget.name] = value;
         this.setState(obj);
     }
     changeInputType(e){
@@ -67,27 +67,28 @@ class RegisterComp extends React.Component {
         let checkRes = checkString(this.state.name,4)
         let isErr = false
         let nameErr = '',mailErr = '',mobileErr = '',passwordErr = '',cPasswordErr = ''
-        console.log(checkRes)
+        // console.log(checkRes)
         if(!checkRes.bool){
             nameErr = checkRes.msg
             isErr = true
         }
+        if(!this.state.tAndC) isErr = true
+        // console.log(isErr)
         if(!(checkRes = checkString(this.state.mail,2)).bool){
             mailErr = checkRes.msg
             isErr = true
         }
-        if(!(checkRes = checkString(this.state.mobile,3)).bool){
-            mobileErr=checkRes.msg
-            isErr = true
-        }
+        // console.log(isErr)
         if(!(checkRes = checkString(this.state.password,1)).bool){
             passwordErr = checkRes.msg
             isErr = true
         }
+        // console.log(isErr)
         if(!(checkRes = checkString(this.state.cPassword,1)).bool){
             cPasswordErr = checkRes.msg
             isErr = true
         }
+        // console.log(isErr)
         if (!(this.state.cPassword===this.state.password)){
             cPasswordErr = "Passwords do no match";
             isErr = true;
@@ -100,7 +101,7 @@ class RegisterComp extends React.Component {
             passwordErr:passwordErr,
             cPasswordErr:cPasswordErr
         })
-        console.log(checkRes)
+        console.log(isErr)
         console.log(this.state)
         if(isErr)return
         console.log('checked')
@@ -122,7 +123,7 @@ class RegisterComp extends React.Component {
           .then((response) => response.json())
           .then(data => {
             // console.log(data)
-            if(data.status)   this.props.navigate("../mobileOTP")
+            if(data.status)   this.props.navigate("../dashboard")
           })
       }
     render() {
@@ -135,26 +136,26 @@ class RegisterComp extends React.Component {
       <p id="SignUpText">SIGN UP</p>
     </div>
     <div id="fieldBox">
-      <p class="label">Name</p>
-      <input type="text" placeholder="Example" class="signUpField" onChange={this.changeInVal} name='name' />
-      <p class="invalid">{this.state.nameErr}</p>
-      <p class="label">Email</p>
-      <input type="email" placeholder="example@gmail.com" class="signUpField" onChange={this.changeInVal} name='mail' />
-      <p class="invalid">{this.state.mailErr}</p>
-      <div class="passwordDiv">
+      <p className="label">Name</p>
+      <input type="text" placeholder="Example" className="signUpField" onChange={this.changeInVal} name='name' />
+      <p className="invalid">{this.state.nameErr}</p>
+      <p className="label">Email</p>
+      <input type="email" placeholder="example@gmail.com" className="signUpField" onChange={this.changeInVal} name='mail' />
+      <p className="invalid">{this.state.mailErr}</p>
+      <div className="passwordDiv">
         <p id="mobileLabel">Phone number</p>
-        <div class="passwordBox">
+        <div className="passwordBox">
           <p id="numberLabel" >1234567890</p>
         </div>
       </div>
-      <div class="passwordDiv">
+      <div className="passwordDiv">
         <p>Password</p>
-        <div class="passwordBox">
-          <input type={this.state.passwordType} placeholder="Example!123" class="passwordField password" onChange={this.changeInVal} name='password'/>
+        <div className="passwordBox">
+          <input type={this.state.passwordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='password'/>
           <img src={require("./images/eye.svg")} alt="eye icon" onClick={this.changeInputType} value ={'passwordType'}/>
         </div>
       </div>
-      <p class="invalid">{this.state.passwordErr}</p>
+      <p className="invalid">{this.state.passwordErr}</p>
 
       <div id="constraintDiv">
         <p id="title">Password must contain at least</p>
@@ -166,18 +167,18 @@ class RegisterComp extends React.Component {
         </div>
       </div>
 
-      <div class="passwordDiv">
+      <div className="passwordDiv">
         <p>Confirm password</p>
-        <div class="passwordBox">
-          <input type={this.state.cPasswordType} placeholder="Example!123" class="passwordField password" onChange={this.changeInVal} name='Cpassword'/>
+        <div className="passwordBox">
+          <input type={this.state.cPasswordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='cPassword'/>
           <img src={require("./images/eye.svg")} alt="eye icon" onClick={this.changeInputType} value ={'cPasswordType'} />
         </div>
       </div>
-      <p class="invalid">{this.state.cPasswordErr}</p>
+      <p className=" invalid">{this.state.cPasswordErr}</p>
 
-      <div class="tickBox">
+      <div className="tickBox">
         {/* <!-- when the value is 0 the bg is set transprent otherwise its set to dark blue --> */}
-        <button value="0" class="tickButton" onClick={this.changeTAndC}>
+        <button value="0" className="tickButton" onClick={this.changeTAndC}>
           <svg width="10" height="10" viewBox="0 0 15 14" fill="none">
             <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round"
               stroke-linejoin="round" />
@@ -186,7 +187,7 @@ class RegisterComp extends React.Component {
         <p>
           I agree to the <a onClick={this.props.navigate} value={'../termsAndConditions'}>Terms & Conditions</a></p>
       </div>
-      <p id="invalidTC" class="invalid">{this.state.tAndCErr}</p>
+      <p id="invalidTC" className="invalid">{this.state.tAndCErr}</p>
       <button id="Button" onClick={this.submit}>SIGN UP</button>
     </div>
   </div>

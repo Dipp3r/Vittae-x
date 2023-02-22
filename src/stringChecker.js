@@ -24,11 +24,8 @@ function checkString(string,num = 0){
             }else if (!/[A-Z]+/.test(string)){
                 obj.msg = 'password must contain a capital letter'
                 return obj
-            }else if(!/[0-9]+/.test(string)){
-                obj.msg = 'password must contain a digit '
-                return obj
-            }else if(! /[\W]+/.test(string)){
-                obj.msg = 'password must contain a symbol'
+            }else if (string.length < 8){
+                obj.msg = 'password must contain atleast 8 characters'
                 return obj
             }else{
                 obj.bool = true
@@ -98,3 +95,13 @@ export default checkString;
 // console.log(checkString('+911234567890',3))
 // console.log(checkString('+91 1234567890',3))
 // console.log(checkString('+1234567890',3))
+
+//password condition for symbole and digit
+
+// else if(!/[0-9]+/.test(string)){
+//     obj.msg = 'password must contain a digit '
+//     return obj
+// }else if(! /[\W]+/.test(string)){
+//     obj.msg = 'password must contain a symbol'
+//     return obj
+// }
