@@ -75,7 +75,7 @@ class ContactsComp extends React.Component {
     }
     render(){
         return(
-            <div>
+            <div id='contactMain' >
             <div id="statusBar">
                 <div id="statusButton">
                   <button class="statusButton">ALL</button>

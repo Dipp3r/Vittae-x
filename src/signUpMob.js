@@ -8,6 +8,7 @@ class SignUpMobComp extends MobComp {
         this.loc = '../signUpOTP'
         this.submitLink = 'verifyID'
         this.title = 'Sign up'
+        this.setItem = this.props.setItem
     }
 }
 

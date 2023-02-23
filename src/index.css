@@ -4,15 +4,12 @@ input::placeholder {
 }
 
 input{
-    border:2px solid #B8B8B8;
-
+  border:2px solid #B8B8B8;
+  background-color: transparent;
 }
 input:focus{
-    border-color: #223F80;
-
-    outline: none;
+  outline: none;
 }
-
 .grayText{
     color: #8B8B8B;
 }
@@ -38,9 +35,9 @@ input::-webkit-outer-spin-button{
 }
 
 /* this is applicable for firefox */
-input[type=number]{
+/* input[type=number]{
     -moz-appearance: textfield;
-}
+} */
 
 #samplephone{
     font-weight: 550;
@@ -110,8 +107,9 @@ a{
 }
 
 .invalid{
-    visibility: visible;
+    /* visibility: visible; */
     color:#BB2230;
+    font-size: 15px;
 }
 
 
@@ -223,7 +221,7 @@ section {
   font-size: 14px;
   padding: 5px;
 }
-#signInPage #signInFormDiv #fieldBox #emailField {
+#signInPage #signInFormDiv #fieldBox #numberField {
   border: 2px solid #B8B8B8;
   border-radius: 12px;
   padding: 10px;
@@ -235,7 +233,7 @@ section {
   padding-top: 10px;
   margin-top: 15px;
 }
-#signInPage #signInFormDiv #fieldBox #passwordDiv p {
+#signInPage #signInFormDiv #fieldBox #passwordDiv .inLabel {
   color: #223F80;
   font-weight: 500;
   font-size: 14px;
@@ -413,7 +411,7 @@ section {
   padding: 10px 20px;
   padding-bottom: 0px;
 }
-#newPassword #phoneSignUpFormDiv .passwordDiv p {
+#newPassword #phoneSignUpFormDiv .passwordDiv .inLabel {
   color: #223F80;
   font-weight: 400;
   font-size: 16px;
@@ -447,8 +445,6 @@ section {
 }
 #newPassword #phoneSignUpFormDiv .invalid {
   padding-left: 30px;
-  visibility: visible;
-  color:red;
 }
 #newPassword #phoneSignUpFormDiv #Button {
   background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
@@ -474,8 +470,8 @@ section {
   justify-content: flex-start;
   align-items: center;
   background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
-  height: 100%;
-  padding: 100px 10px;
+  height: 100vh;
+  padding: 20px 10px;
   overflow-x: hidden;
 }
 #signUpPg #SignUpFormDiv {
@@ -599,10 +595,7 @@ section {
   height: 18px;
 }
 #signUpPg #SignUpFormDiv #fieldBox .invalid {
-  color: #BB2230;
-  font-size: small;
   margin-left: 8px;
-  visibility: visible;
 }
 #signUpPg #SignUpFormDiv #fieldBox #invalidTC {
   margin-top: 0px;
@@ -788,12 +781,14 @@ section {
   fill: #BB2230;
 }
 #dashboard #main {
+  padding-bottom: 90px;
+  margin-top: 2px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
   overflow: hidden;
-  padding: 0px 10px;
 }
 #dashboard #main #statusBar {
   width: 100vw;
@@ -896,13 +891,12 @@ section {
   align-items: center;
 }
 #dashboard #main .scrolling-wrapperY {
-  height: 100%;
+  height: 100vh;
   width: 100vw;
   overflow-y: scroll;
   overflow-x: hidden;
-  white-space: nowrap;
   padding: 10px 5px;
-  margin-bottom: 50px;
+  padding-bottom: 351px;
 }
 #dashboard #main .scrolling-wrapperY .cards {
   height: 60px;
@@ -1205,7 +1199,7 @@ section {
 #profile {
   font-family: "Montserrat";
   font-style: normal;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

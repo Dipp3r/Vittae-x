@@ -25,6 +25,7 @@ class RegisterComp extends React.Component {
       this.submit = this.submit.bind(this);
       this.changeInputType = this.changeInputType.bind(this)
       this.changeTAndC = this.changeTAndC.bind(this)
+      this.changeColor = this.changeColor.bind(this)
     }
     changeInVal(e) {
         if(e.keyCode == 13){
@@ -40,10 +41,10 @@ class RegisterComp extends React.Component {
         let obj = {}
         if(this.state[e.target.getAttribute('value')]== 'password'){
             obj[e.target.getAttribute('value')] = 'txt'
-            e.currentTarget.src = require('./images/eye_off.svg')  
+            e.currentTarget.src = require('./images/eye.svg')  
         }else{
             obj[e.target.getAttribute('value')] = 'password'
-            e.currentTarget.src = require('./images/eye.svg')
+            e.currentTarget.src = require('./images/eye_off.svg')
         }
         this.setState(obj)
     }
@@ -60,38 +61,57 @@ class RegisterComp extends React.Component {
         }
         this.setState({tAndC:tAndC,tAndCErr:tAndCErr})
     }
+    changeColor(element,color){
+      document.querySelector(element).style.borderColor = color
+    }
     async submit() {
         console.log("signUp submitted")
         
         console.log(this.state)
-        let checkRes = checkString(this.state.name,4)
         let isErr = false
         let nameErr = '',mailErr = '',mobileErr = '',passwordErr = '',cPasswordErr = ''
+        let defaultColor = '#616161',invalidColor = '#BB2230';
+
+
+        let checkRes = checkString(this.state.name,4)
         // console.log(checkRes)
+        this.changeColor('#nameIn',defaultColor)
+        this.changeColor('#mailIn',defaultColor)
+        this.changeColor('#passwordIn',defaultColor)
+        this.changeColor('#cPasswordIn',defaultColor)
+
         if(!checkRes.bool){
             nameErr = checkRes.msg
             isErr = true
+            this.changeColor('#nameIn',invalidColor)
         }
-        if(!this.state.tAndC) isErr = true
+        if(!this.state.tAndC){ 
+          isErr = true
+          this.setState({tAndCErr:'*agree to the terms & conditions'})
+        }
         // console.log(isErr)
         if(!(checkRes = checkString(this.state.mail,2)).bool){
             mailErr = checkRes.msg
             isErr = true
+            this.changeColor('#mailIn',invalidColor)
         }
         // console.log(isErr)
         if(!(checkRes = checkString(this.state.password,1)).bool){
             passwordErr = checkRes.msg
             isErr = true
+            this.changeColor('#passwordIn',invalidColor)
         }
         // console.log(isErr)
         if(!(checkRes = checkString(this.state.cPassword,1)).bool){
             cPasswordErr = checkRes.msg
             isErr = true
+            this.changeColor('#cPasswordIn',invalidColor)
         }
         // console.log(isErr)
         if (!(this.state.cPassword===this.state.password)){
             cPasswordErr = "Passwords do no match";
             isErr = true;
+            this.changeColor('#cPasswordIn',invalidColor)
         }
         
         this.setState({
@@ -137,22 +157,22 @@ class RegisterComp extends React.Component {
     </div>
     <div id="fieldBox">
       <p className="label">Name</p>
-      <input type="text" placeholder="Example" className="signUpField" onChange={this.changeInVal} name='name' />
+      <input id='nameIn' type="text" placeholder="Example" className="signUpField" onChange={this.changeInVal} name='name' onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#nameIn','#223F80')} onBlur={()=>this.changeColor('#nameIn','#b8b8b8')} />
       <p className="invalid">{this.state.nameErr}</p>
       <p className="label">Email</p>
-      <input type="email" placeholder="example@gmail.com" className="signUpField" onChange={this.changeInVal} name='mail' />
+      <input id='mailIn' type="email" placeholder="example@gmail.com" className="signUpField" onChange={this.changeInVal} name='mail' onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#mailIn','#223F80')} onBlur={()=>this.changeColor('#mailIn','#b8b8b8')} />
       <p className="invalid">{this.state.mailErr}</p>
       <div className="passwordDiv">
         <p id="mobileLabel">Phone number</p>
         <div className="passwordBox">
-          <p id="numberLabel" >1234567890</p>
+          <p id="numberLabel" >{this.props.getItem('number')}</p>
         </div>
       </div>
-      <div className="passwordDiv">
+      <div className="passwordDiv"  >
         <p>Password</p>
-        <div className="passwordBox">
-          <input type={this.state.passwordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='password'/>
-          <img src={require("./images/eye.svg")} alt="eye icon" onClick={this.changeInputType} value ={'passwordType'}/>
+        <div className="passwordBox" id='passwordIn' >
+          <input  type={this.state.passwordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='password'onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#passwordIn','#223F80')} onBlur={()=>this.changeColor('#passwordIn','#b8b8b8')}  />
+          <img src={require("./images/eye_off.svg")} alt="eye icon" onClick={this.changeInputType} value ={'passwordType'}/>
         </div>
       </div>
       <p className="invalid">{this.state.passwordErr}</p>
@@ -169,9 +189,9 @@ class RegisterComp extends React.Component {
 
       <div className="passwordDiv">
         <p>Confirm password</p>
-        <div className="passwordBox">
-          <input type={this.state.cPasswordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='cPassword'/>
-          <img src={require("./images/eye.svg")} alt="eye icon" onClick={this.changeInputType} value ={'cPasswordType'} />
+        <div className="passwordBox" id='cPasswordIn'  >
+          <input  type={this.state.cPasswordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='cPassword' onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#cPasswordIn','#223F80')} onBlur={()=>this.changeColor('#cPasswordIn','#b8b8b8')} />
+          <img src={require("./images/eye_off.svg")} alt="eye icon" onClick={this.changeInputType} value ={'cPasswordType'} />
         </div>
       </div>
       <p className=" invalid">{this.state.cPasswordErr}</p>

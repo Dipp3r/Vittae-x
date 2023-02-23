@@ -10,13 +10,14 @@ class OTPComp extends React.Component {
         intervalId:0,
         isTimeOut:false
         }
+        this.submitLink = 'sendOTP'
+        this.loc = '../'
         this.changeInVal = this.changeInVal.bind(this)
         this.changeTimer = this.changeTimer.bind(this)
         this.setTime = this.setTime.bind(this)
         this.submit = this.submit.bind(this)
         this.reset = this.reset.bind(this)
-        this.submitLink = 'sendOTP'
-        this.loc = '../'
+        this.changeColor = this.changeColor.bind(this)
     }   
     changeInVal(e){
         // console.log(Number.parseInt(e.target.getAttribute('name')),e.target.value)
@@ -25,34 +26,45 @@ class OTPComp extends React.Component {
           }
         var text = this.state.OTP
         var num = Number.parseInt(e.target.getAttribute('name'))
-        var value = e.target.value
+        var value = e.currentTarget.value
         var inputclass = document.body.querySelector('#otpBox').children
         // // console.log(value == "",num)
         // value = Number.parseInt(value).split(-1)
         // if(!Number.isInteger(value)) return;
-        if(value == '' && num >0){
-            inputclass[num-1].focus()
-        }
-        
+        console.log(num,value)
         
         // console.log(text,this.state.OTP)
-        if(inputclass[num].value == ""){
+        if(inputclass[num].value == ""){ 
             inputclass[num].value = value[0]
             text[num] = value[0]
+            console.log('value == ""',value)
+            if(num<=2 && value != '' ){
+                inputclass[num+1].focus()
+                console.log('front')
+            }
         }else if (num <=2 && value.length > 1){
             inputclass[num].value = value[0]
             inputclass[num+1].value = value.slice(-1)
             text[num] = value[0]
             text[num+1] = value.slice(-1)
+            console.log('Split value')
+            
+            inputclass[num+1].focus()
+        }else if(num ==0 && value == ""){
+            inputclass[num].value = ''
+            text[num] = ''
+            console.log('remove above')
         }else{
             inputclass[num].value = ''
             inputclass[num].value = value.slice(-1)
             text[num] = value.slice(-1)
         }
         
-        if(num<=2 && value !== ''){
-            inputclass[num+1].focus()
+        if(value == '' && num >0){
+            inputclass[num-1].focus()
+            console.log('back')
         }
+        
         this.setState({OTP:text})
     }
     reset(){
@@ -116,6 +128,9 @@ class OTPComp extends React.Component {
         var intervalId = setInterval(this.changeTimer,1000)
         this.setState({min:min,sec:sec,intervalId:intervalId,isTimeOut:isTimeOut})
     }
+    changeColor(element,color){
+        document.querySelector(element).style.borderColor = color
+      }
     submit(){
         if(this.state.isTimeOut) return
 
@@ -149,12 +164,12 @@ class OTPComp extends React.Component {
             </div>
             <div id='otpBoxDiv'>
                 <div id='otpBox'>
-                    <input type="number" value={this.state.OTP[0]} name="0" onKeyDown={this.changeInVal} onChange={this.changeInVal} />
-                    <input type="number" value={this.state.OTP[1]} name="1" onKeyDown={this.changeInVal}   onChange={this.changeInVal} />
-                    <input type="number" value={this.state.OTP[2]} name="2" onKeyDown={this.changeInVal}   onChange={this.changeInVal} />
-                    <input type="number" value={this.state.OTP[3]} name="3" onKeyDown={this.changeInVal}   onChange={this.changeInVal} />
+                    <input id='box0' type="number" value={this.state.OTP[0]} name="0" onKeyDown={this.changeInVal} onChange={this.changeInVal} onFocus={()=>this.changeColor('#box0','#223F80')} onBlur={()=>this.changeColor('#box0','#b8b8b8')}  />
+                    <input id='box1' type="number" value={this.state.OTP[1]} name="1" onKeyDown={this.changeInVal}   onChange={this.changeInVal} onFocus={()=>this.changeColor('#box1','#223F80')} onBlur={()=>this.changeColor('#box1','#b8b8b8')} />
+                    <input id='box3' type="number" value={this.state.OTP[2]} name="2" onKeyDown={this.changeInVal}   onChange={this.changeInVal} onFocus={()=>this.changeColor('#box3','#223F80')} onBlur={()=>this.changeColor('#box3','#b8b8b8')}  />
+                    <input id='box4' type="number" value={this.state.OTP[3]} name="3" onKeyDown={this.changeInVal}   onChange={this.changeInVal} onFocus={()=>this.changeColor('#box4','#223F80')} onBlur={()=>this.changeColor('#box4','#b8b8b8')} />
                 </div>
-                <p id='otpTime'>{this.state.min}:{this.state.sec} <a onClick={this.getOTP}>Resend</a></p>
+                <p id='otpTime'>{this.state.min}:{this.state.sec} <a onClick={this.reset}>Resend</a></p>
                 
                 <div >
                     <button id="Button" type="submit" value={this.loc} onClick={this.submit}>
