@@ -103,12 +103,11 @@ class DashboardComp extends React.Component{
           
             <div id="main">
              {(this.state.isHome)?< HomeComp/>:<ContactsComp />}
-              <button id="add">
-                <img src={require("../images/plus.png")} alt="add customer button"/>
-              </button>
+             {(!this.state.isHome)? <button id="add"> <img src={require("../images/plus.png")} alt="add customer button"/></button>:''}
           
               <div className="fixed" onClick={this.toggleHomeContacts}>
                 <div className={this.state.isHome?"downIconDivClick":"downIconDiv"}>
+
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M6.6665 17.0128C6.6665 15.2025 6.6665 14.2973 7.03245 13.5017C7.3984 12.706 8.08566 12.1169 9.46017 10.9388L10.7935 9.79591C13.2779 7.66641 14.5201 6.60165 15.9998 6.60165C17.4795 6.60165 18.7217 7.66641 21.2062 9.79591L22.5395 10.9388C23.914 12.1169 24.6013 12.706 24.9672 13.5017C25.3332 14.2973 25.3332 15.2025 25.3332 17.0128V22.6667C25.3332 25.1808 25.3332 26.4379 24.5521 27.219C23.7711 28 22.514 28 19.9998 28H11.9998C9.48568 28 8.2286 28 7.44755 27.219C6.6665 26.4379 6.6665 25.1808 6.6665 22.6667V17.0128Z"

@@ -10,6 +10,7 @@ class ForgotPassword extends MobComp{
         this.submitLink = 'verifyID'
         this.loc = '../forgotOTP'
         this.title = 'Find Your Profile'
+        this.setItem = this.props.setItem
     }
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HashRouter } from 'react-router-dom'
 import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
 
 import './index.css'
@@ -22,34 +23,43 @@ import ForgotOTP from './forgotOTP';
 
 import DashboardComp  from './dashboard/dashboard.js';
 import Profile from './dashboard/profile.js';
+import ProfileInfo from './dashboard/profileInfo';
 
 class IndexComp extends React.Component{
   constructor(props){
     super(props)
-    this.state = {
-
-    }
+    this.state = {mobile:''}
+    this.getItem = this.getItem.bind(this)
+    this.setItem = this.setItem.bind(this)
   }
-  
+  getItem(key){
+   return  this.state[key]
+  }
+  setItem(key,value){
+    let obj = {}
+    obj[key] = value
+    this.setState(obj)
+  }
   render(){
-    
+    console.log(this.state);
   return(
-    <BrowserRouter>
-      <Routes>
+    <BrowserRouter history={HashRouter} >
+      <Routes history={HashRouter} >
       <Route path ="/" index element={<FirstComp />}/>
         <Route path ="/login" index element={<LoginComp />}/>
-        <Route path='/mobileSignUp' element={<SignUpMobComp />} />
+        <Route path='/mobileSignUp' element={<SignUpMobComp setItem={this.setItem} />} />
         <Route path='/signUpOTP' element={<SignUpOTP/>}/>
-        <Route path='/register' element = {<RegisterComp />}/>
+        <Route path='/register' element = {<RegisterComp getItem={this.getItem} />}/>
         <Route path='/termsAndConditions' element={<TermsAndConditionsComp/>}/>
         
-        <Route path='/forgotPassword' element={<ForgotPassword/>}/>
+        <Route path='/forgotPassword' element={<ForgotPassword  setItem={this.setItem}  />} />
         <Route path='/forgotOTP' element={<ForgotOTP/>}/>
         <Route path='/newPass' element={<NewPassComp/>}/>
 
 
         <Route path='/dashboard' element = {<DashboardComp />}/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/profileinfo' element={<ProfileInfo/>} /> 
       </Routes>
 
 

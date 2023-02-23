@@ -54,24 +54,56 @@ class HomeComp extends React.Component{
       //       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
       //     </div>
   
-      //     <button className="label">
-      //       <img src={require("../images/Check_ring.svg")} alt="completed"/>
-      //       <p>Completed</p>
-      //     </button>
-  
-      //     <button  className="label">
-      //       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-      //       <p>Snooze</p>
-      //     </button>
-      //   </div>
 
       let task = document.createElement('div')
-      task.id = 'task'
-      
+      task.className = 'task'
+      let desc = document.createElement('desc')
+      desc.className = 'desc'
+      let title = document.createElement('p')
+      title.id  = 'title'
+      let details = document.createElement('div')
+      details.id = 'deets'
+      let name  = document.createElement('p')
+      name.id = 'name'
+      let due = document.createElement('p')
+      due.id = 'due' 
+      let day = document.createElement('p')
+      day.id = 'day'
+
+      details.appendChild(name)
+      details.appendChild(due)
+      desc.appendChild(title)
+      desc.appendChild(details)
+      task.appendChild(desc)
+
+      let completeButton = document.createElement('button')
+      snoozeButton.className = 'label'
+      let img1 = document.createElement('img')
+      img1.src = require("../images/Check_ring.svg")
+      img1.alt = 'completed'
+      let p1 = document.createElement('p')
+      p1.innerText = 'completed'
+      completeButton.appendChild(img1)
+      completeButton.appendChild(p1)
+
+
+      let snoozeButton = document.createElement('button')
+      snoozeButton.className = 'label'
+      let img2= document.createElement('img')
+      img2.src = require("../images/Alarmclock.svg")
+      img2.alt = 'completed'
+      let p2 = document.createElement('p')
+      p2.innerText = 'snooze'
+      snoozeButton.appendChild(img2)
+      snoozeButton.appendChild(p2)
+
+      name.innerText = 'Deekay'
+     
+      task.appendChild(desc)
     }
     render(){
         return(
-<div >
+<div id='homeMain'>
     <div id="perks">
       <button id="perk">
         <p>₹ 120.5</p>
