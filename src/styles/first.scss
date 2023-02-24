@@ -1,0 +1,26 @@
+@import 'main';
+
+
+#getStartedPage{
+    height: 100%;
+    width: 100%;
+    padding-top:120px;
+    #logoDiv{
+        margin-bottom: 40px;
+        #logoImg{
+            height:90px;
+        }
+    }
+    #charImgDiv{
+        padding-top:30px;
+        @include flex(column,center,center);
+        #p1{
+            text-align: center;
+            color:#697DAB;
+            margin-bottom:20px;
+        }
+    }
+    #Button{
+        @include button1(260px,50px,0px,0px,400,18px);
+    }
+}
