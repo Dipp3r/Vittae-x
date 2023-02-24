@@ -15,7 +15,6 @@ class LoginComp extends React.Component{
         this.changeRememberMe = this.changeRememberMe.bind(this)
         this.changeColor = this.changeColor.bind(this)
     }
-
     changeInVal(e){
         let obj = {};
         // console.log(e.keyCode)
