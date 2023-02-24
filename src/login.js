@@ -13,7 +13,8 @@ class LoginComp extends React.Component{
         this.submit = this.submit.bind(this)
         this.changePasswordVis = this.changePasswordVis.bind(this)
         this.changeRememberMe = this.changeRememberMe.bind(this)
-    }   
+        this.changeColor = this.changeColor.bind(this)
+    }
     changeInVal(e){
         let obj = {};
         // console.log(e.keyCode)
@@ -33,11 +34,15 @@ class LoginComp extends React.Component{
     changePasswordVis(e){
         if(this.state.passwordInType == 'password'){
             this.setState({passwordInType:'text'})
-            e.currentTarget.src = require('./images/eye_off.svg')
+            e.currentTarget.src = require('./images/eye.svg')
         }else{
             this.setState({passwordInType:'password'})
-            e.currentTarget.src = require('./images/eye.svg')
+            e.currentTarget.src = require('./images/eye_off.svg')
         }
+    }
+    changeColor(element,color){
+      document.querySelector(element).style.borderColor = color
+      console.log(document.querySelector(element))
     }
     changeRememberMe(e){
         let rememberMeBox = document.body.querySelector("#rememberMeBox")
@@ -52,18 +57,23 @@ class LoginComp extends React.Component{
     async submit(e){
         console.log('clicked')
         let isErr = false
-
+        let defaultColor = '#b8b8b8'
+        let invalidColor = '#BB2230'
         let checkRes = checkString(this.state.password,1) 
         if(!checkRes.bool){
             this.setState({passwordErr:checkRes.msg})
             isErr = true
+            this.changeColor('#passwordBox',invalidColor)
         }else{
             this.setState({passwordErr:""})
+            this.changeColor('#passwordBox',defaultColor)
         }
 
+        this.changeColor('#numberField',defaultColor)
         checkRes = checkString(this.state.mobile,3)
         if(!checkRes.bool){
-            isErr = true
+          isErr = true
+          this.changeColor('#numberField',invalidColor)
         }
         this.setState({mobileErr:checkRes.msg})
         if(isErr) return
@@ -91,7 +101,8 @@ class LoginComp extends React.Component{
         })
     }
     render(){
-        console.log(this.state)
+
+
     return(
 <section id="signInPage">
   <div id="signInFormDiv">
@@ -99,14 +110,14 @@ class LoginComp extends React.Component{
       <p id="signInText">SIGN IN</p>
     </div>
     <div id="fieldBox">
-      <p id="emailLable" >Mobile number</p>
-      <input onChange={this.changeInVal} onKeyDown={this.changeInVal} value={this.state.mobile} name='mobile'  type="tel" placeholder="1234567890" id="emailField" />
+      <p id="emailLable" className='inLabel' >Mobile number</p>
+      <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onFocus={()=>this.changeColor('#numberField','#223F80')} onBlur={()=>this.changeColor('#numberField','#b8b8b8')} value={this.state.mobile} name='phone'  type="tel" placeholder="1234567890" id="numberField" />
         <p className="invalid">{this.state.mobileErr}</p>
       <div id="passwordDiv">
-        <p>Password</p>
+        <p className='inLabel'>Password</p>
         <div id="passwordBox">
-          <input onChange={this.changeInVal} onKeyDown={this.changeInVal} name='password'  type={this.state.passwordInType} placeholder="Example!123" id="passwordField" className="password" value={this.state.password}  />
-          <img src={require("./images/eye.svg")} alt="eye" onClick ={this.changePasswordVis} />
+          <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onFocus={()=>this.changeColor('#passwordBox','#223F80')} onBlur={()=>this.changeColor('#passwordBox','#b8b8b8')}  name='password'  type={this.state.passwordInType} placeholder="Example!123" id="passwordField" className="password" value={this.state.password}  />
+          <img src={require("./images/eye_off.svg")} alt="eye" onClick ={this.changePasswordVis} />
         </div>
         <p className="invalid" >{this.state.passwordErr}</p>
       </div>
