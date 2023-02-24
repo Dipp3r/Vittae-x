@@ -102,9 +102,7 @@ class DashboardComp extends React.Component{
             </nav>
           
             <div id="main">
-             {(this.state.isHome)?< HomeComp/>:<ContactsComp />}
-             {(!this.state.isHome)? <button id="add"> <img src={require("../images/plus.png")} alt="add customer button"/></button>:''}
-          
+             {(this.state.isHome)?< HomeComp/>:<ContactsComp />}   
               <div className="fixed" onClick={this.toggleHomeContacts}>
                 <div className={this.state.isHome?"downIconDivClick":"downIconDiv"}>
 
@@ -134,85 +132,7 @@ class DashboardComp extends React.Component{
               </div>
             </div>
           
-            <div id="addCustomer">
-              <div id="addBox">
-                <button id="closeIcon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
-                    <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                </button>
-          
-                <div className="inputFields">
-                  <p className="label">Name</p>
-                  <input required className="field" type="text"/>
-          
-                  <p className="label">Designation</p>
-                  <input className="field" type="text"/>
-          
-                  <p className="label">Mobile number</p>
-                  <input className="field" type="number"/>
-          
-                  <p className="label">Email ID</p>
-                  <input className="field" type="email" id="email"/>
-          
-                  <p className="label">Gender</p>
-                  <div className="dropDownDiv field">
-                    <select name="gender">
-                      <option value="" disabled selected>Select your option</option>
-                      <option value="0">Male</option>
-                      <option value="1">Female</option>
-                      <option value="2">Other</option>
-                    </select>
-                    <img src={require("../images/arwDwn.png")} alt=""/>
-                  </div>
-          
-                  <p className="label">Date of Birth</p>
-                  <div id="dobField">
-                    <input type="date" className="field"/>
-                  </div>
-          
-                  <p className="label">Marital status</p>
-                  <div className="dropDownDiv field">
-                    <select className="select" name="gender">
-                      <option value="" disabled selected>Select your option</option>
-                      <option value="0">Single</option>
-                      <option value="1">Married</option>
-                      <option value="2">Widowed</option>
-                      <option value="3">Divorced</option>
-                    </select>
-                    <img src={require("../images/arwDwn.png")} alt="arrowDown" />
-                  </div>
-          
-          
-                  <button className="Button">
-                    ADD CLIENT
-                  </button>
-                </div>
-              
-            <div id="filter">
-                <div id="filterBox">
-                    <button id="closeIcon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" >
-                        <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
-                        <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    </button>
-          
-                    <div id="filterLabels">
-                    <button className="fLabel">xxxxxx</button>
-                    <button className="fLabel">askdba</button>
-                    <button className="fLabel">asd</button>
-                    <button className="fLabel">asdasdfawvf</button>
-                    <button className="fLabel">asdasd</button>
-                    </div>
-                </div>
-            </div>
-        
-            </div>
-            </div>
+            
           
         
         </section>

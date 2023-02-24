@@ -14,7 +14,7 @@ class LoginComp extends React.Component{
         this.changePasswordVis = this.changePasswordVis.bind(this)
         this.changeRememberMe = this.changeRememberMe.bind(this)
         this.changeColor = this.changeColor.bind(this)
-    }   
+    }
     changeInVal(e){
         let obj = {};
         // console.log(e.keyCode)
@@ -111,7 +111,7 @@ class LoginComp extends React.Component{
     </div>
     <div id="fieldBox">
       <p id="emailLable" className='inLabel' >Mobile number</p>
-      <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onFocus={()=>this.changeColor('#numberField','#223F80')} onBlur={()=>this.changeColor('#numberField','#b8b8b8')} value={this.state.mobile} name='mobile'  type="tel" placeholder="1234567890" id="numberField" />
+      <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onFocus={()=>this.changeColor('#numberField','#223F80')} onBlur={()=>this.changeColor('#numberField','#b8b8b8')} value={this.state.mobile} name='phone'  type="tel" placeholder="1234567890" id="numberField" />
         <p className="invalid">{this.state.mobileErr}</p>
       <div id="passwordDiv">
         <p className='inLabel'>Password</p>

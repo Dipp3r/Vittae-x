@@ -25,6 +25,12 @@ import DashboardComp  from './dashboard/dashboard.js';
 import Profile from './dashboard/profile.js';
 import ProfileInfo from './dashboard/profileInfo';
 
+import CustomerView from './dashboard/customerView';
+import MonthlyView from './dashboard/monthlyView';
+import IncentiveComp from './dashboard/incentive';
+import RenumerationComp from './dashboard/renumeration';
+import Tasks from './dashboard/tasks';
+
 class IndexComp extends React.Component{
   constructor(props){
     super(props)
@@ -58,8 +64,18 @@ class IndexComp extends React.Component{
 
 
         <Route path='/dashboard' element = {<DashboardComp />}/>
+        <Route path='/incentive' element = {<IncentiveComp/>}/>
+        <Route path='/renumeration' element = {<RenumerationComp />  }/>
+
+
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/profileinfo' element={<ProfileInfo/>} /> 
+
+        <Route path='/monthlyview' element={<MonthlyView/>} />
+        <Route path='/tasks' element={<Tasks />} />
+        
+
+        <Route path='/customerview' element={<CustomerView/>} />
       </Routes>
 
 
