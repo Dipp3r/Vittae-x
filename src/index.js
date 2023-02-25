@@ -67,8 +67,8 @@ class IndexComp extends React.Component{
         <Route path='/renumeration' element = {<RenumerationComp />  }/>
 
 
-        <Route path='/profile' element={<Profile/>}/>
-        <Route path='/profileinfo' element={<ProfileInfo/>} /> 
+        <Route path='/profile' element={<Profile getItem={this.getItem} setItem={this.setItem}  />}/>
+        <Route path='/profileinfo' element={<ProfileInfo getItem={this.getItem} setItem={this.setItem}   />} /> 
         <Route path='/monthlyview' element={<MonthlyView/>} />
         <Route path='/tasks' element={<Tasks />} />
         

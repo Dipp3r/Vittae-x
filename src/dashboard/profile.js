@@ -14,6 +14,10 @@ class Profile extends React.Component{
       console.log('Delete account clicked')
     }
     render(){
+      let first_name = this.props.getItem('first_name')
+      let last_name = this.props.getItem('last_name')
+      last_name = last_name == null?'':last_name;   
+
       return(
 <section id="profile">
   <div id="backButton">
@@ -41,7 +45,7 @@ class Profile extends React.Component{
         alt="profile picture"
       />
     </div>
-    <p id="profileName">Ramen</p>
+    <p id="profileName">{first_name+last_name}</p>
   </div>
   <div id="profileMenu">
     <div className="setting" onClick={this.props.navigate} value='../profileinfo'>

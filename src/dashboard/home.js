@@ -3,8 +3,11 @@ import { WithRouter } from "../routingWrapper";
 
 class HomeComp extends React.Component{
     constructor(props){
-        super(props)
-        this.tasks = [{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
+      super(props)
+      this.tasks = [{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
+      this.generateDates = this.generateDates.bind(this)
+      this.getTasksPerDate = this.getTasksPerDate.bind(this)
+      this.generateTasks = this.generateTasks.bind(this)
     }
     generateDates(startDate,endDate){
     //     <div className="date">
@@ -15,13 +18,21 @@ class HomeComp extends React.Component{
         let dates = document.querySelector('#dates')
         dates.innerHTML = ''
         let dateDiv,day,date,remainder;
+        let i =0
         for(var arr=[],dt=new Date(startDate); dt<=new Date(endDate); dt.setDate(dt.getDate()+1)){
+            i += 1
             arr.push(new Date(dt));
             console.log(dt)
             dateDiv = document.createElement('div')
             dateDiv.className = 'date'
+            dateDiv.name = i
+            dateDiv.onclick = this.getTasksPerDate
             date = document.createElement('p')
             date.id = 'date'
+            if (i == 1){
+             date.style.backgroundColor = '#223f80'
+             date.style.color = 'white'
+            }
             day = document.createElement('p')
             day.id = 'day'
             remainder = document.createElement('P')
@@ -39,6 +50,17 @@ class HomeComp extends React.Component{
         console.log(arr)
         return arr
     }
+    getTasksPerDate(e){
+      if (e.currentTarget.name == 1){
+        e.currentTarget.querySelector('#date').style.backgroundColor = '#223f80'
+        e.currentTarget.querySelector('#date').style.color = 'white'
+        this.generateTasks(this.tasks)
+      }else{
+        e.currentTarget.querySelector('#date').style.backgroundColor = 'transparent'
+        e.currentTarget.querySelector('#date').style.color = 'black'
+        this.generateTasks({})
+      }
+    }
     generateTasks(taskList){
       // <div className="task">
       
@@ -55,6 +77,15 @@ class HomeComp extends React.Component{
       document.body.querySelector('#tasks').innerHTML = ''
       let task,desc,i,container
       container = document.createElement('div')
+      console.log(taskList.length)
+      if(taskList.length == 0){
+        container.id = 'taskEmpty'
+        let p1 = document.createElement('p')
+        p1.innerText ="No task for this day"
+        container.appendChild(p1)
+        document.body.querySelector('#tasks').appendChild(container)
+        return
+      }
       container.id = 'nonEmpty'
 
       for (let j = 0;j< taskList.length;j++){
@@ -116,7 +147,7 @@ class HomeComp extends React.Component{
     }
     componentDidMount(){
         this.generateDates('2023-02-01','2023-02-28')
-        this.generateTasks(this.tasks)
+        // this.generateTasks(this.tasks)
     }
     render(){
         return(
