@@ -24,6 +24,7 @@ import ForgotOTP from './forgotOTP';
 import DashboardComp  from './dashboard/dashboard.js';
 import Profile from './dashboard/profile.js';
 import ProfileInfo from './dashboard/profileInfo';
+
 import CustomerView from './dashboard/customerView';
 import MonthlyView from './dashboard/monthlyView';
 import IncentiveComp from './dashboard/incentive';
@@ -69,6 +70,7 @@ class IndexComp extends React.Component{
 
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/profileinfo' element={<ProfileInfo/>} /> 
+
         <Route path='/monthlyview' element={<MonthlyView/>} />
         <Route path='/tasks' element={<Tasks />} />
         
