@@ -7,8 +7,8 @@ import checkString from './stringChecker';
 class LoginComp extends React.Component{
     constructor(){
         super()
-        this.state = {mobile:'',password:'',mobileErr:'',passwordErr:'',passwordInType:'password',rememberMe:false}
-        this.submitLink = 'signIn'
+        this.state = {phone:'',password:'',mobileErr:'',passwordErr:'',passwordInType:'password',rememberMe:false}
+        this.submitLink = 'http://dev.api.vittae.money/broker/broker-login/'
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
         this.changePasswordVis = this.changePasswordVis.bind(this)
@@ -17,12 +17,10 @@ class LoginComp extends React.Component{
     }
     changeInVal(e){
         let obj = {};
-        // console.log(e.keyCode)
         if(e.keyCode == 13){
           this.submit()
         }
         if(e.currentTarget.name == 'mobile'){
-            // console.log(e.currentTarget.value)
            if(/\D/.test(e.currentTarget.value.slice(-1))){
                 e.currentTarget.value = e.currentTarget.value.replace(/\D/,'')
                 return
@@ -42,7 +40,6 @@ class LoginComp extends React.Component{
     }
     changeColor(element,color){
       document.querySelector(element).style.borderColor = color
-      console.log(document.querySelector(element))
     }
     changeRememberMe(e){
         let rememberMeBox = document.body.querySelector("#rememberMeBox")
@@ -55,7 +52,6 @@ class LoginComp extends React.Component{
         }
     }   
     async submit(e){
-        console.log('clicked')
         let isErr = false
         let defaultColor = '#b8b8b8'
         let invalidColor = '#BB2230'
@@ -70,7 +66,7 @@ class LoginComp extends React.Component{
         }
 
         this.changeColor('#numberField',defaultColor)
-        checkRes = checkString(this.state.mobile,3)
+        checkRes = checkString(this.state.phone,3)
         if(!checkRes.bool){
           isErr = true
           this.changeColor('#numberField',invalidColor)
@@ -78,26 +74,28 @@ class LoginComp extends React.Component{
         this.setState({mobileErr:checkRes.msg})
         if(isErr) return
         let obj = {
-            mobile:this.state.mobile,
-            password:this.state.password,
-            rememberMe:this.state.rememberMe
+            phone:this.state.phone,
+            password:this.state.password
         }
-        
+        console.log(obj)
         //sending data to the server
         fetch(this.submitLink,{
             method:'POST',
             body:JSON.stringify(obj),
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
+              "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+              "Content-type": "application/json; charset=UTF-8",
+              'Connection':"keep-alive"
             }
+        }).then((response) => {
+          console.log(response)
+          if (response.status != 200) throw new Error('Something went wrong')
+          return response.json()
         })
-        .then((response) => response.json())
-        .then(data => {
-            console.log(data)
-
-            if(data.status == true){
-                this.props.navigate("../dashboard")
-            }
+        .then((data)=>{
+          console.log(data)
+          this.props.setItem(data)
+          this.props.navigate("../dashboard")
         })
     }
     render(){
@@ -111,7 +109,7 @@ class LoginComp extends React.Component{
     </div>
     <div id="fieldBox">
       <p id="emailLable" className='inLabel' >Mobile number</p>
-      <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onFocus={()=>this.changeColor('#numberField','#223F80')} onBlur={()=>this.changeColor('#numberField','#b8b8b8')} value={this.state.mobile} name='phone'  type="tel" placeholder="1234567890" id="numberField" />
+      <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onFocus={()=>this.changeColor('#numberField','#223F80')} onBlur={()=>this.changeColor('#numberField','#b8b8b8')} value={this.state.phone} name='phone'  type="tel" placeholder="1234567890" id="numberField" />
         <p className="invalid">{this.state.mobileErr}</p>
       <div id="passwordDiv">
         <p className='inLabel'>Password</p>

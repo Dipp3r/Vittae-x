@@ -26,6 +26,7 @@ class RegisterComp extends React.Component {
       this.changeInputType = this.changeInputType.bind(this)
       this.changeTAndC = this.changeTAndC.bind(this)
       this.changeColor = this.changeColor.bind(this)
+      this.submitLink = `http://dev.api.vittae.money/broker/set-password/${this.props.getItem('id')}/`
     }
     changeInVal(e) {
         if(e.keyCode == 13){
@@ -69,22 +70,28 @@ class RegisterComp extends React.Component {
         
         console.log(this.state)
         let isErr = false
-        let nameErr = '',mailErr = '',mobileErr = '',passwordErr = '',cPasswordErr = ''
+        let firstNameErr = '',lastNameErr = '',mailErr = '',mobileErr = '',passwordErr = '',cPasswordErr = ''
         let defaultColor = '#616161',invalidColor = '#BB2230';
 
 
-        let checkRes = checkString(this.state.name,4)
         // console.log(checkRes)
-        this.changeColor('#nameIn',defaultColor)
+        this.changeColor('#firstNameIn',defaultColor)
+        this.changeColor('#lastNameIn',defaultColor)
         this.changeColor('#mailIn',defaultColor)
         this.changeColor('#passwordIn',defaultColor)
         this.changeColor('#cPasswordIn',defaultColor)
-
-        if(!checkRes.bool){
-            nameErr = checkRes.msg
+        
+        let checkRes 
+        if(!(checkRes= checkString(this.state.first_name,4)).bool){
+            firstNameErr = checkRes.msg
             isErr = true
-            this.changeColor('#nameIn',invalidColor)
+            this.changeColor('#firstNameIn',invalidColor)
         }
+        if(!(checkRes= checkString(this.state.last_name,4)).bool){
+          lastNameErr = checkRes.msg
+          isErr = true
+          this.changeColor('#secondNameIn',invalidColor)
+      }
         if(!this.state.tAndC){ 
           isErr = true
           this.setState({tAndCErr:'*agree to the terms & conditions'})
@@ -115,11 +122,12 @@ class RegisterComp extends React.Component {
         }
         
         this.setState({
-            nameErr:nameErr,
-            mobileErr:mobileErr,
-            mailErr:mailErr,
-            passwordErr:passwordErr,
-            cPasswordErr:cPasswordErr
+          firstNameErr:firstNameErr,
+          lastNameErr:lastNameErr,
+          mobileErr:mobileErr,
+          mailErr:mailErr,
+          passwordErr:passwordErr,
+          cPasswordErr:cPasswordErr
         })
         console.log(isErr)
         console.log(this.state)
@@ -127,24 +135,29 @@ class RegisterComp extends React.Component {
         console.log('checked')
 
         let obj = {
-            name:this.state.name,
+            first_name:this.state.first_name,
+            last_name:this.state.last_name,
             mail:this.state.mail,
             password:this.state.password,
-            mobile:this.state.mobile
+            phone:this.props.getItem('phone')
         }
         //sending data to server
-        fetch('signUp', {
+        fetch(this.submitLink, {
           method: 'POST',
           body: JSON.stringify(obj),
           headers: {
             "Content-type": "application/json; charset=UTF-8"
           }
-        })
-          .then((response) => response.json())
-          .then(data => {
-            // console.log(data)
-            if(data.status)   this.props.navigate("../dashboard")
+        }).then((response) => {
+            if (response.status != 200) throw new Error('Something went wrong')
+            
+            return response.json()
           })
+          .then((data)=>{
+            console.log(data)
+            this.props.navigate("../login")
+          })
+          
       }
     render() {
       // console.log(this.state)
@@ -156,16 +169,21 @@ class RegisterComp extends React.Component {
       <p id="SignUpText">SIGN UP</p>
     </div>
     <div id="fieldBox">
-      <p className="label">Name</p>
-      <input id='nameIn' type="text" placeholder="Example" className="signUpField" onChange={this.changeInVal} name='name' onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#nameIn','#223F80')} onBlur={()=>this.changeColor('#nameIn','#b8b8b8')} />
-      <p className="invalid">{this.state.nameErr}</p>
+      <p className="label">first name</p>
+      <input id='firstNameIn' type="text" placeholder="Example" className="signUpField" onChange={this.changeInVal} name='first_name' onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#firstNameIn','#223F80')} onBlur={()=>this.changeColor('#firstNameIn','#b8b8b8')} />
+      <p className="invalid">{this.state.firstNameErr}</p>
+      
+      <p className="label">last name</p>
+      <input id='secondNameIn' type="text" placeholder="Example" className="signUpField" onChange={this.changeInVal} name='last_name' onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#secondNameIn','#223F80')} onBlur={()=>this.changeColor('#secondNameIn','#b8b8b8')} />
+      <p className="invalid">{this.state.lastNameErr}</p>
+
       <p className="label">Email</p>
       <input id='mailIn' type="email" placeholder="example@gmail.com" className="signUpField" onChange={this.changeInVal} name='mail' onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#mailIn','#223F80')} onBlur={()=>this.changeColor('#mailIn','#b8b8b8')} />
       <p className="invalid">{this.state.mailErr}</p>
       <div className="passwordDiv">
         <p id="mobileLabel">Phone number</p>
         <div className="passwordBox">
-          <p id="numberLabel" >{this.props.getItem('number')}</p>
+          <p id="numberLabel" >{this.props.getItem('phone')}</p>
         </div>
       </div>
       <div className="passwordDiv"  >
