@@ -1,0 +1,64 @@
+@import 'main';
+
+.phonePg{
+    @include flex(column,center,center);
+    background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
+    padding:20px 10px;
+    #phoneSignUpFormDiv{
+        background-color: white;
+        border-radius: 12px;
+        width:340px;
+        box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
+        #phoneSignUpTextDiv{
+            padding:20px 30px;
+            padding-bottom:10px;
+            #phoneSignUpText{
+                font-family: 'Montserrat';
+                font-style: normal;
+                color:#223F80;
+                font-weight: 500;
+                font-size: 20px;
+                padding:10px;
+                margin:0px;
+            }
+        }
+        #fieldBox{
+            font-family: 'Montserrat';
+            font-style: normal;
+            background-color: white;
+            padding:10px 30px;
+            @include flex(column,flex-start,flex-start);
+            border-radius:12px;
+            #mobileLable{
+                margin: 0px;
+                color:#223F80;
+                font-weight: 500;
+                font-size: 14px;
+                padding:5px;
+            }
+            #mobileField{
+                border: 2px solid #B8B8B8;
+                border-radius: 12px;
+                padding:10px;
+                width: 95%;
+                height:30px;
+                font-weight:400;
+            }       
+            .invalid{
+                padding:10px;
+                padding-top:0px;
+            }
+        }
+
+        #buttonDiv{
+            @include flex(row,center,center);
+            #Button{
+                @include button1(272px, 60px, 20px, 0px, 400, 18px);
+                margin-top:0px;
+            }
+        }
+
+
+    }
+
+}

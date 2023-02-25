@@ -1,0 +1,143 @@
+@import 'main';
+
+#signUpPg{
+    @include flex(column,flex-start,center);
+    background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
+    padding: 20px 10px;
+    overflow-x: hidden;
+    #SignUpFormDiv{
+        background-color: white;
+        border-radius: 12px;
+        width: 95%;
+        box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
+        #SignUpTextDiv{
+            padding:20px 30px;
+            padding-bottom:10px;
+            #SignUpText{
+                color:#223F80;
+                font-weight: 500;
+                font-size: 22px;
+                padding:10px;
+            }
+        }
+        #fieldBox{
+            background-color: white;
+            margin:10px 30px;
+            .label{
+                color:#223F80;
+                font-weight: 500;
+                font-size: 14px;
+                padding:5px;
+                margin-top:8px;
+            }
+            #mobileLabel{
+                font-weight: 500;
+                font-size: 14px;
+                padding:5px;
+                margin-top:8px;
+                color: #929292;
+            }
+            .signUpField{
+                border: 2px solid #B8B8B8;
+                border-radius: 12px;
+                padding:10px;
+                width: 100%;
+                height:50px;
+                font-weight:400;
+            }       
+
+            
+
+            .passwordDiv{
+                padding-top:10px;
+                p{
+                    color:#223F80;
+                    font-weight: 500;
+                    font-size: 14px;
+                    padding:5px;
+                }
+                .passwordBox{
+                    @include flex(row,none,none);
+                    border: 2px solid #B8B8B8;
+                    border-radius: 12px;
+                    padding:5px;
+                    width: 100%;
+                    height:50px;
+                    #numberLabel{
+                        color:#B8B8B8;
+                        font-weight: 500;
+                        font-size: 14px;
+                        padding:5px;
+                    } 
+                    .passwordField{
+                        font-weight: 400;
+                        padding:5px;
+                        width: 100%;
+                        border-radius:12px;
+                    } 
+                    img{
+                        margin:5px;
+                    }
+                }
+            }
+
+            #constraintDiv{
+
+               margin:20px 15px;
+               margin-bottom:0px;
+                #title{
+                    color:#B8B8B8;
+                    font-size: small;
+                    font-weight: 600;
+                }
+                #constraints{
+                    margin-left:20px;
+                    #constraintText{
+                        color:#B8B8B8;
+                        font-size: small;
+                        font-weight: 400;
+                    }
+                }
+            }
+            .tickBox{
+                margin-top: 20px;
+                padding: 0px;
+                margin-bottom:0px;
+                height:fit-content;
+                font-size: 12px;
+                p{
+                    text-align:center;
+                    color: #B8B8B8;
+                    margin-top:5px;
+                    font-size: small;
+                    height:fit-content;
+                    a{
+                        text-decoration-line: underline;
+                        color:#223F80;
+                    }
+                }
+                .tickButton{
+                    margin-top:8px;
+                    margin-bottom:0px;
+                    width: 18px; 
+                    height: 18px;
+                }
+        
+            }
+            .invalid{
+                font-size: small;
+                margin-left:8px;
+            }
+            #invalidTC{
+                margin-top:0px;
+            }
+            
+            #Button{
+                @include button1(100%, 50px, 20px, 0px, 400, 18px);
+                margin-bottom: 40px;
+            }
+
+        }
+
+    }
+}
