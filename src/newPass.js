@@ -6,7 +6,7 @@ class NewPassComp extends React.Component{
     constructor(props){
         super(props)
         this.state = {password:'',cPassword:'',passType:'password',cPassType:'password',cPasswordErr:'',passwordErr:''}
-        this.submitLink = 'setNewPassword'
+        this.submitLink = `http://dev.api.vittae.money/broker/reset-password/${this.props.getItem('id')}/`
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
         this.changePasswordVis = this.changePasswordVis.bind(this)
@@ -73,14 +73,20 @@ class NewPassComp extends React.Component{
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
-        .then((response) => response.json())
-        .then(data => {
-            console.log(data)
-            if(data.status == true){
-                this.props.navigate("../login")
-            }
+        .then((response) => {
+            console.log(response.json())
+            if(response.status != 200) return{}
+            this.props.navigate("../login")
+            response.json()
         })
-        
+        .then((response) => {
+            if (response.status != 200) throw new Error('Something went wrong')
+            return response.json()
+          })
+          .then((data)=>{
+            console.log(data)
+            this.props.navigate("../login")
+          })
     }
     render(){
         console.log(this.state)
