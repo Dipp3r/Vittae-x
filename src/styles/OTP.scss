@@ -1,0 +1,82 @@
+@import 'main';
+
+#otpPage{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    height: 100vh;
+    @include flex(column,center,center);
+    background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
+    padding:20px 10px;
+    #otpDiv{
+        background-color: white;
+        border-radius: 12px;
+        width: 95%;
+        box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
+        #otpTextDiv{
+            padding:20px 30px;
+            padding-bottom:10px;
+            #otpText{
+                color:#223F80;
+                font-weight: 500;
+                font-size: 22px;
+                padding:10px;
+            }
+            #mobileText{
+                font-size: small;
+                font-weight: 500;
+                margin-top: 5px;
+                margin-left:8px;
+                color:#3E3E3E;
+            }
+            #samplephone{
+                font-size: small;
+                font-weight: 500;
+                margin-left:8px;
+                color:#223F80;
+            }
+        }
+        #otpBoxDiv{
+            background-color: white;
+            margin:0px 30px;
+            border-radius: 12px;
+            #otpBox{
+                padding:20px;
+                padding-bottom:0px;
+                @include flex(row,space-evenly,center);
+                input{
+                    font-size: 28px;
+                    padding:0px;
+                    color:#223F80;
+                    text-align: center;
+                    font-weight: 700;
+                    margin:0px 10px;
+                    width:25%;
+                    width: 46px;
+                    height: 46px;
+                    background: #FFFFFF;
+                    border: 2px solid #B8B8B8;
+                    border-radius: 12px;
+                }
+
+            }
+            #otpTime{
+                float:right;
+                margin:5px 30px;
+                font-size: small;
+                color:#B8B8B8;
+                a{
+                    text-decoration-line: underline;
+                    color:#223F80;
+                }
+            }
+        }
+        #Button{
+            @include button1(80%, 50px, 30px, 10%, 400, 18px);
+
+        }
+
+    }
+
+}
