@@ -158,7 +158,7 @@ class ContactsComp extends React.Component {
           
               <div id="searchBarDiv">
                 <div id="searchBar">
-                  <img id="icon" src={require("../images/search.svg")} alt="eye icon"/>
+                  <img id="icon" src={require("../images/Search.svg")} alt="eye icon"/>
                   <input type="text" id="searchField" />
                 </div>
           
