@@ -33,6 +33,7 @@ class ContactsComp extends React.Component {
         this.toggleAddClientMenu = this.toggleAddClientMenu.bind(this)
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
+        this.openCustomerView = this.openCustomerView.bind(this)
     }
     displayMessage(){
       let messageBox = document.querySelector('#messageBox')
@@ -82,12 +83,14 @@ class ContactsComp extends React.Component {
 
             let name = document.createElement('div')
             name.className = 'info'
-            let mobile = document.createElement('button')
+            name.id='name'
+            let mobile = document.createElement('div')
             mobile.className = 'info'
-            
+            mobile.id = 'mobile'
 
             let status = document.createElement('div')
             status.className = 'info status'
+            status.id = 'status'
             let statusIcon = document.createElement('i')
             statusIcon.className = 'down'
             status.append(statusIcon)
@@ -97,6 +100,7 @@ class ContactsComp extends React.Component {
             dateButton.className = 'info dateDiv'
             let date = document.createElement('p')
             date.className = 'date'
+            date.id = 'date'
             let filterTag = document.createElement('div')
             filterTag.className = 'filterTag'
             dateButton.appendChild(filterTag)
@@ -111,27 +115,30 @@ class ContactsComp extends React.Component {
             mobile.innerText = i.mobile
             date.innerText = i.date
             status.innerText = i.status
-            mobile.innerText = i.mobile
-            // mobile.href=`tel:${i.mobile}`
-            mobile.value = i.mobile
-            mobile.onclick = (e)=>{
-              e.stopPropagation()
-              navigator.clipboard.writeText(mobile.value)
-              this.displayMessage()
-            }
           
             details.appendChild(name)
-            details.appendChild(mobile)
             details.appendChild(status)
             details.appendChild(dateButton)
+            details.appendChild(mobile)
             
             cards.appendChild(details)
-            cards.value = '../customerview'
-            cards.onclick = this.props.navigate
+            // cards.value = '../customerview'
+            cards.onclick = this.openCustomerView
 
             container.appendChild(cards);
             console.log(cards)
         }
+    }
+    openCustomerView(e){
+      let target = e.currentTarget
+      
+      this.props.setItem({currentCustomerView:{
+        name:target.querySelector("#name").innerText,
+        date:target.querySelector("#date").innerText,
+        status:target.querySelector("#status").innerText,
+        mobile:target.querySelector("#mobile").innerText
+      }})
+      this.props.navigate('../customerview')
     }
     submit(){
       console.log(this.state)
@@ -142,6 +149,7 @@ class ContactsComp extends React.Component {
     }
     render(){
       console.log(this.state)
+      console.log(this.props)
         return(
             <div id='contactMain' >
             <div id="statusBar">

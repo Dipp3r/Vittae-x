@@ -2317,7 +2317,8 @@ button {
   justify-content: space-around;
   align-items: center;
 }
-#Client #main #info #portion2 .contact p {
+#Client #main #info #portion2 .contact a {
+  text-decoration: none;
   color: white;
 }
 #Client #main #statusBar {

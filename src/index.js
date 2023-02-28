@@ -63,7 +63,7 @@ class IndexComp extends React.Component{
         <Route path='/newPass' element={<NewPassComp getItem={this.getItem} setItem={this.setItem}  />}/>
 
 
-        <Route path='/dashboard' element = {<DashboardComp />}/>
+        <Route path='/dashboard' element = {<DashboardComp getItem={this.getItem} setItem={this.setItem}/>}/>
         <Route path='/incentive' element = {<IncentiveComp/>}/>
         <Route path='/renumeration' element = {<RenumerationComp />  }/>
 
@@ -74,7 +74,7 @@ class IndexComp extends React.Component{
         <Route path='/tasks' element={<Tasks />} />
         
 
-        <Route path='/customerview' element={<CustomerView/>} />
+        <Route path='/customerview' element={<CustomerView getItem={this.getItem} setItem={this.setItem}  />} />
       </Routes>
 
 
