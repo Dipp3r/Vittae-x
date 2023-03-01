@@ -2352,11 +2352,12 @@ button {
   width: 33.333%;
   text-align: center;
 }
-#Client #main #statusBar #statusButton .statusButton:focus {
+
+/* #Client #main #statusBar #statusButton .statusButton:focus {
   color: #223F80;
   font-weight: 600;
   border-bottom: 2px solid rgba(34, 64, 128, 0.7176470588);
-}
+} */
 #Client #main #statusBarEdge {
   width: 100vw;
   margin: 0px;

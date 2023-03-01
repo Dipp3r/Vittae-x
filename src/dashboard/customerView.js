@@ -19,6 +19,11 @@ class CustomerView extends React.Component {
     changeSection(e){
         let obj = {}
         obj.section = e.currentTarget.value
+        let target = e.currentTarget
+        target.style.color = '#223F80'
+        target.style.fontWeight = '600'
+        target.style.borderBottom = '2px solid rgba(34, 64, 128, 0.7176470588)'
+
         this.setState(obj)
         this.displaySection(e.currentTarget.value)
     }
@@ -47,7 +52,9 @@ class CustomerView extends React.Component {
     }
     componentDidMount(){
         let obj = this.props.getItem("currentCustomerView")
+        obj.designation = 'XXX'
         console.log(obj)
+        this.setState({customer:obj})
     }
     render(){
         return(
@@ -111,7 +118,7 @@ class CustomerView extends React.Component {
                         
                         <div id="portion1Right">
                         <div id="dateBox">
-                            <p id="dateTxt">Added 13-02-2023</p>
+                            <p id="dateTxt">Added {this.state.customer.date}</p>
                             <button>
                             <img src={require("../images/three-dots.svg")} alt=""/>
                             </button> 
@@ -136,10 +143,10 @@ class CustomerView extends React.Component {
                     </div>
                     <div id="statusBar">
                     <div id="statusButton">
-                        <button class="statusButton" value='1' onClick={this.changeSection} >INFO</button>
-                        <button class="statusButton" value='2' onClick={this.changeSection} >KYC STATUS</button>
-                        <button class="statusButton" value='3' onClick={this.changeSection} >NOTES</button>
-                        <button class="statusButton" value='4' onClick={this.changeSection} >TASKS</button>
+                        <button class="statusButton" value='1' onClick={this.changeSection} style={{color:'#6D7593',fontWeight:'500',borderBottom:'2px solid white'}} >INFO</button>
+                        <button class="statusButton" value='2' onClick={this.changeSection}style={{color:'#6D7593',fontWeight:'500',borderBottom:'2px solid white'}} >KYC STATUS</button>
+                        <button class="statusButton" value='3' onClick={this.changeSection}style={{color:'#6D7593',fontWeight:'500',borderBottom:'2px solid white'}} >NOTES</button>
+                        <button class="statusButton" value='4' onClick={this.changeSection}style={{color:'#6D7593',fontWeight:'500',borderBottom:'2px solid white'}} >TASKS</button>
                     </div>
                     </div>
 

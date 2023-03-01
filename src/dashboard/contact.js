@@ -7,26 +7,29 @@ class ContactsComp extends React.Component {
         this.state = {
           addClientMenu:'none',
           filterMenu:'none',
-          name:'',
-          mobile:'',
-          mail:'',
-          designation:'',
+          userInfo:{
+            name:'',
+            mobile:'',
+            mail:'',
+            designation:'',
+          }
 
         }
-        this.customerList = [{name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:'active',date:'01/02/2002'},
-        {name:'bbb',mobile:'1234567812',status:'active',date:'01/02/2002'},
-        {name:'ccc',mobile:'1234567820',status:'active',date:'01/02/2002'},
-        {name:'ddd',mobile:'1234547890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'}];
+        this.customerList = [
+        {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:'active',date:'01/02/2002'},
+        {id:3,name:'ccc',mobile:'1234567820',status:'active',date:'01/02/2002'},
+        {id:2,name:'bbb',mobile:'1234567812',status:'active',date:'01/02/2002'},
+        {id:4,name:'ddd',mobile:'1234547890',status:'active',date:'01/02/2002'},
+        {id:5,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:6,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:7,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:8,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:9,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:10,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:11,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:12,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:13,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
+        {id:14,name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'}];
         this.displayCustomer = this.displayCustomer.bind(this)
         this.displayMessage = this.displayMessage.bind(this)
         this.toggleFilterMenu = this.toggleFilterMenu.bind(this)
@@ -117,12 +120,12 @@ class ContactsComp extends React.Component {
             status.innerText = i.status
           
             details.appendChild(name)
+            details.appendChild(mobile)
             details.appendChild(status)
             details.appendChild(dateButton)
-            details.appendChild(mobile)
             
             cards.appendChild(details)
-            // cards.value = '../customerview'
+            cards.value = i.id
             cards.onclick = this.openCustomerView
 
             container.appendChild(cards);
@@ -130,15 +133,21 @@ class ContactsComp extends React.Component {
         }
     }
     openCustomerView(e){
-      let target = e.currentTarget
+      let target = e.currentTarget.value
       
-      this.props.setItem({currentCustomerView:{
-        name:target.querySelector("#name").innerText,
-        date:target.querySelector("#date").innerText,
-        status:target.querySelector("#status").innerText,
-        mobile:target.querySelector("#mobile").innerText
-      }})
-      this.props.navigate('../customerview')
+      for (let i of this.customerList){
+        if(i.id == target){
+          this.props.setItem({currentCustomerView : i})
+          this.props.navigate('../customerview')
+          break;
+        }
+      }
+      // this.props.setItem({currentCustomerView:{
+      //   name:target.querySelector("#name").innerText,
+      //   date:target.querySelector("#date").innerText,
+      //   status:target.querySelector("#status").innerText,
+      //   mobile:target.querySelector("#mobile").innerText
+      // }})
     }
     submit(){
       console.log(this.state)
