@@ -6,14 +6,17 @@ class Tasks extends React.Component{
         super(props)
         this.state = {
             currSection:0,
-            data:{overDue:[{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}],upComing:[],completed:[]}
+            data:{overDue:[{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},{title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}],
+            upComing:[],
+            completed:[]}
         }
         this.displaySection =  this.displaySection.bind(this)
         this.changeCurrentSection = this.changeCurrentSection.bind(this)
     }
-    displaySection(){
+    displaySection(currSection){
+        console.log(this.state)
         let taskList
-        switch(this.state.currSection){
+        switch(currSection){
             case 0:
                 //overDue
                 taskList = this.state.data.overDue
@@ -104,8 +107,9 @@ class Tasks extends React.Component{
     changeCurrentSection(e){
         // console.log(e)
         let obj = {}
-        obj.currSection = e.currentTarget.name
+        obj.currSection = Number.parseInt(e.currentTarget.name)
         this.setState(obj)
+        this.displaySection(Number.parseInt(e.currentTarget.name))
     }
     componentDidMount(){
         this.displaySection()
@@ -115,7 +119,7 @@ class Tasks extends React.Component{
              <section id="Tasks">
              <nav id="navBar">
                <button>
-                 <img src={require("../images/arrow_left_white.svg")} alt="back"/>
+                 <img onClick={this.props.navigate} value='../dashboard'  src={require("../images/arrow_left_white.svg")} alt="back"/>
                </button>
                <p id="navTxt">Tasks</p>
              </nav>

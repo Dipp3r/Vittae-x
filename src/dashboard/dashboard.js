@@ -102,7 +102,7 @@ class DashboardComp extends React.Component{
             </nav>
           
             <div id="main">
-             {(this.state.isHome)?< HomeComp/>:<ContactsComp />}   
+             {(this.state.isHome)?< HomeComp getItem={this.props.getItem} setItem={this.props.setItem} />:<ContactsComp getItem={this.props.getItem} setItem={this.props.setItem}  />}   
               <div className="fixed" onClick={this.toggleHomeContacts}>
                 <div className={this.state.isHome?"downIconDivClick":"downIconDiv"}>
 

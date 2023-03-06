@@ -7,7 +7,7 @@ class FirstComp extends React.Component{
         this.getStarted = this.getStarted.bind(this);
     }
     getStarted(){
-        this.props.navigate("./login")
+        this.props.navigate("./dashboard")
         return
         fetch('/signIn',{
             method:'GET'
@@ -23,6 +23,7 @@ class FirstComp extends React.Component{
             }
         })
     }
+    
     render(){
         return(
             <section id="getStartedPage">

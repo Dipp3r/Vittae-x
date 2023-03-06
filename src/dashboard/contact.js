@@ -7,32 +7,42 @@ class ContactsComp extends React.Component {
         this.state = {
           addClientMenu:'none',
           filterMenu:'none',
-          name:'',
-          mobile:'',
-          mail:'',
-          designation:'',
-
+          userInfo:{
+            name:'',
+            mobile:'',
+            mail:'',
+            designation:'',
+          },
+          filterProps:{
+            status:0,
+            sort: 'dateDesc'
+          }
         }
-        this.customerList = [{name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:'active',date:'01/02/2002'},
-        {name:'bbb',mobile:'1234567812',status:'active',date:'01/02/2002'},
-        {name:'ccc',mobile:'1234567820',status:'active',date:'01/02/2002'},
-        {name:'ddd',mobile:'1234547890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'},
-        {name:'eee',mobile:'1234347890',status:'active',date:'01/02/2002'}];
+        this.customerList = [
+        {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:4,date:'02/01/2002'},
+        {id:3,name:'ccc',mobile:'1234567820',status:1,date:'02/03/2002'},
+        {id:2,name:'bbb',mobile:'1234567812',status:1,date:'02/02/2002'},
+        {id:4,name:'ddd',mobile:'1234547890',status:2,date:'02/21/2002'},
+        {id:5,name:'eee',mobile:'1234347890',status:3,date:'02/19/2002'},
+        {id:6,name:'eee',mobile:'1234347890',status:3,date:'02/17/2002'},
+        {id:7,name:'eee',mobile:'1234347890',status:2,date:'02/15/2002'},
+        {id:8,name:'eee',mobile:'1234347890',status:2,date:'02/12/2002'},
+        {id:9,name:'eee',mobile:'1234347890',status:2,date:'02/09/2002'},
+        {id:10,name:'eee',mobile:'1234347890',status:2,date:'02/08/2002'},
+        {id:11,name:'eee',mobile:'1234347890',status:2,date:'02/01/2002'},
+        {id:12,name:'eee',mobile:'1234347890',status:2,date:'02/07/2002'},
+        {id:13,name:'eee',mobile:'1234347890',status:2,date:'02/04/2002'},
+        {id:14,name:'eee',mobile:'1234347890',status:2,date:'02/06/2002'}];
         this.displayCustomer = this.displayCustomer.bind(this)
         this.displayMessage = this.displayMessage.bind(this)
         this.toggleFilterMenu = this.toggleFilterMenu.bind(this)
         this.toggleAddClientMenu = this.toggleAddClientMenu.bind(this)
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
+        this.openCustomerView = this.openCustomerView.bind(this)
+        this.setFilterPropStatus = this.setFilterPropStatus.bind(this)
+        this.filterAndSort = this.filterAndSort.bind(this)
+        this.toggleFilterSort = this.toggleFilterSort.bind(this)
     }
     displayMessage(){
       let messageBox = document.querySelector('#messageBox')
@@ -60,6 +70,37 @@ class ContactsComp extends React.Component {
       }
       this.setState({filterMenu:menu})
     }
+    toggleFilterSort(e){
+      let sort = this.state.filterProps.sort
+      switch (e.currentTarget.value) {
+        case '1':
+          if(sort == 'dateDesc') {
+            sort = 'dateAsce'
+          }else{
+           sort = 'dateDesc'
+          }
+          break;
+        case '2':
+          if(sort == 'nameDesc') {
+            sort = 'nameAsce'
+          }else{
+           sort = 'nameDesc'
+          }
+          break;
+        default:
+          if(sort == 'dateDesc') {
+            sort = 'dateAsce'
+          }else{
+           sort = 'dateAsce'
+          }
+          break;
+      }
+      
+      let filter = this.state.filterProps
+      filter.sort = sort
+      this.setState(filter)
+      this.filterAndSort()
+    }
     changeInVal(e){
         let obj = {};
         // console.log(e.keyCode)
@@ -70,11 +111,11 @@ class ContactsComp extends React.Component {
         // console.log(obj)
         this.setState(obj);
     }
-    displayCustomer(){
+    displayCustomer(customerList){
         let container = document.body.querySelector('#cardsList')
         container.innerHTML = ''
 
-        for(let i of this.customerList){
+        for(let i of customerList){
             let cards = document.createElement('button')
             cards.className = 'cards'
             let details = document.createElement('div')
@@ -82,12 +123,14 @@ class ContactsComp extends React.Component {
 
             let name = document.createElement('div')
             name.className = 'info'
-            let mobile = document.createElement('button')
+            name.id='name'
+            let mobile = document.createElement('div')
             mobile.className = 'info'
-            
+            mobile.id = 'mobile'
 
             let status = document.createElement('div')
             status.className = 'info status'
+            status.id = 'status'
             let statusIcon = document.createElement('i')
             statusIcon.className = 'down'
             status.append(statusIcon)
@@ -97,6 +140,7 @@ class ContactsComp extends React.Component {
             dateButton.className = 'info dateDiv'
             let date = document.createElement('p')
             date.className = 'date'
+            date.id = 'date'
             let filterTag = document.createElement('div')
             filterTag.className = 'filterTag'
             dateButton.appendChild(filterTag)
@@ -111,14 +155,6 @@ class ContactsComp extends React.Component {
             mobile.innerText = i.mobile
             date.innerText = i.date
             status.innerText = i.status
-            mobile.innerText = i.mobile
-            // mobile.href=`tel:${i.mobile}`
-            mobile.value = i.mobile
-            mobile.onclick = (e)=>{
-              e.stopPropagation()
-              navigator.clipboard.writeText(mobile.value)
-              this.displayMessage()
-            }
           
             details.appendChild(name)
             details.appendChild(mobile)
@@ -126,39 +162,97 @@ class ContactsComp extends React.Component {
             details.appendChild(dateButton)
             
             cards.appendChild(details)
-            cards.value = '../customerview'
-            cards.onclick = this.props.navigate
+            cards.value = i.id
+            cards.onclick = this.openCustomerView
 
             container.appendChild(cards);
             console.log(cards)
         }
     }
+    openCustomerView(e){
+      let target = e.currentTarget.value
+      
+      for (let i of this.customerList){
+        if(i.id == target){
+          this.props.setItem({currentCustomerView : i})
+          this.props.navigate('../customerview')
+          break;
+        }
+      }
+      // this.props.setItem({currentCustomerView:{
+      //   name:target.querySelector("#name").innerText,
+      //   date:target.querySelector("#date").innerText,
+      //   status:target.querySelector("#status").innerText,
+      //   mobile:target.querySelector("#mobile").innerText
+      // }})
+    }
+    setFilterPropStatus(e){
+      let filterProps = this.state.filterProps
+      filterProps.status = e.currentTarget.value
+      this.setState({filterProps:filterProps})
+
+      this.lastSelectedFilterButton.style.borderBottomColor = '#6d7593'
+      e.currentTarget.style.borderBottomColor = '#223f80'
+      this.lastSelectedFilterButton =  e.currentTarget
+
+      this.filterAndSort()
+    }
+    filterAndSort(){
+      let newCustomerList = this.customerList
+      let filterProps = this.state.filterProps
+      if(filterProps.status != '0'){
+        newCustomerList = newCustomerList.filter((element)=>{return element.status == Number.parseInt(filterProps.status)})
+      }
+      
+      
+      switch (filterProps.sort) {
+        case 'dateDesc':
+          newCustomerList = newCustomerList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
+          break;
+        case 'dateAsce':
+          newCustomerList = newCustomerList.sort((a,b)=>{return new Date(a.date).getTime()-new Date(b.date).getTime()})
+          break;
+        case 'nameDesc':
+          newCustomerList = newCustomerList.sort((a,b)=>{return b.name.localeCompare(a.name)})
+          break;
+        case 'nameAsce':
+          newCustomerList = newCustomerList.sort((a,b)=>{return a.name.localeCompare(b.name)})
+          break;  
+        default:
+          newCustomerList = newCustomerList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
+          break;
+      }
+      console.log(newCustomerList)
+      this.displayCustomer(newCustomerList)
+    }
+
+
     submit(){
       console.log(this.state)
       this.toggleAddClientMenu()
     }
     componentDidMount(){
-      this.displayCustomer()
+      this.displayCustomer(this.customerList)
+      this.lastSelectedFilterButton = document.body.querySelector("#statusButton").children[0]
     }
     render(){
       console.log(this.state)
+      console.log(this.props)
         return(
             <div id='contactMain' >
             <div id="statusBar">
                 <div id="statusButton">
-                  <button class="statusButton">ALL</button>
-                  <button class="statusButton">ACTIVE</button>
-                  <button class="statusButton">PENDING</button>
-                  <button class="statusButton">INACTIVE</button>
+                  <button class="statusButton" value='0'  onClick={this.setFilterPropStatus}  >ALL</button>
+                  <button class="statusButton" value='1'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
+                  <button class="statusButton" value='2'  onClick={this.setFilterPropStatus}  >PENDING</button>
+                  <button class="statusButton" value='3'  onClick={this.setFilterPropStatus}  >INACTIVE</button>
                 </div>
           
               </div>
           
-              <hr id="statusBarEdge" />
-          
               <div id="searchBarDiv">
                 <div id="searchBar">
-                  <img id="icon" src={require("../images/search.svg")} alt="eye icon"/>
+                  <img id="icon" src={require("../images/Search.svg")} alt="eye icon"/>
                   <input type="text" id="searchField" />
                 </div>
           
@@ -181,10 +275,10 @@ class ContactsComp extends React.Component {
               <div id="labelBar">
           
                 <div id="labels">
-                  <button class="label">Name</button>
+                  <button class="label" onClick={this.toggleFilterSort} value='2' >Name</button>
                   <p class="label">Mobile</p>
                   <p class="label">Status</p>
-                  <button class="label">Added Date</button>
+                  <button class="label" onClick={this.toggleFilterSort} value='1'  >Added Date</button>
                 </div>
           
               </div>
