@@ -1,10 +1,13 @@
-console.log('testing')
+console.log(new Date('12/21/2002'))
 
-let today = new Date()
-today.setMonth(1)
-for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
-    console.log(dt.toDateString())
-}
+// let today = new Date()
+// today.setMonth(1)
+// arr = []
+// for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
+//     console.log(dt.toDateString())
+//     arr.push(dt.getTime())
+// }
+// console.log(arr.sort((a,b)=>{return b-a}))
 // console.log(dt)
 //             dateDiv = document.createElement('div')
 //             dateDiv.className = 'date'

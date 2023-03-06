@@ -820,11 +820,12 @@ section {
   width: 33.333%;
   height: 32px;
   text-align: center;
+  border-bottom: 2px solid transparent;
 }
-#dashboard #main #statusBar #statusButton .statusButton:focus {
+/* #dashboard #main #statusBar #statusButton .statusButton:focus {
   color: #223F80;
   border-bottom: 1px solid #223F80;
-}
+} */
 #dashboard #main #statusBarEdge {
   width: 100vw;
   margin: 0px;
