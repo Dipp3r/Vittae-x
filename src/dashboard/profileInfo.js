@@ -31,8 +31,10 @@ class ProfileInfo extends React.Component{
             </div>
           
             <div class="inputField">
-              <p class="label">Name</p>
-              <input class="field" type="text" />
+              <p class="label">first_name</p>
+              <input class="field" type="text" value={this.props.getItem('first_name')} />
+              <p class="label">last_name</p>
+              <input class="field" type="text" value={this.props.getItem('last_name') == null?'':this.props.getItem('last_name')} />
           
               <p class="label">Date of Birth</p>
               <div id="dobField">

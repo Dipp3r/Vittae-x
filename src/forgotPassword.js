@@ -7,10 +7,17 @@ class ForgotPassword extends MobComp{
     constructor(props){
         super(props)
         this.state = {}
-        this.submitLink = 'verifyID'
         this.loc = '../forgotOTP'
         this.title = 'Find Your Profile'
-        this.setItem = this.props.setItem
+        
+    }
+    process(data){
+        if(data.old_user){
+            //registered user
+            this.props.navigate(this.loc)
+        }else{
+            //unregistered user
+        }
     }
 }
 

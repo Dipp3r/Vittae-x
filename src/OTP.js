@@ -10,7 +10,7 @@ class OTPComp extends React.Component {
         intervalId:0,
         isTimeOut:false
         }
-        this.submitLink = 'sendOTP'
+        this.submitLink = 'http://dev.api.vittae.money/broker/check-otp/'
         this.loc = '../'
         this.changeInVal = this.changeInVal.bind(this)
         this.changeTimer = this.changeTimer.bind(this)
@@ -31,29 +31,29 @@ class OTPComp extends React.Component {
         // // console.log(value == "",num)
         // value = Number.parseInt(value).split(-1)
         // if(!Number.isInteger(value)) return;
-        console.log(num,value)
+        // console.log(num,value)
         
         // console.log(text,this.state.OTP)
         if(inputclass[num].value == ""){ 
             inputclass[num].value = value[0]
             text[num] = value[0]
-            console.log('value == ""',value)
+            // console.log('value == ""',value)
             if(num<=2 && value != '' ){
                 inputclass[num+1].focus()
-                console.log('front')
+                // console.log('front')
             }
         }else if (num <=2 && value.length > 1){
             inputclass[num].value = value[0]
             inputclass[num+1].value = value.slice(-1)
             text[num] = value[0]
             text[num+1] = value.slice(-1)
-            console.log('Split value')
+            // console.log('Split value')
             
             inputclass[num+1].focus()
         }else if(num ==0 && value == ""){
             inputclass[num].value = ''
             text[num] = ''
-            console.log('remove above')
+            // console.log('remove above')
         }else{
             inputclass[num].value = ''
             inputclass[num].value = value.slice(-1)
@@ -62,7 +62,7 @@ class OTPComp extends React.Component {
         
         if(value == '' && num >0){
             inputclass[num-1].focus()
-            console.log('back')
+            // console.log('back')
         }
         
         this.setState({OTP:text})
@@ -131,11 +131,12 @@ class OTPComp extends React.Component {
     changeColor(element,color){
         document.querySelector(element).style.borderColor = color
       }
-    submit(){
+    async submit(){
         if(this.state.isTimeOut) return
 
-        var obj = {OTP:this.state.OTP.join(""),type:this.txt.split(':')[1]}
+        var obj = {OTP:this.state.OTP.join(""),phone:this.props.getItem('phone')}
         if(obj.OTP == '') return
+        console.log(obj)
         fetch(this.submitLink,{
             method:'POST',
             body:JSON.stringify(obj),
@@ -143,9 +144,17 @@ class OTPComp extends React.Component {
                 "Content-type": "application/json; charset=UTF-8"
             }
         })
-        .then((response) => response.json())
+        .then((response) =>{
+            console.log(response)
+            if(response.status == 201){
+                return response.json()
+            }
+            throw new Error('Something went wrong')
+        })
         .then((data)=>{
-           if (data.status) this.props.navigate(this.loc)
+            console.log(data)            
+            this.props.setItem(data)
+            this.props.navigate(this.loc)
         })
     }
     componentDidMount(){
