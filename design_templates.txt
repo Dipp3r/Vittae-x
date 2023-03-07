@@ -11,32 +11,29 @@
   <button id="Button">
     Get Started
   </button>
-</section>
+</section> -->
 
 
 
-
-
-<section id="signInPage">
+<!-- <section id="signInPage">
   <div id="signInFormDiv">
-    <div id="signInTextDiv" class="p-8 pb-4">
+    <div id="signInTextDiv">
       <p id="signInText">SIGN IN</p>
     </div>
     <div id="fieldBox">
-      <p id="emailLable">Mobile number</p>
-      <input type="text" placeholder="1234567890" id="emailField" />
+      <p id="emailLable" class="inLabel">Mobile number</p>
+      <input type="text" placeholder="1234567890" id="numberField" />
 
       <div id="passwordDiv">
-        <p>Password</p>
+        <p class='inLabel'>Password</p>
         <div id="passwordBox">
           <input type="password" placeholder="Example!123" id="passwordField" class="password" />
           <img src="../static/images/eye.svg" alt="eye icon" />
         </div>
       </div>
-
        <div class="tickBox"> -->
-<!--when the value is 0 the bg is set transprent otherwise its set to dark blue -->
-<!-- <button value="0" class="tickButton">
+<!-- when the value is 0 the bg is set transprent otherwise its set to dark blue -->
+  <!-- <button value="0" class="tickButton">
           <svg width="12" height="10" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round"
               stroke-linejoin="round" />
@@ -48,8 +45,11 @@
 
       <div id="buttonDiv">
         <button id="Button">SIGN IN</button>
-        <p id="forgotPwd">Forgot password?</p>
       </div>
+      <div id="forgotPwd">
+        <p>Forgot password?</p>
+      </div>
+      
 
       <div id="accDiv">
         <hr />
@@ -57,15 +57,11 @@
       </div>
     </div>
   </div>
-</section>
+</section>-->
 
 
 
-
-
-
-
-<section class="phonePg">
+<!-- <section class="phonePg">
   <div id="phoneSignUpFormDiv">
     <div id="phoneSignUpTextDiv">
       <p id="phoneSignUpText">SIGN UP</p>
@@ -73,14 +69,17 @@
     <div id="fieldBox">
       <p id="mobileLable">Mobile number</p>
       <input type="number" placeholder="1234567890" id="mobileField" />
+      <p class='invalid'>*Error</p>
+    </div>
+    <div id="buttonDiv"> 
       <button id="Button">SIGN UP</button>
     </div>
   </div>
-</section>
+</section> -->
 
 
 
-<section id="signUpPg">
+<!-- <section id="signUpPg"> 
   <div id="SignUpFormDiv">
     <div id="SignUpTextDiv">
       <p id="SignUpText">SIGN UP</p>
@@ -141,13 +140,12 @@
       <button id="Button">SIGN UP</button>
     </div>
   </div>
-</section>
+</section> -->
 
 
 
 
-
-<section id="otpPage">
+<!-- <section id="otpPage">
   <div id="otpDiv">
     <div id="otpTextDiv">
       <p id="otpText">ENTER OTP</p>
@@ -164,15 +162,17 @@
     <p id="otpTime">
       00:00 <a>Resend</a>
     </p>
-    <button id="Button">SUBMIT</button>
+    <div id="submit">
+      <button id="Button">SUBMIT</button>
+    </div>
   </div>
   </div>
-</section>
+</section> -->
 
 
 
 
-<section id="newPassword">
+<!-- <section id="newPassword">
   <div id="phoneSignUpFormDiv">
     <div id="phoneSignUpTextDiv">
       <p id="phoneSignUpText">CREATE A STRONG PASSWORD</p>
@@ -189,15 +189,15 @@
     </div>
 
     <div class="passwordDiv">
-      <p>New password</p>
+      <p class="inLabel" >New password</p>
       <div class="passwordBox">
         <input type="password" placeholder="Example!123" class="passwordField password" />
-        <img src="../static/images/eye.svg" alt="eye icon" />
+        <img src="../static/images/eye.svg" alt="eye icon" name="passType"/>
       </div>
     </div>
     <p class="invalid">*Invalid number</p>
     <div class="passwordDiv">
-      <p>Confirm password</p>
+      <p class="inLabel">Confirm password</p>
       <div class="passwordBox">
         <input type="password" placeholder="Example!123" class="passwordField password" />
         <img src="../static/images/eye.svg" alt="eye icon" />
@@ -205,9 +205,11 @@
     </div>
     <p class="invalid">*Invalid number</p>
 
-    <button id="Button">SIGN IN</button>
+    <div id="buttonDiv">
+      <button id="Button">SIGN IN</button>
+    </div>
   </div>
-</section> -->
+</section>  -->
 
 
 
@@ -852,7 +854,7 @@
 
 
 
-<!-- <section id="home">
+<!-- <section id="dashboard">
   <nav class="navbar">
     <button class="profile">
       <img id="profileImg" src="../static/images/profile.png" alt="" />
@@ -1455,6 +1457,7 @@
     </div>
   </div>
 </section> -->
+
 
 
 <!-- <section id="Client">
