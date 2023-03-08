@@ -1,5 +1,6 @@
 import React from "react";
 import { WithRouter } from "./routingWrapper";
+import './styles/first.css';
 
 class FirstComp extends React.Component{
     constructor(props){
