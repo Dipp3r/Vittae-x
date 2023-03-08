@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 
@@ -16,7 +17,7 @@ class ContactsComp extends React.Component {
           filterProps:{
             status:0,
             sort: 'dateDesc',
-            tag:''
+            tag:[]
           }
         }
         this.customerList = [
@@ -118,8 +119,26 @@ class ContactsComp extends React.Component {
     displayCustomer(customerList){
         let container = document.body.querySelector('#cardsList')
         container.innerHTML = ''
-
+        let statusBackgroundColor
         for(let i of customerList){
+            switch (i.status) {
+              case 1:
+                statusBackgroundColor = '#C4C4C4'
+                break;
+              case 2:
+                statusBackgroundColor = '#DAC16B'
+                break;
+              case 3:
+                statusBackgroundColor = '#6BDA7D'
+                break;
+              case 4:
+                statusBackgroundColor = '#DA6B6B'
+                break;
+              default:
+                statusBackgroundColor = '#C4C4C4'
+                break;
+            }
+
             let cards = document.createElement('button')
             cards.className = 'cards'
             let details = document.createElement('div')
@@ -135,6 +154,7 @@ class ContactsComp extends React.Component {
             let status = document.createElement('div')
             status.className = 'info status'
             status.id = 'status'
+            status.style.backgroundColor = statusBackgroundColor
             let statusIcon = document.createElement('i')
             statusIcon.className = 'down'
             status.append(statusIcon)
@@ -158,8 +178,8 @@ class ContactsComp extends React.Component {
 
             mobile.innerText = i.mobile
             date.innerText = i.date
-            status.innerText = i.status
-          
+            // status.innerText = i.status
+            
             details.appendChild(name)
             details.appendChild(mobile)
             details.appendChild(status)
@@ -170,7 +190,7 @@ class ContactsComp extends React.Component {
             cards.onclick = this.openCustomerView
 
             container.appendChild(cards);
-            console.log(cards)
+            // console.log(cards)
         }
     }
     openCustomerView(e){
@@ -192,7 +212,16 @@ class ContactsComp extends React.Component {
     }
     setFilterPropsTag(e){
       let filterProps = this.state.filterProps
-      filterProps.tag = e.currentTarget.value
+      let value = e.currentTarget.value
+      let index = filterProps.tag.indexOf(value)
+      if(index == -1){
+        filterProps.tag.push(value)
+        e.currentTarget.style.backgroundColor = '#223F80'
+      }else{
+        filterProps.tag.splice(index,1)
+        e.currentTarget.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
+      } 
+      console.log(index,value,filterProps.tag)
       this.setState({filterProps:filterProps})
 
       this.filterAndSort(this.customerList)
@@ -235,11 +264,20 @@ class ContactsComp extends React.Component {
           break;
       }
       //filter by tag
+      
+      
+      let string 
       newCustomerList = newCustomerList.filter((element)=>{
-        let string = element.tag.join(' ')
-        return string.match(new RegExp(`${this.state.filterProps.tag}`,"g"))
+        string = element.tag.join(' ')
+        let bool = true,newBool = false
+        this.state.filterProps.tag.map((element)=> {
+          newBool = new RegExp(element).test(string)
+          bool = bool && newBool
+        })
+        // console.log(string,bool)
+        return bool
       })
-      console.log(newCustomerList)
+      // console.dir(newCustomerList)
       this.displayCustomer(newCustomerList)
     }
 
@@ -277,9 +315,9 @@ class ContactsComp extends React.Component {
             <div id="statusBar">
                 <div id="statusButton">
                   <button class="statusButton" value='0'  onClick={this.setFilterPropStatus}  >ALL</button>
-                  <button class="statusButton" value='1'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
+                  <button class="statusButton" value='3'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
                   <button class="statusButton" value='2'  onClick={this.setFilterPropStatus}  >PENDING</button>
-                  <button class="statusButton" value='3'  onClick={this.setFilterPropStatus}  >INACTIVE</button>
+                  <button class="statusButton" value='4 '  onClick={this.setFilterPropStatus}  >INACTIVE</button>
                 </div>
           
               </div>
@@ -395,7 +433,6 @@ class ContactsComp extends React.Component {
                     <button className="fLabel" onClick={this.setFilterPropsTag} value='tag2' >tag2</button>
                     <button className="fLabel" onClick={this.setFilterPropsTag} value='tag3' >tag3</button>
                     <button className="fLabel" onClick={this.setFilterPropsTag} value='tag4' >tag4</button>
-                    <button className="fLabel" onClick={this.setFilterPropsTag} value='' >none</button>
                     </div>
                 </div>
             </div>
