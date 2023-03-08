@@ -1,9 +1,11 @@
 input::-moz-placeholder {
+  color: #B8B8B8;
   font-weight: normal;
   opacity: 1;
 }
 
 input::placeholder {
+  color: #B8B8B8;
   font-weight: normal;
   opacity: 1;
 }
@@ -121,7 +123,7 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 body {
   margin: 0px;
@@ -144,360 +146,11 @@ section {
   overflow: auto;
   height: 100vh;
   width: 100vw;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
-
-#newPassword {
-  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
-  padding-bottom: 50px;
-}
-#newPassword #phoneSignUpFormDiv {
-  background-color: white;
-  border-radius: 12px;
-  width: 95%;
-  box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
-}
-#newPassword #phoneSignUpFormDiv #phoneSignUpTextDiv {
-  padding: 20px 30px;
-  padding-bottom: 10px;
-  text-align: center;
-}
-#newPassword #phoneSignUpFormDiv #phoneSignUpTextDiv #phoneSignUpText {
-  color: #223F80;
-  font-weight: 500;
-  font-size: 19px;
-  padding: 10px;
-}
-#newPassword #phoneSignUpFormDiv #constraintDiv {
-  margin-left: 40px;
-}
-#newPassword #phoneSignUpFormDiv #constraintDiv #title {
-  color: #B8B8B8;
-  font-size: small;
-  font-weight: 600;
-}
-#newPassword #phoneSignUpFormDiv #constraintDiv #constraints {
-  margin-left: 20px;
-}
-#newPassword #phoneSignUpFormDiv #constraintDiv #constraints #constraintText {
-  color: #B8B8B8;
-  font-size: small;
-  font-weight: 400;
-}
-#newPassword #phoneSignUpFormDiv .passwordDiv {
-  padding: 10px 20px;
-  padding-bottom: 0px;
-}
-#newPassword #phoneSignUpFormDiv .passwordDiv p {
-  color: #223F80;
-  font-weight: 400;
-  font-size: 16px;
-  padding: 5px;
-}
-#newPassword #phoneSignUpFormDiv .passwordDiv .passwordBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: none;
-  align-items: none;
-  border: 2px solid #B8B8B8;
-  border-radius: 12px;
-  padding: 5px;
-  width: 100%;
-  height: 50px;
-}
-#newPassword #phoneSignUpFormDiv .passwordDiv .passwordBox #numberLabel {
-  color: #B8B8B8;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-}
-#newPassword #phoneSignUpFormDiv .passwordDiv .passwordBox .passwordField {
-  font-weight: 400;
-  padding: 5px;
-  width: 100%;
-  border-radius: 12px;
-}
-#newPassword #phoneSignUpFormDiv .passwordDiv .passwordBox img {
-  margin: 5px;
-}
-#newPassword #phoneSignUpFormDiv .invalid {
-  padding-left: 30px;
-  visibility: visible;
-}
-#newPassword #phoneSignUpFormDiv #Button {
-  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
-  transition-duration: 1s;
-  width: 90%;
-  height: 60px;
-  font-family: "Montserrat";
-  margin: 40px 20px;
-  font-weight: 400;
-  font-size: 18px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
-  color: white;
-  border-radius: 12px;
-}
-#newPassword #phoneSignUpFormDiv #Button:hover {
-  box-shadow: none;
-  scale: 0.95;
-}
-
-#signUpPg {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
-  height: 100%;
-  padding: 100px 10px;
-  overflow-x: hidden;
-}
-#signUpPg #SignUpFormDiv {
-  background-color: white;
-  border-radius: 12px;
-  width: 95%;
-  box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
-}
-#signUpPg #SignUpFormDiv #SignUpTextDiv {
-  padding: 20px 30px;
-  padding-bottom: 10px;
-}
-#signUpPg #SignUpFormDiv #SignUpTextDiv #SignUpText {
-  color: #223F80;
-  font-weight: 500;
-  font-size: 22px;
-  padding: 10px;
-}
-#signUpPg #SignUpFormDiv #fieldBox {
-  background-color: white;
-  margin: 10px 30px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .label {
-  color: #223F80;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-  margin-top: 8px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #mobileLabel {
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-  margin-top: 8px;
-  color: #929292;
-}
-#signUpPg #SignUpFormDiv #fieldBox .signUpField {
-  border: 2px solid #B8B8B8;
-  border-radius: 12px;
-  padding: 10px;
-  width: 100%;
-  height: 50px;
-  font-weight: 400;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv {
-  padding-top: 10px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv p {
-  color: #223F80;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: none;
-  align-items: none;
-  border: 2px solid #B8B8B8;
-  border-radius: 12px;
-  padding: 5px;
-  width: 100%;
-  height: 50px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox #numberLabel {
-  color: #B8B8B8;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox .passwordField {
-  font-weight: 400;
-  padding: 5px;
-  width: 100%;
-  border-radius: 12px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox img {
-  margin: 5px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #constraintDiv {
-  margin: 20px 15px;
-  margin-bottom: 0px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #constraintDiv #title {
-  color: #B8B8B8;
-  font-size: small;
-  font-weight: 600;
-}
-#signUpPg #SignUpFormDiv #fieldBox #constraintDiv #constraints {
-  margin-left: 20px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #constraintDiv #constraints #constraintText {
-  color: #B8B8B8;
-  font-size: small;
-  font-weight: 400;
-}
-#signUpPg #SignUpFormDiv #fieldBox .tickBox {
-  margin-top: 20px;
-  padding: 0px;
-  margin-bottom: 0px;
-  height: -moz-fit-content;
-  height: fit-content;
-  font-size: 12px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .tickBox p {
-  text-align: center;
-  color: #B8B8B8;
-  margin-top: 5px;
-  font-size: small;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-#signUpPg #SignUpFormDiv #fieldBox .tickBox p a {
-  text-decoration-line: underline;
-  color: #223F80;
-}
-#signUpPg #SignUpFormDiv #fieldBox .tickBox .tickButton {
-  margin-top: 8px;
-  margin-bottom: 0px;
-  width: 18px;
-  height: 18px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .invalid {
-  color: #BB2230;
-  font-size: small;
-  margin-left: 8px;
-  visibility: visible;
-}
-#signUpPg #SignUpFormDiv #fieldBox #invalidTC {
-  margin-top: 0px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #Button {
-  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
-  transition-duration: 1s;
-  width: 100%;
-  height: 50px;
-  font-family: "Montserrat";
-  margin: 20px 0px;
-  font-weight: 400;
-  font-size: 18px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
-  color: white;
-  border-radius: 12px;
-  margin-bottom: 40px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #Button:hover {
-  box-shadow: none;
-  scale: 0.95;
-}
-
-#otpPage {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
-  padding: 20px 10px;
-}
-#otpPage #otpDiv {
-  background-color: white;
-  border-radius: 12px;
-  width: 95%;
-  box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
-}
-#otpPage #otpDiv #otpTextDiv {
-  padding: 20px 30px;
-  padding-bottom: 10px;
-}
-#otpPage #otpDiv #otpTextDiv #otpText {
-  color: #223F80;
-  font-weight: 500;
-  font-size: 22px;
-  padding: 10px;
-}
-#otpPage #otpDiv #otpTextDiv #mobileText {
-  font-size: small;
-  font-weight: 500;
-  margin-top: 5px;
-  margin-left: 8px;
-  color: #3E3E3E;
-}
-#otpPage #otpDiv #otpTextDiv #samplephone {
-  font-size: small;
-  font-weight: 500;
-  margin-left: 8px;
-  color: #223F80;
-}
-#otpPage #otpDiv #otpBoxDiv {
-  background-color: white;
-  margin: 0px 30px;
-  border-radius: 12px;
-}
-#otpPage #otpDiv #otpBoxDiv #otpBox {
-  padding: 20px;
-  padding-bottom: 0px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-}
-#otpPage #otpDiv #otpBoxDiv #otpBox input {
-  font-size: 28px;
-  padding: 0px;
-  color: #223F80;
-  text-align: center;
-  font-weight: 700;
-  margin: 0px 10px;
-  width: 25%;
-  width: 46px;
-  height: 46px;
-  background: #FFFFFF;
-  border: 2px solid #B8B8B8;
-  border-radius: 12px;
-}
-#otpPage #otpDiv #otpBoxDiv #otpTime {
-  float: right;
-  margin: 5px 30px;
-  font-size: small;
-  color: #B8B8B8;
-}
-#otpPage #otpDiv #otpBoxDiv #otpTime a {
-  text-decoration-line: underline;
-  color: #223F80;
-}
-#otpPage #otpDiv #Button {
-  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
-  transition-duration: 1s;
-  width: 80%;
-  height: 50px;
-  font-family: "Montserrat";
-  margin: 30px 10%;
-  font-weight: 400;
-  font-size: 18px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
-  color: white;
-  border-radius: 12px;
-}
-#otpPage #otpDiv #Button:hover {
-  box-shadow: none;
-  scale: 0.95;
 }
 
 #dashboard {
@@ -2315,6 +1968,7 @@ button {
   height: 18px;
   border-radius: 3px;
   margin-top: 4px;
+  margin-bottom: 5px;
 }
 
 .flex-row {
@@ -2395,25 +2049,30 @@ input[type=date]::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   border-radius: 12px;
 }
 .phonePg #phoneSignUpFormDiv #fieldBox #mobileLable {
   margin: 0px;
+  width: 100%;
   color: #223F80;
+  font-family: "Montserrat";
+  font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
+  font-size: 12px;
+  padding-left: 5px;
 }
 .phonePg #phoneSignUpFormDiv #fieldBox #mobileField {
   border: 2px solid #B8B8B8;
   border-radius: 12px;
-  padding: 10px;
-  width: 95%;
-  height: 30px;
+  padding-left: 5px;
+  width: 272px;
+  height: 40px;
   font-weight: 400;
 }
 .phonePg #phoneSignUpFormDiv #fieldBox .invalid {
+  margin-top: 2px;
+  width: 100%;
   padding: 10px;
   padding-top: 0px;
 }
@@ -2427,7 +2086,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
   transition-duration: 1s;
   width: 272px;
-  height: 60px;
+  height: 48px;
   font-family: "Montserrat";
   margin: 20px 0px;
   font-weight: 400;

@@ -1,5 +1,6 @@
 import React from "react";
 import { WithRouter } from "./routingWrapper";
+import './styles/OTP.css';
 
 class OTPComp extends React.Component {
     constructor(props){
@@ -132,8 +133,8 @@ class OTPComp extends React.Component {
         document.querySelector(element).style.borderColor = color
       }
     async submit(){
+        return this.props.navigate(this.loc);
         if(this.state.isTimeOut) return
-
         var obj = {OTP:this.state.OTP.join(""),phone:this.props.getItem('phone')}
         if(obj.OTP == '') return
         console.log(obj)
@@ -145,7 +146,7 @@ class OTPComp extends React.Component {
             }
         })
         .then((response) =>{
-            console.log(response)
+            console.log(response);
             if(response.status == 201){
                 return response.json()
             }
@@ -180,7 +181,7 @@ class OTPComp extends React.Component {
                 </div>
                 <p id='otpTime'>{this.state.min}:{this.state.sec} <a onClick={this.reset}>Resend</a></p>
                 
-                <div >
+                <div id="submit">
                     <button id="Button" type="submit" value={this.loc} onClick={this.submit}>
                         SUBMIT
                     </button>

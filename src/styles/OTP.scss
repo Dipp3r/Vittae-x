@@ -12,27 +12,33 @@
     #otpDiv{
         background-color: white;
         border-radius: 12px;
-        width: 95%;
+        width:340px;
         box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
         #otpTextDiv{
             padding:20px 30px;
             padding-bottom:10px;
             #otpText{
+                margin:0px;
                 color:#223F80;
                 font-weight: 500;
                 font-size: 22px;
                 padding:10px;
+                padding-bottom:0px;
             }
             #mobileText{
+                margin:0px;
                 font-size: small;
                 font-weight: 500;
-                margin-top: 5px;
                 margin-left:8px;
                 color:#3E3E3E;
             }
             #samplephone{
-                font-size: small;
-                font-weight: 500;
+                margin:0px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 10px;
+                line-height: 24px;
                 margin-left:8px;
                 color:#223F80;
             }
@@ -50,7 +56,7 @@
                     padding:0px;
                     color:#223F80;
                     text-align: center;
-                    font-weight: 700;
+                    font-weight: 500;
                     margin:0px 10px;
                     width:25%;
                     width: 46px;
@@ -63,19 +69,26 @@
             }
             #otpTime{
                 float:right;
-                margin:5px 30px;
+                margin:5px 15px;
                 font-size: small;
                 color:#B8B8B8;
                 a{
+                    margin-left:10px;
                     text-decoration-line: underline;
                     color:#223F80;
                 }
             }
         }
-        #Button{
-            @include button1(80%, 50px, 30px, 10%, 400, 18px);
 
+        #submit{
+            margin:0px;
+            width:100%;
+            @include flex(row,center,center);
+            #Button{  
+                @include button1(272px, 46px, 30px, 10%, 400, 18px);
+            }
         }
+       
 
     }
 
