@@ -1,11 +1,9 @@
 input::-moz-placeholder {
-  color: #B8B8B8;
   font-weight: normal;
   opacity: 1;
 }
 
 input::placeholder {
-  color: #B8B8B8;
   font-weight: normal;
   opacity: 1;
 }
@@ -123,7 +121,7 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
+  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 body {
   margin: 0px;
@@ -2033,6 +2031,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 #getStartedPage #charImgDiv #p1 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
   text-align: center;
   color: #697DAB;
   margin-bottom: 20px;

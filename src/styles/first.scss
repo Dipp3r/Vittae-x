@@ -15,6 +15,10 @@
         padding-top:30px;
         @include flex(column,center,center);
         #p1{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 15px;
             text-align: center;
             color:#697DAB;
             margin-bottom:20px;

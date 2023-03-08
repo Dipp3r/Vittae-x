@@ -1,3 +1,4 @@
+import { stat } from "fs";
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 
@@ -15,24 +16,25 @@ class ContactsComp extends React.Component {
           },
           filterProps:{
             status:0,
-            sort: 'dateDesc'
+            sort: 'dateDesc',
+            tag:[]
           }
         }
         this.customerList = [
-        {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:4,date:'02/01/2002'},
-        {id:3,name:'ccc',mobile:'1234567820',status:1,date:'02/03/2002'},
-        {id:2,name:'bbb',mobile:'1234567812',status:1,date:'02/02/2002'},
-        {id:4,name:'ddd',mobile:'1234547890',status:2,date:'02/21/2002'},
-        {id:5,name:'eee',mobile:'1234347890',status:3,date:'02/19/2002'},
-        {id:6,name:'eee',mobile:'1234347890',status:3,date:'02/17/2002'},
-        {id:7,name:'eee',mobile:'1234347890',status:2,date:'02/15/2002'},
-        {id:8,name:'eee',mobile:'1234347890',status:2,date:'02/12/2002'},
-        {id:9,name:'eee',mobile:'1234347890',status:2,date:'02/09/2002'},
-        {id:10,name:'eee',mobile:'1234347890',status:2,date:'02/08/2002'},
-        {id:11,name:'eee',mobile:'1234347890',status:2,date:'02/01/2002'},
-        {id:12,name:'eee',mobile:'1234347890',status:2,date:'02/07/2002'},
-        {id:13,name:'eee',mobile:'1234347890',status:2,date:'02/04/2002'},
-        {id:14,name:'eee',mobile:'1234347890',status:2,date:'02/06/2002'}];
+        {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:4,date:'02/01/2002',tag:['tag1','tag2']},
+        {id:3,name:'ccc',mobile:'1234567820',status:1,date:'02/03/2002',tag:['tag1','tag2']},
+        {id:2,name:'bbb',mobile:'1234567812',status:1,date:'02/02/2002',tag:['tag1','tag2']},
+        {id:4,name:'ddd',mobile:'1234547890',status:2,date:'02/21/2002',tag:['tag1','tag2']},
+        {id:5,name:'eee',mobile:'1234347890',status:3,date:'02/19/2002',tag:['tag1','tag2']},
+        {id:6,name:'eee',mobile:'1234347890',status:3,date:'02/17/2002',tag:[]},
+        {id:7,name:'eee',mobile:'1234347890',status:2,date:'02/15/2002',tag:['tag3','tag4']},
+        {id:8,name:'eee',mobile:'1234347890',status:2,date:'02/12/2002',tag:['tag2']},
+        {id:9,name:'eee',mobile:'1234347890',status:2,date:'02/09/2002',tag:['tag1','tag2']},
+        {id:10,name:'eee',mobile:'1234347890',status:2,date:'02/08/2002',tag:['tag1','tag2']},
+        {id:11,name:'eee',mobile:'1234347890',status:2,date:'02/01/2002',tag:['tag1','tag2']},
+        {id:12,name:'eee',mobile:'1234347890',status:2,date:'02/07/2002',tag:['tag2']},
+        {id:13,name:'eee',mobile:'1234347890',status:2,date:'02/04/2002',tag:['tag3']},
+        {id:14,name:'eee',mobile:'1234347890',status:2,date:'02/06/2002',tag:['tag4']}];
         this.displayCustomer = this.displayCustomer.bind(this)
         this.displayMessage = this.displayMessage.bind(this)
         this.toggleFilterMenu = this.toggleFilterMenu.bind(this)
@@ -43,6 +45,9 @@ class ContactsComp extends React.Component {
         this.setFilterPropStatus = this.setFilterPropStatus.bind(this)
         this.filterAndSort = this.filterAndSort.bind(this)
         this.toggleFilterSort = this.toggleFilterSort.bind(this)
+        this.searchInput = this.searchInput.bind(this)
+        this.searchCustomer = this.searchCustomer.bind(this)
+        this.setFilterPropsTag = this.setFilterPropsTag.bind(this)
     }
     displayMessage(){
       let messageBox = document.querySelector('#messageBox')
@@ -99,7 +104,7 @@ class ContactsComp extends React.Component {
       let filter = this.state.filterProps
       filter.sort = sort
       this.setState(filter)
-      this.filterAndSort()
+      this.filterAndSort(this.customerList)
     }
     changeInVal(e){
         let obj = {};
@@ -114,8 +119,26 @@ class ContactsComp extends React.Component {
     displayCustomer(customerList){
         let container = document.body.querySelector('#cardsList')
         container.innerHTML = ''
-
+        let statusBackgroundColor
         for(let i of customerList){
+            switch (i.status) {
+              case 1:
+                statusBackgroundColor = '#C4C4C4'
+                break;
+              case 2:
+                statusBackgroundColor = '#DAC16B'
+                break;
+              case 3:
+                statusBackgroundColor = '#6BDA7D'
+                break;
+              case 4:
+                statusBackgroundColor = '#DA6B6B'
+                break;
+              default:
+                statusBackgroundColor = '#C4C4C4'
+                break;
+            }
+
             let cards = document.createElement('button')
             cards.className = 'cards'
             let details = document.createElement('div')
@@ -131,6 +154,7 @@ class ContactsComp extends React.Component {
             let status = document.createElement('div')
             status.className = 'info status'
             status.id = 'status'
+            status.style.backgroundColor = statusBackgroundColor
             let statusIcon = document.createElement('i')
             statusIcon.className = 'down'
             status.append(statusIcon)
@@ -154,8 +178,8 @@ class ContactsComp extends React.Component {
 
             mobile.innerText = i.mobile
             date.innerText = i.date
-            status.innerText = i.status
-          
+            // status.innerText = i.status
+            
             details.appendChild(name)
             details.appendChild(mobile)
             details.appendChild(status)
@@ -166,7 +190,7 @@ class ContactsComp extends React.Component {
             cards.onclick = this.openCustomerView
 
             container.appendChild(cards);
-            console.log(cards)
+            // console.log(cards)
         }
     }
     openCustomerView(e){
@@ -186,6 +210,22 @@ class ContactsComp extends React.Component {
       //   mobile:target.querySelector("#mobile").innerText
       // }})
     }
+    setFilterPropsTag(e){
+      let filterProps = this.state.filterProps
+      let value = e.currentTarget.value
+      let index = filterProps.tag.indexOf(value)
+      if(index == -1){
+        filterProps.tag.push(value)
+        e.currentTarget.style.backgroundColor = '#223F80'
+      }else{
+        filterProps.tag.splice(index,1)
+        e.currentTarget.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
+      } 
+      console.log(index,value,filterProps.tag)
+      this.setState({filterProps:filterProps})
+
+      this.filterAndSort(this.customerList)
+    }
     setFilterPropStatus(e){
       let filterProps = this.state.filterProps
       filterProps.status = e.currentTarget.value
@@ -195,10 +235,11 @@ class ContactsComp extends React.Component {
       e.currentTarget.style.borderBottomColor = '#223f80'
       this.lastSelectedFilterButton =  e.currentTarget
 
-      this.filterAndSort()
+      this.filterAndSort(this.customerList)
     }
-    filterAndSort(){
-      let newCustomerList = this.customerList
+    filterAndSort(customerList){
+      let newCustomerList = customerList
+      if(newCustomerList== undefined) return this.displayCustomer([])
       let filterProps = this.state.filterProps
       if(filterProps.status != '0'){
         newCustomerList = newCustomerList.filter((element)=>{return element.status == Number.parseInt(filterProps.status)})
@@ -222,7 +263,21 @@ class ContactsComp extends React.Component {
           newCustomerList = newCustomerList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
           break;
       }
-      console.log(newCustomerList)
+      //filter by tag
+      
+      
+      let string 
+      newCustomerList = newCustomerList.filter((element)=>{
+        string = element.tag.join(' ')
+        let bool = true,newBool = false
+        this.state.filterProps.tag.map((element)=> {
+          newBool = new RegExp(element).test(string)
+          bool = bool && newBool
+        })
+        // console.log(string,bool)
+        return bool
+      })
+      // console.dir(newCustomerList)
       this.displayCustomer(newCustomerList)
     }
 
@@ -235,6 +290,23 @@ class ContactsComp extends React.Component {
       this.displayCustomer(this.customerList)
       this.lastSelectedFilterButton = document.body.querySelector("#statusButton").children[0]
     }
+    searchInput(e){
+      if(e.keyCode == 13){
+        this.searchCustomer()
+      }
+    }
+    searchCustomer(){
+      console.log(this.state.searchValue)
+      let txt = this.state.searchValue
+      txt = txt.split(' ').join('.*')
+      let newCustomerList = this.customerList
+      newCustomerList = newCustomerList.filter((element)=>{
+      let string = element.name + element.mobile + element.date 
+      return string.match(new RegExp(`.*${txt}.*`,"g"))
+      })
+      this.filterAndSort(newCustomerList)
+      // this.displayCustomer(newCustomerList)
+    }
     render(){
       console.log(this.state)
       console.log(this.props)
@@ -243,9 +315,9 @@ class ContactsComp extends React.Component {
             <div id="statusBar">
                 <div id="statusButton">
                   <button class="statusButton" value='0'  onClick={this.setFilterPropStatus}  >ALL</button>
-                  <button class="statusButton" value='1'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
+                  <button class="statusButton" value='3'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
                   <button class="statusButton" value='2'  onClick={this.setFilterPropStatus}  >PENDING</button>
-                  <button class="statusButton" value='3'  onClick={this.setFilterPropStatus}  >INACTIVE</button>
+                  <button class="statusButton" value='4 '  onClick={this.setFilterPropStatus}  >INACTIVE</button>
                 </div>
           
               </div>
@@ -253,7 +325,7 @@ class ContactsComp extends React.Component {
               <div id="searchBarDiv">
                 <div id="searchBar">
                   <img id="icon" src={require("../images/Search.svg")} alt="eye icon"/>
-                  <input type="text" id="searchField" />
+                  <input type="text" name="searchValue"  onChange={this.changeInVal} onKeyDown={this.searchInput} id="searchField" />
                 </div>
           
                 <button onClick={this.toggleFilterMenu}  >
@@ -357,11 +429,10 @@ class ContactsComp extends React.Component {
                     </button>
           
                     <div id="filterLabels">
-                    <button className="fLabel">xxxxxx</button>
-                    <button className="fLabel">askdba</button>
-                    <button className="fLabel">asd</button>
-                    <button className="fLabel">asdasdfawvf</button>
-                    <button className="fLabel">asdasd</button>
+                    <button className="fLabel" onClick={this.setFilterPropsTag} value='tag1' >tag1</button>
+                    <button className="fLabel" onClick={this.setFilterPropsTag} value='tag2' >tag2</button>
+                    <button className="fLabel" onClick={this.setFilterPropsTag} value='tag3' >tag3</button>
+                    <button className="fLabel" onClick={this.setFilterPropsTag} value='tag4' >tag4</button>
                     </div>
                 </div>
             </div>
