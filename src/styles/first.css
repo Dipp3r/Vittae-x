@@ -121,7 +121,7 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 body {
   margin: 0px;
