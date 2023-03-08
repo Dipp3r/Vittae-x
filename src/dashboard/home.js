@@ -67,6 +67,8 @@ class HomeComp extends React.Component{
         remainder = document.createElement('P')
         remainder.id = 'reminderOverlay'
         remainder.innerText = '.'
+        
+
         let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
         day.innerText = dayName[dt.getDay()].slice(0,3)
         date.innerText = dt.getDate() < 10?`0${dt.getDate()}`:dt.getDate();
@@ -79,7 +81,7 @@ class HomeComp extends React.Component{
         if(dateIndex < this.date.length){
           console.log(dt.toDateString(),new Date(this.date[dateIndex].date).toDateString())
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
-            remainder.style.color = 'red'
+            remainder.style.color = 'rgba(34, 63, 128, 1)'
             date.style.backgroundColor = '#a5b3cd'
             date.style.color = 'white'
             dateDiv.name = dateIndex 
