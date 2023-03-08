@@ -121,7 +121,7 @@ li::marker{
 
 @font-face {
     font-family: 'Montserrat';
-    src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+    src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 } //Vittae-x default font
 
 
@@ -1743,6 +1743,7 @@ button{
         height:18px;
         border-radius: 3px;
         margin-top: 4px;
+        margin-bottom: 5px;
     }
 
 }

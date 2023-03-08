@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import checkString from './stringChecker';
 import { WithRouter} from './routingWrapper';
+import './styles/reg.css';
 
 class RegisterComp extends React.Component {
     constructor() {

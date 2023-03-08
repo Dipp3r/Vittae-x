@@ -123,7 +123,7 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 body {
   margin: 0px;
@@ -1968,6 +1968,7 @@ button {
   height: 18px;
   border-radius: 3px;
   margin-top: 4px;
+  margin-bottom: 5px;
 }
 
 .flex-row {
@@ -2079,7 +2080,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding: 0px;
   color: #223F80;
   text-align: center;
-  font-weight: 700;
+  font-weight: 500;
   margin: 0px 10px;
   width: 25%;
   width: 46px;

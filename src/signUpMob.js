@@ -1,6 +1,7 @@
 import React from "react"
 import MobComp from "./mobComp"
 import { WithRouter } from "./routingWrapper"
+import './styles/mobComp.css';
 
 class SignUpMobComp extends MobComp {
     constructor(props){

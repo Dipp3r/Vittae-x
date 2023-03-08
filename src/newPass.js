@@ -1,6 +1,7 @@
 import React from "react";
 import { WithRouter } from "./routingWrapper";
 import checkString from "./stringChecker";
+import './styles/newPass.css';
 
 class NewPassComp extends React.Component{
     constructor(props){
@@ -116,6 +117,7 @@ class NewPassComp extends React.Component{
         
         </div>
     </div>
+
     <p className="invalid">{this.state.passwordErr}</p>
     <div className="passwordDiv"  >
       <p className="inLabel" >Confirm password</p>
@@ -125,8 +127,10 @@ class NewPassComp extends React.Component{
       </div>
     </div>
     <p className="invalid">{this.state.cPasswordErr}</p>
-
-    <button id="Button" onClick={this.submit}>SIGN IN</button>
+    
+    <div id="buttonDiv">
+        <button id="Button" onClick={this.submit}>SIGN IN</button>
+    </div>
   </div>
 </section>
         )
