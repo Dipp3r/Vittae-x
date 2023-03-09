@@ -52,7 +52,7 @@ class HomeComp extends React.Component{
       let dateIndex = 0
 
       for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
-        console.log(dt.toDateString())
+        
 
         dateDiv = document.createElement('div')
         dateDiv.className = 'date'
@@ -79,7 +79,7 @@ class HomeComp extends React.Component{
         
         remainder.style.color = 'transparent'
         if(dateIndex < this.date.length){
-          console.log(dt.toDateString(),new Date(this.date[dateIndex].date).toDateString())
+          
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
             date.style.backgroundColor = '#a5b3cd'
@@ -101,7 +101,7 @@ class HomeComp extends React.Component{
     getTasksPerDate(e){
       let dateIndex = e.currentTarget.name
       let lastselectedDate = this.state.lastselectedDate
-      console.log(lastselectedDate);
+      
       if(lastselectedDate.name == -1){
         lastselectedDate.querySelector('#date').style.backgroundColor = 'transparent'
         lastselectedDate.querySelector('#date').style.color = 'black'
@@ -142,7 +142,7 @@ class HomeComp extends React.Component{
 
       for (let j = 0;j< taskList.length;j++){
         i = taskList[j]
-        console.log(i)
+        
         task = document.createElement('div')
         task.className = 'task'
 
@@ -199,7 +199,7 @@ class HomeComp extends React.Component{
     }
     componentDidMount(){
       let date = new Date()
-      console.log(date.getMonth)
+      
       this.generateDates()
       // this.generateTasks(this.tasks)
     }

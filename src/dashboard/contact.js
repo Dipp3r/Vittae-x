@@ -5,21 +5,22 @@ import { WithRouter } from "../routingWrapper";
 class ContactsComp extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-          addClientMenu:'none',
-          filterMenu:'none',
-          userInfo:{
-            name:'',
-            mobile:'',
-            mail:'',
-            designation:'',
-          },
-          filterProps:{
-            status:0,
-            sort: 'dateDesc',
-            tag:[]
-          }
-        }
+        this.state = {}
+        // this.state = {
+        //   addClientMenu:'none',
+        //   filterMenu:'none',
+        //   userInfo:{
+        //     name:'',
+        //     mobile:'',
+        //     mail:'',
+        //     designation:'',
+        //   },
+        //   filterProps:{
+        //     status:0,
+        //     sort: 'dateDesc',
+        //     tag:[]
+        //   }
+        // }
         this.customerList = [
         {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:4,date:'02/01/2002',tag:['tag1','tag2']},
         {id:3,name:'ccc',mobile:'1234567820',status:1,date:'02/03/2002',tag:['tag1','tag2']},
@@ -48,6 +49,10 @@ class ContactsComp extends React.Component {
         this.searchInput = this.searchInput.bind(this)
         this.searchCustomer = this.searchCustomer.bind(this)
         this.setFilterPropsTag = this.setFilterPropsTag.bind(this)
+        this.updateIndexState = this.updateIndexState.bind(this)
+    }
+    updateIndexState(){
+      this.props.setItem({contactCompState:this.state})
     }
     displayMessage(){
       let messageBox = document.querySelector('#messageBox')
@@ -61,19 +66,19 @@ class ContactsComp extends React.Component {
       },1000*2)
     }
     toggleAddClientMenu(){
-      // console.log('toggled')
+      // 
       let menu = 'none'
       if(this.state.addClientMenu == 'none'){
         menu = 'flex'
       }
-      this.setState({addClientMenu:menu})
+      this.setState({addClientMenu:menu},this.updateIndexState)
     } 
     toggleFilterMenu(){      
       let menu = 'none'
       if(this.state.filterMenu == 'none'){
         menu = 'flex'
       }
-      this.setState({filterMenu:menu})
+      this.setState({filterMenu:menu},this.updateIndexState)
     }
     toggleFilterSort(e){
       let sort = this.state.filterProps.sort
@@ -103,18 +108,18 @@ class ContactsComp extends React.Component {
       
       let filter = this.state.filterProps
       filter.sort = sort
-      this.setState(filter)
+      this.setState(filter,this.updateIndexState)
       this.filterAndSort(this.customerList)
     }
     changeInVal(e){
         let obj = {};
-        // console.log(e.keyCode)
+        // 
         if(e.keyCode == 13){
           this.submit()
         }
         obj[e.currentTarget.name] = e.currentTarget.value.trim();
-        // console.log(obj)
-        this.setState(obj);
+        // 
+        this.setState(obj,this.updateIndexState);
     }
     displayCustomer(customerList){
         let container = document.body.querySelector('#cardsList')
@@ -190,15 +195,15 @@ class ContactsComp extends React.Component {
             cards.onclick = this.openCustomerView
 
             container.appendChild(cards);
-            // console.log(cards)
+            // 
         }
     }
-    openCustomerView(e){
+    openCustomerView(e){ 
       let target = e.currentTarget.value
       
       for (let i of this.customerList){
         if(i.id == target){
-          this.props.setItem({currentCustomerView : i})
+          this.props.setItem({contactCompState:this.state,currentCustomerView : i})
           this.props.navigate('../customerview')
           break;
         }
@@ -221,21 +226,21 @@ class ContactsComp extends React.Component {
         filterProps.tag.splice(index,1)
         e.currentTarget.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
       } 
-      console.log(index,value,filterProps.tag)
-      this.setState({filterProps:filterProps})
+      
+      this.setState({filterProps:filterProps},this.updateIndexState)
 
       this.filterAndSort(this.customerList)
     }
     setFilterPropStatus(e){
       let filterProps = this.state.filterProps
       filterProps.status = e.currentTarget.value
-      this.setState({filterProps:filterProps})
+      this.setState({filterProps:filterProps},this.updateIndexState)
 
       this.lastSelectedFilterButton.style.borderBottomColor = '#6d7593'
       e.currentTarget.style.borderBottomColor = '#223f80'
       this.lastSelectedFilterButton =  e.currentTarget
 
-      this.filterAndSort(this.customerList)
+      this.searchCustomer(this.customerList)
     }
     filterAndSort(customerList){
       let newCustomerList = customerList
@@ -274,21 +279,45 @@ class ContactsComp extends React.Component {
           newBool = new RegExp(element).test(string)
           bool = bool && newBool
         })
-        // console.log(string,bool)
+        // 
         return bool
       })
       // console.dir(newCustomerList)
       this.displayCustomer(newCustomerList)
     }
-
-
     submit(){
-      console.log(this.state)
+      
       this.toggleAddClientMenu()
     }
     componentDidMount(){
-      this.displayCustomer(this.customerList)
+      let obj = this.props.getItem('contactCompState')
+      this.setState(obj,()=>{
+        this.searchCustomer()
+
+        //styling filter tag by last session
+        
+        for(let i of  document.querySelector('#filterLabels').children){
+          if (new RegExp(i.getAttribute("value")).test(this.state.filterProps.tag.join(" "))){
+            i.style.backgroundColor = '#223F80'
+          }else{
+           i.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
+          }
+          
+        }
+        
+        //styling filter status by last session
+        for(let i of document.querySelector('#statusButton').children){
+          if(i.getAttribute('value') == this.state.filterProps.status){
+            i.style.borderBottomColor = '#223f80'
+            i.style.color = '#223f80'
+          }else{
+            i.style.color = '#6d7593'
+            i.style.borderBottomColor = '#6d7593'
+          }
+        }
+      })
       this.lastSelectedFilterButton = document.body.querySelector("#statusButton").children[0]
+      
     }
     searchInput(e){
       if(e.keyCode == 13){
@@ -296,7 +325,7 @@ class ContactsComp extends React.Component {
       }
     }
     searchCustomer(){
-      console.log(this.state.searchValue)
+      
       let txt = this.state.searchValue
       txt = txt.split(' ').join('.*')
       let newCustomerList = this.customerList
@@ -308,8 +337,8 @@ class ContactsComp extends React.Component {
       // this.displayCustomer(newCustomerList)
     }
     render(){
-      console.log(this.state)
-      console.log(this.props)
+      
+      
         return(
             <div id='contactMain' >
             <div id="statusBar">
@@ -325,7 +354,7 @@ class ContactsComp extends React.Component {
               <div id="searchBarDiv">
                 <div id="searchBar">
                   <img id="icon" src={require("../images/Search.svg")} alt="eye icon"/>
-                  <input type="text" name="searchValue"  onChange={this.changeInVal} onKeyDown={this.searchInput} id="searchField" />
+                  <input type="text" name="searchValue"  onChange={this.changeInVal} onKeyDown={this.searchInput} id="searchField" value={this.state.searchValue}  />
                 </div>
           
                 <button onClick={this.toggleFilterMenu}  >

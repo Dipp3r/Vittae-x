@@ -66,7 +66,7 @@ class CustomerView extends React.Component {
 
                     <div class="icons">
                     <button class="icon">
-                        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="29" height="29" viewBox="0 0 29 29" fill="none">
                         <rect x="19.3335" y="14.5" width="4.83333" height="8.45833" rx="2.41667" fill="#223F80" stroke="#223F80"
                             stroke-width="2" stroke-linejoin="round" />
                         <rect x="4.8335" y="14.5" width="4.83333" height="8.45833" rx="2.41667" fill="#223F80" stroke="#223F80"

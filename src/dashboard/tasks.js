@@ -28,7 +28,7 @@ class Tasks extends React.Component{
         this.changeCurrentSection = this.changeCurrentSection.bind(this)
     }
     displaySection(currSection){
-        console.log(this.state)
+        
         let taskList
         let dateColor = 'black'
         switch(currSection){
@@ -56,7 +56,6 @@ class Tasks extends React.Component{
         let container = document.body.querySelector('#tasks')
         container.innerHTML = ''
         let task,desc,i
-        // console.log(taskList.length)
         let card;
         if(taskList.length == 0){
             card = document.createElement('div')
@@ -70,8 +69,6 @@ class Tasks extends React.Component{
             card.id = 'nonEmpty'
             for (let j = 0;j< taskList.length;j++){
                 i = taskList[j]
-
-                // console.log(i)
                 task = document.createElement('div')
                 task.className = 'task'
 
@@ -88,7 +85,7 @@ class Tasks extends React.Component{
                 let day = document.createElement('p')
                 day.id = 'day'
                 day.style.color = dateColor
-                console.log(day)
+                
 
                 details.appendChild(name)
                 details.appendChild(day)
@@ -144,7 +141,6 @@ class Tasks extends React.Component{
         container.appendChild(card)
     }
     changeCurrentSection(e){
-        // console.log(e)
         let obj = {}
         obj.currSection = Number.parseInt(e.currentTarget.name)
         let lastSession = this.state.lastSession

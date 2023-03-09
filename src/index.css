@@ -991,8 +991,8 @@ section {
   position: absolute;
   bottom: 0;
   background-color: white;
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
+  /* -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px); */
   height: 60px;
   padding: 5px 20px;
   width: 100%;
@@ -1930,8 +1930,8 @@ button {
   position: fixed;
   bottom: 0;
   background-color: white;
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
+  /* -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px); */
   height: 60px;
   padding: 5px 20px;
   width: 100%;
