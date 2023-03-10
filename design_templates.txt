@@ -213,6 +213,11 @@
 
 
 
+<section id="error">
+  <img src="../static/images/error.png" alt="error404"/>
+</section>
+
+
 
 <!-- <section id="dashboard">
   <nav class="navbar">
