@@ -1,0 +1,349 @@
+@import 'main';
+
+#dashboard{
+    font-family: 'Montserrat';
+    font-style: normal;
+    position:static;
+    padding:0px;
+    background-color:#E4E4E4 ;
+    overflow: hidden;
+    
+    .navbar{
+        @include flex(row,space-between,center);
+        background-color: white;
+        width: 100%;
+        height:89px;
+        box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
+        .profile{
+            @include flex(none,center,center);
+            #profileImg{
+                border-radius: 100%;
+                height:93%;
+                // width:auto;
+            }
+            
+            border-radius: 100%;
+            margin:20px;
+            width: 60px;
+            height: 60px;
+            background: #223F80;
+        }
+        .icons{
+            @include flex(row,space-evenly,center);
+            width: fit-content;
+            height: 100%;
+            margin-right:20px;
+            .icon{
+                margin:8px;
+            }
+            .iconBox{
+                display: block;
+                position: relative;
+                #notifCircle{
+                    display: block;
+                    position: absolute;
+                    border-radius: 13px;
+                    top: 0px;
+                    right:0px;
+                    width:13px;
+                    height:fit-content;
+                    border: 2px solid white;
+                    path{
+                        fill:#BB2230;                    
+                    }
+                }
+            }
+
+        }
+    }
+
+    #main{
+        padding-bottom:90px;
+        margin-top:2px;
+        @include flex(column,flex-start,center);
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 100%;
+        #perks{
+            height:96px;
+            width:100%;
+            @include flex(row,none,none);
+            #perk{
+                @include flex(column,center,center);
+                width: 50%;
+                height:100%;
+                padding-top:20px;
+                background-color: white;
+                p{
+                    margin-top:0px;
+                    width:147px;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 18px;
+                    color: #223F80;
+                    line-height: 10px;
+                    text-align: center;
+
+                }
+                .description{
+                    font-weight: 500;
+                    font-size: 10px;
+                    color: #616161;
+
+                }
+            }   
+            .incentive{
+                margin-left:2px;
+            }
+        }
+
+        #reminderDiv{
+            margin-top:20px;
+            height:auto;
+            width:100%;
+            background-color: transparent;
+            @include flex(column,start,center);
+            #calendar{
+                background-color: white;
+                border-bottom: 1px solid #9d9d9d;
+                width: 100vw;
+                @include flex(column,center,center);
+                #months{
+                    padding:0px 10px;
+                    padding-right:0px;
+                    margin-top:10px;
+                    width: 95%;
+                    p{
+                        margin:0px;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 16px;
+                        color: #363636;
+                    }
+                    @include flex(row,space-between,center);
+                    #monthView{
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 10px;
+                        line-height: 11px;
+                        display: flex;
+                        align-items: flex-end;
+                        text-align: center;
+                        color: #223F80;
+                        @include flex(row,center,center);
+                        img{
+                            margin-left:5px;
+                        }
+                    }
+                }   
+                .week{
+                    padding:0px 0px;
+                    margin:0px;
+                    height:80px;
+                    overflow: scroll;
+                    width:100vw;
+                    @include flex(row,flex-start,flex-start);
+                    .dates{
+                        margin:0px 10px;
+                        padding-top:0px;
+                        margin-top:0px;
+                        height:50px;
+                        width:100vw;
+                        padding:5px 5px;
+                        @include flex(row,start,center);
+                        .date{
+                            @include flex(column,center,center);
+                            margin:0px 4px;
+                            #day{
+                                display: flex;
+                                margin:4px 10px;
+                                font-family: 'Montserrat';
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 12px;
+                                color: #B8B8B8;
+                            }
+                            #date{
+                                padding:2px;
+                                width:18px;
+                                height:18px;
+                                text-align: center;
+                                background: #223F80;;
+                                // background: rgba(34, 63, 128, 0.4);
+                                border-radius: 3px;
+                                font-family: 'Montserrat';
+                                font-style: normal;
+                                font-weight: 400;
+                                font-size: 14px;
+                                color: #FFFFFF;
+                                margin:0px;
+                            }
+                            #reminderOverlay{
+                                margin:0px 0px;
+                                padding:0px;
+                                height:5px;
+                                width:5px;
+                                font-size: 18px;
+                                font-weight:900;
+                                color:#223F80;
+                            }
+                        }
+                    }
+                }
+            }
+
+            #tasks{
+                padding:15px 15px;
+                min-height:150px;
+                height:fit-content;
+                width:100%;
+                background: white;
+                
+                #taskEmpty{
+                    display:none;
+                    margin-top:70px;
+                    text-align: center;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 12px;
+                    color: #B8B8B8;
+                }
+                #nonEmpty{
+                    // display:none;
+                    .task{
+                        margin:20px 0px;
+                        @include flex(row,space-around,center);
+                        .desc{
+                            @include flex(column,center,flex-start);
+                            #title{
+                                margin: 0px;
+                                font-family: 'Montserrat';
+                                font-style: normal;
+                                font-weight: 700;
+                                font-size: 15px;
+                                color: #363636;
+                            }
+                            #deets{
+                                @include flex(row,space-around,center);
+                                #name{
+                                    margin:0px;
+                                    font-family: 'Montserrat';
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    font-size: 10px;
+                                    line-height: 12px;
+                                    display: flex;
+                                    align-items: flex-end;
+                                    text-align: center;
+                                    color: #A2A2A4;
+                                }
+                                #due{
+                                    margin:0px;
+                                    margin-left:5px;
+                                    color:white;
+                                    padding:3px 4px;
+                                    background: rgba(34, 63, 128, 0.3);
+                                    border-radius: 6px;
+                                    font-family: 'Montserrat';
+                                    font-style: normal;
+                                    font-weight: 500;
+                                    font-size: 8px;
+                                    #num_days{
+                                        font-weight: 700;
+                                        color:#414141;
+                                    }
+    
+                                }
+                                
+                            }
+                            #day{
+                                margin-top:3px;
+                                font-family: 'Montserrat';
+                                font-style: normal;
+                                font-weight: 500;
+                                font-size: 8px;
+                                color: #363636;
+                            }
+                        }
+                        .label{
+                            @include flex(row,center,center);
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 10px;
+                            color: #223F80;
+                            p{
+                                margin-left:5px;
+                            }
+                        }
+                    }
+                }
+            }
+                
+        }
+
+        #overdueDiv{
+            margin-top:20px;
+            background-color: white;
+            width:100%;
+            height:58px;
+            padding:0px 20px;
+            @include flex(row,space-between,center);
+            p{
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 20px;
+                display: flex;
+                align-items: flex-end;
+                text-align: center;
+                color: #BB2230;
+            }
+
+        }
+    }
+    .fixed{
+        position:fixed;
+        bottom:0;
+        background-color: white;
+        backdrop-filter: blur(1px);
+        height:60px;
+        padding: 5px 20px;
+        width:100%;
+        box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
+        @include flex(row,space-around,center);
+        .downIconDiv{
+            margin:10px;
+            padding:0px 20px;
+            color:#223F80;
+            stroke:#223F80;
+            &:hover{
+                background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
+                color:white;
+                stroke:white;
+                opacity: 0.93;
+            }
+            border-radius: 13px;
+            @include flex(row,center,center);
+            p{
+                font-family: 'Montserrat';
+                font-style: normal;
+                color:inherit;
+                font-weight: 700;
+                font-size: 16px;
+                margin-left:10px;
+            }
+            svg path{
+                stroke:inherit;
+            }
+            svg circle{
+                stroke:inherit;
+            }
+        } 
+    }
+}
