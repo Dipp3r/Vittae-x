@@ -1,0 +1,6 @@
+@import 'main';
+
+#error{
+    @include flex(row,center,flex-start);
+    padding-top:200px;
+}
