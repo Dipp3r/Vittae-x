@@ -305,18 +305,20 @@ class ContactsComp extends React.Component {
           
         }
         
+        this.lastSelectedFilterButton = document.body.querySelector("#statusButton").children[0]
         //styling filter status by last session
         for(let i of document.querySelector('#statusButton').children){
           if(i.getAttribute('value') == this.state.filterProps.status){
             i.style.borderBottomColor = '#223f80'
             i.style.color = '#223f80'
+            this.lastSelectedFilterButton = i
           }else{
             i.style.color = '#6d7593'
             i.style.borderBottomColor = '#6d7593'
           }
         }
+
       })
-      this.lastSelectedFilterButton = document.body.querySelector("#statusButton").children[0]
       
     }
     searchInput(e){
