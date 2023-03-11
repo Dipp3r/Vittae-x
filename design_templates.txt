@@ -33,7 +33,7 @@
       </div>
        <div class="tickBox"> -->
 <!-- when the value is 0 the bg is set transprent otherwise its set to dark blue -->
-  <!-- <button value="0" class="tickButton">
+        <!-- <button value="0" class="tickButton">
           <svg width="12" height="10" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round"
               stroke-linejoin="round" />
@@ -57,7 +57,7 @@
       </div>
     </div>
   </div>
-</section>-->
+</section> -->
 
 
 
@@ -170,6 +170,12 @@
 </section> -->
 
 
+<!-- <section id="error">
+  <img src="../static/images/error.png" alt="error404"/>
+</section> -->
+
+
+
 
 
 <!-- <section id="newPassword">
@@ -195,6 +201,7 @@
         <img src="../static/images/eye.svg" alt="eye icon" name="passType"/>
       </div>
     </div>
+    
     <p class="invalid">*Invalid number</p>
     <div class="passwordDiv">
       <p class="inLabel">Confirm password</p>
@@ -211,11 +218,6 @@
   </div>
 </section>  -->
 
-
-
-<section id="error">
-  <img src="../static/images/error.png" alt="error404"/>
-</section>
 
 
 
@@ -1509,12 +1511,20 @@
   </nav>
 
   <div id="main">
+    <button id="add">
+      <img src="../static/images/plus.png" alt="add customer button">
+    </button>
     <div id="info">
       <div id="portion1">
         <div id="portion1Left">
           <img src="../static/images/arrow_left_white.svg" alt="">
           <div id="deets">
-            <p id="name">Deekay</p>
+            <div id="edit">
+              <p id="name">Deekay</p>
+              <button>
+                <img src="../static/images/Edit_fill.svg" alt="edit"/>
+              </button>
+            </div>
             <p id="designation">student</p>
             <div id="statusDiv">
               <p id="statusDot">.</p>
@@ -1526,9 +1536,6 @@
         <div id="portion1Right">
           <div id="dateBox">
             <p id="dateTxt">Added 13-02-2023</p>
-            <button>
-              <img src="../static/images/three-dots.svg" alt="">
-            </button> 
           </div>
           <button id="edit">
             Edit
@@ -1675,6 +1682,153 @@
         </div>
       </div>
     </div>
+
+    <div id="tasks">
+      <div id="dropDown">
+        <select class="select">
+          <option value="" disabled selected>Select</option>
+          <option value="overdue">Overdue</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+      <div id="taskCardSpace">
+        
+        <div class="taskCard">
+          <div id="portion1">
+            <p id="title">Follow up call</p>
+            <div id=right>
+              <p id="date">dd mm yyyy</p>
+              <p id="time">--:--</p>
+            </div>
+          </div>
+          <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+          <div id="portion3">
+            <button>
+              <img src="../static/images/Ellipse.svg" alt="checkbox"/>
+            </button>
+          </div>
+        </div>
+
+        <div class="CompletedTaskCard">
+          <div id="portion1">
+            <p id="title">Completed</p>
+            <div id=right>
+              <p id="date">dd mm yyyy</p>
+              <p id="time">--:--</p>
+            </div>
+          </div>
+          <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+          <div id="portion3">
+            <button>
+              <img src="../static/images/Ellipse.svg" alt="checkbox"/>
+            </button>
+          </div>
+        </div>
+
+        <div class="OverdueTaskCard">
+          <div id="portion1">
+            <p id="title">Overdue</p>
+            <div id=right>
+              <p id="date">dd mm yyyy</p>
+              <p id="time">--:--</p>
+            </div>
+          </div>
+          <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+          <div id="portion3">
+            <button>
+              <img src="../static/images/Ellipse.svg" alt="checkbox"/>
+            </button>
+          </div>
+        </div>
+
+        <div class="OverdueTaskCard">
+          <div id="portion1">
+            <p id="title">Overdue</p>
+            <div id=right>
+              <p id="date">dd mm yyyy</p>
+              <p id="time">--:--</p>
+            </div>
+          </div>
+          <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+          <div id="portion3">
+            <button>
+              <img src="../static/images/Ellipse.svg" alt="checkbox"/>
+            </button>
+          </div>
+        </div>
+
+        <div class="OverdueTaskCard">
+          <div id="portion1">
+            <p id="title">Overdue</p>
+            <div id=right>
+              <p id="date">dd mm yyyy</p>
+              <p id="time">--:--</p>
+            </div>
+          </div>
+          <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+          <div id="portion3">
+            <button>
+              <img src="../static/images/Ellipse.svg" alt="checkbox"/>
+            </button>
+          </div>
+        </div>
+
+        <div class="OverdueTaskCard">
+          <div id="portion1">
+            <p id="title">Overdue</p>
+            <div id=right>
+              <p id="date">dd mm yyyy</p>
+              <p id="time">--:--</p>
+            </div>
+          </div>
+          <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+          <div id="portion3">
+            <button>
+              <img src="../static/images/Ellipse.svg" alt="checkbox"/>
+            </button>
+          </div>
+        </div>
+
+        <div class="OverdueTaskCard">
+          <div id="portion1">
+            <p id="title">Overdue</p>
+            <div id=right>
+              <p id="date">dd mm yyyy</p>
+              <p id="time">--:--</p>
+            </div>
+          </div>
+          <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+          <div id="portion3">
+            <button>
+              <img src="../static/images/Ellipse.svg" alt="checkbox"/>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="addTaskScreen">
+      <div id="addTaskDiv">
+        <div id="portion1">
+          <button id="closeIcon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
+              <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button id="delete">
+            <img src="../static/images/Trash.svg" alt="delete"/>
+          </button>
+        </div>
+        <div id="portion2">
+          <input id="title" type="text" placeholder="Add title"/>
+          <textarea name="" id="desc" placeholder="Description"></textarea>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section> -->
 
