@@ -78,7 +78,7 @@ class HomeComp extends React.Component{
 
         
         remainder.style.color = 'transparent'
-        if(dateIndex < this.date.length){
+        if(dateIndex < this.date.length-1){
           
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
@@ -88,7 +88,7 @@ class HomeComp extends React.Component{
             dateIndex+=1
           }
         }
-        
+
         if (dt.toDateString() == today.toDateString()){
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
