@@ -1769,10 +1769,24 @@
         <div id="portion2">
           <input id="title" type="text" placeholder="Add title"/>
           <textarea name="" id="desc" placeholder="Description"></textarea>
+          <div id="fieldDiv">
+            <div class="field">
+              <img src="../static/images/Date_range.svg" alt="date">
+              <input type="date">
+            </div>
+            <div class="field">
+              <img src="../static/images/Time.svg" alt="time">
+              <input type="time">
+            </div>
+            <p>Outcome<a>*</a></p>
+          </div>
+          <textarea id="outcome"></textarea>
         </div>
+        <button id="save">
+          Save
+        </button>
       </div>
     </div>
-
   </div>
 </section> -->
 
@@ -1789,4 +1803,4 @@
   </div>
   <input type="title" placeholder="Title"/>
   <textarea name="notes" placeholder="Type your note" cols="30" rows="10"></textarea>
-</section> -->
+  </section> -->
