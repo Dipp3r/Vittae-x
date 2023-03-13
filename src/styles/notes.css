@@ -252,157 +252,50 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-width: thin;
 }
 
-#signUpPg {
+#notesPg {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
-  padding: 20px 10px;
-  overflow-x: hidden;
+  align-items: flex-start;
+  padding: 20px;
+  overflow: scroll;
+  height: 100vh;
 }
-#signUpPg #SignUpFormDiv {
-  margin: 30px 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  border-radius: 12px;
-  width: 340px;
-  box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
-}
-#signUpPg #SignUpFormDiv #SignUpTextDiv {
-  width: 100%;
-}
-#signUpPg #SignUpFormDiv #SignUpTextDiv #SignUpText {
-  color: #223F80;
-  font-weight: 500;
-  font-size: 22px;
-  padding: 0px 40px;
-}
-#signUpPg #SignUpFormDiv #fieldBox {
-  background-color: white;
-}
-#signUpPg #SignUpFormDiv #fieldBox .label {
-  color: #223F80;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-  margin: 0px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #mobileLabel {
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-  margin: 0px;
-  color: #929292;
-}
-#signUpPg #SignUpFormDiv #fieldBox .signUpField {
-  border: 2px solid #B8B8B8;
-  border-radius: 12px;
-  padding-left: 10px;
-  width: 272px;
-  height: 40px;
-  font-weight: 400;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv p {
-  margin: 0px;
-  color: #223F80;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: none;
-  align-items: center;
-  border: 2px solid #B8B8B8;
-  border-radius: 12px;
-  padding-left: 5px;
-  height: 40px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox #numberLabel {
-  color: #B8B8B8;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 5px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox .passwordField {
-  font-weight: 400;
-  padding: 5px;
-  width: 100%;
-  border-radius: 12px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .passwordDiv .passwordBox img {
-  margin: 6px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #constraintDiv {
-  margin-left: 20px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #constraintDiv #title {
-  margin: 0px;
-  color: #8B8B8B;
-  font-size: small;
-  font-weight: 600;
-}
-#signUpPg #SignUpFormDiv #fieldBox #constraintDiv #constraints {
-  margin-left: 20px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #constraintDiv #constraints #constraintText {
-  color: #8B8B8B;
-  font-size: small;
-  font-weight: 400;
-}
-#signUpPg #SignUpFormDiv #fieldBox .tickBox {
-  margin-top: 20px;
+#notesPg #backButton {
   padding: 0px;
-  margin-bottom: 0px;
-  height: -moz-fit-content;
-  height: fit-content;
-  font-size: 12px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .tickBox p {
-  text-align: center;
-  color: #B8B8B8;
-  margin-top: 5px;
-  font-size: small;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-#signUpPg #SignUpFormDiv #fieldBox .tickBox p a {
-  text-decoration-line: underline;
-  color: #223F80;
-}
-#signUpPg #SignUpFormDiv #fieldBox .tickBox .tickButton {
-  margin-top: 8px;
-  margin-bottom: 0px;
-  width: 18px;
-  height: 18px;
-}
-#signUpPg #SignUpFormDiv #fieldBox .invalid {
-  font-size: small;
-  margin-left: 8px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #invalidTC {
-  margin-top: 0px;
-}
-#signUpPg #SignUpFormDiv #fieldBox #Button {
-  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
-  transition-duration: 1s;
   width: 100%;
-  height: 50px;
-  font-family: "Montserrat";
-  margin: 20px 0px;
-  font-weight: 400;
-  font-size: 18px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
-  color: white;
-  border-radius: 12px;
-  margin-bottom: 40px;
+  margin-top: 40px;
 }
-#signUpPg #SignUpFormDiv #fieldBox #Button:hover {
-  box-shadow: none;
-  scale: 0.95;
-}/*# sourceMappingURL=reg.css.map */
+#notesPg #backButton button svg path {
+  fill: #223F80;
+}
+#notesPg input {
+  width: 100%;
+  border: none;
+  font-family: "Montserrat";
+  margin-top: 36px;
+  margin-left: 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  border: none;
+}
+#notesPg textarea {
+  overflow: hidden;
+  width: 100%;
+  border: none;
+  height: 80%;
+  margin-left: 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 20px;
+  margin-top: 5px;
+  padding: 4px;
+  color: #000000;
+}
+#notesPg textarea:focus {
+  outline: none;
+}/*# sourceMappingURL=notes.css.map */
