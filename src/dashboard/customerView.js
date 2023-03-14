@@ -6,10 +6,22 @@ class CustomerView extends React.Component {
         super(props)
         this.state = {
            section:0,
-           customer:{}
+           customer:{
+            tasks:[
+                {title:'title1',date:new Date("02/03/2021"),time:'00 00',discription:'Description daff pdfplf p',},
+                {title:'title2',date:new Date("02/04/2021"),time:'00 00',discription:'tion daff pdfplf p',},
+                {title:'title3',date:new Date("02/05/2021"),time:'00 00',discription:'Descriprgdn daff pdfplf p',},
+                {title:'title4',date:new Date("02/06/2021"),time:'00 00',discription:'Descriptio pdfplf p',}
+            ]
+           }
         }
         this.changeSection = this.changeSection.bind(this)
         this.displaySection = this.displaySection.bind(this)
+        this.generateTasks = this.generateTasks.bind(this)
+        this.changeOptions = this.changeOptions.bind(this)
+    }
+    changeOptions(e){
+        console.log(e.currentTarget.value)
     }
     getCustomerDetail(){
         // let url = ""
@@ -37,7 +49,8 @@ class CustomerView extends React.Component {
         kycStatus.style.display = 'none'
         let notesContent = document.querySelector('#notesContent')
         notesContent.style.display = 'none'
-
+        let tasks = document.querySelector('#tasks')
+        tasks.style.display = 'none'
         switch(value){
             case '1':
                 infoContent.style.display = 'grid'
@@ -46,8 +59,65 @@ class CustomerView extends React.Component {
                 kycStatus.style.display = 'flex'
                 break;
             case '3':
-                notesContent.style.display = 'grid'
+                notesContent.style.display = 'flex'
                 break;
+            case '4':
+                tasks.style.display = 'flex'
+                break;
+        }
+    }
+    generateTasks(){
+        // <div class="taskCard">
+        // <div id="portion1">
+        //     <p id="title">Follow up call</p>
+        //     <div id="right">
+        //     <p id="date">dd mm yyyy</p>
+        //     <p id="time">--:--</p>
+        //     </div>
+        // </div>
+        // <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+        // <div id="portion3">
+        //     <button>
+        //     <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+        //     </button>
+        // </div>
+        // </div>
+        let taskCardSpace = document.querySelector('#taskCardSpace')
+        taskCardSpace.innerHTML = ""
+        for(let task of this.state.customer.tasks){
+            console.log(task)
+            let taskCard = document.createElement('div')
+            taskCard.className = 'taskCard'
+            let portion1 = document.createElement('div')
+            portion1.id = 'protion1'
+            let portion2 = document.createElement('div')
+            portion2.id = 'protion2'
+            let portion3 = document.createElement('div')
+            portion3.id = 'protion3'
+            taskCard.appendChild(portion1)
+            taskCard.appendChild(portion2)
+            taskCard.appendChild(portion3)
+            let title = document.createElement('p')
+            title.id='title'
+            let right = document.createElement('div')
+            let date = document.createElement('p')
+            let time = document.createElement('p')
+            right.appendChild(date)
+            right.appendChild(time)
+            portion1.appendChild(title)
+            portion1.appendChild(right)
+            
+            let img = document.createElement('img')
+            img.src = require("../images/Ellipse.svg")
+            img.alt = "checkbox"
+            portion3.appendChild(img)
+
+            title.innerText = task.title
+            date.innerText = task.date
+            time.innerText = task.time
+            portion2.innerText = task.discription
+
+            taskCardSpace.appendChild(taskCard)
         }
     }
     componentDidMount(){
@@ -55,6 +125,7 @@ class CustomerView extends React.Component {
         obj.designation = 'XXX'
         console.log(obj)
         this.setState({customer:obj})
+        this.generateTasks()
     }
     render(){
         return(
@@ -271,7 +342,166 @@ class CustomerView extends React.Component {
                     </div>
                     </div>
 
-                    
+                    <div id="tasks">
+                        <div id="dropDown">
+                            <select class="select" onChange={this.changeOptions} >
+                            <option value="all" selected>all</option>
+                            <option value="overdue">Overdue</option>
+                            <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div id="taskCardSpace">
+                            
+                            <div class="taskCard">
+                            <div id="portion1">
+                                <p id="title">Follow up call</p>
+                                <div id="right">
+                                <p id="date">dd mm yyyy</p>
+                                <p id="time">--:--</p>
+                                </div>
+                            </div>
+                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                            <div id="portion3">
+                                <button>
+                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+                                </button>
+                            </div>
+                            </div>
+
+                            <div class="CompletedTaskCard">
+                            <div id="portion1">
+                                <p id="title">Completed</p>
+                                <div id="right">
+                                <p id="date">dd mm yyyy</p>
+                                <p id="time">--:--</p>
+                                </div>
+                            </div>
+                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                            <div id="portion3">
+                                <button>
+                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+                                </button>
+                            </div>
+                            </div>
+
+                            <div class="OverdueTaskCard">
+                            <div id="portion1">
+                                <p id="title">Overdue</p>
+                                <div id="right">
+                                <p id="date">dd mm yyyy</p>
+                                <p id="time">--:--</p>
+                                </div>
+                            </div>
+                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                            <div id="portion3">
+                                <button>
+                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+                                </button>
+                            </div>
+                            </div>
+
+                            <div class="OverdueTaskCard">
+                            <div id="portion1">
+                                <p id="title">Overdue</p>
+                                <div id="right">
+                                <p id="date">dd mm yyyy</p>
+                                <p id="time">--:--</p>
+                                </div>
+                            </div>
+                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                            <div id="portion3">
+                                <button>
+                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+                                </button>
+                            </div>
+                            </div>
+
+                            <div class="OverdueTaskCard">
+                            <div id="portion1">
+                                <p id="title">Overdue</p>
+                                <div id="right">
+                                <p id="date">dd mm yyyy</p>
+                                <p id="time">--:--</p>
+                                </div>
+                            </div>
+                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                            <div id="portion3">
+                                <button>
+                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+                                </button>
+                            </div>
+                            </div>
+
+                            <div class="OverdueTaskCard">
+                            <div id="portion1">
+                                <p id="title">Overdue</p>
+                                <div id="right">
+                                <p id="date">dd mm yyyy</p>
+                                <p id="time">--:--</p>
+                                </div>
+                            </div>
+                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                            <div id="portion3">
+                                <button>
+                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+                                </button>
+                            </div>
+                            </div>
+
+                            <div class="OverdueTaskCard">
+                            <div id="portion1">
+                                <p id="title">Overdue</p>
+                                <div id="right">
+                                <p id="date">dd mm yyyy</p>
+                                <p id="time">--:--</p>
+                                </div>
+                            </div>
+                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                            <div id="portion3">
+                                <button>
+                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+                                </button>
+                            </div>
+                            </div>
+
+                            </div>
+                    </div>
+
+                    <div id="addTaskScreen">
+                        <div id="addTaskDiv">
+                            <div id="portion1">
+                            <button id="closeIcon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
+                                <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <button id="delete">
+                                <img src="../images/Trash.svg" alt="delete"/>
+                            </button>
+                            </div>
+                            <div id="portion2">
+                            <input id="title" type="text" placeholder="Add title"/>
+                            <textarea name="" id="desc" placeholder="Description"></textarea>
+                            <div id="fieldDiv">
+                                <div class="field">
+                                <img src="../images/Date_range.svg" alt="date"/>
+                                <input type="date"/>
+                                </div>
+                                <div class="field">
+                                <img src="../images/Time.svg" alt="time"/>
+                                <input type="time"/>
+                                </div>
+                                <p>Outcome<a>*</a></p>
+                            </div>
+                            <textarea id="outcome"></textarea>
+                            </div>
+                            <button id="save">
+                            Save
+                            </button>
+                        </div>
+                        </div>      
                 </div>
                 </section>
         )
