@@ -1,7 +1,6 @@
 import { stat } from "fs";
 import React from "react";
 import { WithRouter } from "../routingWrapper";
-
 class ContactsComp extends React.Component {
     constructor(props){
         super(props)
@@ -160,10 +159,7 @@ class ContactsComp extends React.Component {
             status.className = 'info status'
             status.id = 'status'
             status.style.backgroundColor = statusBackgroundColor
-            let statusIcon = document.createElement('i')
-            statusIcon.className = 'down'
-            status.append(statusIcon)
-            statusIcon.innerText = '.'
+            
 
             let dateButton = document.createElement('div')
             dateButton.className = 'info dateDiv'
@@ -236,8 +232,11 @@ class ContactsComp extends React.Component {
       filterProps.status = e.currentTarget.value
       this.setState({filterProps:filterProps},this.updateIndexState)
 
-      this.lastSelectedFilterButton.style.borderBottomColor = '#6d7593'
+      this.lastSelectedFilterButton.style.borderBottomColor = 'rgba(109, 117, 147, 1)'
+      this.lastSelectedFilterButton.style.color = 'rgba(109, 117, 147, 1)'
+
       e.currentTarget.style.borderBottomColor = '#223f80'
+      e.currentTarget.style.color = '#223f80'
       this.lastSelectedFilterButton =  e.currentTarget
 
       this.searchCustomer(this.customerList)
@@ -327,7 +326,6 @@ class ContactsComp extends React.Component {
       }
     }
     searchCustomer(){
-      
       let txt = this.state.searchValue
       txt = txt.split(' ').join('.*')
       let newCustomerList = this.customerList

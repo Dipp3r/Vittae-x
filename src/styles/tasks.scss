@@ -1,0 +1,131 @@
+@import 'main';
+
+#Tasks{
+    font-family: 'Montserrat';
+    font-style: normal;
+    position:static;
+    padding:0px;
+    background-color:white ;
+    overflow: hidden;
+    #navBar{
+        @include flex(row,center,center);
+        background-color: #223F80;
+        width: 100%;
+        height:54px;
+        p{
+            padding-right:40px;
+            text-align: center;
+            color: white;
+            width:90%;
+
+        }
+        button{
+            margin-left:5px;
+        }
+    }
+    #statusBar{
+        width:100vw;
+        background-color: transparent;
+        height:40px;
+
+        @include flex(row,space-evenly,center);
+        #statusButton{
+            width:100%;
+            font-family: 'Montserrat';
+            font-style: normal;
+            
+            line-height: 15px;
+            align-items: flex-end;
+            color: #6D7593;
+            @include flex(row,flex-start,center);
+
+            .statusButton{
+                margin-top:10px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 12px;
+                width:33.333%;
+                height:32px;
+                text-align: center;
+                color: rgba(37, 53, 100, 0.4);
+                border-bottom-color: rgba(37, 53, 100, 0.4);
+            }
+        }
+    }
+    #statusBarEdge{
+        width:100vw;
+        margin:0px;
+        border: 1px solid rgba(37, 53, 100, 0.4);
+    }
+    #main{
+        overflow-y:scroll;
+        overflow-x:hidden;
+        width:100vw;
+        height:100%;
+        #tasks{
+            width:100%;
+            background: white;
+            #taskEmpty{
+                display:none;
+                margin-top:70px;
+                text-align: center;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 12px;
+                color: #B8B8B8;
+            }
+            #nonEmpty{
+                // display:none;
+                .task{
+                    padding: 25px 25px;
+                    width: 100vw;
+                    @include flex(row,flex-start,center);
+                    .desc{
+                        @include flex(column,center,flex-start);
+                        #title{
+                            margin: 0px;
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 15px;
+                            color: #363636;
+                        }
+                        #name{
+                            margin:0px;
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 10px;
+                            line-height: 12px;
+                            display: flex;
+                            align-items: flex-end;
+                            text-align: center;
+                            color: #A2A2A4;
+                        }
+                        #day{
+                            margin-top:3px;
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 500;
+                            font-size: 8px;
+                            color:#BB2230; //Pending: #363636 , Completed:#62B16F
+                        }
+                    }
+                    .label{
+                        @include flex(row,center,center);
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 10px;
+                        color: #223F80;
+                        p{
+                            margin-left:5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

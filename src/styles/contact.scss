@@ -1,0 +1,347 @@
+@import 'main';
+    #main{
+        @include flex(column,flex-start,center);
+        overflow: hidden;
+        padding: 0px 10px;
+
+        #statusBar{
+            width:100vw;
+            background-color: transparent;
+            height:40px;
+            @include flex(row,space-evenly,center);
+            #statusButton{
+                width:100%;
+                font-family: 'Montserrat';
+                font-style: normal;
+                
+                line-height: 15px;
+                align-items: flex-end;
+                color: #6D7593;
+                @include flex(row,flex-start,center);
+    
+                .statusButton{
+                    // margin-top:10px;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 12px;
+                    color: rgba(109, 117, 147, 1);
+                    width:33.333%;
+                    height:32px;
+                    text-align: center;
+                    border-bottom:2px solid  rgba(109, 117, 147, 1);
+                }
+                // .statusButton:focus{
+                //     color: #223F80;
+                //     border-bottom:1px solid  #223F80;
+                // }
+            }
+        }
+    #statusBarEdge{
+        width:100vw;
+        margin:0px;
+        border: 0.5px solid rgba(37, 53, 100, 0.4);
+    }
+
+    #searchBarDiv{
+        @include flex(row,center,center);
+        width:100vw;
+        #searchBar{
+            width:80%;
+            height: 40px;
+            margin:30px 10px;
+            @include flex(row,space-between,center);
+            background: rgba(109, 117, 147, 0.22);
+            border-radius: 9px;
+            #icon{
+                margin:5px;
+            }
+            #searchField{
+                width: 100%;
+                background-color: transparent;
+                border: none;
+                color: #6D7593;
+                margin-right:10px;
+            }
+        }
+    }
+
+    #labelBar{
+        width:100vw;
+        background: rgba(34, 63, 128, 0.13);
+        height:40px;
+        border:none;
+        @include flex(row,space-evenly,center);
+        #labels{
+            width:100%;
+            font-family: 'Montserrat';
+            font-style: normal;
+            color: #6D7593;
+            @include flex(row,center,center);
+            .label{
+                color:white;
+                width:25%;
+                height:40px;
+                font-weight:500;
+                font-size: 12px;
+                line-height: 15px;
+                @include flex(none,center,center);
+            }
+        }
+    }
+
+    .scrolling-wrapperY{
+        width: 100vw;
+        display: flex;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        white-space: nowrap;
+        padding: 10px 5px;
+        flex-direction: column;
+        .cards {
+            height: 50px;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 1px -2px rgba(0, 0, 0, 0.20);
+            border-radius: 8px;
+            margin-top:10px;
+            width: 100%;
+            font-family: 'Montserrat';
+            font-style: normal;
+            .details{
+                height:100%;
+                width: 100%;
+                @include flex(row,space-around,center);
+                .info{
+                    height: 100%;
+                    width: stretch;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 14px;
+                    @include flex(none,center,center);
+                    color: #223F80;
+                }
+                .phone{
+                    font-weight: 500;
+                    font-size: 12px;
+                }
+                .status{
+                    width:140px;
+                    height:13px;
+                    border-radius: 14px;
+                    background-color: #6BDA7D; //active
+                    // background-color: #C4C4C4;
+                    // background-color: #DA6B6B;
+                    // background-color: #DAC16B;
+
+
+
+                }
+                .date{
+                    font-weight: 500;
+                    font-size: 10px;
+                    color:#929292;
+                }
+
+                .dateDiv{
+                    @include flex(column,center,center);
+                    .filterTag{
+                        display: none;
+                        align-items: center;
+                        color:white;
+                        font-weight: 500;
+                        font-size: 8px;
+                        background: rgba(34, 63, 128, 0.4);
+                        border-radius: 2px;
+                        height:15px;
+                        width:57px;
+                        padding:3px;
+                        margin-bottom:10px;
+                    }
+                }
+            }
+
+        }
+    }
+    .fixed{
+        position:fixed;
+        bottom:0;
+        height:56px;
+        background-color: white;
+        backdrop-filter: blur(1px);
+        height:60px;
+        padding: 5px 20px;
+        width:100%;
+        box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
+        @include flex(row,space-around,center);
+        .downIconDiv{
+            height:47px;
+            width:162px;
+            margin:10px;
+            padding:0px 20px;
+            color:#223F80;
+            stroke:#223F80;
+            &:focus{
+                background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
+                color:white;
+                stroke:white;
+                opacity: 0.93;
+            }
+            border-radius: 13px;
+            @include flex(row,center,center);
+            p{
+                font-family: 'Montserrat';
+                font-style: normal;
+                color:inherit;
+                font-weight: 600;
+                font-size: 16px;
+                margin-left:10px;
+            }
+            svg path{
+                stroke:inherit;
+            }
+            svg circle{
+                stroke:inherit;
+            }
+        } 
+    }
+    #add{
+        @include addButton(75px,60px);
+    }
+}
+    #addCustomer{
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(1.5px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        display: none;
+        top: 0px;
+        overflow: scroll;
+        padding: 100px 5px 100px 5px;
+        z-index: 1;
+        #addBox{
+            height:fit-content;
+            width:80%;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            border-radius: 15px;
+            background-color: white;
+            #closeIcon{
+                border-radius:20px;
+                height:24px;
+                margin:10px;
+                padding:0px;
+            }
+            .inputFields{
+                @include flex(column,center,center);
+                .label{
+                    width:87%;
+                    font-weight: 600;
+                    font-size: 12px;
+                    line-height: 15px;
+                    color: #223F80;
+                    margin-left:20px;
+                }
+                .field{
+                    width: 87%;
+                    border: 2px solid #B8B8B8;
+                    border-radius: 12px;
+                    padding:10px;
+                    margin-top:5px;
+                    margin-bottom:20px;
+                }
+
+                .dropDownDiv{
+                    @include flex(row,space-between,center);
+                    select{
+                        border:none;
+                        appearance: none;
+                        width: 100%;
+                        padding: 0px;
+                        &:focus{
+                            outline:none;
+                        }
+                    }
+
+                }
+                #dobField{
+                    width: 100%;
+                    @include flex(row,center,start);
+                    #calendarDiv{
+                        margin-top:8px;
+                        margin-left:5px;
+                        @include flex(row,center,center);
+                        background: #223F80;
+                        border-radius: 12px;
+                        height:47px;
+                        width:47px;
+                    }
+                }
+                
+                .field:invalid:focus{
+                    border:1px solid red;
+                }
+                .Button{
+                    @include button1(80%,50px,30px,20px,500,15px);
+                }
+            }
+            select{
+                background: transparent;
+                *{
+                    padding:5px 10px;
+                }
+            }
+        }
+
+    }
+
+    #filter{
+        height:100%;
+        width:100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(1.5px);
+        @include flex(none,center,center);
+        display: flex;
+        position: absolute;
+        top: 0px;
+        z-index: 2;
+        #filterBox{
+            height:fit-content;
+            width:80%;
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            border-radius: 15px;
+            background-color: white;
+            #closeIcon{
+                border-radius:20px;
+                height:24px;
+                margin:10px;
+                padding:0px;
+            }
+
+            #filterLabels{
+                @include flex(row,none,none);
+                flex-wrap: wrap;
+                padding:0px 10px;
+                padding-bottom:40px;
+                .fLabel{
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 12px;
+                    background-color:#223F8066;
+                    // background-color: #223F80;
+                    width:fit-content;
+                    color:white;
+                    margin:8px 8px;
+                    padding:5px 20px; 
+                    border-radius:5px;
+                }
+            }
+            
+            
+        }
+    }

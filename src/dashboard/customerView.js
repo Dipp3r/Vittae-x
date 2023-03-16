@@ -1,11 +1,12 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
+import "../styles/clients.css"
 
 class CustomerView extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-           section:0,
+           section:1,
            customer:{
             tasks:[
                 {title:'title1',type:0,date:new Date("02/03/2021"),time:'00 00',discription:'Description daff pdfplf p',},
@@ -15,7 +16,7 @@ class CustomerView extends React.Component {
             ]
            },
            addTaskMenu:'none',
-           completedTaskMenu:'none'
+           completedTaskMenu:'none',
         }
         this.changeSection = this.changeSection.bind(this)
         this.displaySection = this.displaySection.bind(this)
@@ -45,7 +46,7 @@ class CustomerView extends React.Component {
         let menu = this.state.completedTaskMenu
         console.log(menu)
         menu = menu == "none"?"flex":'none'
-        this.setState({addTaskMenu:menu})
+        this.setState({completedTaskMenu:menu})
     }
     completeTask(){
         console.log('completeTask')
@@ -72,11 +73,15 @@ class CustomerView extends React.Component {
     }
     changeSection(e){
         let obj = {}
+        let lastTarget = document.querySelectorAll(".statusButton")[Number.parseInt(this.state.section)-1]
+        console.log(lastTarget)
+        lastTarget.style.color = "#6D7593"
+        lastTarget.style.borderBottomColor = "#6D7593"
         obj.section = e.currentTarget.value
         let target = e.currentTarget
         target.style.color = '#223F80'
         target.style.fontWeight = '600'
-        target.style.borderBottom = '2px solid rgba(34, 64, 128, 0.7176470588)'
+        target.style.borderBottomColor = 'rgba(34, 64, 128, 0.7176470588)'
 
         this.setState(obj)
         this.displaySection(e.currentTarget.value)
@@ -141,9 +146,13 @@ class CustomerView extends React.Component {
             taskCard.appendChild(portion3)
             let title = document.createElement('p')
             title.id='title'
+
             let right = document.createElement('div')
+            right.id = "right"
             let date = document.createElement('p')
+            date.id = "date"
             let time = document.createElement('p')
+            time.id = "time"
             right.appendChild(date)
             right.appendChild(time)
             portion1.appendChild(title)
@@ -266,10 +275,10 @@ class CustomerView extends React.Component {
                     </div>
                     <div id="statusBar">
                     <div id="statusButton">
-                        <button class="statusButton" value='1' onClick={this.changeSection} style={{color:'#6D7593',fontWeight:'500',borderBottom:'2px solid white'}} >INFO</button>
-                        <button class="statusButton" value='2' onClick={this.changeSection}style={{color:'#6D7593',fontWeight:'500',borderBottom:'2px solid white'}} >KYC STATUS</button>
-                        <button class="statusButton" value='3' onClick={this.changeSection}style={{color:'#6D7593',fontWeight:'500',borderBottom:'2px solid white'}} >NOTES</button>
-                        <button class="statusButton" value='4' onClick={this.changeSection}style={{color:'#6D7593',fontWeight:'500',borderBottom:'2px solid white'}} >TASKS</button>
+                        <button class="statusButton" value='1' onClick={this.changeSection}  >INFO</button>
+                        <button class="statusButton" value='2' onClick={this.changeSection} >KYC STATUS</button>
+                        <button class="statusButton" value='3' onClick={this.changeSection} >NOTES</button>
+                        <button class="statusButton" value='4' onClick={this.changeSection} >TASKS</button>
                     </div>
                     </div>
 
@@ -533,7 +542,7 @@ class CustomerView extends React.Component {
                                 </svg>
                             </button>
                             <button id="delete">
-                                <img src="../images/Trash.svg" alt="delete"/>
+                                <img src={require("../images/Trash.svg")} alt="delete"/>
                             </button>
                             </div>
                             <div id="portion2">
@@ -541,11 +550,11 @@ class CustomerView extends React.Component {
                             <textarea name="" id="desc" placeholder="Description"></textarea>
                             <div id="fieldDiv">
                                 <div class="field">
-                                <img src="../images/Date_range.svg" alt="date"/>
+                                <img src={require("../images/Date_range.svg")} alt="date"/>
                                 <input type="date" id='addTaskDate' />
                                 </div>
                                 <div class="field">
-                                <img src="../images/Time.svg" alt="time"/>
+                                <img src={require("../images/Time.svg")} alt="time"/>
                                 <input type="time" id='addTaskTime' />
                                 </div>
                             </div>
@@ -566,7 +575,7 @@ class CustomerView extends React.Component {
                                 </svg>
                             </button>
                             <button id="delete">
-                                <img src="../images/Trash.svg" alt="delete"/>
+                                <img src={require("../images/Trash.svg")} alt="delete"/>
                             </button>
                             </div>
                             <div id="portion2">
@@ -574,12 +583,12 @@ class CustomerView extends React.Component {
                             <textarea name="" id="desc" placeholder="Description"></textarea>
                             <div id="fieldDiv">
                                 <div class="field">
-                                <img src="../images/Date_range.svg" alt="date"/>
-                                <input type="date"/>
+                                <img src={require("../images/Date_range.svg")} alt="date"/>
+                                <input type="date" id="date"/>
                                 </div>
                                 <div class="field">
-                                <img src="../images/Time.svg" alt="time"/>
-                                <input type="time"/>
+                                <img src={require("../images/Time.svg")} alt="time"/>
+                                <input type="time" id="time"/>
                                 </div>
                                 <p>Outcome<a>*</a></p>
                             </div>

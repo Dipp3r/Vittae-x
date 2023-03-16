@@ -991,8 +991,8 @@ section {
   position: absolute;
   bottom: 0;
   background-color: white;
-  /* -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px); */
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
   height: 60px;
   padding: 5px 20px;
   width: 100%;
@@ -1930,8 +1930,8 @@ button {
   position: fixed;
   bottom: 0;
   background-color: white;
-  /* -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px); */
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
   height: 60px;
   padding: 5px 20px;
   width: 100%;
@@ -2030,12 +2030,11 @@ button {
   width: 33.333%;
   height: 32px;
   text-align: center;
-  border-bottom: 1px solid #6D7593;
 }
-/* #Tasks #statusBar #statusButton .statusButton:focus {
+#Tasks #statusBar #statusButton .statusButton:focus {
   color: #223F80;
   border-bottom: 1px solid #223F80;
-} */
+}
 #Tasks #statusBarEdge {
   width: 100vw;
   margin: 0px;

@@ -1,6 +1,8 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 
+import '../styles/tasks.css'
+
 class Tasks extends React.Component{
     constructor(props){
         super(props)
@@ -157,6 +159,7 @@ class Tasks extends React.Component{
     }
     componentDidMount(){
       this.displaySection(0)
+      this.setState({lastSession:document.querySelector('.statusButton')})
     }
     render(){
         return(

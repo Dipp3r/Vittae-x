@@ -1,0 +1,467 @@
+input::-moz-placeholder {
+  color: #B8B8B8;
+  font-weight: normal;
+  opacity: 1;
+}
+
+input::placeholder {
+  color: #B8B8B8;
+  font-weight: normal;
+  opacity: 1;
+}
+
+input {
+  border: 2px solid #B8B8B8;
+  background-color: transparent;
+}
+
+input:focus {
+  outline: none;
+}
+
+.grayText {
+  color: #8B8B8B;
+}
+
+.grayText {
+  color: #8B8B8B;
+}
+
+.password {
+  border: none;
+}
+
+div :has(> .password:focus) {
+  border: 2px solid #223F80;
+}
+
+/* to remove the feature to scroll through numbers in a number input field */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* this is applicable for firefox */
+/* input[type=number]{
+    -moz-appearance: textfield;
+} */
+#samplephone {
+  font-weight: 550;
+}
+
+#p1 {
+  font-weight: 620;
+  width: 280px;
+  line-height: 1.2;
+}
+
+.otp_num {
+  font-weight: 600;
+}
+
+hr {
+  border-width: 1.5px;
+  border-color: #B8B8B8;
+}
+
+.heading {
+  font-weight: 500;
+}
+
+.button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 100%;
+  transition-duration: 1s;
+  width: 100%;
+  height: 50px;
+  margin: 40px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  margin: 40px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  color: white;
+  border-radius: 12px;
+  opacity: 0.9;
+}
+
+.button:hover {
+  box-shadow: none;
+  scale: 0.95;
+}
+
+a {
+  cursor: pointer;
+}
+
+.eye path {
+  stroke: #B8B8B8;
+}
+
+.eye:hover path {
+  stroke: #223F80;
+}
+
+#password {
+  font-weight: 400;
+}
+
+.invalid {
+  /* visibility: visible; */
+  color: #BB2230;
+  font-size: 12px;
+  margin: 0px;
+}
+
+li::marker {
+  font-size: 10px;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+body {
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0px;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  position: fixed;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+section {
+  overflow: auto;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.grid-container {
+  width: 240px;
+  border: 1.5px dashed #929292;
+  border-radius: 11px;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  padding: 25px;
+}
+
+.grid-item {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(34, 63, 128, 0.4);
+  padding: 5px;
+}
+
+.info {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  color: #223F80;
+}
+
+.emptyInfo {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tickBox {
+  padding-left: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+}
+.tickBox .tickButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 2px solid #B8B8B8;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  margin-top: 4px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.down {
+  margin-top: 3px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  min-height: 50px;
+  padding: 5px;
+  text-align: left;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 18px;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  color: black;
+  opacity: 1;
+  display: block;
+  background: url("../images/calendar.svg") no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}
+
+#profile {
+  font-family: "Montserrat";
+  font-style: normal;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: static;
+  background-color: white;
+  overflow: hidden;
+  padding-top: 0px;
+}
+#profile #deleteAcc {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(1.5px);
+          backdrop-filter: blur(1.5px);
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+}
+#profile #deleteAcc #deleteAccDiv {
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 15px;
+  background-color: white;
+}
+#profile #deleteAcc #deleteAccDiv #closeIcon {
+  border-radius: 20px;
+  height: 24px;
+  margin: 10px;
+  padding: 0px;
+}
+#profile #deleteAcc #deleteAccDiv p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  margin-left: 40px;
+  color: #223F80;
+}
+#profile #deleteAcc #deleteAccDiv p a {
+  color: #BB2230;
+}
+#profile #deleteAcc #deleteAccDiv #reasonBoxDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#profile #deleteAcc #deleteAccDiv #reasonTxt {
+  margin: 30px;
+  margin-top: 0px;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 130px;
+  border: 1px solid #616161;
+  border-radius: 12px;
+  width: 80%;
+}
+#profile #deleteAcc #deleteAccDiv #Button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 80%;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 20px 30px;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+}
+#profile #deleteAcc #deleteAccDiv #Button:hover {
+  box-shadow: none;
+  scale: 0.95;
+}
+#profile #deleteAcc #deleteAccDiv #filterLabels {
+  display: flex;
+  flex-direction: row;
+  justify-content: none;
+  align-items: none;
+  flex-wrap: wrap;
+  padding: 0px 10px;
+  padding-bottom: 40px;
+}
+#profile #deleteAcc #deleteAccDiv #filterLabels .fLabel {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  background-color: rgba(34, 63, 128, 0.4);
+  width: -moz-fit-content;
+  width: fit-content;
+  color: white;
+  margin: 8px 8px;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+#profile #deleteAcc #deleteAccDiv #filterLabels .fLabel:focus {
+  background: #223F80;
+}
+#profile #backButton {
+  width: 100%;
+  margin: 15px;
+  padding-left: 20px;
+  padding-bottom: 0px;
+}
+#profile #backButton button svg path {
+  fill: #223F80;
+}
+#profile #profileDiv {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#profile #profileDiv #profileBox {
+  border-radius: 100%;
+  background-color: #223F80;
+  padding: 2px;
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+}
+#profile #profileDiv #profileBox #profilePageImg {
+  height: 118px;
+  width: 118px;
+  border-radius: 100%;
+}
+#profile #profileDiv #profileName {
+  font-weight: 700;
+  font-size: 40px;
+  color: #223F80;
+}
+#profile #profileMenu {
+  margin-top: 30px;
+  width: 75%;
+  height: 22%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 26px -4px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: none;
+}
+#profile #profileMenu .setting {
+  border-radius: 15px;
+  padding: 10px;
+  margin: 0px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#profile #profileMenu .setting p {
+  font-weight: 500;
+  font-size: 16px;
+  color: #223F80;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#profile #profileMenu .setting p svg {
+  margin-right: 10px;
+}
+#profile #logOut {
+  margin-top: 40px;
+  width: 75%;
+  height: 8%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 26px -4px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 10px 40px;
+  transition-duration: 1s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#profile #logOut p {
+  font-weight: 600;
+  font-size: 16px;
+  color: #EB1414;
+}
+#profile #logOut :hover {
+  scale: 0.95;
+}
+#profile #deleteButton {
+  position: absolute;
+  bottom: 10px;
+}
+#profile #deleteButton #delete {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #223F80;
+}/*# sourceMappingURL=profile.css.map */

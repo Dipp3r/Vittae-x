@@ -4,6 +4,9 @@ import { WithRouter } from '../routingWrapper';
 import ContactsComp from './contact';
 import HomeComp from './home';
 
+import "../styles/home.css"
+import "../styles/contact.css"
+
 class DashboardComp extends React.Component{
     constructor(){
         super()

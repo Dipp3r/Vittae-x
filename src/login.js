@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { redirect ,useNavigate} from 'react-router-dom';
 import { WithRouter } from './routingWrapper';
 import checkString from './stringChecker';
+import './styles/login.css';
 
 class LoginComp extends React.Component{
     constructor(){
@@ -46,9 +47,11 @@ class LoginComp extends React.Component{
         if(this.state.rememberMe){
             this.setState({rememberMe:false})
             rememberMeBox.style.backgroundColor = '#FFFFFF'
+            rememberMeBox.style.borderColor = '#b8b8b8'
         }else{
             this.setState({rememberMe:true})
             rememberMeBox.style.backgroundColor = '#223F80'
+            rememberMeBox.style.borderColor = '#223F80'
         }
     }   
     async submit(e){
@@ -134,7 +137,9 @@ class LoginComp extends React.Component{
 
       <div id="buttonDiv">
         <button id="Button" onClick={this.submit}>SIGN IN</button>
-        <p id="forgotPwd" onClick={this.props.navigate} value="../forgotPassword">Forgot password?</p>
+      </div>
+      <div id="forgotPwd">
+        <p onClick={this.props.navigate} value="../forgotPassword">Forgot password?</p>
       </div>
 
       <div id="accDiv">

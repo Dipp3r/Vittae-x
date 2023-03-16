@@ -1,0 +1,673 @@
+input::-moz-placeholder {
+  color: #B8B8B8;
+  font-weight: normal;
+  opacity: 1;
+}
+
+input::placeholder {
+  color: #B8B8B8;
+  font-weight: normal;
+  opacity: 1;
+}
+
+input {
+  border: 2px solid #B8B8B8;
+  background-color: transparent;
+}
+
+input:focus {
+  outline: none;
+}
+
+.grayText {
+  color: #8B8B8B;
+}
+
+.grayText {
+  color: #8B8B8B;
+}
+
+.password {
+  border: none;
+}
+
+div :has(> .password:focus) {
+  border: 2px solid #223F80;
+}
+
+/* to remove the feature to scroll through numbers in a number input field */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* this is applicable for firefox */
+/* input[type=number]{
+    -moz-appearance: textfield;
+} */
+#samplephone {
+  font-weight: 550;
+}
+
+#p1 {
+  font-weight: 620;
+  width: 280px;
+  line-height: 1.2;
+}
+
+.otp_num {
+  font-weight: 600;
+}
+
+hr {
+  border-width: 1.5px;
+  border-color: #B8B8B8;
+}
+
+.heading {
+  font-weight: 500;
+}
+
+.button {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 100%;
+  transition-duration: 1s;
+  width: 100%;
+  height: 50px;
+  margin: 40px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  margin: 40px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  color: white;
+  border-radius: 12px;
+  opacity: 0.9;
+}
+
+.button:hover {
+  box-shadow: none;
+  scale: 0.95;
+}
+
+a {
+  cursor: pointer;
+}
+
+.eye path {
+  stroke: #B8B8B8;
+}
+
+.eye:hover path {
+  stroke: #223F80;
+}
+
+#password {
+  font-weight: 400;
+}
+
+.invalid {
+  /* visibility: visible; */
+  color: #BB2230;
+  font-size: 12px;
+  margin: 0px;
+}
+
+li::marker {
+  font-size: 10px;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+body {
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0px;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  position: fixed;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+section {
+  overflow: auto;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.grid-container {
+  width: 240px;
+  border: 1.5px dashed #929292;
+  border-radius: 11px;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  padding: 25px;
+}
+
+.grid-item {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(34, 63, 128, 0.4);
+  padding: 5px;
+}
+
+.info {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  color: #223F80;
+}
+
+.emptyInfo {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tickBox {
+  padding-left: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+}
+.tickBox .tickButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 2px solid #B8B8B8;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  margin-top: 4px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.down {
+  margin-top: 3px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  min-height: 50px;
+  padding: 5px;
+  text-align: left;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 18px;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  color: black;
+  opacity: 1;
+  display: block;
+  background: url("../images/calendar.svg") no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}
+
+#dashboard {
+  font-family: "Montserrat";
+  font-style: normal;
+  position: static;
+  padding: 0px;
+  background-color: #E4E4E4;
+  overflow: hidden;
+}
+#dashboard .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  height: 89px;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
+}
+#dashboard .navbar .profile {
+  display: flex;
+  flex-direction: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  margin: 20px;
+  width: 60px;
+  height: 60px;
+  background: #223F80;
+}
+#dashboard .navbar .profile #profileImg {
+  border-radius: 100%;
+  height: 93%;
+}
+#dashboard .navbar .icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  margin-right: 20px;
+}
+#dashboard .navbar .icons .icon {
+  margin: 8px;
+}
+#dashboard .navbar .icons .iconBox {
+  display: block;
+  position: relative;
+}
+#dashboard .navbar .icons .iconBox #notifCircle {
+  display: block;
+  position: absolute;
+  border-radius: 13px;
+  top: 0px;
+  right: 0px;
+  width: 13px;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 2px solid white;
+}
+#dashboard .navbar .icons .iconBox #notifCircle path {
+  fill: #BB2230;
+}
+#dashboard #main {
+  padding-bottom: 90px;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+}
+#dashboard #main #perks {
+  height: 96px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: none;
+  align-items: none;
+}
+#dashboard #main #perks #perk {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  padding-top: 20px;
+  background-color: white;
+}
+#dashboard #main #perks #perk p {
+  margin-top: 0px;
+  width: 147px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  color: #223F80;
+  line-height: 10px;
+  text-align: center;
+}
+#dashboard #main #perks #perk .description {
+  font-weight: 500;
+  font-size: 10px;
+  color: #616161;
+}
+#dashboard #main #perks .incentive {
+  margin-left: 2px;
+}
+#dashboard #main #reminderDiv {
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+#dashboard #main #reminderDiv #calendar {
+  background-color: white;
+  border-bottom: 1px solid #9d9d9d;
+  width: 100vw;
+  height: 106px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#dashboard #main #reminderDiv #calendar #months {
+  padding: 0px 10px;
+  padding-right: 0px;
+  margin-top: 10px;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#dashboard #main #reminderDiv #calendar #months p {
+  margin: 0px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #363636;
+}
+#dashboard #main #reminderDiv #calendar #months #monthView {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 11px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: #223F80;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#dashboard #main #reminderDiv #calendar #months #monthView img {
+  margin-left: 5px;
+}
+#dashboard #main #reminderDiv #calendar .week {
+  padding: 0px 0px;
+  margin: 0px;
+  height: 80px;
+  overflow: scroll;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#dashboard #main #reminderDiv #calendar .week .dates {
+  margin: 0px 10px;
+  padding-top: 0px;
+  margin-top: 0px;
+  height: 50px;
+  width: 100vw;
+  padding: 5px 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+#dashboard #main #reminderDiv #calendar .week .dates .date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 4px;
+}
+#dashboard #main #reminderDiv #calendar .week .dates .date #day {
+  display: flex;
+  margin: 4px 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #B8B8B8;
+}
+#dashboard #main #reminderDiv #calendar .week .dates .date #date {
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 3px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  margin: 0px;
+}
+#dashboard #main #reminderDiv #calendar .week .dates .date #reminderOverlay {
+  margin-top: 10px;
+}
+#dashboard #main #reminderDiv #tasks {
+  padding: 15px 15px;
+  min-height: 150px;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 100%;
+  background: white;
+}
+#dashboard #main #reminderDiv #tasks #taskEmpty {
+  display: none;
+  margin-top: 70px;
+  text-align: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #B8B8B8;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task {
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #title {
+  margin: 0px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  color: #363636;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #deets {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #deets #name {
+  margin: 0px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: #A2A2A4;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #deets #due {
+  margin: 0px;
+  margin-left: 5px;
+  color: white;
+  padding: 3px 4px;
+  background: rgba(34, 63, 128, 0.3);
+  border-radius: 6px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 8px;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #deets #due #num_days {
+  font-weight: 700;
+  color: #414141;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .desc #day {
+  margin-top: 3px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  color: #363636;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .label {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  color: #223F80;
+}
+#dashboard #main #reminderDiv #tasks #nonEmpty .task .label p {
+  margin-left: 5px;
+}
+#dashboard #main #overdueDiv {
+  margin-top: 20px;
+  background-color: white;
+  width: 100%;
+  height: 58px;
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#dashboard #main #overdueDiv p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  color: #BB2230;
+}
+#dashboard .fixed {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  height: 60px;
+  padding: 5px 20px;
+  width: 100%;
+  box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#dashboard .fixed .downIconDiv {
+  margin: 20px;
+  height: 47px;
+  width: 162px;
+  padding: 0px 20px;
+  color: #223F80;
+  stroke: #223F80;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#dashboard .fixed .downIconDiv:focus {
+  background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
+  color: white;
+  stroke: white;
+  opacity: 0.93;
+}
+#dashboard .fixed .downIconDiv p {
+  font-family: "Montserrat";
+  font-style: normal;
+  color: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 10px;
+}
+#dashboard .fixed .downIconDiv svg path {
+  stroke: inherit;
+}
+#dashboard .fixed .downIconDiv svg circle {
+  stroke: inherit;
+}
+#dashboard .fixed .downIconDivClick {
+  margin: 20px;
+  height: 47px;
+  width: 162px;
+  padding: 0px 20px;
+  color: #223F80;
+  stroke: #223F80;
+  background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
+  color: white;
+  stroke: white;
+  opacity: 0.93;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#dashboard .fixed .downIconDivClick p {
+  font-family: "Montserrat";
+  font-style: normal;
+  color: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 10px;
+}
+#dashboard .fixed .downIconDivClick svg path {
+  stroke: inherit;
+}
+#dashboard .fixed .downIconDivClick svg circle {
+  stroke: inherit;
+}/*# sourceMappingURL=home.css.map */

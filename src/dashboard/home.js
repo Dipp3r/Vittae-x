@@ -1,6 +1,7 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 const dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class HomeComp extends React.Component{
     constructor(props){
       super(props)
@@ -41,7 +42,7 @@ class HomeComp extends React.Component{
     //     <div className="date">
     //     <p id="day">Sun</p>
     //     <p id="date">01</p>
-    //     <p id="reminderOverlay">.</p>
+    //     <img id="reminderOverlay" src="../static/images/dot1.svg" alt="dot">
     //   </div>
       let dates = document.querySelector('#dates')
       dates.innerHTML = ''
@@ -64,11 +65,11 @@ class HomeComp extends React.Component{
         
         day = document.createElement('p')
         day.id = 'day'
-        remainder = document.createElement('P')
+        remainder = document.createElement('img')
         remainder.id = 'reminderOverlay'
-        remainder.innerText = '.'
+        remainder.src = require("../images/blueDot.svg")
+        remainder.style.visibility = "hidden"
         
-
         let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
         day.innerText = dayName[dt.getDay()].slice(0,3)
         date.innerText = dt.getDate() < 10?`0${dt.getDate()}`:dt.getDate();
@@ -86,6 +87,7 @@ class HomeComp extends React.Component{
             date.style.color = 'white'
             dateDiv.name = dateIndex 
             dateIndex+=1
+            remainder.style.visibility = 'visible'
           }
         }
 
@@ -204,6 +206,7 @@ class HomeComp extends React.Component{
       // this.generateTasks(this.tasks)
     }
     render(){
+      let today = new Date()
         return(
 <div id='homeMain'>
     <div id="perks">

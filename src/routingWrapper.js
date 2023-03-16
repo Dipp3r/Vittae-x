@@ -10,6 +10,7 @@ export const WithRouter = (Component) => {
         URL = e
       }else{
         URL = e.currentTarget.getAttribute("value")
+        console.log(e.currentTarget)
         if(URL == null) URL = e.target.value
       }   
       console.log(URL)
