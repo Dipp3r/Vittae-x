@@ -173,8 +173,6 @@
                 }
             }
         }
-<<<<<<< HEAD
-=======
         #completedTaskScreen{
             height:100%;
             width:100%;
@@ -290,7 +288,6 @@
                 }
             }
         }
->>>>>>> vaaghu
         #add{
             @include addButton(20px,30px);
         }
@@ -403,14 +400,7 @@
                     border: 2px solid #FFFFFF;   //#8A8787
                     border-radius: 17px;
                     @include flex(row,space-around,center);
-<<<<<<< HEAD
-                    p{
-                        color:white; //#8A8787
-                        
-                    }
-=======
                     color:white; //#8A8787 
->>>>>>> vaaghu
                 }
             }
         }
@@ -431,20 +421,12 @@
                     height:40px;
                     font-family: 'Montserrat';
                     font-style: normal;
-<<<<<<< HEAD
-                    font-weight: 500;
-                    font-size: 12px;
-                    color: #6D7593;;
-                    width:33.333%;
-                    text-align: center;
-=======
                     font-weight: 600;
                     font-size: 12px;
                     color: #6D7593;
                     width:33.333%;
                     text-align: center;
                     border-bottom: 2px solid #6D7593;
->>>>>>> vaaghu
                 }
                 .statusButton:focus{
                     color: #223F80;
@@ -554,10 +536,7 @@
 
 #tasks{
     width:100%;
-<<<<<<< HEAD
-=======
     @include flex(column,flex-start,center);
->>>>>>> vaaghu
     #dropDown{
         @include flex(row,flex-start,center);
         padding:25px;
@@ -585,18 +564,11 @@
         .taskCard{
             margin:14px 0px;
             width:270px;
-<<<<<<< HEAD
-            height:105px;
-            background: #EEEEEE;
-            box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-=======
             // height:105px;
             background: #EEEEEE;
             box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             padding: 10px;
->>>>>>> vaaghu
             #portion1{
                 @include flex(row,space-between,center);
                 padding:10px;

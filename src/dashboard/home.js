@@ -67,13 +67,9 @@ class HomeComp extends React.Component{
         day.id = 'day'
         remainder = document.createElement('img')
         remainder.id = 'reminderOverlay'
-<<<<<<< HEAD
-        remainder.innerText = '.'
-=======
         remainder.src = require("../images/blueDot.svg")
         remainder.style.visibility = "hidden"
         
->>>>>>> vaaghu
         let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
         day.innerText = dayName[dt.getDay()].slice(0,3)
         date.innerText = dt.getDate() < 10?`0${dt.getDate()}`:dt.getDate();
@@ -86,7 +82,7 @@ class HomeComp extends React.Component{
         if(dateIndex < this.date.length-1){
           
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
-            remainder.style.color = 'red'
+            remainder.style.color = 'rgba(34, 63, 128, 1)'
             date.style.backgroundColor = '#a5b3cd'
             date.style.color = 'white'
             dateDiv.name = dateIndex 

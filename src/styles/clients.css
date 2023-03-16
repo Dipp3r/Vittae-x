@@ -123,11 +123,7 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
-<<<<<<< HEAD
-  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
-=======
   src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
->>>>>>> vaaghu
 }
 body {
   margin: 0px;
@@ -150,11 +146,7 @@ section {
   overflow: auto;
   height: 100vh;
   width: 100vw;
-<<<<<<< HEAD
-  padding-top: 80px;
-=======
   padding-top: 40px;
->>>>>>> vaaghu
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -460,8 +452,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 14px;
   color: #929292;
 }
-<<<<<<< HEAD
-=======
 #Client #main #completedTaskScreen {
   height: 100%;
   width: 100%;
@@ -588,7 +578,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 14px;
   color: #929292;
 }
->>>>>>> vaaghu
 #Client #main #add {
   display: flex;
   flex-direction: row;
@@ -742,11 +731,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-<<<<<<< HEAD
-}
-#Client #main #info #portion2 .contact p {
-=======
->>>>>>> vaaghu
   color: white;
 }
 #Client #main #statusBar {
@@ -774,19 +758,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
   height: 40px;
   font-family: "Montserrat";
   font-style: normal;
-<<<<<<< HEAD
-  font-weight: 500;
-=======
   font-weight: 600;
->>>>>>> vaaghu
   font-size: 12px;
   color: #6D7593;
   width: 33.333%;
   text-align: center;
-<<<<<<< HEAD
-=======
   border-bottom: 2px solid #6D7593;
->>>>>>> vaaghu
 }
 #Client #main #statusBar #statusButton .statusButton:focus {
   color: #223F80;
@@ -904,13 +881,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
 
 #tasks {
   width: 100%;
-<<<<<<< HEAD
-=======
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
->>>>>>> vaaghu
 }
 #tasks #dropDown {
   display: flex;
@@ -944,17 +918,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #tasks #taskCardSpace .taskCard {
   margin: 14px 0px;
   width: 270px;
-<<<<<<< HEAD
-  height: 105px;
-  background: #EEEEEE;
-  box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-=======
   background: #EEEEEE;
   box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 10px;
->>>>>>> vaaghu
 }
 #tasks #taskCardSpace .taskCard #portion1 {
   display: flex;

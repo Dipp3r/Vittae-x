@@ -3,11 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom'
 import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
 
-<<<<<<< HEAD
-// import './index.css';
-
-=======
->>>>>>> vaaghu
 import LoginComp from './login.js';
 import SignUpMobComp from './signUpMob'
 import SignUpOTP from './signUpOTP';

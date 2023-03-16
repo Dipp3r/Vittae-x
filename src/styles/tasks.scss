@@ -45,22 +45,11 @@
                 font-style: normal;
                 font-weight: 500;
                 font-size: 12px;
-<<<<<<< HEAD
-                color: #6D7593;;
-                width:33.333%;
-                height:32px;
-                text-align: center;
-            }
-            .statusButton:focus{
-                color: #223F80;
-                border-bottom:1px solid  #223F80;
-=======
                 width:33.333%;
                 height:32px;
                 text-align: center;
                 color: rgba(37, 53, 100, 0.4);
                 border-bottom-color: rgba(37, 53, 100, 0.4);
->>>>>>> vaaghu
             }
         }
     }
@@ -90,14 +79,9 @@
             #nonEmpty{
                 // display:none;
                 .task{
-<<<<<<< HEAD
-                    margin:25px 0px;
-                    @include flex(row,space-around,center);
-=======
                     padding: 25px 25px;
                     width: 100vw;
                     @include flex(row,flex-start,center);
->>>>>>> vaaghu
                     .desc{
                         @include flex(column,center,flex-start);
                         #title{
