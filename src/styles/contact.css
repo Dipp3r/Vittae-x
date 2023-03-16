@@ -123,7 +123,11 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
+<<<<<<< HEAD
   src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+=======
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
+>>>>>>> vaaghu
 }
 body {
   margin: 0px;
@@ -146,7 +150,11 @@ section {
   overflow: auto;
   height: 100vh;
   width: 100vw;
+<<<<<<< HEAD
   padding-top: 80px;
+=======
+  padding-top: 40px;
+>>>>>>> vaaghu
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -252,6 +260,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-width: thin;
 }
 
+<<<<<<< HEAD
 #dashboard {
   font-family: "Montserrat";
   font-style: normal;
@@ -317,6 +326,9 @@ input[type=date]::-webkit-calendar-picker-indicator {
   fill: #BB2230;
 }
 #dashboard #main {
+=======
+#main {
+>>>>>>> vaaghu
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -324,7 +336,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   overflow: hidden;
   padding: 0px 10px;
 }
+<<<<<<< HEAD
 #dashboard #main #statusBar {
+=======
+#main #statusBar {
+>>>>>>> vaaghu
   width: 100vw;
   background-color: transparent;
   height: 40px;
@@ -333,7 +349,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-evenly;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main #statusBar #statusButton {
+=======
+#main #statusBar #statusButton {
+>>>>>>> vaaghu
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
@@ -345,11 +365,16 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: flex-start;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main #statusBar #statusButton .statusButton {
+=======
+#main #statusBar #statusButton .statusButton {
+>>>>>>> vaaghu
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
+<<<<<<< HEAD
   color: #6D7593;
   width: 33.333%;
   height: 32px;
@@ -360,18 +385,35 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-bottom: 1px solid #223F80;
 }
 #dashboard #main #statusBarEdge {
+=======
+  color: rgb(109, 117, 147);
+  width: 33.333%;
+  height: 32px;
+  text-align: center;
+  border-bottom: 2px solid rgb(109, 117, 147);
+}
+#main #statusBarEdge {
+>>>>>>> vaaghu
   width: 100vw;
   margin: 0px;
   border: 0.5px solid rgba(37, 53, 100, 0.4);
 }
+<<<<<<< HEAD
 #dashboard #main #searchBarDiv {
+=======
+#main #searchBarDiv {
+>>>>>>> vaaghu
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100vw;
 }
+<<<<<<< HEAD
 #dashboard #main #searchBarDiv #searchBar {
+=======
+#main #searchBarDiv #searchBar {
+>>>>>>> vaaghu
   width: 80%;
   height: 40px;
   margin: 30px 10px;
@@ -382,17 +424,28 @@ input[type=date]::-webkit-calendar-picker-indicator {
   background: rgba(109, 117, 147, 0.22);
   border-radius: 9px;
 }
+<<<<<<< HEAD
 #dashboard #main #searchBarDiv #searchBar #icon {
   margin: 5px;
 }
 #dashboard #main #searchBarDiv #searchBar #searchField {
+=======
+#main #searchBarDiv #searchBar #icon {
+  margin: 5px;
+}
+#main #searchBarDiv #searchBar #searchField {
+>>>>>>> vaaghu
   width: 100%;
   background-color: transparent;
   border: none;
   color: #6D7593;
   margin-right: 10px;
 }
+<<<<<<< HEAD
 #dashboard #main #labelBar {
+=======
+#main #labelBar {
+>>>>>>> vaaghu
   width: 100vw;
   background: rgba(34, 63, 128, 0.13);
   height: 40px;
@@ -402,7 +455,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-evenly;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main #labelBar #labels {
+=======
+#main #labelBar #labels {
+>>>>>>> vaaghu
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
@@ -412,7 +469,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main #labelBar #labels .label {
+=======
+#main #labelBar #labels .label {
+>>>>>>> vaaghu
   color: white;
   width: 25%;
   height: 40px;
@@ -424,6 +485,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main .scrolling-wrapperY {
   width: 370px;
   overflow-y: scroll;
@@ -432,6 +494,18 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding: 10px 25px;
 }
 #dashboard #main .scrolling-wrapperY .cards {
+=======
+#main .scrolling-wrapperY {
+  width: 100vw;
+  display: flex;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  white-space: nowrap;
+  padding: 10px 5px;
+  flex-direction: column;
+}
+#main .scrolling-wrapperY .cards {
+>>>>>>> vaaghu
   height: 50px;
   background: #FFFFFF;
   box-shadow: 0px 4px 1px -2px rgba(0, 0, 0, 0.2);
@@ -441,7 +515,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-family: "Montserrat";
   font-style: normal;
 }
+<<<<<<< HEAD
 #dashboard #main .scrolling-wrapperY .cards .details {
+=======
+#main .scrolling-wrapperY .cards .details {
+>>>>>>> vaaghu
   height: 100%;
   width: 100%;
   display: flex;
@@ -449,7 +527,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-around;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main .scrolling-wrapperY .cards .details .info {
+=======
+#main .scrolling-wrapperY .cards .details .info {
+>>>>>>> vaaghu
   height: 100%;
   width: -webkit-fill-available;
   width: -moz-available;
@@ -464,28 +546,49 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
   color: #223F80;
 }
+<<<<<<< HEAD
 #dashboard #main .scrolling-wrapperY .cards .details .phone {
   font-weight: 500;
   font-size: 12px;
 }
 #dashboard #main .scrolling-wrapperY .cards .details .status {
   width: 40px;
+=======
+#main .scrolling-wrapperY .cards .details .phone {
+  font-weight: 500;
+  font-size: 12px;
+}
+#main .scrolling-wrapperY .cards .details .status {
+  width: 140px;
+>>>>>>> vaaghu
   height: 13px;
   border-radius: 14px;
   background-color: #6BDA7D;
 }
+<<<<<<< HEAD
 #dashboard #main .scrolling-wrapperY .cards .details .date {
+=======
+#main .scrolling-wrapperY .cards .details .date {
+>>>>>>> vaaghu
   font-weight: 500;
   font-size: 10px;
   color: #929292;
 }
+<<<<<<< HEAD
 #dashboard #main .scrolling-wrapperY .cards .details .dateDiv {
+=======
+#main .scrolling-wrapperY .cards .details .dateDiv {
+>>>>>>> vaaghu
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main .scrolling-wrapperY .cards .details .dateDiv .filterTag {
+=======
+#main .scrolling-wrapperY .cards .details .dateDiv .filterTag {
+>>>>>>> vaaghu
   display: none;
   align-items: center;
   color: white;
@@ -498,7 +601,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding: 3px;
   margin-bottom: 10px;
 }
+<<<<<<< HEAD
 #dashboard #main .fixed {
+=======
+#main .fixed {
+>>>>>>> vaaghu
   position: fixed;
   bottom: 0;
   height: 56px;
@@ -514,7 +621,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-around;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main .fixed .downIconDiv {
+=======
+#main .fixed .downIconDiv {
+>>>>>>> vaaghu
   height: 47px;
   width: 162px;
   margin: 10px;
@@ -527,13 +638,21 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #main .fixed .downIconDiv:focus {
+=======
+#main .fixed .downIconDiv:focus {
+>>>>>>> vaaghu
   background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
   color: white;
   stroke: white;
   opacity: 0.93;
 }
+<<<<<<< HEAD
 #dashboard #main .fixed .downIconDiv p {
+=======
+#main .fixed .downIconDiv p {
+>>>>>>> vaaghu
   font-family: "Montserrat";
   font-style: normal;
   color: inherit;
@@ -541,6 +660,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 16px;
   margin-left: 10px;
 }
+<<<<<<< HEAD
 #dashboard #main .fixed .downIconDiv svg path {
   stroke: inherit;
 }
@@ -548,6 +668,15 @@ input[type=date]::-webkit-calendar-picker-indicator {
   stroke: inherit;
 }
 #dashboard #main #add {
+=======
+#main .fixed .downIconDiv svg path {
+  stroke: inherit;
+}
+#main .fixed .downIconDiv svg circle {
+  stroke: inherit;
+}
+#main #add {
+>>>>>>> vaaghu
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -559,27 +688,51 @@ input[type=date]::-webkit-calendar-picker-indicator {
   bottom: 75px;
   right: 60px;
 }
+<<<<<<< HEAD
 #dashboard #main #add img {
+=======
+#main #add img {
+>>>>>>> vaaghu
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 0px;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer {
   height: 100%;
   width: 100%;
+=======
+
+#addCustomer {
+  height: 100vh;
+  width: 100vw;
+>>>>>>> vaaghu
   position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
   -webkit-backdrop-filter: blur(1.5px);
           backdrop-filter: blur(1.5px);
   display: flex;
+<<<<<<< HEAD
   flex-direction: none;
   justify-content: center;
   align-items: center;
   display: none;
 }
 #dashboard #addCustomer #addBox {
+=======
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: none;
+  top: 0px;
+  overflow: scroll;
+  padding: 100px 5px 100px 5px;
+  z-index: 1;
+}
+#addCustomer #addBox {
+>>>>>>> vaaghu
   height: -moz-fit-content;
   height: fit-content;
   width: 80%;
@@ -587,19 +740,31 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-radius: 15px;
   background-color: white;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox #closeIcon {
+=======
+#addCustomer #addBox #closeIcon {
+>>>>>>> vaaghu
   border-radius: 20px;
   height: 24px;
   margin: 10px;
   padding: 0px;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields {
+=======
+#addCustomer #addBox .inputFields {
+>>>>>>> vaaghu
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields .label {
+=======
+#addCustomer #addBox .inputFields .label {
+>>>>>>> vaaghu
   width: 87%;
   font-weight: 600;
   font-size: 12px;
@@ -607,7 +772,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: #223F80;
   margin-left: 20px;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields .field {
+=======
+#addCustomer #addBox .inputFields .field {
+>>>>>>> vaaghu
   width: 87%;
   border: 2px solid #B8B8B8;
   border-radius: 12px;
@@ -615,13 +784,21 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin-top: 5px;
   margin-bottom: 20px;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields .dropDownDiv {
+=======
+#addCustomer #addBox .inputFields .dropDownDiv {
+>>>>>>> vaaghu
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields .dropDownDiv select {
+=======
+#addCustomer #addBox .inputFields .dropDownDiv select {
+>>>>>>> vaaghu
   border: none;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -629,17 +806,28 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 100%;
   padding: 0px;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields .dropDownDiv select:focus {
   outline: none;
 }
 #dashboard #addCustomer #addBox .inputFields #dobField {
+=======
+#addCustomer #addBox .inputFields .dropDownDiv select:focus {
+  outline: none;
+}
+#addCustomer #addBox .inputFields #dobField {
+>>>>>>> vaaghu
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: start;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields #dobField #calendarDiv {
+=======
+#addCustomer #addBox .inputFields #dobField #calendarDiv {
+>>>>>>> vaaghu
   margin-top: 8px;
   margin-left: 5px;
   display: flex;
@@ -651,10 +839,17 @@ input[type=date]::-webkit-calendar-picker-indicator {
   height: 47px;
   width: 47px;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields .field:invalid:focus {
   border: 1px solid red;
 }
 #dashboard #addCustomer #addBox .inputFields .Button {
+=======
+#addCustomer #addBox .inputFields .field:invalid:focus {
+  border: 1px solid red;
+}
+#addCustomer #addBox .inputFields .Button {
+>>>>>>> vaaghu
   background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
   transition-duration: 1s;
   width: 80%;
@@ -667,6 +862,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: white;
   border-radius: 12px;
 }
+<<<<<<< HEAD
 #dashboard #addCustomer #addBox .inputFields .Button:hover {
   box-shadow: none;
   scale: 0.95;
@@ -675,6 +871,22 @@ input[type=date]::-webkit-calendar-picker-indicator {
   height: 100%;
   width: 100%;
   position: absolute;
+=======
+#addCustomer #addBox .inputFields .Button:hover {
+  box-shadow: none;
+  scale: 0.95;
+}
+#addCustomer #addBox select {
+  background: transparent;
+}
+#addCustomer #addBox select * {
+  padding: 5px 10px;
+}
+
+#filter {
+  height: 100%;
+  width: 100%;
+>>>>>>> vaaghu
   background-color: rgba(0, 0, 0, 0.4);
   -webkit-backdrop-filter: blur(1.5px);
           backdrop-filter: blur(1.5px);
@@ -682,9 +894,18 @@ input[type=date]::-webkit-calendar-picker-indicator {
   flex-direction: none;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   display: none;
 }
 #dashboard #filter #filterBox {
+=======
+  display: flex;
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+}
+#filter #filterBox {
+>>>>>>> vaaghu
   height: -moz-fit-content;
   height: fit-content;
   width: 80%;
@@ -692,13 +913,21 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-radius: 15px;
   background-color: white;
 }
+<<<<<<< HEAD
 #dashboard #filter #filterBox #closeIcon {
+=======
+#filter #filterBox #closeIcon {
+>>>>>>> vaaghu
   border-radius: 20px;
   height: 24px;
   margin: 10px;
   padding: 0px;
 }
+<<<<<<< HEAD
 #dashboard #filter #filterBox #filterLabels {
+=======
+#filter #filterBox #filterLabels {
+>>>>>>> vaaghu
   display: flex;
   flex-direction: row;
   justify-content: none;
@@ -707,7 +936,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding: 0px 10px;
   padding-bottom: 40px;
 }
+<<<<<<< HEAD
 #dashboard #filter #filterBox #filterLabels .fLabel {
+=======
+#filter #filterBox #filterLabels .fLabel {
+>>>>>>> vaaghu
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
@@ -719,7 +952,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin: 8px 8px;
   padding: 5px 20px;
   border-radius: 5px;
+<<<<<<< HEAD
 }
 #dashboard #filter #filterBox #filterLabels .fLabel:focus {
   background: #223F80;
+=======
+>>>>>>> vaaghu
 }/*# sourceMappingURL=contact.css.map */

@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom'
 import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
 
+<<<<<<< HEAD
 // import './index.css';
 
+=======
+>>>>>>> vaaghu
 import LoginComp from './login.js';
 import SignUpMobComp from './signUpMob'
 import SignUpOTP from './signUpOTP';
@@ -33,20 +36,41 @@ import Tasks from './dashboard/tasks';
 class IndexComp extends React.Component{
   constructor(props){
     super(props)
-    this.state = {mobile:''}
+    this.state = {
+      mobile:'',
+      contactCompState:{
+        addClientMenu:'none',
+        filterMenu:'none',
+        searchValue:'',
+        userInfo:{
+          name:'',
+          mobile:'',
+          mail:'',
+          designation:'',
+        },
+        filterProps:{
+          status:0,
+          sort: 'dateDesc',
+          tag:[]
+        }
+      }
+    
+    
+    }
     this.getItem = this.getItem.bind(this)
     this.setItem = this.setItem.bind(this)
   }
   getItem(key){
-    console.log(this.state[key])
+    
+    
     return  this.state[key]
   }
   setItem(obj){
-    console.log(obj)
+    
     this.setState(obj)
   }
   render(){
-    console.log(this.state);
+    
   return(
     <BrowserRouter history={HashRouter} >
       <Routes history={HashRouter} >

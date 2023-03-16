@@ -1,6 +1,8 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 
+import '../styles/tasks.css'
+
 class Tasks extends React.Component{
     constructor(props){
         super(props)
@@ -14,7 +16,7 @@ class Tasks extends React.Component{
         this.changeCurrentSection = this.changeCurrentSection.bind(this)
     }
     displaySection(currSection){
-        console.log(this.state)
+        
         let taskList
         switch(currSection){
             case 0:
@@ -34,7 +36,6 @@ class Tasks extends React.Component{
         let container = document.body.querySelector('#tasks')
         container.innerHTML = ''
         let task,desc,i
-        // console.log(taskList.length)
         let card;
         if(taskList.length == 0){
             card = document.createElement('div')
@@ -48,7 +49,10 @@ class Tasks extends React.Component{
             card.id = 'nonEmpty'
             for (let j = 0;j< taskList.length;j++){
                 i = taskList[j]
+<<<<<<< HEAD
                 console.log(i)
+=======
+>>>>>>> vaaghu
                 task = document.createElement('div')
                 task.className = 'task'
 
@@ -64,6 +68,11 @@ class Tasks extends React.Component{
                 due.id = 'due' 
                 let day = document.createElement('p')
                 day.id = 'day'
+<<<<<<< HEAD
+=======
+                day.style.color = dateColor
+                
+>>>>>>> vaaghu
 
                 details.appendChild(name)
                 details.appendChild(due)
@@ -105,14 +114,18 @@ class Tasks extends React.Component{
         container.appendChild(card)
     }
     changeCurrentSection(e){
-        // console.log(e)
         let obj = {}
         obj.currSection = Number.parseInt(e.currentTarget.name)
         this.setState(obj)
         this.displaySection(Number.parseInt(e.currentTarget.name))
     }
     componentDidMount(){
+<<<<<<< HEAD
         this.displaySection()
+=======
+      this.displaySection(0)
+      this.setState({lastSession:document.querySelector('.statusButton')})
+>>>>>>> vaaghu
     }
     render(){
         return(

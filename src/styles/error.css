@@ -123,7 +123,11 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
+<<<<<<< HEAD
   src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+=======
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
+>>>>>>> vaaghu
 }
 body {
   margin: 0px;
@@ -146,7 +150,11 @@ section {
   overflow: auto;
   height: 100vh;
   width: 100vw;
+<<<<<<< HEAD
   padding-top: 80px;
+=======
+  padding-top: 40px;
+>>>>>>> vaaghu
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

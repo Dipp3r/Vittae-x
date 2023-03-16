@@ -34,7 +34,11 @@
         </div>
       </div>
        <div class="tickBox"> -->
+<<<<<<< HEAD
 <!-- when the value is 0 the bg is set transprent otherwise its set to dark blue -->
+=======
+  <!-- when the value is 0 the bg is set transprent otherwise its set to dark blue -->
+>>>>>>> vaaghu
         <!-- <button value="0" class="tickButton">
           <svg width="12" height="10" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round"
@@ -128,8 +132,8 @@
       <p class="invalid">*Invalid number</p>
 
        <div class="tickBox"> -->
-<!-- when the value is 0 the bg is set transprent otherwise its set to dark blue -->
-<!-- <button value="0" class="tickButton"> 
+  <!-- when the value is 0 the bg is set transprent otherwise its set to dark blue -->
+  <!-- <button value="0" class="tickButton"> 
           <svg width="10" height="10" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round"
               stroke-linejoin="round" />

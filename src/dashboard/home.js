@@ -1,6 +1,7 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 const dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class HomeComp extends React.Component{
     constructor(props){
       super(props)
@@ -41,7 +42,7 @@ class HomeComp extends React.Component{
     //     <div className="date">
     //     <p id="day">Sun</p>
     //     <p id="date">01</p>
-    //     <p id="reminderOverlay">.</p>
+    //     <img id="reminderOverlay" src="../static/images/dot1.svg" alt="dot">
     //   </div>
       let dates = document.querySelector('#dates')
       dates.innerHTML = ''
@@ -52,7 +53,7 @@ class HomeComp extends React.Component{
       let dateIndex = 0
 
       for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
-        console.log(dt.toDateString())
+        
 
         dateDiv = document.createElement('div')
         dateDiv.className = 'date'
@@ -64,9 +65,15 @@ class HomeComp extends React.Component{
         
         day = document.createElement('p')
         day.id = 'day'
-        remainder = document.createElement('P')
+        remainder = document.createElement('img')
         remainder.id = 'reminderOverlay'
+<<<<<<< HEAD
         remainder.innerText = '.'
+=======
+        remainder.src = require("../images/blueDot.svg")
+        remainder.style.visibility = "hidden"
+        
+>>>>>>> vaaghu
         let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
         day.innerText = dayName[dt.getDay()].slice(0,3)
         date.innerText = dt.getDate() < 10?`0${dt.getDate()}`:dt.getDate();
@@ -76,17 +83,18 @@ class HomeComp extends React.Component{
 
         
         remainder.style.color = 'transparent'
-        if(dateIndex < this.date.length){
-          console.log(dt.toDateString(),new Date(this.date[dateIndex].date).toDateString())
+        if(dateIndex < this.date.length-1){
+          
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'red'
             date.style.backgroundColor = '#a5b3cd'
             date.style.color = 'white'
             dateDiv.name = dateIndex 
             dateIndex+=1
+            remainder.style.visibility = 'visible'
           }
         }
-        
+
         if (dt.toDateString() == today.toDateString()){
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
@@ -99,7 +107,7 @@ class HomeComp extends React.Component{
     getTasksPerDate(e){
       let dateIndex = e.currentTarget.name
       let lastselectedDate = this.state.lastselectedDate
-      console.log(lastselectedDate);
+      
       if(lastselectedDate.name == -1){
         lastselectedDate.querySelector('#date').style.backgroundColor = 'transparent'
         lastselectedDate.querySelector('#date').style.color = 'black'
@@ -140,7 +148,7 @@ class HomeComp extends React.Component{
 
       for (let j = 0;j< taskList.length;j++){
         i = taskList[j]
-        console.log(i)
+        
         task = document.createElement('div')
         task.className = 'task'
 
@@ -197,11 +205,12 @@ class HomeComp extends React.Component{
     }
     componentDidMount(){
       let date = new Date()
-      console.log(date.getMonth)
+      
       this.generateDates()
       // this.generateTasks(this.tasks)
     }
     render(){
+      let today = new Date()
         return(
 <div id='homeMain'>
     <div id="perks">

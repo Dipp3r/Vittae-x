@@ -1,6 +1,8 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 
+import "../styles/profile.css"
+
 class Profile extends React.Component{
     constructor(props){
       super(props)

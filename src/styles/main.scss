@@ -121,7 +121,7 @@ li::marker{
 
 @font-face {
     font-family: 'Montserrat';
-    src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+    src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 } //Vittae-x default font
 
 
@@ -188,7 +188,7 @@ section{
     overflow: auto;
     height: 100vh;
     width: 100vw;
-    padding-top: 80px;
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

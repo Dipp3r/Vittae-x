@@ -123,7 +123,11 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
+<<<<<<< HEAD
   src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+=======
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
+>>>>>>> vaaghu
 }
 body {
   margin: 0px;
@@ -146,7 +150,11 @@ section {
   overflow: auto;
   height: 100vh;
   width: 100vw;
+<<<<<<< HEAD
   padding-top: 80px;
+=======
+  padding-top: 40px;
+>>>>>>> vaaghu
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -253,7 +261,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 
 #profileInfo {
+<<<<<<< HEAD
   overflow: hidden;
+=======
+  overflow: hidden scroll;
+>>>>>>> vaaghu
   font-family: "Montserrat";
   font-style: normal;
   padding-top: 0px;
@@ -263,6 +275,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 100%;
   padding: 0px 10px;
   padding-bottom: 0px;
+<<<<<<< HEAD
+=======
+  margin: 15px;
+>>>>>>> vaaghu
 }
 #profileInfo #backButtonDiv #backButton {
   margin-left: 10px;
@@ -338,7 +354,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 #profileInfo .inputField .field {
   width: 272px;
+<<<<<<< HEAD
   height: 30px;
+=======
+  height: 35px;
+>>>>>>> vaaghu
   border: 2px solid #B8B8B8;
   border-radius: 12px;
   padding: 5px;
@@ -429,4 +449,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #profileInfo .inputField #saveButton:hover {
   box-shadow: none;
   scale: 0.95;
+<<<<<<< HEAD
+=======
+}
+
+select {
+  background: transparent;
+>>>>>>> vaaghu
 }/*# sourceMappingURL=profileInfo.css.map */
