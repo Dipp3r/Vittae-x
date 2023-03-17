@@ -1,10 +1,26 @@
 import { stat } from "fs";
 import React from "react";
 import { WithRouter } from "../routingWrapper";
+class Customer {
+  constructor(){
+    this.id = 0
+    this.name= ''
+    this.mobile=''
+    this.status=0//1,2,3 or 4
+    this.date=new Date().toDateString()//date obj
+    this.dateOfBirth=""//date obj (NOT used in list)
+    this.tag=['']//tag1,tag2,etc
+    this.designation = ""//ANY TEXT (NOT used in list)
+    this.gender=""//Male,female or others (NOT used in list)
+    this.mail = "" // (NOT used in list)
+    this.maritalStatus = ""//Single, Married, Widowed or Divorced (NOT used in list)
+  }
+}
 class ContactsComp extends React.Component {
     constructor(props){
         super(props)
         this.state = {}
+        this.cuatomerList = []
         // this.state = {
         //   addClientMenu:'none',
         //   filterMenu:'none',
@@ -20,21 +36,23 @@ class ContactsComp extends React.Component {
         //     tag:[]
         //   }
         // }
-        this.customerList = [
-        {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:4,date:'02/01/2002',tag:['tag1','tag2']},
-        {id:3,name:'ccc',mobile:'1234567820',status:1,date:'02/03/2002',tag:['tag1','tag2']},
-        {id:2,name:'bbb',mobile:'1234567812',status:1,date:'02/02/2002',tag:['tag1','tag2']},
-        {id:4,name:'ddd',mobile:'1234547890',status:2,date:'02/21/2002',tag:['tag1','tag2']},
-        {id:5,name:'eee',mobile:'1234347890',status:3,date:'02/19/2002',tag:['tag1','tag2']},
-        {id:6,name:'eee',mobile:'1234347890',status:3,date:'02/17/2002',tag:[]},
-        {id:7,name:'eee',mobile:'1234347890',status:2,date:'02/15/2002',tag:['tag3','tag4']},
-        {id:8,name:'eee',mobile:'1234347890',status:2,date:'02/12/2002',tag:['tag2']},
-        {id:9,name:'eee',mobile:'1234347890',status:2,date:'02/09/2002',tag:['tag1','tag2']},
-        {id:10,name:'eee',mobile:'1234347890',status:2,date:'02/08/2002',tag:['tag1','tag2']},
-        {id:11,name:'eee',mobile:'1234347890',status:2,date:'02/01/2002',tag:['tag1','tag2']},
-        {id:12,name:'eee',mobile:'1234347890',status:2,date:'02/07/2002',tag:['tag2']},
-        {id:13,name:'eee',mobile:'1234347890',status:2,date:'02/04/2002',tag:['tag3']},
-        {id:14,name:'eee',mobile:'1234347890',status:2,date:'02/06/2002',tag:['tag4']}];
+      //   this.customerList = [
+      //   {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:4,date:'02/01/2002',tag:['tag1','tag2']},
+      //   {id:3,name:'ccc',mobile:'1234567820',status:1,date:'02/03/2002',tag:['tag1','tag2']},
+      //   {id:2,name:'bbb',mobile:'1234567812',status:1,date:'02/02/2002',tag:['tag1','tag2']},
+      //   {id:4,name:'ddd',mobile:'1234547890',status:2,date:'02/21/2002',tag:['tag1','tag2']},
+      //   {id:5,name:'eee',mobile:'1234347890',status:3,date:'02/19/2002',tag:['tag1','tag2']},
+      //   {id:6,name:'eee',mobile:'1234347890',status:3,date:'02/17/2002',tag:[]},
+      //   {id:7,name:'eee',mobile:'1234347890',status:2,date:'02/15/2002',tag:['tag3','tag4']},
+      //   {id:8,name:'eee',mobile:'1234347890',status:2,date:'02/12/2002',tag:['tag2']},
+      //   {id:9,name:'eee',mobile:'1234347890',status:2,date:'02/09/2002',tag:['tag1','tag2']},
+      //   {id:10,name:'eee',mobile:'1234347890',status:2,date:'02/08/2002',tag:['tag1','tag2']},
+      //   {id:11,name:'eee',mobile:'1234347890',status:2,date:'02/01/2002',tag:['tag1','tag2']},
+      //   {id:12,name:'eee',mobile:'1234347890',status:2,date:'02/07/2002',tag:['tag2']},
+      //   {id:13,name:'eee',mobile:'1234347890',status:2,date:'02/04/2002',tag:['tag3']},
+      //   {id:14,name:'eee',mobile:'1234347890',status:2,date:'02/06/2002',tag:['tag4']}
+      // ];
+       
         this.displayCustomer = this.displayCustomer.bind(this)
         this.displayMessage = this.displayMessage.bind(this)
         this.toggleFilterMenu = this.toggleFilterMenu.bind(this)
@@ -285,11 +303,29 @@ class ContactsComp extends React.Component {
       this.displayCustomer(newCustomerList)
     }
     submit(){
-      
-      this.toggleAddClientMenu()
+      let form = document.querySelector("#addCustomer")
+      let arr = []
+      let obj = new Customer()
+      console.log(form)
+      arr.push(...form.querySelectorAll("input"))
+      arr.push(...form.querySelectorAll("select"))
+      for(let element of arr){
+        obj[element.name] = element.value
+      }
+      obj.date = new Date().toDateString()
+      obj.status = "1"
+      obj.id = Number.parseInt(this.customerList.length)+1
+      obj.tag = []
+      this.customerList.push(obj)
+      this.props.setItem({customerList:this.customerList})
+      console.log(this.customerList)
+      // this.filterAndSort(this.customerList)
+      console.log(arr,obj)
+      // this.toggleAddClientMenu()
     }
     componentDidMount(){
       let obj = this.props.getItem('contactCompState')
+      this.customerList = this.props.getItem('customerList')
       this.setState(obj,()=>{
         this.searchCustomer()
 
@@ -400,41 +436,41 @@ class ContactsComp extends React.Component {
           
                 <div className="inputFields">
                   <p className="label">Name</p>
-                  <input required className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='name' />
+                  <input id="newCusName" required className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='name' />
           
                   <p className="label">Designation</p>
-                  <input className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='designation'/>
+                  <input id="newCusDesi"  className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='designation'/>
           
                   <p className="label">Mobile number</p>
-                  <input className="field" type="number" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='mobile'   />
+                  <input id="newCusMobile"  className="field" type="number" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='mobile'   />
           
                   <p className="label">Email ID</p>
-                  <input className="field" type="email" id="email" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='mail' />
+                  <input id="newCusMail" className="field" type="email"  onChange={this.changeInVal} onKeyDown={this.changeInVal} name='mail' />
           
                   <p className="label">Gender</p>
                   <div className="dropDownDiv field">
-                    <select name="gender" onChange={this.changeInVal} >
-                      <option value="" disabled selected>Select your option</option>
-                      <option value="0">Male</option>
-                      <option value="1">Female</option>
-                      <option value="2">Other</option>
+                    <select id="newCusGender"  name="gender" onChange={this.changeInVal} defaultValue="" >
+                      <option value="" disabled >Select your option</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
                     </select>
                     <img src={require("../images/arwDwn.png")} alt=""/>
                   </div>
           
                   <p className="label">Date of Birth</p>
                   <div id="dobField">
-                    <input type="date" className="field" onChange={this.changeInVal} name='date'  />
+                    <input id="newCusDOB"  type="date" className="field" onChange={this.changeInVal} name='dateOfBirth'  />
                   </div>
           
                   <p className="label">Marital status</p>
                   <div className="dropDownDiv field"   >
-                    <select className="select" name="gender" onChange={this.changeInVal}  >
-                      <option value="" disabled selected>Select your option</option>
-                      <option value="0">Single</option>
-                      <option value="1">Married</option>
-                      <option value="2">Widowed</option>
-                      <option value="3">Divorced</option>
+                    <select id="newCusMaritalStatus"  className="select" name="maritalStatus" onChange={this.changeInVal} defaultValue=""  >
+                      <option value="" disabled >Select your option</option>
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Widowed">Widowed</option>
+                      <option value="Divorced">Divorced</option>
                     </select>
                     <img src={require("../images/arwDwn.png")} alt="arrowDown" />
                   </div>
