@@ -1,7 +1,7 @@
 @import 'main';
 
 #profileInfo{
-    overflow:hidden;
+    overflow:hidden scroll;
     font-family: 'Montserrat';
     font-style: normal;
     padding-top:0px;
@@ -10,6 +10,7 @@
         width:100%;
         padding:0px 10px;
         padding-bottom:0px;
+        margin: 15px;
         #backButton{
             margin-left:10px;
             @include flex(row,start,center);
@@ -74,7 +75,7 @@
         }
         .field{
             width: 272px;
-            height:30px;
+            height:35px;
             border: 2px solid #B8B8B8;
             border-radius: 12px;
             padding:5px;
@@ -138,6 +139,9 @@
             margin-bottom:40px;
         }
     }
-    
 
+
+}
+select{
+    background: transparent;
 }

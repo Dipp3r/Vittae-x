@@ -123,7 +123,7 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 body {
   margin: 0px;
@@ -146,7 +146,7 @@ section {
   overflow: auto;
   height: 100vh;
   width: 100vw;
-  padding-top: 80px;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -252,71 +252,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-width: thin;
 }
 
-#dashboard {
-  font-family: "Montserrat";
-  font-style: normal;
-  position: static;
-  padding: 0px;
-  background-color: #E4E4E4;
-  overflow: hidden;
-}
-#dashboard .navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: white;
-  width: 100%;
-  height: 89px;
-  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
-}
-#dashboard .navbar .profile {
-  display: flex;
-  flex-direction: none;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
-  margin: 20px;
-  width: 60px;
-  height: 60px;
-  background: #223F80;
-}
-#dashboard .navbar .profile #profileImg {
-  border-radius: 100%;
-  height: 93%;
-}
-#dashboard .navbar .icons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: 100%;
-  margin-right: 20px;
-}
-#dashboard .navbar .icons .icon {
-  margin: 8px;
-}
-#dashboard .navbar .icons .iconBox {
-  display: block;
-  position: relative;
-}
-#dashboard .navbar .icons .iconBox #notifCircle {
-  display: block;
-  position: absolute;
-  border-radius: 13px;
-  top: 0px;
-  right: 0px;
-  width: 13px;
-  height: -moz-fit-content;
-  height: fit-content;
-  border: 2px solid white;
-}
-#dashboard .navbar .icons .iconBox #notifCircle path {
-  fill: #BB2230;
-}
-#dashboard #main {
+#main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -324,7 +260,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   overflow: hidden;
   padding: 0px 10px;
 }
-#dashboard #main #statusBar {
+#main #statusBar {
   width: 100vw;
   background-color: transparent;
   height: 40px;
@@ -333,7 +269,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-evenly;
   align-items: center;
 }
-#dashboard #main #statusBar #statusButton {
+#main #statusBar #statusButton {
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
@@ -345,33 +281,30 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: flex-start;
   align-items: center;
 }
-#dashboard #main #statusBar #statusButton .statusButton {
+#main #statusBar #statusButton .statusButton {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  color: #6D7593;
+  color: rgb(109, 117, 147);
   width: 33.333%;
   height: 32px;
   text-align: center;
+  border-bottom: 2px solid rgb(109, 117, 147);
 }
-#dashboard #main #statusBar #statusButton .statusButton:focus {
-  color: #223F80;
-  border-bottom: 1px solid #223F80;
-}
-#dashboard #main #statusBarEdge {
+#main #statusBarEdge {
   width: 100vw;
   margin: 0px;
   border: 0.5px solid rgba(37, 53, 100, 0.4);
 }
-#dashboard #main #searchBarDiv {
+#main #searchBarDiv {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100vw;
 }
-#dashboard #main #searchBarDiv #searchBar {
+#main #searchBarDiv #searchBar {
   width: 80%;
   height: 40px;
   margin: 30px 10px;
@@ -382,17 +315,17 @@ input[type=date]::-webkit-calendar-picker-indicator {
   background: rgba(109, 117, 147, 0.22);
   border-radius: 9px;
 }
-#dashboard #main #searchBarDiv #searchBar #icon {
+#main #searchBarDiv #searchBar #icon {
   margin: 5px;
 }
-#dashboard #main #searchBarDiv #searchBar #searchField {
+#main #searchBarDiv #searchBar #searchField {
   width: 100%;
   background-color: transparent;
   border: none;
   color: #6D7593;
   margin-right: 10px;
 }
-#dashboard #main #labelBar {
+#main #labelBar {
   width: 100vw;
   background: rgba(34, 63, 128, 0.13);
   height: 40px;
@@ -402,7 +335,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-evenly;
   align-items: center;
 }
-#dashboard #main #labelBar #labels {
+#main #labelBar #labels {
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
@@ -412,7 +345,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
-#dashboard #main #labelBar #labels .label {
+#main #labelBar #labels .label {
   color: white;
   width: 25%;
   height: 40px;
@@ -424,14 +357,16 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
-#dashboard #main .scrolling-wrapperY {
-  width: 370px;
+#main .scrolling-wrapperY {
+  width: 100vw;
+  display: flex;
   overflow-y: scroll;
   overflow-x: hidden;
   white-space: nowrap;
-  padding: 10px 25px;
+  padding: 10px 5px;
+  flex-direction: column;
 }
-#dashboard #main .scrolling-wrapperY .cards {
+#main .scrolling-wrapperY .cards {
   height: 50px;
   background: #FFFFFF;
   box-shadow: 0px 4px 1px -2px rgba(0, 0, 0, 0.2);
@@ -441,7 +376,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-family: "Montserrat";
   font-style: normal;
 }
-#dashboard #main .scrolling-wrapperY .cards .details {
+#main .scrolling-wrapperY .cards .details {
   height: 100%;
   width: 100%;
   display: flex;
@@ -449,11 +384,9 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-around;
   align-items: center;
 }
-#dashboard #main .scrolling-wrapperY .cards .details .info {
+#main .scrolling-wrapperY .cards .details .info {
   height: 100%;
-  width: -webkit-fill-available;
-  width: -moz-available;
-  width: stretch;
+  width: 65px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
@@ -464,28 +397,28 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
   color: #223F80;
 }
-#dashboard #main .scrolling-wrapperY .cards .details .phone {
+#main .scrolling-wrapperY .cards .details .phone {
   font-weight: 500;
   font-size: 12px;
 }
-#dashboard #main .scrolling-wrapperY .cards .details .status {
-  width: 40px;
+#main .scrolling-wrapperY .cards .details .status {
+  width: 42px;
   height: 13px;
   border-radius: 14px;
   background-color: #6BDA7D;
 }
-#dashboard #main .scrolling-wrapperY .cards .details .date {
+#main .scrolling-wrapperY .cards .details .date {
   font-weight: 500;
   font-size: 10px;
   color: #929292;
 }
-#dashboard #main .scrolling-wrapperY .cards .details .dateDiv {
+#main .scrolling-wrapperY .cards .details .dateDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#dashboard #main .scrolling-wrapperY .cards .details .dateDiv .filterTag {
+#main .scrolling-wrapperY .cards .details .dateDiv .filterTag {
   display: none;
   align-items: center;
   color: white;
@@ -498,13 +431,11 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding: 3px;
   margin-bottom: 10px;
 }
-#dashboard #main .fixed {
+#main .fixed {
   position: fixed;
   bottom: 0;
   height: 56px;
   background-color: white;
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
   height: 60px;
   padding: 5px 20px;
   width: 100%;
@@ -514,7 +445,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-around;
   align-items: center;
 }
-#dashboard #main .fixed .downIconDiv {
+#main .fixed .downIconDiv {
   height: 47px;
   width: 162px;
   margin: 10px;
@@ -527,13 +458,13 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
-#dashboard #main .fixed .downIconDiv:focus {
+#main .fixed .downIconDiv:focus {
   background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
   color: white;
   stroke: white;
   opacity: 0.93;
 }
-#dashboard #main .fixed .downIconDiv p {
+#main .fixed .downIconDiv p {
   font-family: "Montserrat";
   font-style: normal;
   color: inherit;
@@ -541,13 +472,13 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 16px;
   margin-left: 10px;
 }
-#dashboard #main .fixed .downIconDiv svg path {
+#main .fixed .downIconDiv svg path {
   stroke: inherit;
 }
-#dashboard #main .fixed .downIconDiv svg circle {
+#main .fixed .downIconDiv svg circle {
   stroke: inherit;
 }
-#dashboard #main #add {
+#main #add {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -559,27 +490,31 @@ input[type=date]::-webkit-calendar-picker-indicator {
   bottom: 75px;
   right: 60px;
 }
-#dashboard #main #add img {
+#main #add img {
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 0px;
 }
-#dashboard #addCustomer {
-  height: 100%;
-  width: 100%;
+
+#addCustomer {
+  height: 100vh;
+  width: 100vw;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.4);
-  -webkit-backdrop-filter: blur(1.5px);
-          backdrop-filter: blur(1.5px);
+  background-color: rgba(0, 0, 0, 0.65);
   display: flex;
-  flex-direction: none;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   display: none;
+  top: 0px;
+  left: 0px;
+  overflow: scroll;
+  z-index: 1;
 }
-#dashboard #addCustomer #addBox {
+#addCustomer #addBox {
+  margin: 20px 5px;
   height: -moz-fit-content;
   height: fit-content;
   width: 80%;
@@ -587,27 +522,28 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-radius: 15px;
   background-color: white;
 }
-#dashboard #addCustomer #addBox #closeIcon {
+#addCustomer #addBox #closeIcon {
   border-radius: 20px;
   height: 24px;
   margin: 10px;
   padding: 0px;
 }
-#dashboard #addCustomer #addBox .inputFields {
+#addCustomer #addBox .inputFields {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 20px;
 }
-#dashboard #addCustomer #addBox .inputFields .label {
+#addCustomer #addBox .inputFields .label {
   width: 87%;
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
   color: #223F80;
-  margin-left: 20px;
+  margin-left: 0px;
 }
-#dashboard #addCustomer #addBox .inputFields .field {
+#addCustomer #addBox .inputFields .field {
   width: 87%;
   border: 2px solid #B8B8B8;
   border-radius: 12px;
@@ -615,13 +551,13 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin-top: 5px;
   margin-bottom: 20px;
 }
-#dashboard #addCustomer #addBox .inputFields .dropDownDiv {
+#addCustomer #addBox .inputFields .dropDownDiv {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-#dashboard #addCustomer #addBox .inputFields .dropDownDiv select {
+#addCustomer #addBox .inputFields .dropDownDiv select {
   border: none;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -629,17 +565,17 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 100%;
   padding: 0px;
 }
-#dashboard #addCustomer #addBox .inputFields .dropDownDiv select:focus {
+#addCustomer #addBox .inputFields .dropDownDiv select:focus {
   outline: none;
 }
-#dashboard #addCustomer #addBox .inputFields #dobField {
+#addCustomer #addBox .inputFields #dobField {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: start;
 }
-#dashboard #addCustomer #addBox .inputFields #dobField #calendarDiv {
+#addCustomer #addBox .inputFields #dobField #calendarDiv {
   margin-top: 8px;
   margin-left: 5px;
   display: flex;
@@ -651,10 +587,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   height: 47px;
   width: 47px;
 }
-#dashboard #addCustomer #addBox .inputFields .field:invalid:focus {
+#addCustomer #addBox .inputFields .field:invalid:focus {
   border: 1px solid red;
 }
-#dashboard #addCustomer #addBox .inputFields .Button {
+#addCustomer #addBox .inputFields .Button {
   background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
   transition-duration: 1s;
   width: 80%;
@@ -667,24 +603,33 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: white;
   border-radius: 12px;
 }
-#dashboard #addCustomer #addBox .inputFields .Button:hover {
+#addCustomer #addBox .inputFields .Button:hover {
   box-shadow: none;
   scale: 0.95;
 }
-#dashboard #filter {
+#addCustomer #addBox select {
+  background: transparent;
+}
+#addCustomer #addBox select * {
+  padding: 5px 10px;
+}
+
+#filter {
   height: 100%;
   width: 100%;
-  position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
   -webkit-backdrop-filter: blur(1.5px);
           backdrop-filter: blur(1.5px);
   display: flex;
-  flex-direction: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: none;
+  display: flex;
+  position: absolute;
+  top: 0px;
+  z-index: 2;
 }
-#dashboard #filter #filterBox {
+#filter #filterBox {
   height: -moz-fit-content;
   height: fit-content;
   width: 80%;
@@ -692,13 +637,13 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-radius: 15px;
   background-color: white;
 }
-#dashboard #filter #filterBox #closeIcon {
+#filter #filterBox #closeIcon {
   border-radius: 20px;
   height: 24px;
   margin: 10px;
   padding: 0px;
 }
-#dashboard #filter #filterBox #filterLabels {
+#filter #filterBox #filterLabels {
   display: flex;
   flex-direction: row;
   justify-content: none;
@@ -707,7 +652,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding: 0px 10px;
   padding-bottom: 40px;
 }
-#dashboard #filter #filterBox #filterLabels .fLabel {
+#filter #filterBox #filterLabels .fLabel {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
@@ -719,7 +664,4 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin: 8px 8px;
   padding: 5px 20px;
   border-radius: 5px;
-}
-#dashboard #filter #filterBox #filterLabels .fLabel:focus {
-  background: #223F80;
 }/*# sourceMappingURL=contact.css.map */

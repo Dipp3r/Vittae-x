@@ -4,17 +4,17 @@ import { WithRouter } from '../routingWrapper';
 import ContactsComp from './contact';
 import HomeComp from './home';
 
+import "../styles/home.css"
+import "../styles/contact.css"
+
 class DashboardComp extends React.Component{
     constructor(){
         super()
         this.state = {
-            totalCusStatus:'ALL',
-            isHome:true
+          isHome:true
         }
         this.getListOFCustomers = this.getListOFCustomers.bind(this);
         this.changeInVal = this.changeInVal.bind(this)
-        this.filterCustomers = this.filterCustomers.bind(this)
-        this.sortCustomers = this.sortCustomers.bind(this)
         this.toggleHomeContacts = this.toggleHomeContacts.bind(this)
     }
     getListOFCustomers(){
@@ -26,7 +26,7 @@ class DashboardComp extends React.Component{
         })
         .then(response => response.json())
         .then(raw_data=>{
-            console.log(raw_data)
+            
             var data = raw_data.data
             for(var i = 0;i<data.length;i++){
                 var node = document.createElement('div')
@@ -45,18 +45,16 @@ class DashboardComp extends React.Component{
         obj[e.target.name] = e.target.value.trim();
         this.setState(obj);
     }
-    filterCustomers(e){
-        console.log(e.target.innerText)
-        this.setState({totalCusStatus:e.target.innerText})
-    }
-    sortCustomers(e){
-        console.log(e.target.name)
-    }
     toggleHomeContacts(e){
-      this.setState({isHome:!this.state.isHome})
+      this.setState({isHome:!this.state.isHome},()=>{
+        this.props.setItem({dashboard:this.state})
+      })
+    }
+    componentDidMount(){
+      this.setState(this.props.getItem("dashboard"))
     }
     render(){
-        console.log(this.state)
+        
         return(
         <section id="dashboard">
             <nav className="navbar" >

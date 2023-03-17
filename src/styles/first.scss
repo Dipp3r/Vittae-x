@@ -2,9 +2,8 @@
 
 
 #getStartedPage{
-    height: 100%;
-    width: 100%;
-    padding-top:120px;
+    height: 100vh;
+    width: 100vw;
     #logoDiv{
         margin-bottom: 40px;
         #logoImg{
@@ -12,7 +11,6 @@
         }
     }
     #charImgDiv{
-        padding-top:30px;
         @include flex(column,center,center);
         #p1{
             font-family: 'Montserrat';

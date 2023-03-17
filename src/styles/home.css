@@ -123,7 +123,7 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 body {
   margin: 0px;
@@ -146,7 +146,7 @@ section {
   overflow: auto;
   height: 100vh;
   width: 100vw;
-  padding-top: 80px;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -338,7 +338,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #dashboard #main #perks #perk {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 50%;
   height: 100%;
@@ -460,17 +460,16 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: #B8B8B8;
 }
 #dashboard #main #reminderDiv #calendar .week .dates .date #date {
-  padding: 2px;
   width: 18px;
   height: 18px;
   text-align: center;
-  background: #223F80;
+  background: #ffffff;
   border-radius: 3px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #000000;
   margin: 0px;
 }
 #dashboard #main #reminderDiv #calendar .week .dates .date #reminderOverlay {
@@ -597,8 +596,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   position: fixed;
   bottom: 0;
   background-color: white;
-  -webkit-backdrop-filter: blur(1px);
-          backdrop-filter: blur(1px);
   height: 60px;
   padding: 5px 20px;
   width: 100%;
@@ -608,7 +605,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-around;
   align-items: center;
 }
-#dashboard .fixed .downIconButton {
+#dashboard .fixed .downIconDiv {
   margin: 20px;
   height: 47px;
   width: 162px;
@@ -621,13 +618,13 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
-#dashboard .fixed .downIconButton:focus {
+#dashboard .fixed .downIconDiv:focus {
   background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
   color: white;
   stroke: white;
   opacity: 0.93;
 }
-#dashboard .fixed .downIconButton p {
+#dashboard .fixed .downIconDiv p {
   font-family: "Montserrat";
   font-style: normal;
   color: inherit;
@@ -635,9 +632,40 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 16px;
   margin-left: 10px;
 }
-#dashboard .fixed .downIconButton svg path {
+#dashboard .fixed .downIconDiv svg path {
   stroke: inherit;
 }
-#dashboard .fixed .downIconButton svg circle {
+#dashboard .fixed .downIconDiv svg circle {
+  stroke: inherit;
+}
+#dashboard .fixed .downIconDivClick {
+  margin: 20px;
+  height: 47px;
+  width: 162px;
+  padding: 0px 20px;
+  color: #223F80;
+  stroke: #223F80;
+  background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
+  color: white;
+  stroke: white;
+  opacity: 0.93;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#dashboard .fixed .downIconDivClick p {
+  font-family: "Montserrat";
+  font-style: normal;
+  color: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 10px;
+}
+#dashboard .fixed .downIconDivClick svg path {
+  stroke: inherit;
+}
+#dashboard .fixed .downIconDivClick svg circle {
   stroke: inherit;
 }/*# sourceMappingURL=home.css.map */
