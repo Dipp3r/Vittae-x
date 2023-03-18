@@ -31,14 +31,14 @@ class ProfileInfo extends React.Component{
             </div>
           
             <div class="inputField">
-              <p class="label">first_name</p>
+              <p class="label">first name</p>
               <input class="field" type="text" value={this.props.getItem('first_name')} />
-              <p class="label">last_name</p>
+              <p class="label">last name</p>
               <input class="field" type="text" value={this.props.getItem('last_name') == null?'':this.props.getItem('last_name')} />
           
               <p class="label">Date of Birth</p>
               <div id="dobField">
-                <input type="date" class="field"/>
+                <input type="date" class="field date"/>
               </div>
           
               <p class="label">Place of birth</p>

@@ -35,7 +35,7 @@
     #profileDiv{
         width:100%;
         height:120px;
-        margin-bottom:20px;
+        margin:30px 0px;
         @include flex(column,center,center);
         #profileBox{
             position:relative;
@@ -75,7 +75,7 @@
         }
         .field{
             width: 272px;
-            height:35px;
+            height:46px;
             border: 2px solid #B8B8B8;
             border-radius: 12px;
             padding:5px;
@@ -84,8 +84,8 @@
             margin-bottom:20px;
         }
         .date{
+            padding:10px;
             @include flex(row,space-between,center);
-            border-right: none;
             input{
                 width: 272px;
                 border:none;
