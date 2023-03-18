@@ -81,7 +81,7 @@ class CustomerView extends React.Component {
         let target = e.currentTarget
         target.style.color = '#223F80'
         target.style.fontWeight = '600'
-        target.style.borderBottomColor = 'rgba(34, 64, 128, 0.7176470588)'
+        target.style.borderBottomColor = '#253564'
 
         this.setState(obj)
         this.displaySection(e.currentTarget.value)
@@ -186,6 +186,7 @@ class CustomerView extends React.Component {
         this.setState({customer:obj})
 
         this.generateTasks(this.state.customer.tasks)
+        this.displaySection("1");
     }
     render(){
         console.log(this.state)
@@ -414,19 +415,19 @@ class CustomerView extends React.Component {
                         <div id="taskCardSpace">
                             
                             <div class="taskCard">
-                            <div id="portion1">
-                                <p id="title">Follow up call</p>
-                                <div id="right">
-                                <p id="date">dd mm yyyy</p>
-                                <p id="time">--:--</p>
+                                <div id="portion1">
+                                    <p id="title">Follow up call</p>
+                                    <div id="right">
+                                        <p id="date">dd mm yyyy</p>
+                                        <p id="time">--:--</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
-                            <div id="portion3">
-                                <button>
-                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
-                                </button>
-                            </div>
+                                <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                                <div id="portion3">
+                                    <button>
+                                    <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="CompletedTaskCard">

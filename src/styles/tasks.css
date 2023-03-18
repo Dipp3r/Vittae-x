@@ -341,7 +341,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 100vw;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 #Tasks #main #tasks #nonEmpty .task .desc {

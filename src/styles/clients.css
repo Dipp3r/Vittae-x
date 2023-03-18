@@ -743,6 +743,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 #Client #main #statusBar #statusButton {
+  z-index: 1;
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
@@ -768,7 +769,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #Client #main #statusBar #statusButton .statusButton:focus {
   color: #223F80;
   font-weight: 600;
-  border-bottom: 2px solid rgba(34, 64, 128, 0.7176470588);
+  border-bottom: 2px solid #253564;
 }
 #Client #main #statusBarEdge {
   width: 100vw;
@@ -884,7 +885,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
 #tasks #dropDown {
   display: flex;

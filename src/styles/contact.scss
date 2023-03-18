@@ -118,7 +118,7 @@
                     font-style: normal;
                     font-weight: 600;
                     font-size: 14px;
-                    @include flex(none,center,center);
+                    @include flex(none,flex-start,center);
                     color: #223F80;
                 }
                 .phone{
@@ -222,7 +222,7 @@
         display: none;
         top: 0px;
         left:0px;
-        overflow: scroll;
+        overflow: hidden;
         z-index: 1;
         #addBox{
             margin: 20px 5px;
@@ -238,8 +238,7 @@
                 padding:0px;
             }
             .inputFields{
-                @include flex(column,center,flex-start);
-                padding: 20px;
+                @include flex(column,center,center);
                 .label{
                     width:87%;
                     font-weight: 600;

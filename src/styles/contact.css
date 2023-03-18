@@ -393,7 +393,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 14px;
   display: flex;
   flex-direction: none;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #223F80;
 }
@@ -510,7 +510,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   display: none;
   top: 0px;
   left: 0px;
-  overflow: scroll;
+  overflow: hidden;
   z-index: 1;
 }
 #addCustomer #addBox {
@@ -532,8 +532,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
+  align-items: center;
 }
 #addCustomer #addBox .inputFields .label {
   width: 87%;

@@ -319,9 +319,9 @@ class ContactsComp extends React.Component {
       this.customerList.push(obj)
       this.props.setItem({customerList:this.customerList})
       console.log(this.customerList)
-      // this.filterAndSort(this.customerList)
+      this.filterAndSort(this.customerList)
       console.log(arr,obj)
-      // this.toggleAddClientMenu()
+      this.toggleAddClientMenu()
     }
     componentDidMount(){
       let obj = this.props.getItem('contactCompState')
