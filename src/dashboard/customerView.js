@@ -1,6 +1,7 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 import "../styles/clients.css"
+import dateToString from "../dateToString";
 
 class CustomerView extends React.Component {
     constructor(props){
@@ -9,15 +10,16 @@ class CustomerView extends React.Component {
            section:1,
            customer:{
             tasks:[
-                {title:'title1',type:0,date:new Date("02/03/2021"),time:'00 00',discription:'Description daff pdfplf p',},
-                {title:'title2',type:0,date:new Date("02/04/2021"),time:'00 00',discription:'tion daff pdfplf p',},
-                {title:'title3',type:1,date:new Date("02/05/2021"),time:'00 00',discription:'Descriprgdn daff pdfplf p',},
-                {title:'title4',type:1,date:new Date("02/06/2021"),time:'00 00',discription:'Descriptio pdfplf p',}
+                {id:0,title:'title1',type:0,date:new Date("02/03/2021"),time:'00:00',discription:'Description daff pdfplf p',},
+                {id:1,title:'title2',type:1,date:new Date("02/04/2021"),time:'00:00',discription:'tion daff pdfplf p',},
+                {id:2,title:'title3',type:1,date:new Date("02/05/2021"),time:'00:00',discription:'Descriprgdn daff pdfplf p',},
+                {id:3,title:'title4',type:2,date:new Date("02/06/2021"),time:'00:00',discription:'Descriptio pdfplf p',}
             ]
            },
            addTaskMenu:'none',
            completedTaskMenu:'none',
         }
+        this.currentTask = ""
         this.changeSection = this.changeSection.bind(this)
         this.displaySection = this.displaySection.bind(this)
         this.generateTasks = this.generateTasks.bind(this)
@@ -25,6 +27,7 @@ class CustomerView extends React.Component {
         this.toggleAddTaskMenu = this.toggleAddTaskMenu.bind(this)
         this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
         this.addTask = this.addTask.bind(this)
+        this.emptyAddTaskMenu = this.emptyAddTaskMenu.bind(this)
         this.completeTask = this.completeTask.bind(this)
     }
     toggleAddTaskMenu(){
@@ -35,31 +38,90 @@ class CustomerView extends React.Component {
     }
     addTask(){
         console.log('addTask')
+        let obj = {}
         let menu = document.querySelector('#addTaskDiv')
-        let title = menu.querySelector('#title').value
-        let discription = menu.querySelector('#desc').value
-        let date = menu.querySelector("#addTaskDate").value
-        let time = menu.querySelector('#addTaskTime').value
-        console.log(title,discription,date,time)
+        obj.title = menu.querySelector('#title').value
+        obj.discription = menu.querySelector('#desc').value
+        let isError = false
+        if(obj.title == ""){
+            menu.querySelector('#title').style.borderBottomColor = "red"
+            isError = true
+        }else{
+            menu.querySelector('#title').style.borderBottomColor = "#223F80"
+        }
+        
+        if(obj.discription == "") {
+            menu.querySelector('#desc').style.borderColor = "red"
+            isError = true
+        }else{
+            menu.querySelector('#desc').style.borderColor ="#B8B8B8"
+        }
+        if(isError) return
+        obj.date = new Date(menu.querySelector("#addTaskDate").value)
+        obj.time = menu.querySelector('#addTaskTime').value
+        obj.type = 0
+        obj.id = this.state.customer.tasks.length+1
+        console.log(obj)
+        let customer = this.state.customer
+        customer.tasks.push(obj)
+        this.setState({customer:customer},()=>{
+            this.generateTasks(this.state.customer.tasks)
+        })
+        this.toggleAddTaskMenu()
     }
-    toggleCompletedTaskMenu(){
-        let menu = this.state.completedTaskMenu
+    emptyAddTaskMenu(){
+        let menu = document.querySelector('#addTaskDiv')
+        menu.querySelector('#title').value = ""
+        menu.querySelector('#desc').value = ""
+        menu.querySelector("#addTaskDate").value = dateToString(new Date(),2).replace(/ /g,"-")
+        menu.querySelector('#addTaskTime').value = "00:00"
+    }
+    toggleCompletedTaskMenu(e){
+        let completedTaskMenu = this.state.completedTaskMenu
+        let menu = document.querySelector('#completedTaskScreen')
         console.log(menu)
-        menu = menu == "none"?"flex":'none'
-        this.setState({completedTaskMenu:menu})
+        if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
+
+        completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
+        console.log(this.currentTask)
+        if(completedTaskMenu == 'flex'){
+            let taskObj = this.state.customer.tasks[Number.parseInt(this.currentTask)]
+            console.log(this.state.customer.tasks,Number.parseInt(this.currentTask))
+            console.log(taskObj,this.currentTask)
+            menu.querySelector('#title').value = taskObj.title
+            menu.querySelector('#desc').value = taskObj.discription
+            menu.querySelector("#date").value = dateToString(taskObj.date,2).replace(/ /g,"-")
+            menu.querySelector('#time').value = taskObj.time
+            menu.querySelector('#outcome').value = ""
+        }
+        this.setState({completedTaskMenu:completedTaskMenu})
     }
     completeTask(){
         console.log('completeTask')
-        let menu = document.querySelector('#completeTaskDiv')
+        let menu = document.querySelector('#completedTaskDiv')
+        let customer = this.state.customer
+        console.log(menu.querySelector('#outcome'))
         let outcome = menu.querySelector('#outcome').value
-        console.log(outcome)
+        if (outcome == ""){
+            menu.querySelector('#outcome').style.borderColor = "red"
+            return
+        }else{
+            menu.querySelector('#outcome').style.borderColor = "#B8B8B8"
+        }
+        let currentTask = customer.tasks[Number.parseInt(this.currentTask)]
+        currentTask.type = 2
+        currentTask.outcome = outcome 
+        this.setState({customer:customer})
+        this.generateTasks(this.state.customer.tasks)
+        this.toggleCompletedTaskMenu()
+
     }
     filterTasksByType(e){
         console.log(e.currentTarget.value,this.state.customer.tasks)
         let type = Number.parseInt(e.currentTarget.value)
         let tasksList = this.state.customer.tasks
         console.log(tasksList)
-        if(type >= 0){
+        if(type >= 1){
             tasksList  = tasksList.filter((element)=>element.type == type)
         }
         console.log(tasksList)
@@ -114,9 +176,9 @@ class CustomerView extends React.Component {
         }
     }
     generateTasks(tasksList){
-        // <div class="taskCard">
+        // <div class="OverdueTaskCard">
         // <div id="portion1">
-        //     <p id="title">Follow up call</p>
+        //     <p id="title">Overdue</p>
         //     <div id="right">
         //     <p id="date">dd mm yyyy</p>
         //     <p id="time">--:--</p>
@@ -129,21 +191,35 @@ class CustomerView extends React.Component {
         //     </button>
         // </div>
         // </div>
+        let taskType;   
+        tasksList = tasksList.sort((a,b)=>{return b.date.getTime()-a.date.getTime()})
         let taskCardSpace = document.querySelector('#taskCardSpace')
         taskCardSpace.innerHTML = ""
         for(let task of tasksList){
             console.log(task)
+            switch(task.type){
+                case 0:
+                default:
+                    taskType = 'taskCard'
+                break;
+                case 1:
+                    taskType = 'OverdueTaskCard'
+                break;
+                case 2:
+                    taskType = 'CompletedTaskCard'
+                break;
+            }
+            console.log(task)
             let taskCard = document.createElement('div')
-            taskCard.className = 'taskCard'
+            taskCard.className = taskType
+            
             let portion1 = document.createElement('div')
-            portion1.id = 'protion1'
-            let portion2 = document.createElement('div')
-            portion2.id = 'protion2'
+            portion1.id = 'portion1'
+            let portion2 = document.createElement('p')
+            portion2.id = 'portion2'
             let portion3 = document.createElement('div')
-            portion3.id = 'protion3'
-            taskCard.appendChild(portion1)
-            taskCard.appendChild(portion2)
-            taskCard.appendChild(portion3)
+            portion3.id = 'portion3'
+            
             let title = document.createElement('p')
             title.id='title'
 
@@ -161,25 +237,35 @@ class CustomerView extends React.Component {
             let img = document.createElement('img')
             img.src = require("../images/Ellipse.svg")
             img.alt = "checkbox"
-            img.onclick = this.toggleCompletedTaskMenu
-            portion3.appendChild(img)
+            
+            let button1 = document.createElement("button")
+            button1.value = task.id
+            button1.onclick = this.toggleCompletedTaskMenu
+            button1.appendChild(img)
+
+            portion3.appendChild(button1)
 
             title.innerText = task.title
-            date.innerText = task.date
+            date.innerText = dateToString(task.date,1)
             time.innerText = task.time
             portion2.innerText = task.discription
 
+            taskCard.appendChild(portion1)
+            taskCard.appendChild(portion2)
+            taskCard.appendChild(portion3)
             taskCardSpace.appendChild(taskCard)
         }
     }
     componentDidMount(){
         let obj = this.props.getItem("currentCustomerView")
+        if (!obj) obj = {}
+        // obj.name = "kjbsfb kjsbfksef"
         obj.designation = 'XXX'
         obj.tasks = [
             {title:'title1',type:0,date:new Date("02/03/2021"),time:'00 00',discription:'Description daff pdfplf p',},
-            {title:'title2',type:0,date:new Date("02/04/2021"),time:'00 00',discription:'tion daff pdfplf p',},
+            {title:'title2',type:1,date:new Date("02/04/2021"),time:'00 00',discription:'tion daff pdfplf p',},
             {title:'title3',type:1,date:new Date("02/05/2021"),time:'00 00',discription:'Descriprgdn daff pdfplf p',},
-            {title:'title4',type:1,date:new Date("02/06/2021"),time:'00 00',discription:'Descriptio pdfplf p',}
+            {title:'title4',type:2,date:new Date("02/06/2021"),time:'00 00',discription:'Descriptio pdfplf p',}
         ]
         console.log(obj)
         
@@ -233,14 +319,13 @@ class CustomerView extends React.Component {
                     </button>
                     </div>
                 </nav>
-
                 <div id="main">
                     <div id="info">
                     <div id="portion1">
                         <div id="portion1Left">
                         <img src={require("../images/arrow_left_white.svg")} alt="left arrow" onClick={this.props.navigate} value='../dashboard'  />
                         <div id="deets">
-                            <p id="name">{this.state.customer.name}</p>
+                            <p id="name">{this.state.customer.name?(this.state.customer.name.length<=10?this.state.customer.name:`${this.state.customer.name.slice(0,10)}...`):""}</p>
                             <p id="designation">{this.state.customer.designation}</p>
                             <div id="statusDiv">
                             <p id="statusDot">.</p>
@@ -407,9 +492,9 @@ class CustomerView extends React.Component {
                     <div id="tasks">
                         <div id="dropDown">
                             <select class="select" onChange={this.filterTasksByType} >
-                            <option value="-1" selected>all</option>
-                            <option value="0">Overdue</option>
-                            <option value="1">Completed</option>
+                            <option value="0" selected>all</option>
+                            <option value="1">Overdue</option>
+                            <option value="2">Completed</option>
                             </select>
                         </div>
                         <div id="taskCardSpace">
@@ -422,7 +507,7 @@ class CustomerView extends React.Component {
                                         <p id="time">--:--</p>
                                     </div>
                                 </div>
-                                <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                                <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof offdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
                                 <div id="portion3">
                                     <button>
                                     <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
@@ -438,7 +523,7 @@ class CustomerView extends React.Component {
                                 <p id="time">--:--</p>
                                 </div>
                             </div>
-                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
+                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof offdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
                             <div id="portion3">
                                 <button>
                                 <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
@@ -542,7 +627,7 @@ class CustomerView extends React.Component {
                                 <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </button>
-                            <button id="delete">
+                            <button id="delete" onClick={this.emptyAddTaskMenu}>
                                 <img src={require("../images/Trash.svg")} alt="delete"/>
                             </button>
                             </div>
@@ -552,11 +637,11 @@ class CustomerView extends React.Component {
                             <div id="fieldDiv">
                                 <div class="field">
                                 <img src={require("../images/Date_range.svg")} alt="date"/>
-                                <input type="date" id='addTaskDate' />
+                                <input type="date" id='addTaskDate' defaultValue={dateToString(new Date(),2).replace(/ /g,"-")} />
                                 </div>
                                 <div class="field">
                                 <img src={require("../images/Time.svg")} alt="time"/>
-                                <input type="time" id='addTaskTime' />
+                                <input type="time" id='addTaskTime' defaultValue="00:00"  />
                                 </div>
                             </div>
                             </div>
@@ -580,16 +665,16 @@ class CustomerView extends React.Component {
                             </button>
                             </div>
                             <div id="portion2">
-                            <input id="title" type="text" placeholder="Add title"/>
-                            <textarea name="" id="desc" placeholder="Description"></textarea>
+                            <input id="title" type="text" placeholder="Add title" disabled />
+                            <textarea name="" id="desc" placeholder="Description" disabled ></textarea>
                             <div id="fieldDiv">
                                 <div class="field">
                                 <img src={require("../images/Date_range.svg")} alt="date"/>
-                                <input type="date" id="date"/>
+                                <input type="date" id="date" disabled/>
                                 </div>
                                 <div class="field">
                                 <img src={require("../images/Time.svg")} alt="time"/>
-                                <input type="time" id="time"/>
+                                <input type="time" id="time"disabled/>
                                 </div>
                                 <p>Outcome<a>*</a></p>
                             </div>

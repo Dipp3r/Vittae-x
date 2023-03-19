@@ -632,6 +632,9 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #Client #main #info #portion1 #portion1Left #deets p {
   margin: 0px;
   padding: 0px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
 }
 #Client #main #info #portion1 #portion1Left #deets #edit {
   display: flex;
@@ -886,6 +889,8 @@ input[type=date]::-webkit-calendar-picker-indicator {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  overflow: scroll;
+  padding-bottom: 150px;
 }
 #tasks #dropDown {
   display: flex;
@@ -909,8 +914,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #tasks #taskCardSpace {
   width: 100%;
   height: 480px;
-  overflow-y: scroll;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
