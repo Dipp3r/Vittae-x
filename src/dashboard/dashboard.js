@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { WithRouter } from '../routingWrapper';
 import ContactsComp from './contact';
 import HomeComp from './home';
-
+import profile from "../images/profile.png"
 import "../styles/home.css"
 import "../styles/contact.css"
 
@@ -59,7 +59,7 @@ class DashboardComp extends React.Component{
         <section id="dashboard">
             <nav className="navbar" >
               <button className="profile" onClick={this.props.navigate} value="../profile">
-                <img id="profileImg" src= {require("../images/profile.png")} alt="" />
+                <img id="profileImg" src= {profile} alt="" />
               </button>
           
               <div className="icons">

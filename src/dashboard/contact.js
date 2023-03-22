@@ -1,5 +1,8 @@
-import { stat } from "fs";
 import React from "react";
+import Search from '../images/Search.svg'
+import plus from '../images/plus.png'
+import arwDwn from '../images/arwDwn.png'
+
 import { WithRouter } from "../routingWrapper";
 class Customer {
   constructor(){
@@ -389,7 +392,7 @@ class ContactsComp extends React.Component {
           
               <div id="searchBarDiv">
                 <div id="searchBar">
-                  <img id="icon" src={require("../images/Search.svg")} alt="eye icon"/>
+                  <img id="icon" src={Search} alt="eye icon"/>
                   <input type="text" name="searchValue"  onChange={this.changeInVal} onKeyDown={this.searchInput} id="searchField" value={this.state.searchValue}  />
                 </div>
           
@@ -455,7 +458,7 @@ class ContactsComp extends React.Component {
                       <option value="Female">Female</option>
                       <option value="Other">Other</option>
                     </select>
-                    <img src={require("../images/arwDwn.png")} alt=""/>
+                    <img src={arwDwn} alt=""/>
                   </div>
           
                   <p className="label">Date of Birth</p>
@@ -472,7 +475,7 @@ class ContactsComp extends React.Component {
                       <option value="Widowed">Widowed</option>
                       <option value="Divorced">Divorced</option>
                     </select>
-                    <img src={require("../images/arwDwn.png")} alt="arrowDown" />
+                    <img src={arwDwn} alt="arrowDown" />
                   </div>
           
           
@@ -505,7 +508,7 @@ class ContactsComp extends React.Component {
               <div id='messageBox'> 
               {/* copied to clip board messages will be displayed HERE */}
               </div>
-              <button id="add" onClick={this.toggleAddClientMenu} > <img src={require("../images/plus.png")} alt="add customer button"/></button>
+              <button id="add" onClick={this.toggleAddClientMenu} > <img src={plus} alt="add customer button"/></button>
             </div>
         )
     }

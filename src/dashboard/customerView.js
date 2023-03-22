@@ -3,6 +3,18 @@ import { WithRouter } from "../routingWrapper";
 import "../styles/clients.css"
 import dateToString from "../dateToString";
 
+import Ellipse from "../images/Ellipse.svg"
+import profile from "../images/profile.png"
+import arrow_left_white from "../images/arrow_left_white.svg"
+import three_dots from "../images/three-dots.svg"
+import call from "../images/call.svg"
+import Message from "../images/Message.svg"
+import plus from "../images/plus.svg"
+import Trash from "../images/Trash.svg"
+import Date_range from "../images/Date_range.svg"
+import Time from "../images/Time.svg"
+
+
 class CustomerView extends React.Component {
     constructor(props){
         super(props)
@@ -32,12 +44,12 @@ class CustomerView extends React.Component {
     }
     toggleAddTaskMenu(){
         let menu = this.state.addTaskMenu
-        console.log(menu)
+         
         menu = menu == "none"?"flex":'none'
         this.setState({addTaskMenu:menu})
     }
     addTask(){
-        console.log('addTask')
+         
         let obj = {}
         let menu = document.querySelector('#addTaskDiv')
         obj.title = menu.querySelector('#title').value
@@ -60,10 +72,11 @@ class CustomerView extends React.Component {
         obj.date = new Date(menu.querySelector("#addTaskDate").value)
         obj.time = menu.querySelector('#addTaskTime').value
         obj.type = 0
-        obj.id = this.state.customer.tasks.length+1
-        console.log(obj)
+        obj.id = this.state.customer.tasks.length
+         
         let customer = this.state.customer
         customer.tasks.push(obj)
+         
         this.setState({customer:customer},()=>{
             this.generateTasks(this.state.customer.tasks)
         })
@@ -79,15 +92,20 @@ class CustomerView extends React.Component {
     toggleCompletedTaskMenu(e){
         let completedTaskMenu = this.state.completedTaskMenu
         let menu = document.querySelector('#completedTaskScreen')
-        console.log(menu)
+         
         if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
 
         completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
-        console.log(this.currentTask)
+         
         if(completedTaskMenu == 'flex'){
-            let taskObj = this.state.customer.tasks[Number.parseInt(this.currentTask)]
-            console.log(this.state.customer.tasks,Number.parseInt(this.currentTask))
-            console.log(taskObj,this.currentTask)
+            let taskObj
+            for (let task of this.state.customer.tasks){
+                if(task.id == Number.parseInt(this.currentTask)){
+                    taskObj = task;
+                }
+                // console.log(task,Number.parseInt(this.currentTask))
+            }
+            console.log(taskObj)
             menu.querySelector('#title').value = taskObj.title
             menu.querySelector('#desc').value = taskObj.discription
             menu.querySelector("#date").value = dateToString(taskObj.date,2).replace(/ /g,"-")
@@ -97,10 +115,10 @@ class CustomerView extends React.Component {
         this.setState({completedTaskMenu:completedTaskMenu})
     }
     completeTask(){
-        console.log('completeTask')
+         
         let menu = document.querySelector('#completedTaskDiv')
         let customer = this.state.customer
-        console.log(menu.querySelector('#outcome'))
+         
         let outcome = menu.querySelector('#outcome').value
         if (outcome == ""){
             menu.querySelector('#outcome').style.borderColor = "red"
@@ -108,7 +126,14 @@ class CustomerView extends React.Component {
         }else{
             menu.querySelector('#outcome').style.borderColor = "#B8B8B8"
         }
-        let currentTask = customer.tasks[Number.parseInt(this.currentTask)]
+        let currentTask;
+        for (let task of this.state.customer.tasks){
+            if(task.id == Number.parseInt(this.currentTask)){
+                currentTask = task;
+            }
+            // console.log(task,Number.parseInt(this.currentTask))
+        }
+        
         currentTask.type = 2
         currentTask.outcome = outcome 
         this.setState({customer:customer})
@@ -117,14 +142,14 @@ class CustomerView extends React.Component {
 
     }
     filterTasksByType(e){
-        console.log(e.currentTarget.value,this.state.customer.tasks)
+         
         let type = Number.parseInt(e.currentTarget.value)
         let tasksList = this.state.customer.tasks
-        console.log(tasksList)
+         
         if(type >= 1){
             tasksList  = tasksList.filter((element)=>element.type == type)
         }
-        console.log(tasksList)
+         
         this.generateTasks(tasksList)
 
     }
@@ -136,7 +161,7 @@ class CustomerView extends React.Component {
     changeSection(e){
         let obj = {}
         let lastTarget = document.querySelectorAll(".statusButton")[Number.parseInt(this.state.section)-1]
-        console.log(lastTarget)
+         
         lastTarget.style.color = "#6D7593"
         lastTarget.style.borderBottomColor = "#6D7593"
         obj.section = e.currentTarget.value
@@ -149,7 +174,7 @@ class CustomerView extends React.Component {
         this.displaySection(e.currentTarget.value)
     }
     displaySection(value){
-        console.log(this.state)
+         
         // let info = document.querySelector('#info')
         // info.style.display = 'none'
         let infoContent = document.querySelector('#infoContent')
@@ -176,6 +201,8 @@ class CustomerView extends React.Component {
         }
     }
     generateTasks(tasksList){
+
+        // tasksList = {...tasksList}
         // <div class="OverdueTaskCard">
         // <div id="portion1">
         //     <p id="title">Overdue</p>
@@ -196,7 +223,7 @@ class CustomerView extends React.Component {
         let taskCardSpace = document.querySelector('#taskCardSpace')
         taskCardSpace.innerHTML = ""
         for(let task of tasksList){
-            console.log(task)
+             
             switch(task.type){
                 case 0:
                 default:
@@ -209,7 +236,7 @@ class CustomerView extends React.Component {
                     taskType = 'CompletedTaskCard'
                 break;
             }
-            console.log(task)
+             
             let taskCard = document.createElement('div')
             taskCard.className = taskType
             
@@ -235,7 +262,7 @@ class CustomerView extends React.Component {
             portion1.appendChild(right)
             
             let img = document.createElement('img')
-            img.src = require("../images/Ellipse.svg")
+            img.src = Ellipse
             img.alt = "checkbox"
             
             let button1 = document.createElement("button")
@@ -262,12 +289,12 @@ class CustomerView extends React.Component {
         // obj.name = "kjbsfb kjsbfksef"
         obj.designation = 'XXX'
         obj.tasks = [
-            {title:'title1',type:0,date:new Date("02/03/2021"),time:'00 00',discription:'Description daff pdfplf p',},
-            {title:'title2',type:1,date:new Date("02/04/2021"),time:'00 00',discription:'tion daff pdfplf p',},
-            {title:'title3',type:1,date:new Date("02/05/2021"),time:'00 00',discription:'Descriprgdn daff pdfplf p',},
-            {title:'title4',type:2,date:new Date("02/06/2021"),time:'00 00',discription:'Descriptio pdfplf p',}
+            {id:0,title:'title1',type:0,date:new Date("02/03/2021"),time:'00 00',discription:'Description daff pdfplf p',},
+            {id:1,title:'title2',type:1,date:new Date("02/04/2021"),time:'00 00',discription:'tion daff pdfplf p',},
+            {id:2,title:'title3',type:1,date:new Date("02/05/2021"),time:'00 00',discription:'Descriprgdn daff pdfplf p',},
+            {id:3,title:'title4',type:2,date:new Date("02/06/2021"),time:'00 00',discription:'Descriptio pdfplf p',}
         ]
-        console.log(obj)
+         
         
         this.setState({customer:obj})
 
@@ -275,12 +302,12 @@ class CustomerView extends React.Component {
         this.displaySection("1");
     }
     render(){
-        console.log(this.state)
+        //  console.log(this.state.customer.tasks[0])
         return(
             <section id="Client">
                 <nav class="navbar">
                     <button class="profile">
-                    <img id="profileImg" src={require("../images/profile.png")} alt="" />
+                    <img id="profileImg" src={profile} alt="" />
                     </button>
 
                     <div class="icons">
@@ -323,7 +350,7 @@ class CustomerView extends React.Component {
                     <div id="info">
                     <div id="portion1">
                         <div id="portion1Left">
-                        <img src={require("../images/arrow_left_white.svg")} alt="left arrow" onClick={this.props.navigate} value='../dashboard'  />
+                        <img src={arrow_left_white} alt="left arrow" onClick={this.props.navigate} value='../dashboard'  />
                         <div id="deets">
                             <p id="name">{this.state.customer.name?(this.state.customer.name.length<=10?this.state.customer.name:`${this.state.customer.name.slice(0,10)}...`):""}</p>
                             <p id="designation">{this.state.customer.designation}</p>
@@ -338,7 +365,7 @@ class CustomerView extends React.Component {
                         <div id="dateBox">
                             <p id="dateTxt">Added {this.state.customer.date}</p>
                             <button>
-                            <img src={require("../images/three-dots.svg")} alt=""/>
+                            <img src={three_dots} alt=""/>
                             </button> 
                         </div>
                         <button id="edit">
@@ -349,12 +376,12 @@ class CustomerView extends React.Component {
 
                     <div id="portion2">
                         <button class="contact">
-                        <img src={require("../images/call.svg")} alt="mobile"/>
+                        <img src={call} alt="mobile"/>
                         <a href={'tel:'+this.state.customer.phone} >Call</a>
                         </button>
 
                         <button class="contact">
-                        <img src={require("../images/Message.svg")} alt="mail"/>
+                        <img src={Message} alt="mail"/>
                         <a href={'mail:'+this.state.customer.mail} >Mail</a>
                         </button>
                     </div>
@@ -426,7 +453,7 @@ class CustomerView extends React.Component {
 
                     <div id="notesContent">
                     <button id="add">
-                        <img src={require("../images/plus.png")} alt="add customer button"/>
+                        <img src={plus} alt="add customer button"/>
                     </button>
                     <div id="left">
                         <div class="note">
@@ -499,121 +526,9 @@ class CustomerView extends React.Component {
                         </div>
                         <div id="taskCardSpace">
                             
-                            <div class="taskCard">
-                                <div id="portion1">
-                                    <p id="title">Follow up call</p>
-                                    <div id="right">
-                                        <p id="date">dd mm yyyy</p>
-                                        <p id="time">--:--</p>
-                                    </div>
-                                </div>
-                                <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof offdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
-                                <div id="portion3">
-                                    <button>
-                                    <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="CompletedTaskCard">
-                            <div id="portion1">
-                                <p id="title">Completed</p>
-                                <div id="right">
-                                <p id="date">dd mm yyyy</p>
-                                <p id="time">--:--</p>
-                                </div>
-                            </div>
-                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof offdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
-                            <div id="portion3">
-                                <button>
-                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
-                                </button>
-                            </div>
-                            </div>
-
-                            <div class="OverdueTaskCard">
-                            <div id="portion1">
-                                <p id="title">Overdue</p>
-                                <div id="right">
-                                <p id="date">dd mm yyyy</p>
-                                <p id="time">--:--</p>
-                                </div>
-                            </div>
-                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
-                            <div id="portion3">
-                                <button>
-                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
-                                </button>
-                            </div>
-                            </div>
-
-                            <div class="OverdueTaskCard">
-                            <div id="portion1">
-                                <p id="title">Overdue</p>
-                                <div id="right">
-                                <p id="date">dd mm yyyy</p>
-                                <p id="time">--:--</p>
-                                </div>
-                            </div>
-                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
-                            <div id="portion3">
-                                <button>
-                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
-                                </button>
-                            </div>
-                            </div>
-
-                            <div class="OverdueTaskCard">
-                            <div id="portion1">
-                                <p id="title">Overdue</p>
-                                <div id="right">
-                                <p id="date">dd mm yyyy</p>
-                                <p id="time">--:--</p>
-                                </div>
-                            </div>
-                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
-                            <div id="portion3">
-                                <button>
-                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
-                                </button>
-                            </div>
-                            </div>
-
-                            <div class="OverdueTaskCard">
-                            <div id="portion1">
-                                <p id="title">Overdue</p>
-                                <div id="right">
-                                <p id="date">dd mm yyyy</p>
-                                <p id="time">--:--</p>
-                                </div>
-                            </div>
-                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
-                            <div id="portion3">
-                                <button>
-                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
-                                </button>
-                            </div>
-                            </div>
-
-                            <div class="OverdueTaskCard">
-                            <div id="portion1">
-                                <p id="title">Overdue</p>
-                                <div id="right">
-                                <p id="date">dd mm yyyy</p>
-                                <p id="time">--:--</p>
-                                </div>
-                            </div>
-                            <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
-                            <div id="portion3">
-                                <button>
-                                <img src={require("../images/Ellipse.svg")} alt="checkbox"/>
-                                </button>
-                            </div>
-                            </div>
-
-                            </div>
+                        </div>
                     <button id="add" onClick={this.toggleAddTaskMenu} >
-                        <img src={require("../images/plus.png")} alt="add customer button"/>
+                        <img src={plus} alt="add customer button"/>
                     </button>
                     </div>
 
@@ -628,7 +543,7 @@ class CustomerView extends React.Component {
                                 </svg>
                             </button>
                             <button id="delete" onClick={this.emptyAddTaskMenu}>
-                                <img src={require("../images/Trash.svg")} alt="delete"/>
+                                <img src={Trash} alt="delete"/>
                             </button>
                             </div>
                             <div id="portion2">
@@ -636,11 +551,11 @@ class CustomerView extends React.Component {
                             <textarea name="" id="desc" placeholder="Description"></textarea>
                             <div id="fieldDiv">
                                 <div class="field">
-                                <img src={require("../images/Date_range.svg")} alt="date"/>
+                                <img src={Date_range} alt="date"/>
                                 <input type="date" id='addTaskDate' defaultValue={dateToString(new Date(),2).replace(/ /g,"-")} />
                                 </div>
                                 <div class="field">
-                                <img src={require("../images/Time.svg")} alt="time"/>
+                                <img src={Time} alt="time"/>
                                 <input type="time" id='addTaskTime' defaultValue="00:00"  />
                                 </div>
                             </div>
@@ -661,7 +576,7 @@ class CustomerView extends React.Component {
                                 </svg>
                             </button>
                             <button id="delete">
-                                <img src={require("../images/Trash.svg")} alt="delete"/>
+                                <img src={Trash} alt="delete"/>
                             </button>
                             </div>
                             <div id="portion2">
@@ -669,11 +584,11 @@ class CustomerView extends React.Component {
                             <textarea name="" id="desc" placeholder="Description" disabled ></textarea>
                             <div id="fieldDiv">
                                 <div class="field">
-                                <img src={require("../images/Date_range.svg")} alt="date"/>
+                                <img src={Date_range} alt="date"/>
                                 <input type="date" id="date" disabled/>
                                 </div>
                                 <div class="field">
-                                <img src={require("../images/Time.svg")} alt="time"/>
+                                <img src={Time} alt="time"/>
                                 <input type="time" id="time"disabled/>
                                 </div>
                                 <p>Outcome<a>*</a></p>

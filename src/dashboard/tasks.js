@@ -2,7 +2,9 @@ import React from "react";
 import { WithRouter } from "../routingWrapper";
 
 import '../styles/tasks.css'
-
+import Check_ring from "../images/Check_ring.svg"
+import Alarmclock from "../images/Alarmclock.svg"
+import arrow_left_white from "../images/arrow_left_white.svg"
 class Tasks extends React.Component{
     constructor(props){
         super(props)
@@ -98,7 +100,7 @@ class Tasks extends React.Component{
                   let completeButton = document.createElement('button')
                   completeButton.className = 'label'
                   let img1 = document.createElement('img')
-                  img1.src = require("../images/Check_ring.svg")
+                  img1.src = Check_ring
                   img1.alt = 'completed'
                   let p1 = document.createElement('p')
                   p1.innerText = 'completed'
@@ -109,7 +111,7 @@ class Tasks extends React.Component{
                   let snoozeButton = document.createElement('button')
                   snoozeButton.className = 'label'
                   let img2= document.createElement('img')
-                  img2.src = require("../images/Alarmclock.svg")
+                  img2.src = Alarmclock
                   img2.alt = 'completed'
                   let p2 = document.createElement('p')
                   p2.innerText = 'snooze'
@@ -166,7 +168,7 @@ class Tasks extends React.Component{
              <section id="Tasks">
              <nav id="navBar">
                <button>
-                 <img onClick={this.props.navigate} value='../dashboard'  src={require("../images/arrow_left_white.svg")} alt="back"/>
+                 <img onClick={this.props.navigate} value='../dashboard'  src={arrow_left_white} alt="back"/>
                </button>
                <p id="navTxt">Tasks</p>
              </nav>
@@ -186,203 +188,7 @@ class Tasks extends React.Component{
                  </div> */}
            
                  <div id="nonEmpty">
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")} alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-             
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")} alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
-           
-                   <div class="task">
-                     <div class="desc">
-                       <p id="title">Follow up call</p>
-                       <p id="name">Deekay</p>
-                       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
-                     </div>
-             
-                     <button class="label">
-                       <img src={require("../images/Check_ring.svg")}alt="completed"/>
-                       <p>Completed</p>
-                     </button>
-             
-                     <button  class="label">
-                       <img src={require("../images/Alarmclock.svg")} alt="snooze"/>
-                       <p>Snooze</p>
-                     </button>
-                   </div>
+
                  </div>
                </div>
              </div>

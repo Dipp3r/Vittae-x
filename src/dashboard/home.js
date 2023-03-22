@@ -1,4 +1,11 @@
 import React from "react";
+
+//importing images
+import blueDot from "../images/blueDot.svg"
+import Check_ring from "../images/Check_ring.svg"
+import arrow_right from "../images/arrow_right.svg"
+import Alarmclock from "../images/Alarmclock.svg"
+
 import { WithRouter } from "../routingWrapper";
 const dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -67,7 +74,7 @@ class HomeComp extends React.Component{
         day.id = 'day'
         remainder = document.createElement('img')
         remainder.id = 'reminderOverlay'
-        remainder.src = require("../images/blueDot.svg")
+        remainder.src = blueDot
         remainder.style.visibility = "hidden"
         
         let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
@@ -170,7 +177,7 @@ class HomeComp extends React.Component{
         let completeButton = document.createElement('button')
         completeButton.className = 'label'
         let img1 = document.createElement('img')
-        img1.src = require("../images/Check_ring.svg")
+        img1.src = Check_ring
         img1.alt = 'completed'
         let p1 = document.createElement('p')
         p1.innerText = 'completed'
@@ -181,7 +188,7 @@ class HomeComp extends React.Component{
         let snoozeButton = document.createElement('button')
         snoozeButton.className = 'label'
         let img2= document.createElement('img')
-        img2.src = require("../images/Alarmclock.svg")
+        img2.src = Alarmclock
         img2.alt = 'completed'
         let p2 = document.createElement('p')
         p2.innerText = 'snooze'
@@ -228,7 +235,7 @@ class HomeComp extends React.Component{
           </p>
           <button id="monthView" onClick={this.props.navigate} value="../monthlyview"   >
             Monthly view
-            <img src={require("../images/arrow_right.svg")} alt="right click"/>
+            <img src={arrow_right} alt="right click"/>
           </button>
         </div>
 
@@ -252,7 +259,7 @@ class HomeComp extends React.Component{
   </div>
     <button id="overdueDiv" onClick={this.props.navigate} value="../tasks"  >
       <p>Overdue task (12)</p>
-      <img src={require("../images/arrow_right.svg")} alt="enter icon"/>
+      <img src={arrow_right} alt="enter icon"/>
     </button>
 </div>
 </div>

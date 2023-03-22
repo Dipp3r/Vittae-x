@@ -1,6 +1,8 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 import "../styles/profileInfo.css"
+import arwDwn from "../images/arwDwn.png"
+import profile from "../images/profile.png";
 
 class ProfileInfo extends React.Component{
     constructor(props){
@@ -26,7 +28,7 @@ class ProfileInfo extends React.Component{
           
             <div id="profileDiv">
               <div id="profileBox">
-                <img src={require("../images/profile.png")} id="profilePageImg" alt="profile picture" />
+                <img src={profile} id="profilePageImg" alt="profile picture" />
               </div>
             </div>
           
@@ -53,7 +55,7 @@ class ProfileInfo extends React.Component{
                   <option value="2">Widowed</option>
                   <option value="3">Divorced</option>
                 </select>
-                <img src={require("../images/arwDwn.png")} alt=""/>
+                <img src={arwDwn} alt=""/>
               </div>
           
               <p class="label">Account name</p>
