@@ -1,6 +1,7 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 import "../styles/clients.css"
+import "../styles/notes.css"
 import dateToString from "../dateToString";
 
 import Ellipse from "../images/Ellipse.svg"
@@ -13,6 +14,7 @@ import plus from "../images/plus.svg"
 import Trash from "../images/Trash.svg"
 import Date_range from "../images/Date_range.svg"
 import Time from "../images/Time.svg"
+import KYCsteps from "./steps";
 
 
 class CustomerView extends React.Component {
@@ -26,10 +28,19 @@ class CustomerView extends React.Component {
                 {id:1,title:'title2',type:1,date:new Date("02/04/2021"),time:'00:00',discription:'tion daff pdfplf p',},
                 {id:2,title:'title3',type:1,date:new Date("02/05/2021"),time:'00:00',discription:'Descriprgdn daff pdfplf p',},
                 {id:3,title:'title4',type:2,date:new Date("02/06/2021"),time:'00:00',discription:'Descriptio pdfplf p',}
+            ],
+            notes:[
+                {id:0,title:'title1',body:"AAAlkksnklnsefelefk ksf n"},
+                {id:1,title:'title1',body:"swerkksnk lnsefelefk ksf n"},
+                {id:2,title:'title2',body:"lkk snkl nse felefk ksf n"},
+                {id:3,title:'title3',body:" kksnkln  lefk ksf n"},
+                {id:4,title:'title4',body:"nsk snkl n efele  ksf n"},
+                {id:5,title:'title5',body:"n k snk l sefe  lefk ksf n"}
             ]
            },
            addTaskMenu:'none',
            completedTaskMenu:'none',
+           addNotesPage:"none"
         }
         this.currentTask = ""
         this.changeSection = this.changeSection.bind(this)
@@ -41,6 +52,7 @@ class CustomerView extends React.Component {
         this.addTask = this.addTask.bind(this)
         this.emptyAddTaskMenu = this.emptyAddTaskMenu.bind(this)
         this.completeTask = this.completeTask.bind(this)
+        this.toggleAddNotesPage = this.toggleAddNotesPage.bind(this)
     }
     toggleAddTaskMenu(){
         let menu = this.state.addTaskMenu
@@ -283,6 +295,56 @@ class CustomerView extends React.Component {
             taskCardSpace.appendChild(taskCard)
         }
     }
+    
+    toggleAddNotesPage(){
+        let notesPg = this.state.addNotesPage
+        
+        if(notesPg == "none"){
+            notesPg = "flex"
+        }else{
+            notesPg = "none"
+            let noteTitle = document.querySelector("#noteTitle")
+            let noteBody = document.querySelector("#noteBody")
+            if (noteTitle.value != "" && noteBody.value != ""){
+                let customer = this.state.customer
+                console.log(customer)
+                customer.notes.push({id:customer.notes.length,title:noteTitle.value,body:noteBody.value})
+                this.setState({customer:customer})
+                this.generateNotes(this.state.customer.notes)
+                noteTitle.value = ""
+                noteBody.value = ""
+            }
+        }
+        this.setState({addNotesPage:notesPg})
+    }
+    generateNotes(noteList){
+        let notesContainer = [document.querySelector("#left"),document.querySelector("#right")]
+        notesContainer[0].innerHTML = ""
+        notesContainer[1].innerHTML = ""
+        let i = 0;
+        <div class="note">
+            <p id="title">HTML</p>
+            <p id="content">
+                Areyyyyyy fgkn fkgn k;mnfg adlg;mn adfg;lmnm fgkn dfjbg jabf io;;ad fhiodf p difhpd dp fihdf  phdfih dp’ a’hf hidh gkl fg ugh ; fgjh gl;  hgfi f fgf ldfgdifgeiu ildfgdufg agdfidgfid digfidfgi dlahifgidfg aldhgfidgf lidgidfdgfgds fgjob; hadf;ho adgo;h ag;oh iahgpihgigh iadugfu iughih fihf h9difyh 
+            </p>
+        </div>
+        let noteCard,title,body
+        for(let note of noteList){
+            noteCard = document.createElement('div')
+            noteCard.className = "note"
+            title = document.createElement("p")
+            title.id = "title"
+            title.innerText = note.title
+            body = document.createElement("p")
+            body.id="content"
+            body.innerText = note.body
+            noteCard.appendChild(title)
+            noteCard.appendChild(body)
+
+            notesContainer[(i%2)].appendChild(noteCard)
+            i++
+        }
+    }
     componentDidMount(){
         let obj = this.props.getItem("currentCustomerView")
         if (!obj) obj = {}
@@ -294,10 +356,17 @@ class CustomerView extends React.Component {
             {id:2,title:'title3',type:1,date:new Date("02/05/2021"),time:'00 00',discription:'Descriprgdn daff pdfplf p',},
             {id:3,title:'title4',type:2,date:new Date("02/06/2021"),time:'00 00',discription:'Descriptio pdfplf p',}
         ]
-         
+        obj.notes = [
+            {id:0,title:'title1',body:"AAAlkksnklnsefelefk ksf n"},
+            {id:1,title:'title1',body:"swerkksnk lnsefelefk ksf n"},
+            {id:2,title:'title2',body:"lkk snkl nse felefk ksf n"},
+            {id:3,title:'title3',body:" kksnkln  lefk ksf n"},
+            {id:4,title:'title4',body:"nsk snkl n efele  ksf n"},
+            {id:5,title:'title5',body:"n k snk l sefe  lefk ksf n"}
+        ]
         
         this.setState({customer:obj})
-
+        this.generateNotes(this.state.customer.notes)
         this.generateTasks(this.state.customer.tasks)
         this.displaySection("1");
     }
@@ -448,11 +517,11 @@ class CustomerView extends React.Component {
                     </div>
 
                     <div id='kycStatus'>
-
+                        <KYCsteps/>
                     </div>
 
                     <div id="notesContent">
-                    <button id="add">
+                    <button id="add" onClick={this.toggleAddNotesPage}>
                         <img src={plus} alt="add customer button"/>
                     </button>
                     <div id="left">
@@ -600,6 +669,19 @@ class CustomerView extends React.Component {
                             </button>
                         </div>
                         </div>
+                    <div id="notesPg" style={{'display':this.state.addNotesPage}}>
+                        <div id="backButton">
+                            <button onClick={this.toggleAddNotesPage}>
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                d="M4.1665 12.5L3.4594 11.7929L2.75229 12.5L3.4594 13.2071L4.1665 12.5ZM19.7915 13.5C20.3438 13.5 20.7915 13.0523 20.7915 12.5C20.7915 11.9477 20.3438 11.5 19.7915 11.5V13.5ZM9.7094 5.54289L3.4594 11.7929L4.87361 13.2071L11.1236 6.95711L9.7094 5.54289ZM3.4594 13.2071L9.7094 19.4571L11.1236 18.0429L4.87361 11.7929L3.4594 13.2071ZM4.1665 13.5H19.7915V11.5H4.1665V13.5Z"
+                                fill="black" fill-opacity="0.79" />
+                            </svg>
+                            </button>
+                        </div>
+                        <input id="noteTitle" type="title" placeholder="Title"/>
+                        <textarea id="noteBody" name="notes" placeholder="Type your note" cols="30" rows="10"></textarea>
+                    </div>
                 </div>
                 </section>
         )

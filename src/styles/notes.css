@@ -261,6 +261,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding: 20px;
   overflow: scroll;
   height: 100vh;
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  background: white;
 }
 #notesPg #backButton {
   padding: 0px;
@@ -275,7 +279,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border: none;
   font-family: "Montserrat";
   margin-top: 36px;
-  margin-left: 10px;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -288,7 +291,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 100%;
   border: none;
   height: 80%;
-  margin-left: 10px;
   font-family: "Montserrat";
   font-style: normal;
   font-size: 20px;
