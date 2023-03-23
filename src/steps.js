@@ -1,5 +1,5 @@
-import './App.css';
 import {CheckCircleOutlined} from '@ant-design/icons';
+import '.styles/steps.css';
 import { Steps } from 'antd';
 const description = 'This is a description.';
 function App() {
