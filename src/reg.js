@@ -5,6 +5,9 @@ import checkString from './stringChecker';
 import { WithRouter} from './routingWrapper';
 import './styles/reg.css';
 
+import eye from "./images/eye.svg"
+import eyeOff from "./images/eye_off.svg"
+
 class RegisterComp extends React.Component {
     constructor() {
       super();
@@ -27,7 +30,7 @@ class RegisterComp extends React.Component {
       this.changeInputType = this.changeInputType.bind(this)
       this.changeTAndC = this.changeTAndC.bind(this)
       this.changeColor = this.changeColor.bind(this)
-      this.submitLink = `http://dev.api.vittae.money/broker/set-password/${this.props.getItem('id')}/`
+      this.submitLink = ""
     }
     changeInVal(e) {
         if(e.keyCode == 13){
@@ -43,10 +46,10 @@ class RegisterComp extends React.Component {
         let obj = {}
         if(this.state[e.target.getAttribute('value')]== 'password'){
             obj[e.target.getAttribute('value')] = 'txt'
-            e.currentTarget.src = require('./images/eye.svg')  
+            e.currentTarget.src = eye  
         }else{
             obj[e.target.getAttribute('value')] = 'password'
-            e.currentTarget.src = require('./images/eye_off.svg')
+            e.currentTarget.src = eyeOff
         }
         this.setState(obj)
     }
@@ -77,7 +80,7 @@ class RegisterComp extends React.Component {
 
         // console.log(checkRes)
         this.changeColor('#firstNameIn',defaultColor)
-        this.changeColor('#lastNameIn',defaultColor)
+        this.changeColor('#secondNameIn',defaultColor)
         this.changeColor('#mailIn',defaultColor)
         this.changeColor('#passwordIn',defaultColor)
         this.changeColor('#cPasswordIn',defaultColor)
@@ -143,7 +146,7 @@ class RegisterComp extends React.Component {
             phone:this.props.getItem('phone')
         }
         //sending data to server
-        fetch(this.submitLink, {
+        let data = await fetch(this.submitLink, {
           method: 'POST',
           body: JSON.stringify(obj),
           headers: {
@@ -160,6 +163,12 @@ class RegisterComp extends React.Component {
           })
           
       }
+    componentDidMount(){
+      console.log(this.props.getItem)
+      console.log(this.state)
+      console.log(this.props.getItem('id'))
+      this.submitLink = `http://dev.api.vittae.money/broker/set-password/${this.props.getItem('id')}/`
+    }
     render() {
       // console.log(this.state)
       return (
@@ -191,7 +200,7 @@ class RegisterComp extends React.Component {
         <p>Password</p>
         <div className="passwordBox" id='passwordIn' >
           <input  type={this.state.passwordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='password'onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#passwordIn','#223F80')} onBlur={()=>this.changeColor('#passwordIn','#b8b8b8')}  />
-          <img src={require("./images/eye_off.svg")} alt="eye icon" onClick={this.changeInputType} value ={'passwordType'}/>
+          <img src={eyeOff} alt="eye icon" onClick={this.changeInputType} value ={'passwordType'}/>
         </div>
       </div>
       <p className="invalid">{this.state.passwordErr}</p>
@@ -210,7 +219,7 @@ class RegisterComp extends React.Component {
         <p>Confirm password</p>
         <div className="passwordBox" id='cPasswordIn'  >
           <input  type={this.state.cPasswordType} placeholder="Example!123" className="passwordField password" onChange={this.changeInVal} name='cPassword' onKeyDown={this.changeInVal}   onFocus={()=>this.changeColor('#cPasswordIn','#223F80')} onBlur={()=>this.changeColor('#cPasswordIn','#b8b8b8')} />
-          <img src={require("./images/eye_off.svg")} alt="eye icon" onClick={this.changeInputType} value ={'cPasswordType'} />
+          <img src={eyeOff} alt="eye icon" onClick={this.changeInputType} value ={'cPasswordType'} />
         </div>
       </div>
       <p className=" invalid">{this.state.cPasswordErr}</p>

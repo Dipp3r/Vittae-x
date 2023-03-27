@@ -11,9 +11,11 @@ class Profile extends React.Component{
     }
     logOutAcc(){
       console.log('logOutAcc clicked')
+      this.props.navigate("../login")
     }
     deleteAcc(){
       console.log('Delete account clicked')
+      this.props.navigate("../")
     }
     render(){
       let first_name = this.props.getItem('first_name')

@@ -4,6 +4,8 @@ import { redirect ,useNavigate} from 'react-router-dom';
 import { WithRouter } from './routingWrapper';
 import checkString from './stringChecker';
 import './styles/login.css';
+import eye from "./images/eye.svg"
+import eyeOff from "./images/eye_off.svg"
 
 class LoginComp extends React.Component{
     constructor(){
@@ -33,10 +35,10 @@ class LoginComp extends React.Component{
     changePasswordVis(e){
         if(this.state.passwordInType == 'password'){
             this.setState({passwordInType:'text'})
-            e.currentTarget.src = require('./images/eye.svg')
+            e.currentTarget.src = eye
         }else{
             this.setState({passwordInType:'password'})
-            e.currentTarget.src = require('./images/eye_off.svg')
+            e.currentTarget.src = eyeOff
         }
     }
     changeColor(element,color){
@@ -118,7 +120,7 @@ class LoginComp extends React.Component{
         <p className='inLabel'>Password</p>
         <div id="passwordBox">
           <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onFocus={()=>this.changeColor('#passwordBox','#223F80')} onBlur={()=>this.changeColor('#passwordBox','#b8b8b8')}  name='password'  type={this.state.passwordInType} placeholder="Example!123" id="passwordField" className="password" value={this.state.password}  />
-          <img src={require("./images/eye_off.svg")} alt="eye" onClick ={this.changePasswordVis} />
+          <img src={eyeOff} alt="eye" onClick ={this.changePasswordVis} />
         </div>
         <p className="invalid" >{this.state.passwordErr}</p>
       </div>

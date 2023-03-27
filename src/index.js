@@ -70,13 +70,11 @@ class IndexComp extends React.Component{
     this.setItem = this.setItem.bind(this)
   }
   getItem(key){
-    
-    
+    console.log(this.state,key)
     return  this.state[key]
   }
-  setItem(obj){
-    
-    this.setState(obj)
+  setItem(obj,callBack){
+    this.setState(obj,callBack)
   }
   render(){
     

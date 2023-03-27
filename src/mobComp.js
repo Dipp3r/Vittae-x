@@ -41,14 +41,11 @@ class MobComp extends React.Component{
         this.changeColor('#mobileField',defaultColor)
         if(!checkRes.bool){
             this.changeColor('#mobileField',invalidColor)
-            
             return
         }
+
         obj = {phone: this.state.phone}
-        this.props.setItem(obj)
-        
-        this.props.setItem({phone:this.state.phone})
-        fetch(this.submitLink,{
+        let data = await fetch(this.submitLink,{
             method:'POST',
             body:JSON.stringify(obj),
             headers: {
@@ -61,9 +58,8 @@ class MobComp extends React.Component{
             }
             throw new Error('Something went wrong')
         })
-        .then((data)=>{
-            this.process(data)
-        })
+
+        this.props.setItem(obj,this.process(data))
     }
     render(){
         return(       

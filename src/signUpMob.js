@@ -12,11 +12,7 @@ class SignUpMobComp extends MobComp {
         this.setItem = this.props.setItem
     }
     process(data){
-        if(!data.old_user){
-            this.props.navigate(this.loc)
-        }else{
-            // this.props.navigate('../login')
-        }
+        this.props.navigate(this.loc)
     }
 }
 
