@@ -477,7 +477,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin-top: 10px;
 }
 #dashboard #main #reminderDiv #tasks {
-  padding: 15px 15px;
+  padding: 15px 0px;
   min-height: 150px;
   height: -moz-fit-content;
   height: fit-content;

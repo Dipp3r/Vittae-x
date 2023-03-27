@@ -66,16 +66,16 @@ class DashboardComp extends React.Component{
                 <button className="icon">
                   <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="19.3335" y="14.5" width="4.83333" height="8.45833" rx="2.41667" fill="#223F80" stroke="#223F80"
-                      stroke-width="2" stroke-linejoin="round" />
+                      strokeWidth="2" strokeLinejoin="round" />
                     <rect x="4.8335" y="14.5" width="4.83333" height="8.45833" rx="2.41667" fill="#223F80" stroke="#223F80"
-                      stroke-width="2" stroke-linejoin="round" />
-                    <path d="M4.8335 15.7083V19.3333" stroke="#223F80" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                    <path d="M24.1665 15.7083V19.3333" stroke="#223F80" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" />
+                      strokeWidth="2" strokeLinejoin="round" />
+                    <path d="M4.8335 15.7083V19.3333" stroke="#223F80" strokeWidth="2" strokeLinecap="round"
+                      strokeLinejoin="round" />
+                    <path d="M24.1665 15.7083V19.3333" stroke="#223F80" strokeWidth="2" strokeLinecap="round"
+                      strokeLinejoin="round" />
                     <path
                       d="M24.1668 15.7083C24.1668 12.8241 23.1484 10.058 21.3355 8.01856C19.5227 5.9791 17.0639 4.83334 14.5002 4.83334C11.9364 4.83334 9.47765 5.9791 7.6648 8.01856C5.85195 10.058 4.8335 12.8241 4.8335 15.7083"
-                      stroke="#223F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      stroke="#223F80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
           
@@ -89,9 +89,9 @@ class DashboardComp extends React.Component{
                       fill="#223F80" />
                   </svg>
                   <svg id="notifCircle" version="1.1" x="0px" y="0px" width="122.88px" height="122.88px"
-                    viewBox="0 0 122.88 122.88" enable-background="new 0 0 122.88 122.88">
+                    viewBox="0 0 122.88 122.88" enableBackground="new 0 0 122.88 122.88">
                     <g>
-                      <path fill-rule="evenodd" clip-rule="evenodd"
+                      <path fillRule="evenodd" clipRule="evenodd"
                         d="M61.438,0c33.93,0,61.441,27.512,61.441,61.441 c0,33.929-27.512,61.438-61.441,61.438C27.512,122.88,0,95.37,0,61.441C0,27.512,27.512,0,61.438,0L61.438,0z" />
                     </g>
                   </svg>
@@ -107,21 +107,21 @@ class DashboardComp extends React.Component{
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M6.6665 17.0128C6.6665 15.2025 6.6665 14.2973 7.03245 13.5017C7.3984 12.706 8.08566 12.1169 9.46017 10.9388L10.7935 9.79591C13.2779 7.66641 14.5201 6.60165 15.9998 6.60165C17.4795 6.60165 18.7217 7.66641 21.2062 9.79591L22.5395 10.9388C23.914 12.1169 24.6013 12.706 24.9672 13.5017C25.3332 14.2973 25.3332 15.2025 25.3332 17.0128V22.6667C25.3332 25.1808 25.3332 26.4379 24.5521 27.219C23.7711 28 22.514 28 19.9998 28H11.9998C9.48568 28 8.2286 28 7.44755 27.219C6.6665 26.4379 6.6665 25.1808 6.6665 22.6667V17.0128Z"
-                      stroke="#223F80" stroke-width="2" />
+                      stroke="#223F80" strokeWidth="2" />
                     <path
                       d="M19.3332 28V21C19.3332 20.4477 18.8855 20 18.3332 20H13.6665C13.1142 20 12.6665 20.4477 12.6665 21V28"
-                      stroke="#223F80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      stroke="#223F80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                   <p>Home</p>
                 </div>
           
                 <div className={!this.state.isHome?"downIconDivClick":"downIconDiv"} onClick={this.toggleHomeContacts}>
                   <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="14.5" cy="12.0833" r="3.625" stroke="#223F80" stroke-width="2" stroke-linecap="round" />
-                    <circle cx="14.5" cy="14.5" r="10.875" stroke="#223F80" stroke-width="2" />
+                    <circle cx="14.5" cy="12.0833" r="3.625" stroke="#223F80" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="14.5" cy="14.5" r="10.875" stroke="#223F80" strokeWidth="2" />
                     <path
                       d="M21.75 22.603C21.3224 21.3183 20.3801 20.1831 19.0692 19.3735C17.7584 18.5639 16.1523 18.125 14.5 18.125C12.8477 18.125 11.2416 18.5639 9.93079 19.3735C8.61995 20.1831 7.67764 21.3183 7.25 22.603"
-                      stroke="#223F80" stroke-width="2" stroke-linecap="round" />
+                      stroke="#223F80" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                   <p>
                     Contacts

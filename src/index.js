@@ -48,6 +48,7 @@ class IndexComp extends React.Component{
           sort: 'dateDesc',
           tag:[""]
         }
+      
       },
       customerList:[
           {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:4,date:'02/01/2002',tag:['tag1','tag2']},
@@ -64,7 +65,11 @@ class IndexComp extends React.Component{
           {id:12,name:'eee',mobile:'1234347890',status:2,date:'02/07/2002',tag:['tag2']},
           {id:13,name:'eee',mobile:'1234347890',status:2,date:'02/04/2002',tag:['tag3']},
           {id:14,name:'eee',mobile:'1234347890',status:2,date:'02/06/2002',tag:['tag4']}
-      ]
+      ],
+      homeCompState:{
+        lastSelectedDate:null,
+        today:new Date()
+      }
     }
     this.getItem = this.getItem.bind(this)
     this.setItem = this.setItem.bind(this)
