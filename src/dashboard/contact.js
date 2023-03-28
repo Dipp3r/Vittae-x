@@ -2,7 +2,7 @@ import React from "react";
 import Search from '../images/Search.svg'
 import plus from '../images/plus.png'
 import arwDwn from '../images/arwDwn.png'
-
+import dateToString from "../dateToString"
 import { WithRouter } from "../routingWrapper";
 class Customer {
   constructor(){
@@ -146,7 +146,7 @@ class ContactsComp extends React.Component {
         container.innerHTML = ''
         let statusBackgroundColor
         for(let i of customerList){
-            switch (i.status) {
+            switch (i.kyc_type) {
               case 1:
                 statusBackgroundColor = '#C4C4C4'
                 break;
@@ -199,7 +199,7 @@ class ContactsComp extends React.Component {
             }
 
             mobile.innerText = i.mobile
-            date.innerText = i.date
+            date.innerText = dateToString(new Date(i.created_at)).replace(/ /g,"/")
             // status.innerText = i.status
             
             details.appendChild(name)
@@ -220,8 +220,9 @@ class ContactsComp extends React.Component {
       
       for (let i of this.customerList){
         if(i.id == target){
-          this.props.setItem({contactCompState:this.state,currentCustomerView : i})
-          this.props.navigate('../customerview')
+          this.props.setItem({contactCompState:this.state,currentCustomerView : i},()=>{
+            this.props.navigate('../customerview')
+          })
           break;
         }
       }
@@ -267,7 +268,7 @@ class ContactsComp extends React.Component {
       if(newCustomerList== undefined) return this.displayCustomer([])
       let filterProps = this.state.filterProps
       if(filterProps.status != '0'){
-        newCustomerList = newCustomerList.filter((element)=>{return element.status == Number.parseInt(filterProps.status)})
+        newCustomerList = newCustomerList.filter((element)=>{return element.kyc_type == Number.parseInt(filterProps.status)})
       }
       
       
@@ -293,7 +294,8 @@ class ContactsComp extends React.Component {
       
       let string 
       newCustomerList = newCustomerList.filter((element)=>{
-        string = element.tag.join(' ')
+        
+        string = element.tag == null?"":element.tag.join(' ');
         let bool = true,newBool = false
         this.state.filterProps.tag.map((element)=> {
           newBool = new RegExp(element).test(string)
@@ -329,6 +331,7 @@ class ContactsComp extends React.Component {
     componentDidMount(){
       let obj = this.props.getItem('contactCompState')
       this.customerList = this.props.getItem('customerList')
+      console.log(this.customerList)
       this.setState(obj,()=>{
         this.searchCustomer()
 

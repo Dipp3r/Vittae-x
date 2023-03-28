@@ -1,3 +1,4 @@
+import React from 'react';
 // import './App.css';
 import {CheckCircleOutlined} from '@ant-design/icons';
 import { Steps } from 'antd';

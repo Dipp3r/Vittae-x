@@ -23,6 +23,12 @@ class CustomerView extends React.Component {
         this.state = {
            section:1,
            customer:{
+            created_at: undefined,
+            data: {dob: undefined, pan: undefined},
+            description: null,
+            kyc_type: 0,
+            log_type: 0,
+            name: undefined,
             tasks:[
                 {id:0,title:'title1',type:0,date:new Date("02/03/2021"),time:'00:00',discription:'Description daff pdfplf p',},
                 {id:1,title:'title2',type:1,date:new Date("02/04/2021"),time:'00:00',discription:'tion daff pdfplf p',},
@@ -322,12 +328,12 @@ class CustomerView extends React.Component {
         notesContainer[0].innerHTML = ""
         notesContainer[1].innerHTML = ""
         let i = 0;
-        <div class="note">
-            <p id="title">HTML</p>
-            <p id="content">
-                Areyyyyyy fgkn fkgn k;mnfg adlg;mn adfg;lmnm fgkn dfjbg jabf io;;ad fhiodf p difhpd dp fihdf  phdfih dp’ a’hf hidh gkl fg ugh ; fgjh gl;  hgfi f fgf ldfgdifgeiu ildfgdufg agdfidgfid digfidfgi dlahifgidfg aldhgfidgf lidgidfdgfgds fgjob; hadf;ho adgo;h ag;oh iahgpihgigh iadugfu iughih fihf h9difyh 
-            </p>
-        </div>
+        // <div class="note">
+        //     <p id="title">HTML</p>
+        //     <p id="content">
+        //         Areyyyyyy fgkn fkgn k;mnfg adlg;mn adfg;lmnm fgkn dfjbg jabf io;;ad fhiodf p difhpd dp fihdf  phdfih dp’ a’hf hidh gkl fg ugh ; fgjh gl;  hgfi f fgf ldfgdifgeiu ildfgdufg agdfidgfid digfidfgi dlahifgidfg aldhgfidgf lidgidfdgfgds fgjob; hadf;ho adgo;h ag;oh iahgpihgigh iadugfu iughih fihf h9difyh 
+        //     </p>
+        // </div>
         let noteCard,title,body
         for(let note of noteList){
             noteCard = document.createElement('div')
@@ -346,6 +352,7 @@ class CustomerView extends React.Component {
         }
     }
     componentDidMount(){
+        console.log(this.props.getItem("currentCustomerView"))
         let obj = this.props.getItem("currentCustomerView")
         if (!obj) obj = {}
         // obj.name = "kjbsfb kjsbfksef"
@@ -371,7 +378,7 @@ class CustomerView extends React.Component {
         this.displaySection("1");
     }
     render(){
-        //  console.log(this.state.customer.tasks[0])
+         console.log(this.state.customer.data)
         return(
             <section id="Client">
                 <nav class="navbar">
@@ -469,9 +476,9 @@ class CustomerView extends React.Component {
                     <div class="infolDiv">
                         <div class="grid-container">
                         <div class="grid-item">Name</div>
-                        <div class="grid-item info">Deekay</div>
+                        <div class="grid-item info">{this.state.customer.name}</div>
                         <div class="grid-item">Date of birth</div>  
-                        <div class="grid-item info">49872398479</div>
+                        <div class="grid-item info">{this.state.customer.data.dob}</div>
                         <div class="grid-item">Age</div>
                         <div class="grid-item info">15</div>  
                         <div class="grid-item">Gender</div>

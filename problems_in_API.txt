@@ -1,0 +1,4 @@
+this list of features aren't available in customer object:
+    *mobile number
+    *tag list
+    

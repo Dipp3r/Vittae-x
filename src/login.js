@@ -84,7 +84,7 @@ class LoginComp extends React.Component{
         }
         console.log(obj)
         //sending data to the server
-        fetch(this.submitLink,{
+        let data = await fetch(this.submitLink,{
             method:'POST',
             body:JSON.stringify(obj),
             headers: {
@@ -97,9 +97,8 @@ class LoginComp extends React.Component{
           if (response.status != 200) throw new Error('Something went wrong')
           return response.json()
         })
-        .then((data)=>{
-          console.log(data)
-          this.props.setItem(data)
+        console.log(data)
+        this.props.setItem(data,()=>{
           this.props.navigate("../dashboard")
         })
     }
