@@ -406,10 +406,10 @@ class ContactsComp extends React.Component {
             <div id='contactMain' >
             <div id="statusBar">
                 <div id="statusButton">
-                  <button class="statusButton" value='0'  onClick={this.setFilterPropStatus}  >ALL</button>
-                  <button class="statusButton" value='3'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
-                  <button class="statusButton" value='2'  onClick={this.setFilterPropStatus}  >PENDING</button>
-                  <button class="statusButton" value='4 '  onClick={this.setFilterPropStatus}  >INACTIVE</button>
+                  <button className="statusButton" value='0'  onClick={this.setFilterPropStatus}  >ALL</button>
+                  <button className="statusButton" value='3'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
+                  <button className="statusButton" value='2'  onClick={this.setFilterPropStatus}  >PENDING</button>
+                  <button className="statusButton" value='4 '  onClick={this.setFilterPropStatus}  >INACTIVE</button>
                 </div>
             
               </div>
@@ -420,17 +420,17 @@ class ContactsComp extends React.Component {
                   <input type="text" name="searchValue"  onChange={this.changeInVal} onKeyDown={this.searchInput} id="searchField" value={this.state.searchValue}  />
                 </div>
           
-                <button onClick={this.toggleFilterMenu}  >
+                <button onClick={this.toggleFilterMenu} style={{"display":"none"}}  >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12L5 4" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
-                    <path d="M19 20L19 18" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
-                    <path d="M5 20L5 16" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
-                    <path d="M19 12L19 4" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
-                    <path d="M12 7L12 4" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
-                    <path d="M12 20L12 12" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
-                    <circle cx="5" cy="14" r="2" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
-                    <circle cx="12" cy="9" r="2" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
-                    <circle cx="19" cy="15" r="2" stroke="#6D7593" stroke-width="2" stroke-linecap="round" />
+                    <path d="M5 12L5 4" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M19 20L19 18" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M5 20L5 16" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M19 12L19 4" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M12 7L12 4" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M12 20L12 12" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="5" cy="14" r="2" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="12" cy="9" r="2" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
+                    <circle cx="19" cy="15" r="2" stroke="#6D7593" strokeWidth="2" strokeLinecap="round" />
                   </svg>
                 </button>
               </div>
@@ -439,15 +439,15 @@ class ContactsComp extends React.Component {
               <div id="labelBar">
           
                 <div id="labels">
-                  <button class="label" onClick={this.toggleFilterSort} value='2' >Name</button>
-                  <p class="label">Mobile</p>
-                  <p class="label">Status</p>
-                  <button class="label" onClick={this.toggleFilterSort} value='1'  >Added Date</button>
+                  <button className="label" onClick={this.toggleFilterSort} value='2' >Name</button>
+                  <p className="label">Mobile</p>
+                  <p className="label">Status</p>
+                  <button className="label" onClick={this.toggleFilterSort} value='1'  >Added Date</button>
                 </div>
           
               </div>
           
-              <div class="scrolling-wrapperY" id="cardsList">
+              <div className="scrolling-wrapperY" id="cardsList">
                 {/* list of customers HERE  */}
               </div>
 
@@ -455,9 +455,9 @@ class ContactsComp extends React.Component {
               <div id="addBox">
                 <button id="closeIcon" onClick={this.toggleAddClientMenu}  >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
-                    <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="12" cy="12" r="9" fill="#7B86A7" fillOpacity="0.25" />
+                    <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
           
@@ -516,9 +516,9 @@ class ContactsComp extends React.Component {
                 <div id="filterBox">
                     <button id="closeIcon" onClick={this.toggleFilterMenu} >
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" >
-                        <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
-                        <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="12" cy="12" r="9" fill="#7B86A7" fillOpacity="0.25" />
+                        <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     </button>
           

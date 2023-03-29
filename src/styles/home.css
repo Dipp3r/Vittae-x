@@ -485,7 +485,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   background: white;
 }
 #dashboard #main #reminderDiv #tasks #taskEmpty {
-  display: none;
   margin-top: 70px;
   text-align: center;
   font-family: "Montserrat";
