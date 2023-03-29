@@ -86,7 +86,6 @@ class ContactsComp extends React.Component {
       },1000*2)
     }
     toggleAddClientMenu(){
-      // 
       let menu = 'none'
       if(this.state.addClientMenu == 'none'){
         menu = 'flex'
@@ -146,7 +145,7 @@ class ContactsComp extends React.Component {
         container.innerHTML = ''
         let statusBackgroundColor
         for(let i of customerList){
-            switch (i.kyc_type) {
+            switch (i.status) {
               case 1:
                 statusBackgroundColor = '#C4C4C4'
                 break;
@@ -191,14 +190,14 @@ class ContactsComp extends React.Component {
             filterTag.className = 'filterTag'
             dateButton.appendChild(filterTag)
             dateButton.appendChild(date)
-
-            if (i.name.length > 10){
-                name.innerText = i.name.slice(0,10)+"..."
+            let nameValue = i.first_name + " " + i.last_name
+            if (nameValue.length > 10){
+                name.innerText = nameValue.slice(0,7)+"..."
             }else{
-                name.innerText = i.name
+                name.innerText = nameValue
             }
 
-            mobile.innerText = i.mobile
+            mobile.innerText = i.phone
             date.innerText = dateToString(new Date(i.created_at)).replace(/ /g,"/")
             // status.innerText = i.status
             
@@ -273,21 +272,19 @@ class ContactsComp extends React.Component {
       
       
       switch (filterProps.sort) {
+        default:
         case 'dateDesc':
-          newCustomerList = newCustomerList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
+          newCustomerList = newCustomerList.sort((a,b)=>{return new Date(b.created_at).getTime()-new Date(a.created_at).getTime()})
           break;
         case 'dateAsce':
-          newCustomerList = newCustomerList.sort((a,b)=>{return new Date(a.date).getTime()-new Date(b.date).getTime()})
+          newCustomerList = newCustomerList.sort((a,b)=>{return new Date(a.created_at).getTime()-new Date(b.created_at).getTime()})
           break;
         case 'nameDesc':
-          newCustomerList = newCustomerList.sort((a,b)=>{return b.name.localeCompare(a.name)})
+          newCustomerList = newCustomerList.sort((a,b)=>{return (b.fist_name+" "+b.last_name).localeCompare((a.fist_name+" "+a.last_name))})
           break;
         case 'nameAsce':
-          newCustomerList = newCustomerList.sort((a,b)=>{return a.name.localeCompare(b.name)})
+          newCustomerList = newCustomerList.sort((a,b)=>{return (a.fist_name+" "+a.last_name).localeCompare((b.fist_name+" "+b.last_name))})
           break;  
-        default:
-          newCustomerList = newCustomerList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
-          break;
       }
       //filter by tag
       
@@ -307,26 +304,50 @@ class ContactsComp extends React.Component {
       // console.dir(newCustomerList)
       this.displayCustomer(newCustomerList)
     }
-    submit(){
+    async submit(){
       let form = document.querySelector("#addCustomer")
       let arr = []
-      let obj = new Customer()
+      let obj = {}
       console.log(form)
       arr.push(...form.querySelectorAll("input"))
       arr.push(...form.querySelectorAll("select"))
       for(let element of arr){
         obj[element.name] = element.value
       }
-      obj.date = new Date().toDateString()
-      obj.status = "1"
-      obj.id = Number.parseInt(this.customerList.length)+1
-      obj.tag = []
-      this.customerList.push(obj)
-      this.props.setItem({customerList:this.customerList})
-      console.log(this.customerList)
-      this.filterAndSort(this.customerList)
-      console.log(arr,obj)
-      this.toggleAddClientMenu()
+      console.log(obj)
+      // return
+      // obj.date = new Date().toDateString()
+      // obj.status = "1"
+      // obj.id = Number.parseInt(this.customerList.length)+1
+      // obj.tag = []
+      fetch("http://dev.api.vittae.money/broker/customer-onboarding/",{
+        method:'POST',
+        body:JSON.stringify(obj),
+        headers: {
+        "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+        "Content-type": "application/json; charset=UTF-8",
+        'Connection':"keep-alive"}
+      }).then(response=>{response.json()})
+      
+      //getting a new customer List
+      fetch(this.dataUrl,{
+        method:'GET',
+        headers: {
+        "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+        "Content-type": "application/json; charset=UTF-8",
+        'Connection':"keep-alive"}
+      })
+      .then((response)=>{
+        console.log(response)
+        return response.json()})
+      .then((data)=>{
+        console.log(data)
+        this.props.setItem({customerList:data})
+        this.customerList.push(obj)
+        this.filterAndSort(this.customerList)
+        this.toggleAddClientMenu()
+      })
+
     }
     componentDidMount(){
       let obj = this.props.getItem('contactCompState')
@@ -368,14 +389,14 @@ class ContactsComp extends React.Component {
       }
     }
     searchCustomer(){
-      let txt = this.state.searchValue
-      txt = txt.split(' ').join('.*')
-      let newCustomerList = this.customerList
-      newCustomerList = newCustomerList.filter((element)=>{
-      let string = element.name + element.mobile + element.date 
-      return string.match(new RegExp(`.*${txt}.*`,"g"))
-      })
-      this.filterAndSort(newCustomerList)
+      // let txt = this.state.searchValue
+      // txt = txt.split(' ').join('.*')
+      // let newCustomerList = this.customerList
+      // newCustomerList = newCustomerList.filter((element)=>{
+      // let string = element.first_name+" "+element.last_name
+      // return string.match(new RegExp(`.*${txt}.*`,"g"))
+      // })
+      this.filterAndSort(this.customerList)
       // this.displayCustomer(newCustomerList)
     }
     render(){
@@ -390,7 +411,7 @@ class ContactsComp extends React.Component {
                   <button class="statusButton" value='2'  onClick={this.setFilterPropStatus}  >PENDING</button>
                   <button class="statusButton" value='4 '  onClick={this.setFilterPropStatus}  >INACTIVE</button>
                 </div>
-          
+            
               </div>
           
               <div id="searchBarDiv">
@@ -441,42 +462,44 @@ class ContactsComp extends React.Component {
                 </button>
           
                 <div className="inputFields">
-                  <p className="label">Name</p>
-                  <input id="newCusName" required className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='name' />
+                  <p className="label">First name</p>
+                  <input id="newCusName" required className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='first_name' />
+
+                  <p className="label">Last name</p>
+                  <input id="newCusName" required className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='last_name' />
           
-                  <p className="label">Designation</p>
+
+                  {/* <p className="label">Designation</p>
                   <input id="newCusDesi"  className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='designation'/>
-          
+           */}
                   <p className="label">Mobile number</p>
-                  <input id="newCusMobile"  className="field" type="number" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='mobile'   />
+                  <input id="newCusMobile"  className="field" type="number" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='phone'   />
           
                   <p className="label">Email ID</p>
-                  <input id="newCusMail" className="field" type="email"  onChange={this.changeInVal} onKeyDown={this.changeInVal} name='mail' />
+                  <input id="newCusMail" className="field" type="email"  onChange={this.changeInVal} onKeyDown={this.changeInVal} name='email' />
           
                   <p className="label">Gender</p>
                   <div className="dropDownDiv field">
                     <select id="newCusGender"  name="gender" onChange={this.changeInVal} defaultValue="" >
                       <option value="" disabled >Select your option</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
+                      <option value="1">Male</option>
+                      <option value="2">Female</option>
+                      <option value="3">Other</option>
                     </select>
                     <img src={arwDwn} alt=""/>
                   </div>
           
                   <p className="label">Date of Birth</p>
                   <div id="dobField">
-                    <input id="newCusDOB"  type="date" className="field" onChange={this.changeInVal} name='dateOfBirth'  />
+                    <input id="newCusDOB"  type="date" className="field" onChange={this.changeInVal} name='date_of_birth'  />
                   </div>
           
                   <p className="label">Marital status</p>
                   <div className="dropDownDiv field"   >
-                    <select id="newCusMaritalStatus"  className="select" name="maritalStatus" onChange={this.changeInVal} defaultValue=""  >
+                    <select id="newCusMaritalStatus"  className="select" name="marital_status" onChange={this.changeInVal} defaultValue=""  >
                       <option value="" disabled >Select your option</option>
-                      <option value="Single">Single</option>
-                      <option value="Married">Married</option>
-                      <option value="Widowed">Widowed</option>
-                      <option value="Divorced">Divorced</option>
+                      <option value="1">Single</option>
+                      <option value="2">Married</option>
                     </select>
                     <img src={arwDwn} alt="arrowDown" />
                   </div>

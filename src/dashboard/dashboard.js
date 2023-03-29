@@ -54,11 +54,12 @@ class DashboardComp extends React.Component{
     componentDidMount(){
       this.setState(this.props.getItem("dashboard"))
       // console.log()
-      this.dataUrl = `http://dev.api.vittae.money/broker/customer-kyc-log/${this.props.getItem('id')}/`
+      this.dataUrl = `http://dev.api.vittae.money/broker/customer-list/?page=1&page_size=10&search=my`
+      console.log(this.props.getItem("Authorization"))
       fetch(this.dataUrl,{
         method:'GET',
         headers: {
-        "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+          "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
         "Content-type": "application/json; charset=UTF-8",
         'Connection':"keep-alive"}
       })
@@ -67,7 +68,7 @@ class DashboardComp extends React.Component{
         return response.json()})
       .then((data)=>{
         console.log(data)
-        this.props.setItem({customerList:data})
+        this.props.setItem({customerList:data.data})
       })
     }
     render(){

@@ -354,6 +354,16 @@ class CustomerView extends React.Component {
     componentDidMount(){
         console.log(this.props.getItem("currentCustomerView"))
         let obj = this.props.getItem("currentCustomerView")
+        fetch(`http://dev.api.vittae.money/broker/customer-detail/${obj.id}/`,{
+            method:'GET',
+            headers: {
+              "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+            "Content-type": "application/json; charset=UTF-8",
+            'Connection':"keep-alive"}
+          }).then(response=>{response.json()})
+          .then(data=>{
+            console.log(data)
+          })
         if (!obj) obj = {}
         // obj.name = "kjbsfb kjsbfksef"
         obj.designation = 'XXX'
@@ -378,7 +388,7 @@ class CustomerView extends React.Component {
         this.displaySection("1");
     }
     render(){
-         console.log(this.state.customer.data)
+         console.log(this.state.customer)
         return(
             <section id="Client">
                 <nav class="navbar">
@@ -478,7 +488,7 @@ class CustomerView extends React.Component {
                         <div class="grid-item">Name</div>
                         <div class="grid-item info">{this.state.customer.name}</div>
                         <div class="grid-item">Date of birth</div>  
-                        <div class="grid-item info">{this.state.customer.data.dob}</div>
+                        <div class="grid-item info">{"22/10/2022"}</div>
                         <div class="grid-item">Age</div>
                         <div class="grid-item info">15</div>  
                         <div class="grid-item">Gender</div>

@@ -128,8 +128,8 @@ class LoginComp extends React.Component{
         {/* <!--when the value is 0 the bg is set transprent otherwise its set to dark blue --> */}
         <button value="0" className="tickButton" onClick={this.changeRememberMe} id="rememberMeBox">
           <svg width="12" height="10" viewBox="0 0 15 14" fill="none">
-            <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round"
-              stroke-linejoin="round" />
+            <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" strokeWidth="3" strokeLinecap="round"
+              strokeLinejoin="round" />
           </svg>
         </button>
 
