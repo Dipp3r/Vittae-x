@@ -7,7 +7,7 @@
     padding:0px;
     background-color:#E4E4E4 ;
     overflow: hidden;
-    
+    padding-top: 0px;
     .navbar{
         @include flex(row,space-between,center);
         background-color: white;
@@ -61,8 +61,7 @@
         padding-bottom:90px;
         margin-top:2px;
         @include flex(column,flex-start,center);
-        overflow-y: scroll;
-        overflow-x: hidden;
+        height: calc(100% - 89px);
         width: 100%;
         #perks{
             height:96px;

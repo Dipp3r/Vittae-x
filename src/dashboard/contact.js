@@ -60,16 +60,18 @@ class ContactsComp extends React.Component {
         this.displayMessage = this.displayMessage.bind(this)
         this.toggleFilterMenu = this.toggleFilterMenu.bind(this)
         this.toggleAddClientMenu = this.toggleAddClientMenu.bind(this)
-        this.changeInVal = this.changeInVal.bind(this)
+        
         this.submit = this.submit.bind(this)
         this.openCustomerView = this.openCustomerView.bind(this)
         this.setFilterPropStatus = this.setFilterPropStatus.bind(this)
         this.filterAndSort = this.filterAndSort.bind(this)
         this.toggleFilterSort = this.toggleFilterSort.bind(this)
-        this.searchInput = this.searchInput.bind(this)
+       
         this.searchCustomer = this.searchCustomer.bind(this)
         this.setFilterPropsTag = this.setFilterPropsTag.bind(this)
         this.updateIndexState = this.updateIndexState.bind(this)
+        this.scrollingList = this.scrollingList.bind(this)
+        this.fetchCustomersList = this.fetchCustomersList.bind(this)
     }
     updateIndexState(){
       this.props.setItem({contactCompState:this.state})
@@ -130,19 +132,9 @@ class ContactsComp extends React.Component {
       this.setState(filter,this.updateIndexState)
       this.filterAndSort(this.customerList)
     }
-    changeInVal(e){
-        let obj = {};
-        // 
-        if(e.keyCode == 13){
-          this.submit()
-        }
-        obj[e.currentTarget.name] = e.currentTarget.value.trim();
-        // 
-        this.setState(obj,this.updateIndexState);
-    }
     displayCustomer(customerList){
         let container = document.body.querySelector('#cardsList')
-        container.innerHTML = ''
+        // container.innerHTML = ''
         let statusBackgroundColor
         for(let i of customerList){
             switch (i.status) {
@@ -302,19 +294,20 @@ class ContactsComp extends React.Component {
         return bool
       })
       // console.dir(newCustomerList)
+      document.body.querySelector('#cardsList').innerHTML = ""
       this.displayCustomer(newCustomerList)
     }
     async submit(){
       let form = document.querySelector("#addCustomer")
       let arr = []
       let obj = {}
-      console.log(form)
+
       arr.push(...form.querySelectorAll("input"))
       arr.push(...form.querySelectorAll("select"))
       for(let element of arr){
         obj[element.name] = element.value
       }
-      console.log(obj)
+
       // return
       // obj.date = new Date().toDateString()
       // obj.status = "1"
@@ -338,10 +331,10 @@ class ContactsComp extends React.Component {
         'Connection':"keep-alive"}
       })
       .then((response)=>{
-        console.log(response)
+
         return response.json()})
       .then((data)=>{
-        console.log(data)
+
         this.props.setItem({customerList:data})
         this.customerList.push(obj)
         this.filterAndSort(this.customerList)
@@ -349,13 +342,64 @@ class ContactsComp extends React.Component {
       })
 
     }
+    searchInput(e){
+      if(e.keyCode == 13){
+        this.searchCustomer()
+      }
+    }
+    searchCustomer(e){
+      let obj = {};
+        obj[e.currentTarget.name] = e.currentTarget.value.trim()
+        obj.current_page = 1
+        this.setState(obj,()=>{
+          document.body.querySelector('#cardsList').innerHTML = ""
+          this.fetchCustomersList()
+        })
+        
+    }
+    scrollingList(e){
+      let target = e.currentTarget
+      let scrollValue = target.scrollTop
+      let maxScrollableHeight = target.scrollHeight-target.clientHeight
+
+
+      let current_page = this.state.current_page
+      if(scrollValue === maxScrollableHeight && current_page < this.state.num_pages){
+        current_page+=1
+        this.setState({current_page:current_page},this.fetchCustomersList)
+      }
+    }
+    async fetchCustomersList(){
+      let page = this.state.current_page
+      let search = this.state.searchValue
+      let dataUrl = `http://dev.api.vittae.money/broker/customer-list/?page=${page}&page_size=10`
+      if (search) if(search.length>3) dataUrl += `&search=${search}`
+      let data = await fetch(dataUrl,{
+        method:'GET',
+        headers: {
+          "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+        "Content-type": "application/json; charset=UTF-8",
+        'Connection':"keep-alive"}
+      })
+      .then((response)=>{
+
+        return response.json()})
+      this.customerList.push(...data.data)
+      await this.displayCustomer(data.data)
+
+      delete data.data
+      this.setState(data,()=>{
+        this.props.setItem({customerList:this.customerList,contactCompState:this.state})
+      })
+    }
     componentDidMount(){
       let obj = this.props.getItem('contactCompState')
-      this.customerList = this.props.getItem('customerList')
-      console.log(this.customerList)
-      this.setState(obj,()=>{
-        this.searchCustomer()
 
+
+      this.customerList = this.props.getItem('customerList')
+      
+      this.setState(obj,()=>{
+        this.customerList.length == 0?this.fetchCustomersList():this.displayCustomer(this.customerList)
         //styling filter tag by last session
         
         for(let i of  document.querySelector('#filterLabels').children){
@@ -383,27 +427,11 @@ class ContactsComp extends React.Component {
       })
       
     }
-    searchInput(e){
-      if(e.keyCode == 13){
-        this.searchCustomer()
-      }
-    }
-    searchCustomer(){
-      // let txt = this.state.searchValue
-      // txt = txt.split(' ').join('.*')
-      // let newCustomerList = this.customerList
-      // newCustomerList = newCustomerList.filter((element)=>{
-      // let string = element.first_name+" "+element.last_name
-      // return string.match(new RegExp(`.*${txt}.*`,"g"))
-      // })
-      this.filterAndSort(this.customerList)
-      // this.displayCustomer(newCustomerList)
-    }
     render(){
       
       
         return(
-            <div id='contactMain' >
+            <div id='contactMain'>
             <div id="statusBar">
                 <div id="statusButton">
                   <button className="statusButton" value='0'  onClick={this.setFilterPropStatus}  >ALL</button>
@@ -417,7 +445,7 @@ class ContactsComp extends React.Component {
               <div id="searchBarDiv">
                 <div id="searchBar">
                   <img id="icon" src={Search} alt="eye icon"/>
-                  <input type="text" name="searchValue"  onChange={this.changeInVal} onKeyDown={this.searchInput} id="searchField" value={this.state.searchValue}  />
+                  <input type="text" name="searchValue"  onChange={this.searchCustomer} id="searchField" value={this.state.searchValue}  />
                 </div>
           
                 <button onClick={this.toggleFilterMenu} style={{"display":"none"}}  >
@@ -447,7 +475,7 @@ class ContactsComp extends React.Component {
           
               </div>
           
-              <div className="scrolling-wrapperY" id="cardsList">
+              <div className="scrolling-wrapperY" id="cardsList" onScroll={this.scrollingList}>
                 {/* list of customers HERE  */}
               </div>
 
@@ -469,9 +497,9 @@ class ContactsComp extends React.Component {
                   <input id="newCusName" required className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='last_name' />
           
 
-                  {/* <p className="label">Designation</p>
-                  <input id="newCusDesi"  className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='designation'/>
-           */}
+                  <p className="label">Designation</p>
+                  <input id="newCusDesi"  className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='occupation'/>
+            
                   <p className="label">Mobile number</p>
                   <input id="newCusMobile"  className="field" type="number" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='phone'   />
           

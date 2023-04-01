@@ -98,22 +98,22 @@ class HomeComp extends React.Component{
             remainder.style.visibility = 'visible'
           }
         }
-        // console.log(dt.toDateString(), today.toDateString(),dt.toDateString() == today.toDateString())
+
         if(!this.state.lastSelectedDate){
           if (dt.toDateString() == today.toDateString()){
             date.style.backgroundColor = '#223f80'
             date.style.color = 'white'
             this.setState({lastSelectedDate:dt.getDate()},()=>{
-              console.log(this.state)
+
               dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
             })
-            this.generateTasks(this.date[dateIndex-1].date.getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
+            // this.generateTasks(this.date[dateIndex-1].date.getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
           }
         }else if (dt.getDate() == this.state.lastSelectedDate){
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
           // this.generateTasks(this.date[this.state.lastSelectedDate-1].tasks)
-          // console.log(this.date[dateIndex-1].date.getDate(),this.state.lastSelectedDate)
+
           this.generateTasks(this.date[dateIndex-1].date.getDate() == this.state.lastSelectedDate?this.date[dateIndex-1].tasks:[])
         }
         dates.appendChild(dateDiv)
@@ -122,7 +122,7 @@ class HomeComp extends React.Component{
     getTasksPerDate(e){
       let dateIndex = e.currentTarget.name
       let dateDivList = document.querySelectorAll(".date")
-      console.log(dateDivList,this.state.lastSelectedDate)
+
       let lastSelectedDateDiv = dateDivList[this.state.lastSelectedDate-1]
       
       if(lastSelectedDateDiv.name == -1){
@@ -227,7 +227,7 @@ class HomeComp extends React.Component{
     }
     componentDidMount(){
       this.setState(this.props.getItem("homeCompState"),()=>{
-        console.log(this.state)
+
         this.generateDates()
         if(this.state.lastSelectedDate) document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
       })      

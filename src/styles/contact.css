@@ -252,15 +252,16 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-width: thin;
 }
 
-#main {
+#contactMain {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
   padding: 0px 10px;
+  height: 100%;
 }
-#main #statusBar {
+#contactMain #statusBar {
   width: 100vw;
   background-color: transparent;
   height: 40px;
@@ -269,7 +270,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-evenly;
   align-items: center;
 }
-#main #statusBar #statusButton {
+#contactMain #statusBar #statusButton {
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
@@ -281,7 +282,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: flex-start;
   align-items: center;
 }
-#main #statusBar #statusButton .statusButton {
+#contactMain #statusBar #statusButton .statusButton {
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
@@ -292,19 +293,20 @@ input[type=date]::-webkit-calendar-picker-indicator {
   text-align: center;
   border-bottom: 2px solid rgb(109, 117, 147);
 }
-#main #statusBarEdge {
+#contactMain #statusBarEdge {
   width: 100vw;
   margin: 0px;
   border: 0.5px solid rgba(37, 53, 100, 0.4);
 }
-#main #searchBarDiv {
+#contactMain #searchBarDiv {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100vw;
+  height: 80px;
 }
-#main #searchBarDiv #searchBar {
+#contactMain #searchBarDiv #searchBar {
   width: 80%;
   height: 40px;
   margin: 30px 10px;
@@ -315,17 +317,17 @@ input[type=date]::-webkit-calendar-picker-indicator {
   background: rgba(109, 117, 147, 0.22);
   border-radius: 9px;
 }
-#main #searchBarDiv #searchBar #icon {
+#contactMain #searchBarDiv #searchBar #icon {
   margin: 5px;
 }
-#main #searchBarDiv #searchBar #searchField {
+#contactMain #searchBarDiv #searchBar #searchField {
   width: 100%;
   background-color: transparent;
   border: none;
   color: #6D7593;
   margin-right: 10px;
 }
-#main #labelBar {
+#contactMain #labelBar {
   width: 100vw;
   background: rgba(34, 63, 128, 0.13);
   height: 40px;
@@ -335,7 +337,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-evenly;
   align-items: center;
 }
-#main #labelBar #labels {
+#contactMain #labelBar #labels {
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
@@ -345,7 +347,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
-#main #labelBar #labels .label {
+#contactMain #labelBar #labels .label {
   color: white;
   width: 25%;
   height: 40px;
@@ -357,16 +359,17 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
-#main .scrolling-wrapperY {
+#contactMain .scrolling-wrapperY {
   width: 100vw;
   display: flex;
   overflow-y: scroll;
   overflow-x: hidden;
   white-space: nowrap;
-  padding: 10px 5px;
+  padding: 10px 5px 150px 5px;
   flex-direction: column;
+  height: calc(100% - 120px);
 }
-#main .scrolling-wrapperY .cards {
+#contactMain .scrolling-wrapperY .cards {
   height: 50px;
   background: #FFFFFF;
   box-shadow: 0px 4px 1px -2px rgba(0, 0, 0, 0.2);
@@ -375,8 +378,9 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 100%;
   font-family: "Montserrat";
   font-style: normal;
+  padding: 15px 5px;
 }
-#main .scrolling-wrapperY .cards .details {
+#contactMain .scrolling-wrapperY .cards .details {
   height: 100%;
   width: 100%;
   display: flex;
@@ -384,7 +388,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-around;
   align-items: center;
 }
-#main .scrolling-wrapperY .cards .details .info {
+#contactMain .scrolling-wrapperY .cards .details .info {
   height: 100%;
   width: 65px;
   font-family: "Montserrat";
@@ -397,28 +401,28 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
   color: #223F80;
 }
-#main .scrolling-wrapperY .cards .details .phone {
+#contactMain .scrolling-wrapperY .cards .details .phone {
   font-weight: 500;
   font-size: 12px;
 }
-#main .scrolling-wrapperY .cards .details .status {
+#contactMain .scrolling-wrapperY .cards .details .status {
   width: 42px;
   height: 13px;
   border-radius: 14px;
   background-color: #6BDA7D;
 }
-#main .scrolling-wrapperY .cards .details .date {
+#contactMain .scrolling-wrapperY .cards .details .date {
   font-weight: 500;
   font-size: 10px;
   color: #929292;
 }
-#main .scrolling-wrapperY .cards .details .dateDiv {
+#contactMain .scrolling-wrapperY .cards .details .dateDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#main .scrolling-wrapperY .cards .details .dateDiv .filterTag {
+#contactMain .scrolling-wrapperY .cards .details .dateDiv .filterTag {
   display: none;
   align-items: center;
   color: white;
@@ -431,7 +435,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding: 3px;
   margin-bottom: 10px;
 }
-#main .fixed {
+#contactMain .fixed {
   position: fixed;
   bottom: 0;
   height: 56px;
@@ -445,7 +449,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: space-around;
   align-items: center;
 }
-#main .fixed .downIconDiv {
+#contactMain .fixed .downIconDiv {
   height: 47px;
   width: 162px;
   margin: 10px;
@@ -458,13 +462,13 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
-#main .fixed .downIconDiv:focus {
+#contactMain .fixed .downIconDiv:focus {
   background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
   color: white;
   stroke: white;
   opacity: 0.93;
 }
-#main .fixed .downIconDiv p {
+#contactMain .fixed .downIconDiv p {
   font-family: "Montserrat";
   font-style: normal;
   color: inherit;
@@ -472,13 +476,13 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 16px;
   margin-left: 10px;
 }
-#main .fixed .downIconDiv svg path {
+#contactMain .fixed .downIconDiv svg path {
   stroke: inherit;
 }
-#main .fixed .downIconDiv svg circle {
+#contactMain .fixed .downIconDiv svg circle {
   stroke: inherit;
 }
-#main #add {
+#contactMain #add {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -490,7 +494,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   bottom: 75px;
   right: 60px;
 }
-#main #add img {
+#contactMain #add img {
   width: -moz-fit-content;
   width: fit-content;
   height: -moz-fit-content;

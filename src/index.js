@@ -27,6 +27,7 @@ import MonthlyView from './dashboard/monthlyView';
 import IncentiveComp from './dashboard/incentive';
 import RenumerationComp from './dashboard/renumeration';
 import Tasks from './dashboard/tasks';
+import ErrorComp from './error.js';
 
 class IndexComp extends React.Component{
   constructor(props){
@@ -35,6 +36,7 @@ class IndexComp extends React.Component{
       mobile:'',
       id:'391',
       contactCompState:{
+        current_page:1,
         addClientMenu:'none',
         filterMenu:'none',
         searchValue:'',
@@ -77,7 +79,7 @@ class IndexComp extends React.Component{
     this.setItem = this.setItem.bind(this)
   }
   getItem(key){
-    console.log(this.state,key)
+
     return  this.state[key]
   }
   setItem(obj,callBack){
@@ -89,6 +91,7 @@ class IndexComp extends React.Component{
   return(
     <BrowserRouter history={HashRouter} >
       <Routes history={HashRouter} >
+      <Route path ="*" index element={<ErrorComp />}/>
       <Route path ="/" index element={<FirstComp />}/>
         <Route path ="/login" index element={<LoginComp getItem={this.getItem} setItem={this.setItem}  />}/>
         <Route path='/mobileSignUp' element={<SignUpMobComp setItem={this.setItem} />} />
