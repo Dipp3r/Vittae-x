@@ -9,7 +9,7 @@ class CustomerListCard extends React.Component{
             name:this.props.name,
             phone:this.props.phone,
             date:dateToString(new Date(this.props.createdat)).replace(/ /g,"/"),
-            id:this.props.key
+            id:this.props.id
         }
     this.openCustomerView = this.openCustomerView.bind(this)
     }

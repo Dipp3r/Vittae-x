@@ -147,6 +147,7 @@ class ContactsComp extends React.Component {
             
             customerCompList.push(<CustomerListCard
               key={i.id}
+              id={i.id}
               color={statusBackgroundColor} 
               name={i.first_name + " " + i.last_name} 
               phone={i.phone} 
