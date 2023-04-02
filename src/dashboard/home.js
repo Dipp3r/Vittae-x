@@ -88,7 +88,6 @@ class HomeComp extends React.Component{
         
         remainder.style.color = 'transparent'
         if(dateIndex < this.date.length-1){
-          
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
             date.style.backgroundColor = '#a5b3cd'
@@ -101,12 +100,11 @@ class HomeComp extends React.Component{
 
         if(!this.state.lastSelectedDate){
           if (dt.toDateString() == today.toDateString()){
+            console.log(dt.toDateString(), today.toDateString(),date.innerText)
             date.style.backgroundColor = '#223f80'
             date.style.color = 'white'
-            this.setState({lastSelectedDate:dt.getDate()},()=>{
-
-              dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
-            })
+            dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
+            this.setState({lastSelectedDate:dt.getDate()})
             // this.generateTasks(this.date[dateIndex-1].date.getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
           }
         }else if (dt.getDate() == this.state.lastSelectedDate){
@@ -114,7 +112,7 @@ class HomeComp extends React.Component{
           date.style.color = 'white'
           // this.generateTasks(this.date[this.state.lastSelectedDate-1].tasks)
 
-          this.generateTasks(this.date[dateIndex-1].date.getDate() == this.state.lastSelectedDate?this.date[dateIndex-1].tasks:[])
+          // this.generateTasks(this.date[dateIndex-1].date.getDate() == this.state.lastSelectedDate?this.date[dateIndex-1].tasks:[])
         }
         dates.appendChild(dateDiv)
       }

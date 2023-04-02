@@ -50,8 +50,8 @@ class IndexComp extends React.Component{
           status:0,
           sort: 'dateDesc',
           tag:[""]
-        }
-      
+        },
+        customerCompList:[]
       },
       customerList:[],
       // customerList:[

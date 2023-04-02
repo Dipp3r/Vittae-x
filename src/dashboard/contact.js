@@ -4,6 +4,8 @@ import plus from '../images/plus.png'
 import arwDwn from '../images/arwDwn.png'
 import dateToString from "../dateToString"
 import { WithRouter } from "../routingWrapper";
+import CustomerListCard from "./customerListCard";
+import { ReactDOM } from "react";
 class Customer {
   constructor(){
     this.id = 0
@@ -22,8 +24,10 @@ class Customer {
 class ContactsComp extends React.Component {
     constructor(props){
         super(props)
-        this.state = {}
-        this.cuatomerList = []
+        this.state = {
+          customerCompList:[]
+        }
+        this.customerList = []      
         // this.state = {
         //   addClientMenu:'none',
         //   filterMenu:'none',
@@ -39,23 +43,6 @@ class ContactsComp extends React.Component {
         //     tag:[]
         //   }
         // }
-      //   this.customerList = [
-      //   {id:1,name:'aaa sfkeeb jksefkj nsejkfnjk snefjk ',mobile:'1234567123',status:4,date:'02/01/2002',tag:['tag1','tag2']},
-      //   {id:3,name:'ccc',mobile:'1234567820',status:1,date:'02/03/2002',tag:['tag1','tag2']},
-      //   {id:2,name:'bbb',mobile:'1234567812',status:1,date:'02/02/2002',tag:['tag1','tag2']},
-      //   {id:4,name:'ddd',mobile:'1234547890',status:2,date:'02/21/2002',tag:['tag1','tag2']},
-      //   {id:5,name:'eee',mobile:'1234347890',status:3,date:'02/19/2002',tag:['tag1','tag2']},
-      //   {id:6,name:'eee',mobile:'1234347890',status:3,date:'02/17/2002',tag:[]},
-      //   {id:7,name:'eee',mobile:'1234347890',status:2,date:'02/15/2002',tag:['tag3','tag4']},
-      //   {id:8,name:'eee',mobile:'1234347890',status:2,date:'02/12/2002',tag:['tag2']},
-      //   {id:9,name:'eee',mobile:'1234347890',status:2,date:'02/09/2002',tag:['tag1','tag2']},
-      //   {id:10,name:'eee',mobile:'1234347890',status:2,date:'02/08/2002',tag:['tag1','tag2']},
-      //   {id:11,name:'eee',mobile:'1234347890',status:2,date:'02/01/2002',tag:['tag1','tag2']},
-      //   {id:12,name:'eee',mobile:'1234347890',status:2,date:'02/07/2002',tag:['tag2']},
-      //   {id:13,name:'eee',mobile:'1234347890',status:2,date:'02/04/2002',tag:['tag3']},
-      //   {id:14,name:'eee',mobile:'1234347890',status:2,date:'02/06/2002',tag:['tag4']}
-      // ];
-       
         this.displayCustomer = this.displayCustomer.bind(this)
         this.displayMessage = this.displayMessage.bind(this)
         this.toggleFilterMenu = this.toggleFilterMenu.bind(this)
@@ -134,9 +121,12 @@ class ContactsComp extends React.Component {
     }
     displayCustomer(customerList){
         let container = document.body.querySelector('#cardsList')
+
         // container.innerHTML = ''
         let statusBackgroundColor
-        for(let i of customerList){
+        let customerCompList = this.state.customerCompList 
+          
+        customerList.map(i=>{
             switch (i.status) {
               case 1:
                 statusBackgroundColor = '#C4C4C4'
@@ -154,57 +144,21 @@ class ContactsComp extends React.Component {
                 statusBackgroundColor = '#C4C4C4'
                 break;
             }
-
-            let cards = document.createElement('button')
-            cards.className = 'cards'
-            let details = document.createElement('div')
-            details.className = 'details'
-
-            let name = document.createElement('div')
-            name.className = 'info'
-            name.id='name'
-            let mobile = document.createElement('div')
-            mobile.className = 'info'
-            mobile.id = 'mobile'
-
-            let status = document.createElement('div')
-            status.className = 'info status'
-            status.id = 'status'
-            status.style.backgroundColor = statusBackgroundColor
             
-
-            let dateButton = document.createElement('div')
-            dateButton.className = 'info dateDiv'
-            let date = document.createElement('p')
-            date.className = 'date'
-            date.id = 'date'
-            let filterTag = document.createElement('div')
-            filterTag.className = 'filterTag'
-            dateButton.appendChild(filterTag)
-            dateButton.appendChild(date)
-            let nameValue = i.first_name + " " + i.last_name
-            if (nameValue.length > 10){
-                name.innerText = nameValue.slice(0,7)+"..."
-            }else{
-                name.innerText = nameValue
-            }
-
-            mobile.innerText = i.phone
-            date.innerText = dateToString(new Date(i.created_at)).replace(/ /g,"/")
-            // status.innerText = i.status
+            customerCompList.push(<CustomerListCard
+              key={i.id}
+              color={statusBackgroundColor} 
+              name={i.first_name + " " + i.last_name} 
+              phone={i.phone} 
+              createdat={i.created_at}
+              setItem={this.props.setItem}
+              />)
             
-            details.appendChild(name)
-            details.appendChild(mobile)
-            details.appendChild(status)
-            details.appendChild(dateButton)
-            
-            cards.appendChild(details)
-            cards.value = i.id
-            cards.onclick = this.openCustomerView
-
-            container.appendChild(cards);
+            // cards.value = i.id
+            // cards.onclick = this.openCustomerView
             // 
-        }
+        })
+        
     }
     openCustomerView(e){ 
       let target = e.currentTarget.value
@@ -294,8 +248,10 @@ class ContactsComp extends React.Component {
         return bool
       })
       // console.dir(newCustomerList)
-      document.body.querySelector('#cardsList').innerHTML = ""
-      this.displayCustomer(newCustomerList)
+      // document.body.querySelector('#cardsList').innerHTML = ""
+      this.setState({customerCompList:[]},()=>{
+        this.displayCustomer(newCustomerList)
+      })
     }
     async submit(){
       let form = document.querySelector("#addCustomer")
@@ -349,12 +305,14 @@ class ContactsComp extends React.Component {
     }
     searchCustomer(e){
       let obj = {};
-        obj[e.currentTarget.name] = e.currentTarget.value.trim()
-        obj.current_page = 1
-        this.setState(obj,()=>{
-          document.body.querySelector('#cardsList').innerHTML = ""
-          this.fetchCustomersList()
-        })
+      let value = e.currentTarget.value
+      obj[e.currentTarget.name] =  value.replace(/ +/g," ")
+      if (value.length >= 2) obj.customerCompList= []
+      obj.current_page = 1
+      this.setState(obj,()=>{
+        // document.body.querySelector('#cardsList').innerHTML = ""
+        this.fetchCustomersList()
+      })
         
     }
     scrollingList(e){
@@ -373,7 +331,11 @@ class ContactsComp extends React.Component {
       let page = this.state.current_page
       let search = this.state.searchValue
       let dataUrl = `http://dev.api.vittae.money/broker/customer-list/?page=${page}&page_size=10`
-      if (search) if(search.length>3) dataUrl += `&search=${search}`
+      if (search) 
+        if(search.length>=3){
+          dataUrl += `&search=${search}`
+          this.setState({customerCompList:[]})
+        }
       let data = await fetch(dataUrl,{
         method:'GET',
         headers: {
@@ -385,7 +347,7 @@ class ContactsComp extends React.Component {
 
         return response.json()})
       this.customerList.push(...data.data)
-      await this.displayCustomer(data.data)
+      this.displayCustomer(data.data)
 
       delete data.data
       this.setState(data,()=>{
@@ -477,6 +439,7 @@ class ContactsComp extends React.Component {
           
               <div className="scrolling-wrapperY" id="cardsList" onScroll={this.scrollingList}>
                 {/* list of customers HERE  */}
+                {this.state.customerCompList.map(element=>{return element})}
               </div>
 
               <div id="addCustomer" style={{'display':`${this.state.addClientMenu}`}}  >
