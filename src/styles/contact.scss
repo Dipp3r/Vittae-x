@@ -1,8 +1,9 @@
 @import 'main';
-    #main{
+    #contactMain{
         @include flex(column,flex-start,center);
         overflow: hidden;
         padding: 0px 10px;
+        height: 100%;
 
         #statusBar{
             width:100vw;
@@ -46,6 +47,7 @@
     #searchBarDiv{
         @include flex(row,center,center);
         width:100vw;
+        height:80px;
         #searchBar{
             width:80%;
             height: 40px;
@@ -96,8 +98,9 @@
         overflow-y: scroll;
         overflow-x: hidden;
         white-space: nowrap;
-        padding: 10px 5px;
+        padding: 10px 5px 150px 5px;
         flex-direction: column;
+        height:calc(100% - 120px);
         .cards {
             height: 50px;
             background: #FFFFFF;
@@ -107,6 +110,7 @@
             width: 100%;
             font-family: 'Montserrat';
             font-style: normal;
+            padding: 15px 5px;
             .details{
                 height:100%;
                 width: 100%;
@@ -222,7 +226,7 @@
         display: none;
         top: 0px;
         left:0px;
-        overflow: hidden;
+        overflow: auto;
         z-index: 1;
         #addBox{
             margin: 20px 5px;

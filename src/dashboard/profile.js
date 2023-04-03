@@ -2,7 +2,7 @@ import React from "react";
 import { WithRouter } from "../routingWrapper";
 
 import "../styles/profile.css"
-
+import profile from "../images/profile.png"
 class Profile extends React.Component{
     constructor(props){
       super(props)
@@ -11,9 +11,11 @@ class Profile extends React.Component{
     }
     logOutAcc(){
       console.log('logOutAcc clicked')
+      this.props.navigate("../login")
     }
     deleteAcc(){
       console.log('Delete account clicked')
+      this.props.navigate("../")
     }
     render(){
       let first_name = this.props.getItem('first_name')
@@ -42,7 +44,7 @@ class Profile extends React.Component{
   <div id="profileDiv">
     <div id="profileBox">
       <img
-        src={require("../images/profile.png")}
+        src={profile}
         id="profilePageImg"
         alt="profile picture"
       />

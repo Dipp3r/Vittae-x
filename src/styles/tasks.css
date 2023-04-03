@@ -338,7 +338,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 #Tasks #main #tasks #nonEmpty .task {
   padding: 25px 25px;
-  width: 100vw;
+  width: 90vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

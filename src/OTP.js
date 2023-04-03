@@ -133,12 +133,12 @@ class OTPComp extends React.Component {
         document.querySelector(element).style.borderColor = color
       }
     async submit(){
-        return this.props.navigate(this.loc);
+        // return this.props.navigate(this.loc);
         if(this.state.isTimeOut) return
-        var obj = {OTP:this.state.OTP.join(""),phone:this.props.getItem('phone')}
+        var obj = {otp:this.state.OTP.join(""),phone:this.props.getItem('phone')}
         if(obj.OTP == '') return
         console.log(obj)
-        fetch(this.submitLink,{
+        let data = await fetch(this.submitLink,{
             method:'POST',
             body:JSON.stringify(obj),
             headers: {
@@ -147,16 +147,16 @@ class OTPComp extends React.Component {
         })
         .then((response) =>{
             console.log(response);
-            if(response.status == 201){
+            if(response.status == 201 || response.status == 200){
                 return response.json()
             }
-            throw new Error('Something went wrong')
+            return undefined
         })
-        .then((data)=>{
+        // console.log(data)
+        if(data != undefined){
             console.log(data)            
-            this.props.setItem(data)
-            this.props.navigate(this.loc)
-        })
+            this.props.setItem(data,this.props.navigate(this.loc))
+        }
     }
     componentDidMount(){
         //exmaple

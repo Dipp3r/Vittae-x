@@ -1,6 +1,6 @@
 const express = require('express');
-const sessions = require('express-session');
-const cookieParser = require('cookie-parser');
+// const sessions = require('express-session');
+// const cookieParser = require('cookie-parser');
 const app = express()
 const path = require('path')
 const cors = require("cors");
@@ -9,178 +9,63 @@ const cors = require("cors");
 
 const Pool = require('pg').Pool
 const pool = new Pool({
-    user:"postgres",
-    password:"0000",
+    user:"vittaex",
+    password:"123456",
     host:"localhost",
     post:5432,
-    database:"db"
+    database:"vittaex"
 });
 const port = 3000;
-const cookieTime = 1000*60*60*24*10
+// const cookieTime = 1000*60*60*24*10
 
-//middleware
+// //middleware
 app.use(cors());
 
 
 app.use(express.static(path.join(__dirname,'/', "build")));
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(cookieParser())
+// app.use(cookieParser())
 
-app.use(sessions({
-    secret:"thisIsASceret",
-    saveUninitialized:true,
-    cookie:{maxAge:cookieTime},
-    resave:false
-}))
+// app.use(sessions({
+//     secret:"thisIsASceret",
+//     saveUninitialized:true,
+//     cookie:{maxAge:cookieTime},
+//     resave:false
+// }))
 
 function getRandomId(len){
     return Number.parseInt((new Array(len).fill(Math.round((Math.random()*10)))).join(""))
 }
-let session;
-app.post('/signIn',async(req,res)=>{
-    session = req.session
-    console.log(req.body)
-    res.send({status:true,msg:''})
-    return
-    try {
-        const obj = req.body;
-        console.log(req.body)
 
-        let count=0;
-        let row = {}
-        switch(obj.typeId){
-            case 0:
-                // email
-                try {
-                    const User = await pool.query("SELECT userid FROM users WHERE email = $1 AND password = $2",[obj.type,obj.password]);
-                    count = User.rowCount;
-                    row = User.rows[0]
-                    console.log(User)
-                } catch (err) {
-                    console.error(err.message);
-                }
-                break
-            case 1:
-                // phone
-                try {
-                    obj.type = obj.type.slice(-10);
-                    const User = await pool.query("SELECT userid FROM users WHERE mobile = $1 AND password = $2",[obj.type,obj.password]);
-                    count = User.rowCount;
-                    row = User.rows[0]
-                } catch (err) {
-                    console.error(err.message);
-                }
-                break
-        }
-    
-        if (count>0){
-            if (obj.rememberMe){
-                console.log("tring to store in sessions");
-                console.log(row.userid);
-                session.userId = row.userid;
-            }
-            res.send({status:true});
-        }
-        else{
-            res.send({status:false});
-        }
+app.post('/getNotesList',async(req,res)=>{
+    console.log(req.body)
+    try {
+        let data = req.body;
+        let notes = await pool.query(`select id,title,body,date from notes where customer_id = ${data.customer_id} and broker_id = ${data.broker_id}`)
+        res.send(notes.rows)
     } catch (err) {
         console.error(err.message);
+        res.send([])
     }
-    console.log(req.body)
-    // res.send({'status':true})
-    // console.log(session)
 })
-
-app.get('/signIn',async(req,res)=>{
-    console.log(req.session)
-    let status = false
-    if(req.session.userId > 0){
-        status = true
-    }else{
-        status = false
+app.post('/addNote',(req,res)=>{
+    console.log(req.body)
+    let data = req.body
+    try{
+        let query = pool.query(`insert into notes (id,customer_id,broker_id,title,body,date) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${data.date}')`)
+        console.log(query)
+    }catch (err) {
+        console.error(err.message);
     }
-    res.send({status:status})
+    res.send()
+})
+app.get('*',(req,res)=>{
+    console.log(req.body)
+    res.sendFile(path.join(__dirname,'/', "build","index.html"))
 } )
 
-app.post('/signUp',async(req,res)=>{
-    console.log(req.body)
-    res.send({status:true,msg:''})
-    return
-    try {
-        let {name,mail,mobile,password } = req.body;
-        mobile = Number.parseInt(mobile)
-        let userId = getRandomId(6)
-        const newUser = await pool.query("INSERT INTO temp_users(userId,name,email,mobile,password) VALUES($1,$2,$3,$4,$5)",[userId,name,mail,mobile,password])
-        res.send({'status':(newUser.rowCount > 0)})
-    } catch (err) {
-        console.error(err.message);
-        res.send({'status':false})
-    }
-    // console.log(req.body)
-    // res.send({'status':true})
-})
 
-app.post('/verifyID',async(req,res)=>{
-    console.log(req.body);       
-    let obj = {status:true,msg:""}
-    res.send(obj);
-    return
-    switch(typeId){
-        case 0:
-            try {
-                const User = await pool.query("SELECT userid FROM users WHERE email = $1",[type]);
-                if (User.rowCount>0) {
-                    req.session.userId=User.rows[0].userid;
-                    obj.status=true;
-                }
-            } catch (err) {
-                obj.msg=err.message;
-            }
-            break
-        case 1:
-            try {
-                type=type.slice(-10);
-                const User = await pool.query("SELECT userid FROM users WHERE mobile = $1",[type]);
-                if (User.rowCount>0) {
-                    req.session.userId=User.rows[0].userid;
-                    obj.status=true;
-                }
-            } catch (err) {
-                obj.msg=err.message;
-            }
-            break
-    }
-    res.send(obj);
-})
-
-app.post('/sendOTP',(req,res)=>{
-    console.log(req.body)
-    let status = false
-    if(req.body.OTP == '1234'){
-        status = true
-    }
-    res.send({'status':status})
-})
-
-app.post('/setNewPassword',async(req,res)=>{
-    // const {password} = req.body
-    console.log(req.body)
-    // let response =  {status:false,msg:""};
-    res.send({'status':true})
-    return
-    session=req.session
-    try {
-        const User = await pool.query("UPDATE users SET password = $1 WHERE userid = $2",[password,session.userId]);
-        if(User.rowCount>0){
-            response.status = true;
-        }
-    } catch (err) {
-        response.msg = err;
-    }
-    res.send(response);
-})
 
 app.listen(port,(err)=>{
     console.log(`server : http://localhost:${port}`)

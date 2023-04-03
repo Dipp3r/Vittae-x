@@ -1,4 +1,11 @@
 import React from "react";
+
+//importing images
+import blueDot from "../images/blueDot.svg"
+import Check_ring from "../images/Check_ring.svg"
+import arrow_right from "../images/arrow_right.svg"
+import Alarmclock from "../images/Alarmclock.svg"
+
 import { WithRouter } from "../routingWrapper";
 const dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -6,7 +13,8 @@ class HomeComp extends React.Component{
     constructor(props){
       super(props)
       this.state={
-        lastselectedDate:null
+        // lastSelectedDate:null,
+        today:new Date()
       }
       this.tasks = [
         {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
@@ -17,19 +25,19 @@ class HomeComp extends React.Component{
         {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}
       ]
       this.date = [
-        {date:'2023-03-01',tasks:[
+        {date:new Date('2023-03-01'),tasks:[
           {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
           {title:'Follow up call',name:'BBB',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
         },
-        {date:'2023-03-05',tasks:[
+        {date:new Date('2023-03-05'),tasks:[
           {title:'Follow up call',name:'CCC',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
           {title:'Follow up call',name:'DDD',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
         },
-        {date:'2023-03-10',tasks:[
+        {date:new Date('2023-03-10'),tasks:[
           {title:'Follow up call',name:'EEE',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
           {title:'Follow up call',name:'FFF',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
         },
-        {date:'2023-03-11',tasks:[
+        {date:new Date('2023-03-11'),tasks:[
           {title:'Follow up call',name:'EFA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
           {title:'Follow up call',name:'AAAFFWAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
         }
@@ -48,7 +56,7 @@ class HomeComp extends React.Component{
       dates.innerHTML = ''
       let dateDiv,day,date,remainder;
       let i =0
-      let today = new Date()
+      let today = this.state.today
 
       let dateIndex = 0
 
@@ -67,7 +75,7 @@ class HomeComp extends React.Component{
         day.id = 'day'
         remainder = document.createElement('img')
         remainder.id = 'reminderOverlay'
-        remainder.src = require("../images/blueDot.svg")
+        remainder.src = blueDot
         remainder.style.visibility = "hidden"
         
         let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
@@ -80,7 +88,6 @@ class HomeComp extends React.Component{
         
         remainder.style.color = 'transparent'
         if(dateIndex < this.date.length-1){
-          
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
             date.style.backgroundColor = '#a5b3cd'
@@ -91,30 +98,47 @@ class HomeComp extends React.Component{
           }
         }
 
-        if (dt.toDateString() == today.toDateString()){
+        if(!this.state.lastSelectedDate){
+          if (dt.toDateString() == today.toDateString()){
+            console.log(dt.toDateString(), today.toDateString(),date.innerText)
+            date.style.backgroundColor = '#223f80'
+            date.style.color = 'white'
+            dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
+            this.setState({lastSelectedDate:dt.getDate()})
+            // this.generateTasks(this.date[dateIndex-1].date.getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
+          }
+        }else if (dt.getDate() == this.state.lastSelectedDate){
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
-          this.setState({lastselectedDate:dateDiv})
-          this.generateTasks(this.date[dateIndex].tasks)
+          // this.generateTasks(this.date[this.state.lastSelectedDate-1].tasks)
+
+          // this.generateTasks(this.date[dateIndex-1].date.getDate() == this.state.lastSelectedDate?this.date[dateIndex-1].tasks:[])
         }
         dates.appendChild(dateDiv)
       }
     }
     getTasksPerDate(e){
       let dateIndex = e.currentTarget.name
-      let lastselectedDate = this.state.lastselectedDate
+      let dateDivList = document.querySelectorAll(".date")
+
+      let lastSelectedDateDiv = dateDivList[this.state.lastSelectedDate-1]
       
-      if(lastselectedDate.name == -1){
-        lastselectedDate.querySelector('#date').style.backgroundColor = 'transparent'
-        lastselectedDate.querySelector('#date').style.color = 'black'
+      if(lastSelectedDateDiv.name == -1){
+        lastSelectedDateDiv.querySelector('#date').style.backgroundColor = 'transparent'
+        lastSelectedDateDiv.querySelector('#date').style.color = 'black'
       }else{
-        lastselectedDate.querySelector('#date').style.backgroundColor = '#a5b3cd'
-        lastselectedDate.querySelector('#date').style.color = 'white'
+        lastSelectedDateDiv.querySelector('#date').style.backgroundColor = '#a5b3cd'
+        lastSelectedDateDiv.querySelector('#date').style.color = 'white'
       }
       e.currentTarget.querySelector('#date').style.backgroundColor = '#223f80'
       e.currentTarget.querySelector('#date').style.color = 'white'
       this.generateTasks(dateIndex == -1?[]:this.date[dateIndex].tasks )
-      this.setState({lastselectedDate:e.currentTarget})
+
+      let homeCompState = this.props.getItem("homeCompState")
+      let nextElementIndex = Array.prototype.indexOf.call(dateDivList,e.currentTarget)+1
+      homeCompState.lastSelectedDate = nextElementIndex
+      this.props.setItem(homeCompState)
+      this.setState({lastSelectedDate:nextElementIndex})
     }
     generateTasks(taskList){
       // <div className="task">
@@ -170,7 +194,7 @@ class HomeComp extends React.Component{
         let completeButton = document.createElement('button')
         completeButton.className = 'label'
         let img1 = document.createElement('img')
-        img1.src = require("../images/Check_ring.svg")
+        img1.src = Check_ring
         img1.alt = 'completed'
         let p1 = document.createElement('p')
         p1.innerText = 'completed'
@@ -181,7 +205,7 @@ class HomeComp extends React.Component{
         let snoozeButton = document.createElement('button')
         snoozeButton.className = 'label'
         let img2= document.createElement('img')
-        img2.src = require("../images/Alarmclock.svg")
+        img2.src = Alarmclock
         img2.alt = 'completed'
         let p2 = document.createElement('p')
         p2.innerText = 'snooze'
@@ -200,13 +224,14 @@ class HomeComp extends React.Component{
       document.body.querySelector('#tasks').appendChild(container)
     }
     componentDidMount(){
-      let date = new Date()
-      
-      this.generateDates()
-      // this.generateTasks(this.tasks)
+      this.setState(this.props.getItem("homeCompState"),()=>{
+
+        this.generateDates()
+        if(this.state.lastSelectedDate) document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
+      })      
     }
     render(){
-      let today = new Date()
+      
         return(
 <div id='homeMain'>
     <div id="perks">
@@ -224,11 +249,11 @@ class HomeComp extends React.Component{
       <div id="calendar">
         <div id="months">
           <p>
-            Feb 2023
+            {months[this.state.today.getMonth()].slice(0,3)} {this.state.today.getFullYear()}
           </p>
           <button id="monthView" onClick={this.props.navigate} value="../monthlyview"   >
             Monthly view
-            <img src={require("../images/arrow_right.svg")} alt="right click"/>
+            <img src={arrow_right} alt="right click"/>
           </button>
         </div>
 
@@ -245,14 +270,14 @@ class HomeComp extends React.Component{
       </div>
     <div id='tasks'>
       <div id="nonEmpty">
-          <div class="task"></div>
+          <div className="task"></div>
       </div>
     <div>
     </div>
   </div>
     <button id="overdueDiv" onClick={this.props.navigate} value="../tasks"  >
       <p>Overdue task (12)</p>
-      <img src={require("../images/arrow_right.svg")} alt="enter icon"/>
+      <img src={arrow_right} alt="enter icon"/>
     </button>
 </div>
 </div>

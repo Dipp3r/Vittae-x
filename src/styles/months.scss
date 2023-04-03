@@ -103,11 +103,11 @@
             align-self:center;
             width:30px;
             height:30px;
-            border-radius:50px;
+            border-radius:3px;
             margin:2px;
             transition-duration:.2s;
             
-            &.today{
+            &.today,&.hasTasks{
                 background: rgba(34, 63, 128, 0.4);
                 border-radius: 3px;
             }
@@ -116,16 +116,16 @@
               grid-column:3;
             }
             
-            &:hover{
-              background:#eee;
-            }
+            // &:hover{
+            //   background:#eee;
+            // }
             
-            &:focus{
-                background: #223F80;
-                border-radius: 3px;
-                color:white;
-                font-weight:600;
-            }
+            // &:focus{
+            //     background: #223F80;
+            //     border-radius: 3px;
+            //     color:white;
+            //     font-weight:600;
+            // }
           }
         }
       }
@@ -143,9 +143,9 @@
             height:fit-content;
             width:100%;
             background: white;
-            
+            @include flex(column,center,center);
             #taskEmpty{
-                display:none;
+                // display:none;
                 margin-top:70px;
                 text-align: center;
                 font-family: 'Montserrat';

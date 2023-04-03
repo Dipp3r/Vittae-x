@@ -4,6 +4,8 @@ import { redirect ,useNavigate} from 'react-router-dom';
 import { WithRouter } from './routingWrapper';
 import checkString from './stringChecker';
 import './styles/login.css';
+import eye from "./images/eye.svg"
+import eyeOff from "./images/eye_off.svg"
 
 class LoginComp extends React.Component{
     constructor(){
@@ -33,10 +35,10 @@ class LoginComp extends React.Component{
     changePasswordVis(e){
         if(this.state.passwordInType == 'password'){
             this.setState({passwordInType:'text'})
-            e.currentTarget.src = require('./images/eye.svg')
+            e.currentTarget.src = eye
         }else{
             this.setState({passwordInType:'password'})
-            e.currentTarget.src = require('./images/eye_off.svg')
+            e.currentTarget.src = eyeOff
         }
     }
     changeColor(element,color){
@@ -82,11 +84,11 @@ class LoginComp extends React.Component{
         }
         console.log(obj)
         //sending data to the server
-        fetch(this.submitLink,{
+        let data = await fetch(this.submitLink,{
             method:'POST',
             body:JSON.stringify(obj),
             headers: {
-              "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+              "Authorization":"Passcode 	bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
               "Content-type": "application/json; charset=UTF-8",
               'Connection':"keep-alive"
             }
@@ -95,9 +97,8 @@ class LoginComp extends React.Component{
           if (response.status != 200) throw new Error('Something went wrong')
           return response.json()
         })
-        .then((data)=>{
-          console.log(data)
-          this.props.setItem(data)
+        console.log(data)
+        this.props.setItem(data,()=>{
           this.props.navigate("../dashboard")
         })
     }
@@ -118,7 +119,7 @@ class LoginComp extends React.Component{
         <p className='inLabel'>Password</p>
         <div id="passwordBox">
           <input onChange={this.changeInVal} onKeyDown={this.changeInVal} onFocus={()=>this.changeColor('#passwordBox','#223F80')} onBlur={()=>this.changeColor('#passwordBox','#b8b8b8')}  name='password'  type={this.state.passwordInType} placeholder="Example!123" id="passwordField" className="password" value={this.state.password}  />
-          <img src={require("./images/eye_off.svg")} alt="eye" onClick ={this.changePasswordVis} />
+          <img src={eyeOff} alt="eye" onClick ={this.changePasswordVis} />
         </div>
         <p className="invalid" >{this.state.passwordErr}</p>
       </div>
@@ -127,8 +128,8 @@ class LoginComp extends React.Component{
         {/* <!--when the value is 0 the bg is set transprent otherwise its set to dark blue --> */}
         <button value="0" className="tickButton" onClick={this.changeRememberMe} id="rememberMeBox">
           <svg width="12" height="10" viewBox="0 0 15 14" fill="none">
-            <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" stroke-width="3" stroke-linecap="round"
-              stroke-linejoin="round" />
+            <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" strokeWidth="3" strokeLinecap="round"
+              strokeLinejoin="round" />
           </svg>
         </button>
 

@@ -123,7 +123,7 @@ li::marker {
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 body {
   margin: 0px;
@@ -146,7 +146,7 @@ section {
   overflow: auto;
   height: 100vh;
   width: 100vw;
-  padding-top: 80px;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -356,25 +356,16 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-self: center;
   width: 30px;
   height: 30px;
-  border-radius: 50px;
+  border-radius: 3px;
   margin: 2px;
   transition-duration: 0.2s;
 }
-#monthly_view .calendar .dates button.today {
+#monthly_view .calendar .dates button.today, #monthly_view .calendar .dates button.hasTasks {
   background: rgba(34, 63, 128, 0.4);
   border-radius: 3px;
 }
 #monthly_view .calendar .dates button:first-child {
   grid-column: 3;
-}
-#monthly_view .calendar .dates button:hover {
-  background: #eee;
-}
-#monthly_view .calendar .dates button:focus {
-  background: #223F80;
-  border-radius: 3px;
-  color: white;
-  font-weight: 600;
 }
 #monthly_view #main {
   padding-bottom: 90px;
@@ -394,9 +385,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
   height: fit-content;
   width: 100%;
   background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 #monthly_view #main #tasks #taskEmpty {
-  display: none;
   margin-top: 70px;
   text-align: center;
   font-family: "Montserrat";

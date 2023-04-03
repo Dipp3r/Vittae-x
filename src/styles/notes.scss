@@ -6,6 +6,10 @@
     padding:20px;
     overflow:scroll;
     height: 100vh;
+    position: absolute;
+    top:0px;
+    z-index: 1;    
+    background: white;
     #backButton{
         padding:0px;
         width:100%;
@@ -20,7 +24,7 @@
         border:none;
         font-family: 'Montserrat';
         margin-top:36px;
-        margin-left:10px;
+        // margin-left:10px;
         font-style: normal;
         font-weight: 500;
         font-size: 24px;
@@ -34,7 +38,7 @@
         width:100%;
         border:none;
         height:80%;
-        margin-left:10px;
+        // margin-left:10px;
         // text-overflow: clip;
         font-family: 'Montserrat';
         font-style: normal;

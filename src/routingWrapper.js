@@ -19,6 +19,7 @@ export const WithRouter = (Component) => {
     return (
       <Component
         navigate={changeRoute}
+        key={props.id}
         {...props}
         />
     );
