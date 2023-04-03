@@ -102,14 +102,28 @@ class CustomerView extends React.Component {
             menu.querySelector('#desc').style.borderColor ="#B8B8B8"
         }
         if(isError) return
-        obj.date = new Date(menu.querySelector("#addTaskDate").value)
-        obj.time = menu.querySelector('#addTaskTime').value
+        let date =menu.querySelector("#addTaskDate").value
+        let time = menu.querySelector('#addTaskTime').value
         obj.type = 0
-        obj.id = this.state.customer.tasks.length
+        obj.id = this.state.customer.id+this.state.customer.tasks.length
          
         let customer = this.state.customer
         customer.tasks.push(obj)
-         
+        obj.date = new Date(date+"T"+time)
+        obj.customer_id=this.state.customer.id
+        obj.broker_id=this.props.getItem("id")
+        obj.outcome = ""
+        obj.completed = false
+        console.log(obj)
+        fetch("addTask",{
+            method:'post',
+            body:JSON.stringify(obj),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            }
+        })
+
+
         this.setState({customer:customer},()=>{
             this.generateTasks(this.state.customer.tasks)
         })
@@ -253,7 +267,7 @@ class CustomerView extends React.Component {
         // </div>
         // </div>
         let taskType;   
-        tasksList = tasksList.sort((a,b)=>{return b.date.getTime()-a.date.getTime()})
+        tasksList = tasksList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
         let taskCardSpace = document.querySelector('#taskCardSpace')
         taskCardSpace.innerHTML = ""
         for(let task of tasksList){
@@ -305,10 +319,11 @@ class CustomerView extends React.Component {
             button1.appendChild(img)
 
             portion3.appendChild(button1)
-
+            let taskDate = new Date(task.date)
             title.innerText = task.title
-            date.innerText = dateToString(task.date,1)
-            time.innerText = task.time
+            date.innerText = dateToString(taskDate,1)
+            console.log(task)
+            time.innerText = taskDate.getHours().toString().padStart(2, '0')+":"+taskDate.getMinutes().toString().padStart(2, '0');
             portion2.innerText = task.discription
 
             taskCard.appendChild(portion1)
@@ -392,6 +407,8 @@ class CustomerView extends React.Component {
           })
           .then(response=>{return response.json()})
           .then(async data=>{
+
+            //getting notes tasks
             data.notes = await fetch("getNotesList",{
                 method:'POST',
                 body:JSON.stringify({customer_id:obj.id,broker_id:this.props.getItem("id")}),
@@ -403,8 +420,19 @@ class CustomerView extends React.Component {
               if (response.status != 200) throw new Error('Something went wrong')
               return response.json()
             })
-            console.log(data.notes)
-            data.tasks = []
+
+            //getting taks list
+            data.tasks = await fetch("getTasksList",{
+                method:'POST',
+                body:JSON.stringify({customer_id:obj.id,broker_id:this.props.getItem("id")}),
+                headers: {
+                  "Content-type": "application/json; charset=UTF-8",
+                }
+            }).then((response) => {
+              console.log(response)
+              if (response.status != 200) throw new Error('Something went wrong')
+              return response.json()
+            })
             this.setState({customer:data},()=>{
                 this.generateNotes(this.state.customer.notes)
                 this.generateTasks(this.state.customer.tasks)

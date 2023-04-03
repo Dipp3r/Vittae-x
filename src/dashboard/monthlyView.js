@@ -7,6 +7,7 @@ import Alarmclock from "../images/Alarmclock.svg"
 import calendar_left_arrow from "../images/calendar_left_arrow.svg"
 import calendar_right_arrow from "../images/calendar_right_arrow.svg"
 import "../styles/months.css"
+import dateToString from "../dateToString"
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class MonthlyView extends React.Component {
     constructor(props){
@@ -28,11 +29,11 @@ class MonthlyView extends React.Component {
         this.selectDate = this.selectDate.bind(this)
         this.displayTasks = this.displayTasks.bind(this)
     }
-    changeMonth(e){
+    async changeMonth(e){
         let value = Number.parseInt(e.currentTarget.getAttribute("value"))
         let month = Number.parseInt(this.state.currentDate.getMonth())
         let year = Number.parseInt(this.state.currentDate.getFullYear())
-        console.log(month,value)
+
         month += value
         if(month ==-1){
             month = 11;
@@ -43,11 +44,24 @@ class MonthlyView extends React.Component {
         }
         let date = new Date(year,month)
         let today = new Date()
+
         let selectedDate = (date.getMonth() == today.getMonth() && date.getFullYear == today.getFullYear())?today.getDate:1;
-        console.log(date,selectedDate)
-        this.setState({currentDate:date,selectedDate:selectedDate},()=>{
+
+        let data = await fetch("/getTasksForMonth",{
+            method:'POST',
+            body:JSON.stringify({date:dateToString(date).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            }
+          })
+          .then((response)=>{
+            return response.json()})
+
+        this.setState({currentDate:date,selectedDate:selectedDate,tasksList:data},()=>{
+
             this.generateDates()
             this.selectDate()
+            
         })
     }
     generateDates(){
@@ -56,9 +70,9 @@ class MonthlyView extends React.Component {
         let currentDate = this.state.currentDate
         let button,time;
         let dateIndex = 0
-        //filtering task list for this month 
-        let tasksList = this.state.tasksList.filter((element)=>{ return (new Date(element.day).getMonth() == currentDate.getMonth())})
-        console.log(tasksList)
+        //filtering task list for this month .filter((element)=>{ return (new Date(element.day).getMonth() == currentDate.getMonth())})
+        let tasksList = this.state.tasksList
+
         //generating dates
         for(let dt = new Date(currentDate.getFullYear(),currentDate.getMonth(),1);dt< new Date(currentDate.getFullYear(),currentDate.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
             button = document.createElement("button")
@@ -66,9 +80,11 @@ class MonthlyView extends React.Component {
             button.className = null
             // button.style.color = "black"
             // button.style.backgroundColor = "transparent"
-            // console.log(tasksList[dateIndex].day)
+            
             if(dateIndex < tasksList.length){
-                if(dt.toDateString() === new Date(tasksList[dateIndex].day).toDateString()){
+                let date2 = new Date(tasksList[dateIndex].date)
+                console.log(dt,date2)
+                if(dt.getDate() == date2.getDate() && dt.getMonth() == date2.getMonth() && dt.getFullYear() == date2.getFullYear()){
                     button.className = "hasTasks"
                     dateIndex+=1
                 }
@@ -86,7 +102,7 @@ class MonthlyView extends React.Component {
         let target = e?e.currentTarget:document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1];
         let value = Number.parseInt(target.getAttribute("value"))
         let prevTarget = document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1]
-        console.log(target)
+
         prevTarget.style.color = null
         prevTarget.style.backgroundColor = null
         prevTarget.style.fontWeight = null
@@ -94,11 +110,13 @@ class MonthlyView extends React.Component {
         target.style.backgroundColor = "#223F80"
         target.style.fontWeight = "600"
         
-        console.log(target)
+
         this.setState({selectedDate:value},this.displayTasks)
     }
     displayTasks(){
-        let tasksList = this.state.tasksList.filter((element)=>{ return (new Date(element.day).getMonth() == this.state.currentDate.getMonth())&&(new Date(element.day).getDate() == this.state.selectedDate)})
+        let tasksList = this.state.tasksList.filter((element)=>{ return (new Date(element.date).getDate() == this.state.selectedDate)})
+        console.log(tasksList,this.state.tasksList)
+        tasksList = tasksList.length == 0?[]:tasksList[0].tasks
         let container = document.body.querySelector('#tasks')
         container.innerHTML = ''
         let task,desc,i,tasksDiv
@@ -112,7 +130,7 @@ class MonthlyView extends React.Component {
         return
       }
       tasksDiv.id = 'nonEmpty'
-
+      console.log(tasksList)
       for (let j = 0;j< tasksList.length;j++){
         i = tasksList[j]
         
@@ -164,7 +182,7 @@ class MonthlyView extends React.Component {
         title.innerText = i.title
         day.innerText = i.day
         due.innerText = `Due in ${i.due} days`
-
+        if (i.due == null) due.style.display = "none"
         // task.appendChild(desc)
         tasksDiv.appendChild(task)
       }
@@ -172,12 +190,26 @@ class MonthlyView extends React.Component {
 
     }
     componentDidMount(){
-        this.generateDates()
-        this.selectDate()
-        this.displayTasks()
+        fetch("/getTasksForMonth",{
+            method:'POST',
+            body:JSON.stringify({date:dateToString(new Date()).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            }
+          })
+          .then((response)=>{
+            return response.json()})
+            .then(data=>{
+                this.setState({tasksList:data},()=>{
+                    this.generateDates()
+                    this.selectDate()
+                    this.displayTasks()
+                })
+            })
     }
     
     render(){
+        console.log(this.state)
         return(
             <section id="monthly_view">
                 <div id="topBar">

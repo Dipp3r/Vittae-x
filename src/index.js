@@ -95,7 +95,7 @@ class IndexComp extends React.Component{
 
         <Route path='/profile' element={<Profile getItem={this.getItem} setItem={this.setItem}  />}/>
         <Route path='/profileinfo' element={<ProfileInfo getItem={this.getItem} setItem={this.setItem}   />} /> 
-        <Route path='/monthlyview' element={<MonthlyView/>} />
+        <Route path='/monthlyview' element={<MonthlyView getItem={this.getItem} setItem={this.setItem}/>} />
         <Route path='/tasks' element={<Tasks />} />
         
 

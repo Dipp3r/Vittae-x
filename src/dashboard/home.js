@@ -7,6 +7,7 @@ import arrow_right from "../images/arrow_right.svg"
 import Alarmclock from "../images/Alarmclock.svg"
 
 import { WithRouter } from "../routingWrapper";
+import dateToString from "../dateToString";
 const dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class HomeComp extends React.Component{
@@ -46,7 +47,8 @@ class HomeComp extends React.Component{
       this.getTasksPerDate = this.getTasksPerDate.bind(this)
       this.generateTasks = this.generateTasks.bind(this)
     }
-    generateDates(startDate,endDate){
+    generateDates(){
+      console.log(this.dates)
     //     <div className="date">
     //     <p id="day">Sun</p>
     //     <p id="date">01</p>
@@ -78,7 +80,6 @@ class HomeComp extends React.Component{
         remainder.src = blueDot
         remainder.style.visibility = "hidden"
         
-        let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
         day.innerText = dayName[dt.getDay()].slice(0,3)
         date.innerText = dt.getDate() < 10?`0${dt.getDate()}`:dt.getDate();
         dateDiv.append(day)
@@ -87,7 +88,9 @@ class HomeComp extends React.Component{
 
         
         remainder.style.color = 'transparent'
-        if(dateIndex < this.date.length-1){
+        console.log(dt.toDateString())
+        if(dateIndex < this.date.length){
+          console.log(dt.toDateString(),new Date(this.date[dateIndex].date).toDateString())
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
             date.style.backgroundColor = '#a5b3cd'
@@ -100,19 +103,19 @@ class HomeComp extends React.Component{
 
         if(!this.state.lastSelectedDate){
           if (dt.toDateString() == today.toDateString()){
-            console.log(dt.toDateString(), today.toDateString(),date.innerText)
+            // console.log(dt.toDateString(), today.toDateString(),date.innerText)
             date.style.backgroundColor = '#223f80'
             date.style.color = 'white'
             dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
             this.setState({lastSelectedDate:dt.getDate()})
-            // this.generateTasks(this.date[dateIndex-1].date.getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
+            this.generateTasks(new Date(this.date[dateIndex-1].date).getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
           }
         }else if (dt.getDate() == this.state.lastSelectedDate){
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
           // this.generateTasks(this.date[this.state.lastSelectedDate-1].tasks)
 
-          // this.generateTasks(this.date[dateIndex-1].date.getDate() == this.state.lastSelectedDate?this.date[dateIndex-1].tasks:[])
+          this.generateTasks(new Date(this.date[dateIndex-1].date).getDate() == this.state.lastSelectedDate?this.date[dateIndex-1].tasks:[])
         }
         dates.appendChild(dateDiv)
       }
@@ -217,18 +220,31 @@ class HomeComp extends React.Component{
         title.innerText = i.title
         day.innerText = i.day
         due.innerText = `Due in ${i.due} days`
-
+        if (i.due == null) due.style.display = 'none'
         // task.appendChild(desc)
         container.appendChild(task)
       }
       document.body.querySelector('#tasks').appendChild(container)
     }
     componentDidMount(){
-      this.setState(this.props.getItem("homeCompState"),()=>{
+      fetch("/getTasksForMonth",{
+        method:'POST',
+        body:JSON.stringify({date:dateToString(this.state.today).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        }
+      })
+      .then((response)=>{
+        return response.json()})
+      .then(data=>{
+        console.log(data)
+        this.date = data
+        this.setState(this.props.getItem("homeCompState"),()=>{
 
-        this.generateDates()
-        if(this.state.lastSelectedDate) document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
-      })      
+          this.generateDates()
+          if(this.state.lastSelectedDate) document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
+        })
+      })
     }
     render(){
       
