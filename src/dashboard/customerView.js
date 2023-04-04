@@ -21,6 +21,7 @@ class CustomerView extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            KYCLog: [],
            section:1,
            customer:{
             id:421,
@@ -63,6 +64,7 @@ class CustomerView extends React.Component {
            completedTaskMenu:'none',
            addNotesPage:"none"
         }
+        
         this.currentTask = ""
         this.changeSection = this.changeSection.bind(this)
         this.displaySection = this.displaySection.bind(this)
@@ -155,7 +157,7 @@ class CustomerView extends React.Component {
             console.log(taskObj)
             menu.querySelector('#title').value = taskObj.title
             menu.querySelector('#desc').value = taskObj.discription
-            menu.querySelector("#date").value = dateToString(taskObj.date,2).replace(/ /g,"-")
+            menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
             menu.querySelector('#time').value = taskObj.time
             menu.querySelector('#outcome').value = ""
         }
@@ -186,17 +188,26 @@ class CustomerView extends React.Component {
         this.setState({customer:customer})
         this.generateTasks(this.state.customer.tasks)
         this.toggleCompletedTaskMenu()
-
+        fetch("/completeTask",{
+            method:'post',
+            body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            }
+        })
     }
     filterTasksByType(e){
          
         let type = Number.parseInt(e.currentTarget.value)
         let tasksList = this.state.customer.tasks
-         
-        if(type >= 1){
-            tasksList  = tasksList.filter((element)=>element.type == type)
+        switch(type){
+            case 1:
+                tasksList  = tasksList.filter((element)=>element.due>0)
+                break;
+            case 2:
+                tasksList  = tasksList.filter((element)=>element.completed)
+                break;
         }
-         
         this.generateTasks(tasksList)
 
     }
@@ -271,18 +282,12 @@ class CustomerView extends React.Component {
         let taskCardSpace = document.querySelector('#taskCardSpace')
         taskCardSpace.innerHTML = ""
         for(let task of tasksList){
-             
-            switch(task.type){
-                case 0:
-                default:
-                    taskType = 'taskCard'
-                break;
-                case 1:
-                    taskType = 'OverdueTaskCard'
-                break;
-                case 2:
-                    taskType = 'CompletedTaskCard'
-                break;
+            if(task.completed){
+                taskType = 'CompletedTaskCard'
+            }else if(task.due > 0){
+                taskType = 'OverdueTaskCard'
+            }else{
+                taskType = 'taskCard'
             }
              
             let taskCard = document.createElement('div')
@@ -396,8 +401,12 @@ class CustomerView extends React.Component {
     componentDidMount(){
         console.log(this.props.getItem("currentCustomerView"))
         let obj = this.props.getItem("currentCustomerView")
-        if (!obj) obj = {}
+        if (!obj) {
+            this.props.navigate("./dashboard")
+            obj = this.state.customer
+        }
         console.log(obj)
+        try{
         fetch(`http://dev.api.vittae.money/broker/customer-detail/${obj.id}/`,{
             method:'GET',
             headers: {
@@ -420,7 +429,7 @@ class CustomerView extends React.Component {
               if (response.status != 200) throw new Error('Something went wrong')
               return response.json()
             })
-
+            
             //getting taks list
             data.tasks = await fetch("getTasksList",{
                 method:'POST',
@@ -433,14 +442,33 @@ class CustomerView extends React.Component {
               if (response.status != 200) throw new Error('Something went wrong')
               return response.json()
             })
-            this.setState({customer:data},()=>{
+            //getting kyc log
+            //see id => 391
+            let KYCLog = await fetch(`http://dev.api.vittae.money/broker/customer-kyc-log/${obj.id}/`,{
+                method:'GET',
+                headers: {
+                    "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+                    "Content-type": "application/json; charset=UTF-8",
+                    'Connection':"keep-alive"
+                }
+            }).then((response) => {
+              console.log(response)
+              if (response.status != 200) throw new Error('Something went wrong')
+              return response.json()
+            })
+            
+
+            this.setState({customer:data,KYCLog:KYCLog},()=>{
                 this.generateNotes(this.state.customer.notes)
                 this.generateTasks(this.state.customer.tasks)
                 this.displaySection("1");
             })
             
           })
-        
+        }
+        catch(err){
+            console.log(err)
+            }
         // obj.name = "kjbsfb kjsbfksef"
         // obj.designation = 'XXX'
         // obj.tasks = [
@@ -589,7 +617,7 @@ class CustomerView extends React.Component {
                         </div>
                     </div>
 
-                    <p className="infoLabel">Document details</p>
+                    {/* <p className="infoLabel">Document details</p>
                     <div className="infoDiv">
                         <div className="grid-container">
                         <div className="grid-item">Account name</div>
@@ -601,11 +629,11 @@ class CustomerView extends React.Component {
                         <div className="grid-item">IFSC Code</div>  
                         <div className="grid-item info">#######</div>  
                         </div>
-                    </div>
+                    </div> */}
                     </div>
 
                     <div id='kycStatus'>
-                        <KYCsteps/>
+                    {this.state.KYCLog.length > 0 && <KYCsteps items={this.state.KYCLog}/>}
                     </div>
 
                     <div id="notesContent">

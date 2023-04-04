@@ -7,6 +7,7 @@
     padding:0px;
     background-color:white ;
     overflow: hidden;
+    // display: flex;
     #navBar{
         @include flex(row,center,center);
         background-color: #223F80;
@@ -66,6 +67,7 @@
         #tasks{
             width:100%;
             background: white;
+            display: flex;
             #taskEmpty{
                 display:none;
                 margin-top:70px;

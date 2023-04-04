@@ -484,6 +484,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 100%;
   background: white;
   align-items: center;
+  display: flex;
 }
 #dashboard #main #reminderDiv #tasks #taskEmpty {
   margin-top: 70px;

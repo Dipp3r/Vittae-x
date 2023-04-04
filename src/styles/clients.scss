@@ -444,10 +444,13 @@
             margin:0px;
             border: 1px solid rgba(37, 53, 100, 0.4);
         }
+        
     }
 
 }
-
+#kycStatus{
+    display: none;
+}
 #infoContent{
     @include flex(column,flex-start,center);
     display:none;
@@ -476,7 +479,8 @@
     padding-bottom:100px;
     overflow-y:scroll;
     overflow-x: hidden;
-    display:none;
+    width: 85%;
+    display: none;
     #left{
         @include flex(column,flex-start,center);
         width:46%;
@@ -543,6 +547,7 @@
     @include flex(column,flex-start,flex-start);
     overflow: scroll;
     padding-bottom: 150px;
+    display: none;
     #dropDown{
         @include flex(row,flex-start,center);
         padding:25px;

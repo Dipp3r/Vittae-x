@@ -292,7 +292,7 @@ class HomeComp extends React.Component{
     </div>
   </div>
     <button id="overdueDiv" onClick={this.props.navigate} value="../tasks"  >
-      <p>Overdue task (12)</p>
+      <p>Overdue task</p>
       <img src={arrow_right} alt="enter icon"/>
     </button>
 </div>

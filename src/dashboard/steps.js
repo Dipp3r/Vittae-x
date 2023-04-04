@@ -3,36 +3,47 @@ import React from 'react';
 import {CheckCircleOutlined} from '@ant-design/icons';
 import { Steps } from 'antd';
 const description = 'This is a description.';
-function KYCsteps() {
-  return (
-    <div className="App">
-        <Steps
-          className="custome-step"
-          id="check"
-          direction="vertical"
-            size="small"
-            current={1}
-            items={[
-              {
-                title: 'Signed into Vittae app',
-                description,
-                icon: <CheckCircleOutlined />,
-                
-              },
-              {
-                title: 'Started KYC',
-                description,
-                icon: <CheckCircleOutlined />
-              },
-              {
-                title: 'Plan upload',
-                description,
-                icon: <CheckCircleOutlined />
-              },
-            ]}
-        />
-    </div>
-  );
+class KYCsteps extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
+    console.log(this.props.items)
+    console.log(this.props.items.map((element)=>{
+      return {title:element.name,description:element.description,icon:<CheckCircleOutlined />}
+    }))
+    return (
+      <div className="App">
+          <Steps
+            className="custome-step"
+            id="check"
+            direction="vertical"
+              size="small"
+              current={1}
+              // icon: <CheckCircleOutlined />,
+              // items={[
+              //   {
+              //     title: 'Signed into Vittae app',
+              //     description,
+              //   },
+              //   {
+              //     title: 'Started KYC',
+              //     description,
+              //     icon: <CheckCircleOutlined />
+              //   },
+              //   {
+              //     title: 'Plan upload',
+              //     description,
+              //     icon: <CheckCircleOutlined />
+              //   },
+              // ]}
+              items={this.props.items.map((element)=>{
+                return {title:element.name,description:element.description,icon:<CheckCircleOutlined />}
+              })}
+          />
+      </div>
+    );
+  }
 }
 
 export default KYCsteps;

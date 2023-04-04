@@ -325,6 +325,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #Tasks #main #tasks {
   width: 100%;
   background: white;
+  display: flex;
 }
 #Tasks #main #tasks #taskEmpty {
   display: none;

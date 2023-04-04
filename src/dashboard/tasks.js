@@ -1,6 +1,6 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
-
+import dateToString  from "../dateToString";
 import '../styles/tasks.css'
 import Check_ring from "../images/Check_ring.svg"
 import Alarmclock from "../images/Alarmclock.svg"
@@ -37,6 +37,7 @@ class Tasks extends React.Component{
         let dateColor = 'black'
         switch(currSection){
             case 0:
+            default:
                 //overDue
                 taskList = this.state.data.overDue
                 taskList = taskList.sort((a,b)=>{return new Date(a.date).getTime()-new Date(b.date).getTime()})
@@ -51,10 +52,6 @@ class Tasks extends React.Component{
                 taskList = this.state.data.completed
                 taskList = taskList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
                 dateColor = 'rgba(98, 177, 111, 1)'
-                break
-            default:
-                taskList = this.state.data.overDue
-                taskList = taskList.sort((a,b)=>{return new Date(a.date).getTime()-new Date(b.date).getTime()})
                 break
         }
         let container = document.body.querySelector('#tasks')
@@ -141,6 +138,7 @@ class Tasks extends React.Component{
                 // task.appendChild(desc)
                 card.appendChild(task)
             }
+            console.log(card)
         }
         container.appendChild(card)
     }
@@ -160,8 +158,22 @@ class Tasks extends React.Component{
         this.displaySection(Number.parseInt(e.currentTarget.name))
     }
     componentDidMount(){
-      this.displaySection(0)
-      this.setState({lastSession:document.querySelector('.statusButton')})
+      
+      fetch("/getTasksAll",{
+        method:'POST',
+        body:JSON.stringify({broker_id:this.props.getItem("id")}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        }
+      })
+      .then((response)=>{
+        return response.json()})
+        .then(data=>{
+          console.log(data)
+          this.setState({lastSession:document.querySelector('.statusButton'),data:data},()=>{
+            this.displaySection(0)
+          })
+        })
     }
     render(){
         return(
