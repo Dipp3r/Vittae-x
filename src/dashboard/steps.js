@@ -8,10 +8,6 @@ class KYCsteps extends React.Component{
     super(props)
   }
   render(){
-    console.log(this.props.items)
-    console.log(this.props.items.map((element)=>{
-      return {title:element.name,description:element.description,icon:<CheckCircleOutlined />}
-    }))
     return (
       <div className="App">
           <Steps

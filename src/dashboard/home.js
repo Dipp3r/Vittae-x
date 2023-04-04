@@ -48,7 +48,7 @@ class HomeComp extends React.Component{
       this.generateTasks = this.generateTasks.bind(this)
     }
     generateDates(){
-      console.log(this.dates)
+
     //     <div className="date">
     //     <p id="day">Sun</p>
     //     <p id="date">01</p>
@@ -88,9 +88,9 @@ class HomeComp extends React.Component{
 
         
         remainder.style.color = 'transparent'
-        console.log(dt.toDateString())
+
         if(dateIndex < this.date.length){
-          console.log(dt.toDateString(),new Date(this.date[dateIndex].date).toDateString())
+
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
             date.style.backgroundColor = '#a5b3cd'
@@ -103,7 +103,7 @@ class HomeComp extends React.Component{
 
         if(!this.state.lastSelectedDate){
           if (dt.toDateString() == today.toDateString()){
-            // console.log(dt.toDateString(), today.toDateString(),date.innerText)
+            
             date.style.backgroundColor = '#223f80'
             date.style.color = 'white'
             dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
@@ -237,7 +237,7 @@ class HomeComp extends React.Component{
       .then((response)=>{
         return response.json()})
       .then(data=>{
-        console.log(data)
+
         this.date = data
         this.setState(this.props.getItem("homeCompState"),()=>{
 

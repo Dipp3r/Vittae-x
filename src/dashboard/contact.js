@@ -125,8 +125,19 @@ class ContactsComp extends React.Component {
         // container.innerHTML = ''
         let statusBackgroundColor
         let customerCompList = this.state.customerCompList 
-          
+
+        
+
         customerList.map(i=>{
+            if(i.is_purchased){
+              i.status = 3//active
+            }else if(i.is_kyc_completed){
+              i.status = 4//inactive
+            }else if(i.is_kyc_processing){
+              i.status = 2//processing
+            }else{
+              i.status = 1//started
+            }
             switch (i.status) {
               case 1:
                 statusBackgroundColor = '#C4C4C4'
@@ -325,13 +336,17 @@ class ContactsComp extends React.Component {
       let current_page = this.state.current_page
       if(scrollValue === maxScrollableHeight && current_page < this.state.num_pages){
         current_page+=1
-        this.setState({current_page:current_page},this.fetchCustomersList)
+        this.setState({current_page:current_page},()=>{
+          this.props.setItem({contactCompState:this.state})
+          this.fetchCustomersList()
+        })
       }
     }
     async fetchCustomersList(){
       let page = this.state.current_page
       let search = this.state.searchValue
       let dataUrl = `http://dev.api.vittae.money/broker/customer-list/?page=${page}&page_size=10`
+
       if (search) 
         if(search.length>=3){
           dataUrl += `&search=${search}`
@@ -352,7 +367,7 @@ class ContactsComp extends React.Component {
 
       delete data.data
       this.setState(data,()=>{
-        this.props.setItem({customerList:this.customerList,contactCompState:this.state})
+        this.props.setItem({customerList:[...this.customerList],contactCompState:this.state})
       })
     }
     componentDidMount(){
@@ -362,7 +377,8 @@ class ContactsComp extends React.Component {
       this.customerList = this.props.getItem('customerList')
       
       this.setState(obj,()=>{
-        this.customerList.length == 0?this.fetchCustomersList():this.displayCustomer(this.customerList)
+
+        if (this.customerList.length == 0) this.fetchCustomersList()
         //styling filter tag by last session
         
         for(let i of  document.querySelector('#filterLabels').children){

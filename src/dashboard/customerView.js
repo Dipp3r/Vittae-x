@@ -14,6 +14,7 @@ import plus from "../images/plus.svg"
 import Trash from "../images/Trash.svg"
 import Date_range from "../images/Date_range.svg"
 import Time from "../images/Time.svg"
+import Edit_fill from "../images/Edit_fill.svg"
 import KYCsteps from "./steps";
 
 
@@ -116,7 +117,7 @@ class CustomerView extends React.Component {
         obj.broker_id=this.props.getItem("id")
         obj.outcome = ""
         obj.completed = false
-        console.log(obj)
+
         fetch("addTask",{
             method:'post',
             body:JSON.stringify(obj),
@@ -152,13 +153,13 @@ class CustomerView extends React.Component {
                 if(task.id == Number.parseInt(this.currentTask)){
                     taskObj = task;
                 }
-                // console.log(task,Number.parseInt(this.currentTask))
+                
             }
-            console.log(taskObj)
+
             menu.querySelector('#title').value = taskObj.title
             menu.querySelector('#desc').value = taskObj.discription
             menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
-            menu.querySelector('#time').value = taskObj.time
+            menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
             menu.querySelector('#outcome').value = ""
         }
         this.setState({completedTaskMenu:completedTaskMenu})
@@ -180,7 +181,7 @@ class CustomerView extends React.Component {
             if(task.id == Number.parseInt(this.currentTask)){
                 currentTask = task;
             }
-            // console.log(task,Number.parseInt(this.currentTask))
+            
         }
         
         currentTask.type = 2
@@ -209,7 +210,6 @@ class CustomerView extends React.Component {
                 break;
         }
         this.generateTasks(tasksList)
-
     }
     getCustomerDetail(){
         // let url = ""
@@ -327,9 +327,9 @@ class CustomerView extends React.Component {
             let taskDate = new Date(task.date)
             title.innerText = task.title
             date.innerText = dateToString(taskDate,1)
-            console.log(task)
+
             time.innerText = taskDate.getHours().toString().padStart(2, '0')+":"+taskDate.getMinutes().toString().padStart(2, '0');
-            portion2.innerText = task.discription
+            portion2.innerText = task.body
 
             taskCard.appendChild(portion1)
             taskCard.appendChild(portion2)
@@ -349,7 +349,7 @@ class CustomerView extends React.Component {
             let noteBody = document.querySelector("#noteBody")
             if (noteTitle.value != "" && noteBody.value != ""){
                 let customer = this.state.customer
-                console.log(customer)
+
                 let data = {id:customer.notes.length,customer_id:customer.id,broker_id:this.props.getItem("id"),title:noteTitle.value,body:noteBody.value,date: dateToString(new Date()).replace(/ /g,"-")}      
                 customer.notes.push(data)
                 this.setState({customer:customer})
@@ -399,13 +399,13 @@ class CustomerView extends React.Component {
         }
     }
     componentDidMount(){
-        console.log(this.props.getItem("currentCustomerView"))
+
         let obj = this.props.getItem("currentCustomerView")
         if (!obj) {
             this.props.navigate("./dashboard")
             obj = this.state.customer
         }
-        console.log(obj)
+
         try{
         fetch(`http://dev.api.vittae.money/broker/customer-detail/${obj.id}/`,{
             method:'GET',
@@ -425,7 +425,7 @@ class CustomerView extends React.Component {
                   "Content-type": "application/json; charset=UTF-8",
                 }
             }).then((response) => {
-              console.log(response)
+
               if (response.status != 200) throw new Error('Something went wrong')
               return response.json()
             })
@@ -438,7 +438,7 @@ class CustomerView extends React.Component {
                   "Content-type": "application/json; charset=UTF-8",
                 }
             }).then((response) => {
-              console.log(response)
+
               if (response.status != 200) throw new Error('Something went wrong')
               return response.json()
             })
@@ -452,7 +452,7 @@ class CustomerView extends React.Component {
                     'Connection':"keep-alive"
                 }
             }).then((response) => {
-              console.log(response)
+
               if (response.status != 200) throw new Error('Something went wrong')
               return response.json()
             })
@@ -467,7 +467,7 @@ class CustomerView extends React.Component {
           })
         }
         catch(err){
-            console.log(err)
+
             }
         // obj.name = "kjbsfb kjsbfksef"
         // obj.designation = 'XXX'
@@ -487,7 +487,7 @@ class CustomerView extends React.Component {
         // ]   
     }
     render(){
-        //  console.log(this.state.customer)
+        
         return(
             <section id="Client">
                 <nav className="navbar">
@@ -537,7 +537,13 @@ class CustomerView extends React.Component {
                         <div id="portion1Left">
                         <img src={arrow_left_white} alt="left arrow" onClick={this.props.navigate} value='../dashboard'  />
                         <div id="deets">
+                            <div id="edit">
                             <p id="name">{this.state.customer.first_name?(this.state.customer.first_name.length<=10?this.state.customer.first_name:`${this.state.customer.first_name.slice(0,7)}...`):""}</p>
+                            <button>
+                                <img src={Edit_fill} alt="edit"/>
+                            </button>
+                            </div>
+                            
                             <p id="designation">{this.state.customer.designation}</p>
                             <div id="statusDiv">
                             <p id="statusDot">.</p>
@@ -549,9 +555,6 @@ class CustomerView extends React.Component {
                         <div id="portion1Right">
                         <div id="dateBox">
                             <p id="dateTxt">Added {new Date(this.state.customer.created_at).toDateString()}</p>
-                            <button>
-                            <img src={three_dots} alt=""/>
-                            </button> 
                         </div>
                         <button id="edit">
                             Edit
@@ -732,8 +735,8 @@ class CustomerView extends React.Component {
                             </button>
                             </div>
                             <div id="portion2">
-                            <input id="title" type="text" placeholder="Add title"/>
-                            <textarea name="" id="desc" placeholder="Description"></textarea>
+                            <input id="title" type="text" placeholder="Add title" maxlength="100"/>
+                            <textarea name="" id="desc" placeholder="Description" maxlength="2500"></textarea>
                             <div id="fieldDiv">
                                 <div className="field">
                                 <img src={Date_range} alt="date"/>
@@ -778,7 +781,7 @@ class CustomerView extends React.Component {
                                 </div>
                                 <p>Outcome<a>*</a></p>
                             </div>
-                            <textarea id="outcome"></textarea>
+                            <textarea id="outcome" maxlength="2500"></textarea>
                             </div>
                             <button id="save" onClick={this.completeTask} >
                             Save
