@@ -217,8 +217,8 @@ class ContactsComp extends React.Component {
       e.currentTarget.style.borderBottomColor = '#223f80'
       e.currentTarget.style.color = '#223f80'
       this.lastSelectedFilterButton =  e.currentTarget
-
-      this.searchCustomer(this.customerList)
+      this.filterAndSort(this.customerList)
+      // this.searchCustomer(this.customerList)
     }
     filterAndSort(customerList){
       let newCustomerList = customerList

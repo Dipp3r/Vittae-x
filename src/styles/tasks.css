@@ -392,4 +392,131 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 #Tasks #main #tasks #nonEmpty .task .label p {
   margin-left: 5px;
+}
+#Tasks #main #completedTaskScreen {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(1.5px);
+          backdrop-filter: blur(1.5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv {
+  position: relative;
+  width: 330px;
+  height: 480px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-radius: 15px;
+  background-color: white;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion1 #closeIcon {
+  border-radius: 20px;
+  height: 24px;
+  margin: 10px;
+  padding: 0px;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion1 #delete {
+  margin: 10px;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #title {
+  border: none;
+  border-bottom: 2px solid #223F80;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 input {
+  width: 232px;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #desc {
+  margin-top: 20px;
+  width: 230px;
+  height: 68px;
+  border: 1.5px solid #B8B8B8;
+  border-radius: 15px;
+  padding: 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #223F80;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #desc:focus {
+  outline: none;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv {
+  width: 100%;
+  padding-left: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv .field {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 120px;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv .field input {
+  padding: 5px;
+  width: 300px;
+  height: 18px;
+  border: 1.5px solid #B8B8B8;
+  border-radius: 8px;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv p {
+  margin-top: 40px;
+  margin-bottom: 2px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  text-align: start;
+  font-size: 14px;
+  color: #223F80;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv p a {
+  color: #BB2230;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #outcome {
+  margin-top: 0px;
+  width: 230px;
+  height: 68px;
+  border: 1.5px solid #B8B8B8;
+  border-radius: 15px;
+  padding: 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #223F80;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #outcome:focus {
+  outline: none;
+}
+#Tasks #main #completedTaskScreen #completedTaskDiv #save {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #929292;
 }/*# sourceMappingURL=tasks.css.map */
