@@ -75,11 +75,11 @@ app.post('/getTasksList',async(req,res)=>{
         res.send([])
     }
 })
-app.post('/addtask',(req,res)=>{
+app.post('/addtask',async (req,res)=>{
     console.log(req.body)
     let data = req.body
     try{
-        let query = pool.query(`insert into tasks (id,customer_id,broker_id,title,body,date,completed) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.discription}','${data.date}',false)`)
+        let query = await pool.query(`insert into tasks (id,customer_id,broker_id,title,body,date,completed,name) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${data.date}',false,'${data.name}')`)
     }catch (err) {
         console.error(err.message);
     }
@@ -98,7 +98,7 @@ app.post("/completeTask",(req,res)=>{
 app.post("/getTasksForMonth",async (req,res)=>{
     let data = req.body
     try{
-        let tasks = await pool.query(`SELECT * FROM tasks WHERE broker_id = ${data.broker_id} and date BETWEEN DATE_TRUNC('month', '${data.date}'::timestamp) AND DATE_TRUNC('month', '${data.date}'::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond';`)
+        let tasks = await pool.query(`SELECT * FROM tasks WHERE not completed and broker_id = ${data.broker_id} and date BETWEEN DATE_TRUNC('month', '${data.date}'::timestamp) AND DATE_TRUNC('month', '${data.date}'::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond' `)
         let [day,month,year] = data.date.split("-");
         data.date = new Date(`${year}-${month}-${day}`)
         let tempdata = tasks.rows

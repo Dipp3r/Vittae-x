@@ -304,6 +304,122 @@
             }
 
         }
+        #completedTaskScreen{
+            height:100%;
+            width:100%;
+            position:absolute;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(1.5px);
+            @include flex(column,center,center);
+            // display:none;
+            top:0px;
+            #completedTaskDiv{
+                position:relative;
+                width: 330px;
+                height: 480px;
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+                border-radius: 15px;
+                background-color: white;
+                #portion1{
+                    @include flex(row,space-between,center);
+                    #closeIcon{
+                        border-radius:20px;
+                        height:24px;
+                        margin:10px;
+                        padding:0px;
+                    }
+
+                    #delete{
+                        margin:10px;
+                    }
+
+                }
+                #title{
+                    border:none;
+                    border-bottom:2px solid #223F80;
+                }    
+                 #portion2{
+                    
+                    @include flex(column,center,center);
+                    input{
+                        width: 232px;
+                    }
+                    #desc{
+                        margin-top:20px;
+                        width:230px;
+                        height:68px;
+                        border: 1.5px solid #B8B8B8;
+                        border-radius: 15px;
+                        padding:10px;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 12px;
+                        color: #223F80;
+                        &:focus{
+                            outline:none;
+                        }
+
+                    }
+                    #fieldDiv{
+                        width:100%;
+                        padding-left:100px;
+                        @include flex(column,center,flex-start);
+                        .field{
+                            margin-top:10px;
+                            @include flex(row,space-between,center);
+                            width:120px;
+                            input{
+                                padding:5px;
+                                width: 300px;
+                                height: 18px;
+                                border: 1.5px solid #B8B8B8;
+                                border-radius: 8px;
+                            }
+                        }
+                        p{
+                            margin-top:40px;
+                            margin-bottom:2px;
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 500;
+                            text-align: start;
+                            font-size: 14px;
+                            color: #223F80;
+                            a{
+                                color:#BB2230;
+                            }
+                        }
+                    }
+                    #outcome{
+                        margin-top:0px;
+                        width:230px;
+                        height:68px;
+                        border: 1.5px solid #B8B8B8;
+                        border-radius: 15px;
+                        padding:10px;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 12px;
+                        color: #223F80;
+                        &:focus{
+                            outline:none;
+                        }
+                    }
+                }   
+                #save{
+                    position:absolute;
+                    bottom:15px;
+                    right:20px;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #929292;
+                }
+            }
+        }
     }
     .fixed{
         position:fixed;

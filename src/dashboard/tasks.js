@@ -116,7 +116,7 @@ class Tasks extends React.Component{
                   snoozeButton.appendChild(p2)
                   task.appendChild(snoozeButton)
                 }
-                name.innerText = i.name
+                name.innerText = i.body
                 title.innerText = i.title
                 let dateValue = new Date(i.date)
                 let hour = dateValue.getHours()

@@ -89,7 +89,7 @@ class CustomerView extends React.Component {
         let obj = {}
         let menu = document.querySelector('#addTaskDiv')
         obj.title = menu.querySelector('#title').value
-        obj.discription = menu.querySelector('#desc').value
+        obj.body = menu.querySelector('#desc').value
         let isError = false
         if(obj.title == ""){
             menu.querySelector('#title').style.borderBottomColor = "red"
@@ -117,7 +117,7 @@ class CustomerView extends React.Component {
         obj.broker_id=this.props.getItem("id")
         obj.outcome = ""
         obj.completed = false
-
+        obj.name = this.state.customer.first_name+" "+this.state.customer.last_name
         fetch("addTask",{
             method:'post',
             body:JSON.stringify(obj),
@@ -157,7 +157,7 @@ class CustomerView extends React.Component {
             }
 
             menu.querySelector('#title').value = taskObj.title
-            menu.querySelector('#desc').value = taskObj.discription
+            menu.querySelector('#desc').value = taskObj.body
             menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
             menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
             menu.querySelector('#outcome').value = ""
@@ -184,7 +184,7 @@ class CustomerView extends React.Component {
             
         }
         
-        currentTask.type = 2
+        currentTask.completed = true
         currentTask.outcome = outcome 
         this.setState({customer:customer})
         this.generateTasks(this.state.customer.tasks)
@@ -282,6 +282,7 @@ class CustomerView extends React.Component {
         let taskCardSpace = document.querySelector('#taskCardSpace')
         taskCardSpace.innerHTML = ""
         for(let task of tasksList){
+            console.log(task)
             if(task.completed){
                 taskType = 'CompletedTaskCard'
             }else if(task.due > 0){
@@ -337,7 +338,6 @@ class CustomerView extends React.Component {
             taskCardSpace.appendChild(taskCard)
         }
     }
-    
     toggleAddNotesPage(){
         let notesPg = this.state.addNotesPage
         
