@@ -6,6 +6,11 @@ import Check_ring from "../images/Check_ring.svg"
 import Alarmclock from "../images/Alarmclock.svg"
 import calendar_left_arrow from "../images/calendar_left_arrow.svg"
 import calendar_right_arrow from "../images/calendar_right_arrow.svg"
+
+import Trash from "../images/Trash.svg"
+import Date_range from "../images/Date_range.svg"
+import Time from "../images/Time.svg"
+
 import "../styles/months.css"
 import dateToString from "../dateToString"
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -15,6 +20,7 @@ class MonthlyView extends React.Component {
         this.state= {
             currentDate :new Date(),
             selectedDate:new Date().getDate(),
+            completedTaskMenu:'none',
             tasksList:[
                 {title:'Follow up call',name:'AAA',due:'10',day:'Mar 9, 2023'},
                 {title:'fafawf',name:'AAA',due:'15',day:'Thu Feb 10, 2023'},
@@ -28,6 +34,9 @@ class MonthlyView extends React.Component {
         this.generateDates = this.generateDates.bind(this)
         this.selectDate = this.selectDate.bind(this)
         this.displayTasks = this.displayTasks.bind(this)
+
+        this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
+        this.completeTask = this.completeTask.bind(this)
     }
     async changeMonth(e){
         let value = Number.parseInt(e.currentTarget.getAttribute("value"))
@@ -114,9 +123,8 @@ class MonthlyView extends React.Component {
         this.setState({selectedDate:value},this.displayTasks)
     }
     displayTasks(){
-        let tasksList = this.state.tasksList.filter((element)=>{ return (new Date(element.date).getDate() == this.state.selectedDate)})
+        let tasksList = this.state.tasksList
         console.log(tasksList,this.state.tasksList)
-        tasksList = tasksList.length == 0?[]:tasksList[0].tasks
         let container = document.body.querySelector('#tasks')
         container.innerHTML = ''
         let task,desc,i,tasksDiv
@@ -132,8 +140,9 @@ class MonthlyView extends React.Component {
       tasksDiv.id = 'nonEmpty'
       console.log(tasksList)
       for (let j = 0;j< tasksList.length;j++){
-        i = tasksList[j]
         
+        i = tasksList[j]
+        if(i.completed == true) continue;
         task = document.createElement('div')
         task.className = 'task'
 
@@ -165,8 +174,10 @@ class MonthlyView extends React.Component {
         p1.innerText = 'completed'
         completeButton.appendChild(img1)
         completeButton.appendChild(p1)
+        completeButton.value = i.id
+        completeButton.onclick = this.toggleCompletedTaskMenu
         task.appendChild(completeButton)
-
+        console.log(i)
         let snoozeButton = document.createElement('button')
         snoozeButton.className = 'label'
         let img2= document.createElement('img')
@@ -189,6 +200,72 @@ class MonthlyView extends React.Component {
       container.appendChild(tasksDiv)
 
     }
+    completeTask(){
+         
+        let menu = document.querySelector('#completedTaskDiv')
+        let customer = this.state.customer
+         
+        let outcome = menu.querySelector('#outcome').value
+        if (outcome == ""){
+            menu.querySelector('#outcome').style.borderColor = "red"
+            return
+        }else{
+            menu.querySelector('#outcome').style.borderColor = "#B8B8B8"
+        }
+        let currentTask;
+        let currentDate;
+        for(let date of this.state.tasksList){
+          for (let task of date.tasks){
+            if(task.id == Number.parseInt(this.currentTask)){
+              currentTask = task;
+              currentDate = date
+              break;
+            }
+          }
+        }
+        console.log(currentDate,currentTask)
+        currentTask.completed = true
+        currentTask.outcome = outcome 
+        this.setState({customer:customer},()=>{
+            this.displayTasks()
+            this.toggleCompletedTaskMenu()
+        })
+        fetch("/completeTask",{
+            method:'post',
+            body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            }
+        })
+      }
+    toggleCompletedTaskMenu(e){
+        let completedTaskMenu = this.state.completedTaskMenu == undefined?'none':this.state.completedTaskMenu ;
+        let menu = document.querySelector('#completedTaskScreen')
+         
+        if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
+  
+        completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
+         
+        if(completedTaskMenu == 'flex'){
+            let taskObj
+            for(let date of this.state.tasksList){
+              for (let task of date.tasks){
+                if(task.id == Number.parseInt(this.currentTask)){
+                    taskObj = task;
+                    break;
+                }
+              }
+            }
+            
+            console.log(taskObj,this.currentTask)
+            menu.querySelector('#title').value = taskObj.title
+            menu.querySelector('#desc').value = taskObj.body
+            menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
+            menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
+            menu.querySelector('#outcome').value = ""
+        }
+        this.setState({completedTaskMenu:completedTaskMenu})
+      }
     componentDidMount(){
         fetch("/getTasksForMonth",{
             method:'POST',
@@ -200,7 +277,7 @@ class MonthlyView extends React.Component {
           .then((response)=>{
             return response.json()})
             .then(data=>{
-                this.setState({tasksList:data},()=>{
+                this.setState({tasksList:data,completedTaskMenu:'none'},()=>{
                     this.generateDates()
                     this.selectDate()
                     this.displayTasks()
@@ -388,6 +465,41 @@ class MonthlyView extends React.Component {
                         </button>
                         </div>
                     </div>
+                    </div>
+                    <div id="completedTaskScreen" style={{'display':this.state.completedTaskMenu==undefined?"none":this.state.completedTaskMenu,'zIndex':2,'position':'absolute '}} >
+                        <div id="completedTaskDiv">
+                            <div id="portion1">
+                            <button id="closeIcon" onClick={this.toggleCompletedTaskMenu}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="9" fill="#7B86A7" fillOpacity="0.25" />
+                                <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </button>
+                            <button id="delete">
+                                <img src={Trash} alt="delete"/>
+                            </button>
+                            </div>
+                            <div id="portion2">
+                            <input id="title" type="text" placeholder="Add title" disabled />
+                            <textarea name="" id="desc" placeholder="Description" disabled ></textarea>
+                            <div id="fieldDiv">
+                                <div className="field">
+                                <img src={Date_range} alt="date"/>
+                                <input type="date" id="date" disabled/>
+                                </div>
+                                <div className="field">
+                                <img src={Time} alt="time"/>
+                                <input type="time" id="time"disabled/>
+                                </div>
+                                <p>Outcome<a>*</a></p>
+                            </div>
+                            <textarea id="outcome" maxlength="2500"></textarea>
+                            </div>
+                            <button id="save" onClick={this.completeTask} >
+                            Save
+                            </button>
+                        </div>      
                     </div>
                 </div>
             </section>

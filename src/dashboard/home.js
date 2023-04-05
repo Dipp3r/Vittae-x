@@ -61,6 +61,7 @@ class HomeComp extends React.Component{
     //     <p id="date">01</p>
     //     <img id="reminderOverlay" src="../static/images/dot1.svg" alt="dot">
     //   </div>
+    console.log(this.date)
       let dates = document.querySelector('#dates')
       dates.innerHTML = ''
       let dateDiv,day,date,remainder;
@@ -120,7 +121,9 @@ class HomeComp extends React.Component{
             dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
             this.setState({lastSelectedDate:dt.getDate()})
             console.log(dateIndex)
-            if (isDateIndexInc){
+            if(this.date != undefined){
+              this.generateTasks();
+            }else if (isDateIndexInc){
               this.generateTasks(new Date(this.date[dateIndex-1].date).getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
             }else{
               this.generateTasks(new Date(this.date[dateIndex].date).getDate() == today.getDate()?this.date[dateIndex].tasks:[])
@@ -175,6 +178,7 @@ class HomeComp extends React.Component{
       document.body.querySelector('#tasks').innerHTML = ''
       let task,desc,i,container
       container = document.createElement('div')
+      if(taskList == undefined) taskList = []
       if(taskList.length == 0){
         container.id = 'taskEmpty'
         let p1 = document.createElement('p')
@@ -380,39 +384,39 @@ class HomeComp extends React.Component{
     </button>
 </div>
     <div id="completedTaskScreen" style={{'display':this.state.completedTaskMenu,'zIndex':2,'position':'absolute '}} >
-                        <div id="completedTaskDiv">
-                            <div id="portion1">
-                            <button id="closeIcon" onClick={this.toggleCompletedTaskMenu}>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="9" fill="#7B86A7" fillOpacity="0.25" />
-                                <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </button>
-                            <button id="delete">
-                                <img src={Trash} alt="delete"/>
-                            </button>
-                            </div>
-                            <div id="portion2">
-                            <input id="title" type="text" placeholder="Add title" disabled />
-                            <textarea name="" id="desc" placeholder="Description" disabled ></textarea>
-                            <div id="fieldDiv">
-                                <div className="field">
-                                <img src={Date_range} alt="date"/>
-                                <input type="date" id="date" disabled/>
-                                </div>
-                                <div className="field">
-                                <img src={Time} alt="time"/>
-                                <input type="time" id="time"disabled/>
-                                </div>
-                                <p>Outcome<a>*</a></p>
-                            </div>
-                            <textarea id="outcome" maxlength="2500"></textarea>
-                            </div>
-                            <button id="save" onClick={this.completeTask} >
-                            Save
-                            </button>
-                        </div>
+      <div id="completedTaskDiv">
+          <div id="portion1">
+          <button id="closeIcon" onClick={this.toggleCompletedTaskMenu}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" fill="#7B86A7" fillOpacity="0.25" />
+              <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+          </button>
+          <button id="delete">
+              <img src={Trash} alt="delete"/>
+          </button>
+          </div>
+          <div id="portion2">
+          <input id="title" type="text" placeholder="Add title" disabled />
+          <textarea name="" id="desc" placeholder="Description" disabled ></textarea>
+          <div id="fieldDiv">
+              <div className="field">
+              <img src={Date_range} alt="date"/>
+              <input type="date" id="date" disabled/>
+              </div>
+              <div className="field">
+              <img src={Time} alt="time"/>
+              <input type="time" id="time"disabled/>
+              </div>
+              <p>Outcome<a>*</a></p>
+          </div>
+          <textarea id="outcome" maxlength="2500"></textarea>
+          </div>
+          <button id="save" onClick={this.completeTask} >
+          Save
+          </button>
+      </div>      
       </div>
 </div>
         )
