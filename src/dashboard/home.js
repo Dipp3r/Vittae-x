@@ -133,8 +133,7 @@ class HomeComp extends React.Component{
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
           // this.generateTasks(this.date[this.state.lastSelectedDate-1].tasks)
-
-          this.generateTasks(new Date(this.date[dateIndex-1].date).getDate() == this.state.lastSelectedDate?this.date[dateIndex-1].tasks:[])
+          this.generateTasks([])
         }
         dates.appendChild(dateDiv)
       }
