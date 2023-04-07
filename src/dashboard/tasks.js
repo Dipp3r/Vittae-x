@@ -1,16 +1,21 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
-
+import dateToString  from "../dateToString";
 import '../styles/tasks.css'
 import Check_ring from "../images/Check_ring.svg"
 import Alarmclock from "../images/Alarmclock.svg"
 import arrow_left_white from "../images/arrow_left_white.svg"
+
+import Trash from "../images/Trash.svg"
+import Date_range from "../images/Date_range.svg"
+import Time from "../images/Time.svg"
 class Tasks extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             lastSession:undefined,
             currSection:0,
+            completedTaskMenu:'none',
             data:{  
               overDue:[
                 {title:'Follow up call',name:'AAA',due:'2',date:'Feb 1, 2023, 12:00 PM'},
@@ -30,6 +35,8 @@ class Tasks extends React.Component{
         }
         this.displaySection =  this.displaySection.bind(this)
         this.changeCurrentSection = this.changeCurrentSection.bind(this)
+        this.completeTask = this.completeTask.bind(this)
+        this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
     }
     displaySection(currSection){
         
@@ -37,6 +44,7 @@ class Tasks extends React.Component{
         let dateColor = 'black'
         switch(currSection){
             case 0:
+            default:
                 //overDue
                 taskList = this.state.data.overDue
                 taskList = taskList.sort((a,b)=>{return new Date(a.date).getTime()-new Date(b.date).getTime()})
@@ -51,10 +59,6 @@ class Tasks extends React.Component{
                 taskList = this.state.data.completed
                 taskList = taskList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
                 dateColor = 'rgba(98, 177, 111, 1)'
-                break
-            default:
-                taskList = this.state.data.overDue
-                taskList = taskList.sort((a,b)=>{return new Date(a.date).getTime()-new Date(b.date).getTime()})
                 break
         }
         let container = document.body.querySelector('#tasks')
@@ -73,6 +77,7 @@ class Tasks extends React.Component{
             card.id = 'nonEmpty'
             for (let j = 0;j< taskList.length;j++){
                 i = taskList[j]
+                if(i.completed == true && currSection != 2) continue
                 task = document.createElement('div')
                 task.className = 'task'
 
@@ -106,6 +111,8 @@ class Tasks extends React.Component{
                   p1.innerText = 'completed'
                   completeButton.appendChild(img1)
                   completeButton.appendChild(p1)
+                  completeButton.value = i.id
+                  completeButton.onclick = this.toggleCompletedTaskMenu
                   task.appendChild(completeButton)
 
                   let snoozeButton = document.createElement('button')
@@ -141,6 +148,7 @@ class Tasks extends React.Component{
                 // task.appendChild(desc)
                 card.appendChild(task)
             }
+            console.log(card)
         }
         container.appendChild(card)
     }
@@ -159,9 +167,88 @@ class Tasks extends React.Component{
         this.setState(obj)
         this.displaySection(Number.parseInt(e.currentTarget.name))
     }
+    completeTask(){
+         
+      let menu = document.querySelector('#completedTaskDiv')
+      let customer = this.state.customer
+       
+      let outcome = menu.querySelector('#outcome').value
+      if (outcome == ""){
+          menu.querySelector('#outcome').style.borderColor = "red"
+          return
+      }else{
+          menu.querySelector('#outcome').style.borderColor = "#B8B8B8"
+      }
+      let currentTask;
+      let currentDate;
+      let taskList = [...this.state.data.overDue]
+      taskList.push(this.state.data.upComing)
+      for (let task of taskList){
+        if(task.id == Number.parseInt(this.currentTask)){
+          currentTask = task;
+          break;
+        }
+      }
+      console.log(currentTask)
+      currentTask.completed = true
+      currentTask.outcome = outcome 
+      this.setState({customer:customer},()=>{
+          this.displaySection(this.state.currSection)
+          this.toggleCompletedTaskMenu()
+      })
+      fetch("/completeTask",{
+          method:'post',
+          body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+          headers: {
+              "Content-type": "application/json; charset=UTF-8",
+          }
+      })
+    }
+  toggleCompletedTaskMenu(e){
+      let completedTaskMenu = this.state.completedTaskMenu == undefined?'none':this.state.completedTaskMenu ;
+      let menu = document.querySelector('#completedTaskScreen')
+       
+      if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
+
+      completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
+       
+      if(completedTaskMenu == 'flex'){
+          let taskObj
+          let taskList = [...this.state.data.overDue]
+      taskList.push(this.state.data.upComing)
+      for (let task of taskList){
+        if(task.id == Number.parseInt(this.currentTask)){
+          taskObj = task;
+          break;
+        }
+      }
+      console.log(taskList,taskObj)
+          console.log(taskObj,this.currentTask)
+          menu.querySelector('#title').value = taskObj.title
+          menu.querySelector('#desc').value = taskObj.body
+          menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
+          menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
+          menu.querySelector('#outcome').value = ""
+      }
+      this.setState({completedTaskMenu:completedTaskMenu})
+    }
     componentDidMount(){
-      this.displaySection(0)
-      this.setState({lastSession:document.querySelector('.statusButton')})
+      
+      fetch("/getTasksAll",{
+        method:'POST',
+        body:JSON.stringify({broker_id:this.props.getItem("id")}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        }
+      })
+      .then((response)=>{
+        return response.json()})
+        .then(data=>{
+          console.log(data)
+          this.setState({lastSession:document.querySelector('.statusButton'),data:data},()=>{
+            this.displaySection(0)
+          })
+        })
     }
     render(){
         return(
@@ -191,6 +278,41 @@ class Tasks extends React.Component{
 
                  </div>
                </div>
+               <div id="completedTaskScreen" style={{'display':this.state.completedTaskMenu,'zIndex':2,'position':'absolute '}} >
+                <div id="completedTaskDiv">
+                    <div id="portion1">
+                    <button id="closeIcon" onClick={this.toggleCompletedTaskMenu}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="9" fill="#7B86A7" fillOpacity="0.25" />
+                        <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+                    <button id="delete">
+                        <img src={Trash} alt="delete"/>
+                    </button>
+                    </div>
+                    <div id="portion2">
+                    <input id="title" type="text" placeholder="Add title" disabled />
+                    <textarea name="" id="desc" placeholder="Description" disabled ></textarea>
+                    <div id="fieldDiv">
+                        <div className="field">
+                        <img src={Date_range} alt="date"/>
+                        <input type="date" id="date" disabled/>
+                        </div>
+                        <div className="field">
+                        <img src={Time} alt="time"/>
+                        <input type="time" id="time"disabled/>
+                        </div>
+                        <p>Outcome<a>*</a></p>
+                    </div>
+                    <textarea id="outcome" maxlength="2500"></textarea>
+                    </div>
+                    <button id="save" onClick={this.completeTask} >
+                    Save
+                    </button>
+                </div>      
+              </div>
              </div>
            </section>
         )

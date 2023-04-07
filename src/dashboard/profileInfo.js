@@ -3,10 +3,17 @@ import { WithRouter } from "../routingWrapper";
 import "../styles/profileInfo.css"
 import arwDwn from "../images/arwDwn.png"
 import profile from "../images/profile.png";
-
+import dateToString from "../dateToString"
 class ProfileInfo extends React.Component{
     constructor(props){
         super(props)
+        this.state = {
+          first_name:this.props.getItem('first_name'),
+          last_name:this.props.getItem('last_name')== null?'':this.props.getItem('last_name'),
+          phone:this.props.getItem('phone'),
+          email:this.props.getItem('email'),
+          date_of_birth:dateToString(new Date(this.props.getItem('date_of_birth')),2).replace(/ /g,"-")
+        }
         this.save = this.save.bind(this)
     }
     save(){
@@ -34,15 +41,20 @@ class ProfileInfo extends React.Component{
           
             <div class="inputField">
               <p class="label">first name</p>
-              <input class="field" type="text" value={this.props.getItem('first_name')} />
+              <input class="field" type="text" value={this.state.first_name} disabled/>
               <p class="label">last name</p>
-              <input class="field" type="text" value={this.props.getItem('last_name') == null?'':this.props.getItem('last_name')} />
+              <input class="field" type="text" value={this.state.last_name} disabled/>
           
               <p class="label">Date of Birth</p>
               <div id="dobField">
-                <input type="date" class="field date"/>
+                <input type="date" class="field date" value={this.state.date_of_birth} disabled/>
               </div>
-          
+              <p class="label">Phone</p>
+              <input class="field" type="text" value={this.state.phone} disabled/>
+              
+              <p class="label">email</p>
+              <input class="field" type="text" value={this.state.email} disabled/>
+              
               <p class="label">Place of birth</p>
               <input class="field" type="text"/>
           

@@ -780,6 +780,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border: 1px solid rgba(37, 53, 100, 0.4);
 }
 
+#kycStatus {
+  display: none;
+}
+
 #infoContent {
   display: flex;
   flex-direction: column;
@@ -816,6 +820,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   padding-bottom: 100px;
   overflow-y: scroll;
   overflow-x: hidden;
+  width: 85%;
   display: none;
 }
 #notesContent #left {
@@ -891,6 +896,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: flex-start;
   overflow: scroll;
   padding-bottom: 150px;
+  display: none;
 }
 #tasks #dropDown {
   display: flex;

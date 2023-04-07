@@ -1,34 +1,38 @@
-console.log(new Date('12/21/2002'))
-
-// let today = new Date()
-// today.setMonth(1)
-// arr = []
-// for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
-//     console.log(dt.toDateString())
-//     arr.push(dt.getTime())
-// }
-// console.log(arr.sort((a,b)=>{return b-a}))
-// console.log(dt)
-//             dateDiv = document.createElement('div')
-//             dateDiv.className = 'date'
-//             dateDiv.name = i
-//             dateDiv.onclick = this.getTasksPerDate
-//             date = document.createElement('p')
-//             date.id = 'date'
-//             if (i == 1){
-//              date.style.backgroundColor = '#223f80'
-//              date.style.color = 'white'
-//             }
-//             day = document.createElement('p')
-//             day.id = 'day'
-//             remainder = document.createElement('P')
-//             remainder.id = 'reminderOverlay'
-//             remainder.innerText = '.'
-//             let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-//             day.innerText = dayName[dt.getDay()].slice(0,3)
-//             date.innerText = dt.getDate() < 10?`0${dt.getDate()}`:dt.getDate();
-//             dateDiv.append(day)
-//             dateDiv.append(date)
-//             dateDiv.append(remainder)
-
-//             dates.appendChild(dateDiv)
+let data = [
+    {
+      id: 0,
+      customer_id: 421,
+      broker_id: 391,
+      title: 'rgdrgdrg                                                                                            ',
+      body: 'gdrgdrgd                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ',
+      date: '2023-04-05T18:03:00.000Z',
+      outcome: null,
+      completed: false
+    },
+    {
+      id: 1,
+      customer_id: 421,
+      broker_id: 391,
+      title: 'tfyfyhg                                                                                             ',
+      body: 'uguut                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ',
+      date: '2023-04-03T14:01:00.000Z',
+      outcome: null,
+      completed: false
+    }
+  ]
+  let today = new Date()
+  let tempdata = data
+  let arr = []
+  for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
+    let obj = {}
+    obj.date = dt
+    obj.tasks = []
+    for(let i = 0;i<tempdata.length;i++){
+        if(dt.toDateString() == new Date(tempdata[i].date).toDateString()){
+            obj.tasks.push(tempdata[i])
+            tempdata.splice(i,1)
+        }
+    }
+    if (obj.tasks.length > 0) arr.push(obj)
+  }
+ 

@@ -12,6 +12,9 @@ function dateToString(dateObj,mode){
         case 2:
             return `${year} ${month} ${date}`
             break;
+        case 3:
+            return `${month} ${date} ${year}`
+            break;
     }
 }
 export default dateToString
