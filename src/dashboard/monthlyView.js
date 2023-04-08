@@ -6,7 +6,7 @@ import Check_ring from "../images/Check_ring.svg"
 import Alarmclock from "../images/Alarmclock.svg"
 import calendar_left_arrow from "../images/calendar_left_arrow.svg"
 import calendar_right_arrow from "../images/calendar_right_arrow.svg"
-
+import calendarDot from "../images/calendarDot.svg"
 import Trash from "../images/Trash.svg"
 import Date_range from "../images/Date_range.svg"
 import Time from "../images/Time.svg"
