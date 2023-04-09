@@ -16,6 +16,8 @@ class Tasks extends React.Component{
             lastSession:undefined,
             currSection:0,
             completedTaskMenu:'none',
+            snoozeTaskMenu:'none',
+            currentTask:{},
             data:{  
               overDue:[
                 {title:'Follow up call',name:'AAA',due:'2',date:'Feb 1, 2023, 12:00 PM'},
@@ -37,7 +39,8 @@ class Tasks extends React.Component{
         this.changeCurrentSection = this.changeCurrentSection.bind(this)
         this.completeTask = this.completeTask.bind(this)
         this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
-    }
+        this.toggleSnoozeTaskMenu = this.toggleSnoozeTaskMenu.bind(this)
+      }
     displaySection(currSection){
         
         let taskList
@@ -124,6 +127,7 @@ class Tasks extends React.Component{
                   p2.innerText = 'snooze'
                   snoozeButton.appendChild(img2)
                   snoozeButton.appendChild(p2)
+                  task.onclick = this.toggleSnoozeTaskMenu
                   task.appendChild(snoozeButton)
                 }
                 name.innerText = i.name
@@ -232,6 +236,24 @@ class Tasks extends React.Component{
       }
       this.setState({completedTaskMenu:completedTaskMenu})
     }
+    toggleSnoozeTaskMenu(e){
+      let display = this.state.snoozeTaskMenu
+      let taskObj = {}
+      if(display == 'none'){
+        // for(let date of this.date){
+        //   for (let task of date.tasks){
+        //     // console.log(task,e.currentTarget.getAttribute("value"))
+        //     if(task.id == Number.parseInt(e.currentTarget.getAttribute("value"))){
+        //         taskObj = task;
+        //         break;
+        //     }
+        //   }
+        // }
+      }
+      // console.log(taskObj)
+      display = display == "flex"?"none":"flex"
+      this.setState({snoozeTaskMenu:display,currentTask:taskObj})
+    }
     componentDidMount(){
       
       fetch("/getTasksAll",{
@@ -313,6 +335,7 @@ class Tasks extends React.Component{
                     </button>
                 </div>      
               </div>
+              <SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />
              </div>
            </section>
         )

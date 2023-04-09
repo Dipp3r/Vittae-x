@@ -12,6 +12,7 @@ import Time from "../images/Time.svg"
 
 import { WithRouter } from "../routingWrapper";
 import dateToString from "../dateToString";
+import SnoozeMenu from "../components/snooze";
 const dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class HomeComp extends React.Component{
@@ -20,7 +21,9 @@ class HomeComp extends React.Component{
       this.state={
         // lastSelectedDate:null,
         today:new Date(),
-        completedTaskMenu:'none'
+        completedTaskMenu:'none',
+        snoozeTaskMenu:"none",
+        currentTask:{}
       }
       this.tasks = [
         {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
@@ -53,6 +56,7 @@ class HomeComp extends React.Component{
       this.generateTasks = this.generateTasks.bind(this)
       this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
       this.completeTask = this.completeTask.bind(this)
+      this.toggleSnoozeTaskMenu = this.toggleSnoozeTaskMenu.bind(this)
     }
     generateDates(){
 
@@ -61,7 +65,7 @@ class HomeComp extends React.Component{
     //     <p id="date">01</p>
     //     <img id="reminderOverlay" src="../static/images/dot1.svg" alt="dot">
     //   </div>
-    console.log(this.date)
+
       let dates = document.querySelector('#dates')
       dates.innerHTML = ''
       let dateDiv,day,date,remainder;
@@ -69,7 +73,7 @@ class HomeComp extends React.Component{
       let today = this.state.today
       let isDateIndexInc = false
       let dateIndex = 0
-      console.log(this.date)
+      // this.generateTasks([])
       for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
         isDateIndexInc = false
 
@@ -112,15 +116,15 @@ class HomeComp extends React.Component{
         }
 
         if(!this.state.lastSelectedDate){
-          console.log(dt,today)
-          console.log(dt.toDateString(),today.toDateString())
+
+
           if (dt.toDateString() == today.toDateString()){
             
             date.style.backgroundColor = '#223f80'
             date.style.color = 'white'
             dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
             this.setState({lastSelectedDate:dt.getDate()})
-            console.log(dateIndex)
+
             if(this.date != undefined){
               this.generateTasks();
             }else if (isDateIndexInc){
@@ -132,8 +136,6 @@ class HomeComp extends React.Component{
           }else if (dt.getDate() == this.state.lastSelectedDate){
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
-          // this.generateTasks(this.date[this.state.lastSelectedDate-1].tasks)
-          this.generateTasks([])
         }
         dates.appendChild(dateDiv)
       }
@@ -143,7 +145,7 @@ class HomeComp extends React.Component{
       let dateDivList = document.querySelectorAll(".date")
 
       let lastSelectedDateDiv = dateDivList[this.state.lastSelectedDate-1]
-      console.log(lastSelectedDateDiv)
+
       if(lastSelectedDateDiv.name == -1){
         lastSelectedDateDiv.querySelector('#date').style.backgroundColor = 'transparent'
         lastSelectedDateDiv.querySelector('#date').style.color = 'black'
@@ -235,6 +237,8 @@ class HomeComp extends React.Component{
         p2.innerText = 'snooze'
         snoozeButton.appendChild(img2)
         snoozeButton.appendChild(p2)
+        snoozeButton.value = i.id
+        snoozeButton.onclick = this.toggleSnoozeTaskMenu
         task.appendChild(snoozeButton)
 
         name.innerText = i.name
@@ -270,7 +274,7 @@ class HomeComp extends React.Component{
           }
         }
       }
-      console.log(currentDate,currentTask)
+
       currentTask.completed = true
       currentTask.outcome = outcome 
       this.setState({customer:customer})
@@ -323,7 +327,7 @@ class HomeComp extends React.Component{
             }
           }
           
-          console.log(taskObj,this.currentTask)
+
           menu.querySelector('#title').value = taskObj.title
           menu.querySelector('#desc').value = taskObj.body
           menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
@@ -331,6 +335,24 @@ class HomeComp extends React.Component{
           menu.querySelector('#outcome').value = ""
       }
       this.setState({completedTaskMenu:completedTaskMenu})
+    }
+    toggleSnoozeTaskMenu(e){
+      let display = this.state.snoozeTaskMenu
+      let taskObj = {}
+      if(display == 'none'){
+        for(let date of this.date){
+          for (let task of date.tasks){
+            // console.log(task,e.currentTarget.getAttribute("value"))
+            if(task.id == Number.parseInt(e.currentTarget.getAttribute("value"))){
+                taskObj = task;
+                break;
+            }
+          }
+        }
+      }
+      // console.log(taskObj)
+      display = display == "flex"?"none":"flex"
+      this.setState({snoozeTaskMenu:display,currentTask:taskObj})
     }
     render(){
       
@@ -417,6 +439,7 @@ class HomeComp extends React.Component{
           </button>
       </div>      
       </div>
+      <SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />
 </div>
         )
     }

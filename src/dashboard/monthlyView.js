@@ -21,6 +21,8 @@ class MonthlyView extends React.Component {
             currentDate :new Date(),
             selectedDate:new Date().getDate(),
             completedTaskMenu:'none',
+            snoozeTaskMenu:'none',
+            currentTask:{},
             tasksList:[
                 {title:'Follow up call',name:'AAA',due:'10',day:'Mar 9, 2023'},
                 {title:'fafawf',name:'AAA',due:'15',day:'Thu Feb 10, 2023'},
@@ -36,6 +38,7 @@ class MonthlyView extends React.Component {
         this.displayTasks = this.displayTasks.bind(this)
 
         this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
+        this.toggleSnoozeTaskMenu = this.toggleSnoozeTaskMenu.bind(this)
         this.completeTask = this.completeTask.bind(this)
     }
     async changeMonth(e){
@@ -187,6 +190,7 @@ class MonthlyView extends React.Component {
         p2.innerText = 'snooze'
         snoozeButton.appendChild(img2)
         snoozeButton.appendChild(p2)
+        snoozeButton.onclick = this.toggleSnoozeTaskMenu
         task.appendChild(snoozeButton)
 
         name.innerText = i.name
@@ -501,6 +505,7 @@ class MonthlyView extends React.Component {
                             </button>
                         </div>      
                     </div>
+                  <SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />
                 </div>
             </section>
         )
