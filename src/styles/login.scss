@@ -2,7 +2,8 @@
 
 #signInPage{
     background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
-    padding:20px 10px;
+    // @include flex(column,center,center);
+    overflow: hidden;
     #signInFormDiv{
         margin:50px;
         background-color: white;
@@ -28,20 +29,20 @@
             margin:10px 23px;
             @include flex(column,center,center);
             #emailLable{
-                padding-left:5px;
+                padding-left:15px;
                 font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 12px;
+                font-size: 14px;
                 color:#223F80;
-                margin-bottom:0px;
+                margin-bottom:3px;
                 width:100%;
             }
             #numberField{
                 border: 2px solid #B8B8B8;
                 border-radius: 12px;
                 padding-left:8px;
-                width: 285px;
+                width: 275px;
                 height:40px;
                 font-weight:400;
             }
@@ -52,9 +53,9 @@
                     font-family: 'Montserrat';
                     font-style: normal;
                     font-weight: 500;
-                    font-size: 12px;
+                    font-size: 14px;
                     color:#223F80;
-                    margin-bottom:0px;
+                    margin-bottom:3px;
                     width:100%;
                   }
                 #passwordBox{
@@ -62,7 +63,7 @@
                     border: 2px solid #B8B8B8;
                     border-radius: 12px;
                     padding-left:5px;
-                    width: 285px;
+                    width: 275px;
                     height:40px; 
                     #passwordField{
                         font-weight: 400;
@@ -84,8 +85,12 @@
                 margin-top:40px;
                 @include flex(row,flex-start,center);
                 p{
-                    color:#223F80;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
                     font-size:16px;
+                    margin-top:10px;
+                    color:#223F80;
                 }
             }
             #buttonDiv{
@@ -99,12 +104,15 @@
             #forgotPwd{
                 width:100%;
                 p{
+                    
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
                     margin:10px 20px;
                     margin-bottom:5px;
                     color:#223F80;
-                    font-weight: 500;
                     text-decoration-line:underline;
-                    font-size: 14px;
+                    font-size: 13px;
                     float: right;
                 }
             }
@@ -115,6 +123,10 @@
                     margin-top:20px;
                 }
                 p{
+                    
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
                     font-size: small;
                     color: #B8B8B8;
                     margin:25px;
