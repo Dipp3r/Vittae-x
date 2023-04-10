@@ -589,6 +589,8 @@ input[type=date]::-webkit-calendar-picker-indicator {
   position: fixed;
   bottom: 20px;
   right: 30px;
+  box-shadow: none;
+  background-color: transparent;
 }
 #Client #main #add img {
   width: -moz-fit-content;
