@@ -9,6 +9,7 @@ import arrow_left_white from "../images/arrow_left_white.svg"
 import Trash from "../images/Trash.svg"
 import Date_range from "../images/Date_range.svg"
 import Time from "../images/Time.svg"
+import SnoozeMenu from "../components/snooze.js"
 class Tasks extends React.Component{
     constructor(props){
         super(props)
@@ -127,7 +128,7 @@ class Tasks extends React.Component{
                   p2.innerText = 'snooze'
                   snoozeButton.appendChild(img2)
                   snoozeButton.appendChild(p2)
-                  task.onclick = this.toggleSnoozeTaskMenu
+                  snoozeButton.onclick = this.toggleSnoozeTaskMenu
                   task.appendChild(snoozeButton)
                 }
                 name.innerText = i.name
@@ -226,17 +227,18 @@ class Tasks extends React.Component{
           break;
         }
       }
-      console.log(taskList,taskObj)
-          console.log(taskObj,this.currentTask)
-          menu.querySelector('#title').value = taskObj.title
-          menu.querySelector('#desc').value = taskObj.body
-          menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
-          menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
-          menu.querySelector('#outcome').value = ""
+      menu.querySelector('#title').value = taskObj.title
+      menu.querySelector('#desc').value = taskObj.body
+      menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
+      menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
+      menu.querySelector('#outcome').value = ""
       }
-      this.setState({completedTaskMenu:completedTaskMenu})
+      this.setState({completedTaskMenu:completedTaskMenu},()=>{
+        console.log(this.state)
+      })
     }
     toggleSnoozeTaskMenu(e){
+      console.log("toggled snoozeMenu")
       let display = this.state.snoozeTaskMenu
       let taskObj = {}
       if(display == 'none'){

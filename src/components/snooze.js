@@ -10,7 +10,6 @@ class SnoozeMenu extends React.Component{
         super(props)
         
         this.state = {
-            completedTaskMenu:'none',
             currentTask:{...this.props.currentTask}
         }
         this.snoozeTask = this.snoozeTask.bind(this)
@@ -29,6 +28,9 @@ class SnoozeMenu extends React.Component{
               "Content-type": "application/json; charset=UTF-8",
             }
           })
+    }
+    componentDidMount(){
+        console.log(this.props,this.state)
     }
     render(){
         return(

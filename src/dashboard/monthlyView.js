@@ -13,6 +13,8 @@ import Time from "../images/Time.svg"
 
 import "../styles/months.css"
 import dateToString from "../dateToString"
+import SnoozeMenu from "../components/snooze.js"
+
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class MonthlyView extends React.Component {
     constructor(props){
@@ -270,6 +272,23 @@ class MonthlyView extends React.Component {
         }
         this.setState({completedTaskMenu:completedTaskMenu})
       }
+    toggleSnoozeTaskMenu(e){
+    let display = this.state.snoozeTaskMenu
+    let taskObj = {}
+    if(display == 'none'){
+        for(let date of this.state.tasksList){
+            for (let task of date.tasks){
+                if(task.id == Number.parseInt(this.currentTask)){
+                    taskObj = task;
+                    break;
+                }
+            }
+            }
+    }
+    // console.log(taskObj)
+    display = display == "flex"?"none":"flex"
+    this.setState({snoozeTaskMenu:display,currentTask:taskObj})
+    }
     componentDidMount(){
         fetch("/getTasksForMonth",{
             method:'POST',

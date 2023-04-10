@@ -25,32 +25,8 @@ class HomeComp extends React.Component{
         snoozeTaskMenu:"none",
         currentTask:{}
       }
-      this.tasks = [
-        {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-        {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-        {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-        {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-        {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-        {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}
-      ]
-      this.date = [
-        {date:new Date('2023-03-01'),tasks:[
-          {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-          {title:'Follow up call',name:'BBB',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
-        },
-        {date:new Date('2023-03-05'),tasks:[
-          {title:'Follow up call',name:'CCC',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-          {title:'Follow up call',name:'DDD',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
-        },
-        {date:new Date('2023-03-10'),tasks:[
-          {title:'Follow up call',name:'EEE',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-          {title:'Follow up call',name:'FFF',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
-        },
-        {date:new Date('2023-03-11'),tasks:[
-          {title:'Follow up call',name:'EFA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
-          {title:'Follow up call',name:'AAAFFWAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
-        }
-      ]
+      this.tasks = []
+      this.date = []
       this.generateDates = this.generateDates.bind(this)
       this.getTasksPerDate = this.getTasksPerDate.bind(this)
       this.generateTasks = this.generateTasks.bind(this)
@@ -122,8 +98,11 @@ class HomeComp extends React.Component{
             
             date.style.backgroundColor = '#223f80'
             date.style.color = 'white'
+            // console.log(dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'}))
             dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
-            this.setState({lastSelectedDate:dt.getDate()})
+            this.setState({lastSelectedDate:dt.getDate()},()=>{
+              document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
+            })
 
             if(this.date != undefined){
               this.generateTasks();
@@ -303,8 +282,13 @@ class HomeComp extends React.Component{
         this.date = data
         this.setState(this.props.getItem("homeCompState"),()=>{
 
-          this.generateDates()
-          if(this.state.lastSelectedDate) document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
+        this.generateDates()
+        
+        if(this.state.lastSelectedDate){
+          let dateDiv = document.querySelectorAll(".date")[this.state.lastSelectedDate-1]
+          dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
+          if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
+        } 
         })
       })
     }
