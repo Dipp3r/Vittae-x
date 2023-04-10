@@ -8,9 +8,9 @@
     background-color: white;
     #backButtonDiv{
         width:100%;
-        padding:0px 10px;
-        padding-bottom:0px;
-        margin: 15px;
+        // padding:0px 10px;
+        // padding-bottom:0px;
+        // margin: 15px;
         #backButton{
             margin-left:10px;
             @include flex(row,start,center);
@@ -46,7 +46,7 @@
             #edit{
                 width:29px;
                 height:29px;
-                background: rgba(255, 255, 255, 0.5);
+                background: rgba(255, 255, 255, 0.4);
                 border-radius: 100px;
                 position:absolute;
                 bottom:4px;
@@ -58,6 +58,7 @@
                 width:118px;
                 height:118px;
                 border-radius:100%;
+
             }
         }
     }
@@ -65,28 +66,38 @@
         width: 100%;
         @include flex(column,center,center);
         .label{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
             margin:0px;
             width:272px;
-            font-weight: 600;
-            font-size: 12px;
-            line-height: 15px;
             color: #223F80;
             margin-left:5px;
         }
         .field{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
             width: 272px;
-            height:46px;
+            height:40px;
             border: 2px solid #B8B8B8;
             border-radius: 12px;
             padding:5px;
-            padding-right:0px;
+            padding-left:15px;
             margin-top:5px;
             margin-bottom:20px;
         }
         .date{
-            padding:10px;
             @include flex(row,space-between,center);
             input{
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 15px;
+                padding:5px;
+                padding-left:15px;
                 width: 272px;
                 border:none;
             }
@@ -98,20 +109,7 @@
                 border-radius: 12px;
             }
         }
-        .dropDownDiv{
-            padding:5px;
-            @include flex(row,space-between,center);
-            select{
-                border:none;
-                appearance: none;
-                width: 100%;
-                padding: 0px;
-                &:focus{
-                    outline:none;
-                }
-            }
 
-        }
         #dobField{
             width: 100%;
             @include flex(row,center,start);
@@ -130,11 +128,11 @@
             border:1px solid red;
         }
         #saveButton{
-            @include button1(70%,50px,10px,0px,500,15px);
+            @include button1(270px,50px,10px,0px,500,15px);
             font-family: 'Montserrat';
             font-style: normal;
-            font-weight: 700;
-            font-size: 15px;
+            font-weight: 500;
+            font-size: 19px;
             color: #FFFFFF;
             margin-bottom:40px;
         }

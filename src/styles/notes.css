@@ -259,7 +259,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 20px;
-  overflow: scroll;
   height: 100vh;
   position: absolute;
   top: 0px;
@@ -287,7 +286,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border: none;
 }
 #notesPg textarea {
-  overflow: hidden;
+  overflow-y: scroll;
   width: 100%;
   border: none;
   height: 80%;

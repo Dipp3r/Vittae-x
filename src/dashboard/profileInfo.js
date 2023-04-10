@@ -3,6 +3,7 @@ import { WithRouter } from "../routingWrapper";
 import "../styles/profileInfo.css"
 import arwDwn from "../images/arwDwn.png"
 import profile from "../images/profile.png";
+import subtract from "../images/Subtract.svg";
 import dateToString from "../dateToString"
 class ProfileInfo extends React.Component{
     constructor(props){
@@ -36,13 +37,14 @@ class ProfileInfo extends React.Component{
             <div id="profileDiv">
               <div id="profileBox">
                 <img src={profile} id="profilePageImg" alt="profile picture" />
+                <div id="edit"><img src={subtract}  alt="profile picture"/></div>
               </div>
             </div>
           
             <div class="inputField">
-              <p class="label">first name</p>
+              <p class="label">First name</p>
               <input class="field" type="text" value={this.state.first_name} disabled/>
-              <p class="label">last name</p>
+              <p class="label">Last name</p>
               <input class="field" type="text" value={this.state.last_name} disabled/>
           
               <p class="label">Date of Birth</p>
@@ -52,23 +54,11 @@ class ProfileInfo extends React.Component{
               <p class="label">Phone</p>
               <input class="field" type="text" value={this.state.phone} disabled/>
               
-              <p class="label">email</p>
+              <p class="label">Email</p>
               <input class="field" type="text" value={this.state.email} disabled/>
               
               <p class="label">Place of birth</p>
               <input class="field" type="text"/>
-          
-              <p class="label">Marital status</p>
-              <div class="dropDownDiv field">
-                <select class="select" name="gender">
-                  <option value="" disabled selected>Select your option</option>
-                  <option value="0">Single</option>
-                  <option value="1">Married</option>
-                  <option value="2">Widowed</option>
-                  <option value="3">Divorced</option>
-                </select>
-                <img src={arwDwn} alt=""/>
-              </div>
           
               <p class="label">Account name</p>
               <input class="field" type="text"/>

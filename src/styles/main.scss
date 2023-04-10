@@ -140,6 +140,8 @@ li::marker{
         position:fixed;
         bottom: $bottom;
         right:$right;
+        box-shadow: none;
+        background-color: transparent;
         img{
             width: fit-content;
             height:fit-content;

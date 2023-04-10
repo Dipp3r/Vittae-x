@@ -4,7 +4,6 @@
     overflow:hidden;
     @include flex(column, flex-start , flex-start);
     padding:20px;
-    overflow:scroll;
     height: 100vh;
     position: absolute;
     top:0px;
@@ -34,7 +33,7 @@
     }
 
     textarea{
-        overflow:hidden;
+        overflow-y:scroll;
         width:100%;
         border:none;
         height:80%;

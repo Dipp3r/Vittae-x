@@ -493,6 +493,8 @@ input[type=date]::-webkit-calendar-picker-indicator {
   position: fixed;
   bottom: 75px;
   right: 60px;
+  box-shadow: none;
+  background-color: transparent;
 }
 #contactMain #add img {
   width: -moz-fit-content;
@@ -521,7 +523,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin: 20px 5px;
   height: -moz-fit-content;
   height: fit-content;
-  width: 80%;
+  width: 320px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   border-radius: 15px;
   background-color: white;
@@ -539,28 +541,47 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 #addCustomer #addBox .inputFields .label {
-  width: 87%;
+  font-family: "Montserrat";
+  font-style: normal;
+  width: 100%;
+  text-align: start;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 15px;
   color: #223F80;
-  margin-left: 0px;
+  margin: 0px;
+  margin-left: 65px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+#addCustomer #addBox .inputFields .label .required {
+  margin-left: 3px;
+  color: #BB2230;
 }
 #addCustomer #addBox .inputFields .field {
-  width: 87%;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  width: 250px;
+  height: 46px;
   border: 2px solid #B8B8B8;
   border-radius: 12px;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 20px;
+  padding: 5px;
+  padding: 0px 15px;
 }
 #addCustomer #addBox .inputFields .dropDownDiv {
+  width: 250px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 #addCustomer #addBox .inputFields .dropDownDiv select {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
   border: none;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -596,7 +617,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #addCustomer #addBox .inputFields .Button {
   background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
   transition-duration: 1s;
-  width: 80%;
+  width: 272px;
   height: 50px;
   font-family: "Montserrat";
   margin: 30px 20px;
