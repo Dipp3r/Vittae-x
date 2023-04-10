@@ -261,9 +261,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 #profileInfo #backButtonDiv {
   width: 100%;
-  padding: 0px 10px;
-  padding-bottom: 0px;
-  margin: 15px;
 }
 #profileInfo #backButtonDiv #backButton {
   margin-left: 10px;
@@ -307,7 +304,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #profileInfo #profileDiv #profileBox #edit {
   width: 29px;
   height: 29px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 100px;
   position: absolute;
   bottom: 4px;
@@ -329,32 +326,42 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
 }
 #profileInfo .inputField .label {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
   margin: 0px;
   width: 272px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
   color: #223F80;
   margin-left: 5px;
 }
 #profileInfo .inputField .field {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
   width: 272px;
-  height: 46px;
+  height: 40px;
   border: 2px solid #B8B8B8;
   border-radius: 12px;
   padding: 5px;
-  padding-right: 0px;
+  padding-left: 15px;
   margin-top: 5px;
   margin-bottom: 20px;
 }
 #profileInfo .inputField .date {
-  padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 #profileInfo .inputField .date input {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 5px;
+  padding-left: 15px;
   width: 272px;
   border: none;
 }
@@ -367,24 +374,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 48px;
   background: #223F80;
   border-radius: 12px;
-}
-#profileInfo .inputField .dropDownDiv {
-  padding: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-#profileInfo .inputField .dropDownDiv select {
-  border: none;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  width: 100%;
-  padding: 0px;
-}
-#profileInfo .inputField .dropDownDiv select:focus {
-  outline: none;
 }
 #profileInfo .inputField #dobField {
   width: 100%;
@@ -411,7 +400,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #profileInfo .inputField #saveButton {
   background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
   transition-duration: 1s;
-  width: 70%;
+  width: 270px;
   height: 50px;
   font-family: "Montserrat";
   margin: 10px 0px;
@@ -422,8 +411,8 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-radius: 12px;
   font-family: "Montserrat";
   font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 19px;
   color: #FFFFFF;
   margin-bottom: 40px;
 }
