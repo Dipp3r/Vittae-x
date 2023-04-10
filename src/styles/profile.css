@@ -399,8 +399,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 #profile #profileMenu {
   margin-top: 30px;
-  width: 75%;
-  height: 22%;
+  width: 295px;
   background: #FFFFFF;
   box-shadow: 0px 4px 26px -4px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
@@ -431,13 +430,13 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin-right: 10px;
 }
 #profile #logOut {
-  margin-top: 40px;
-  width: 75%;
-  height: 8%;
+  margin-top: 50px;
+  width: 260px;
+  height: 68px;
   background: #FFFFFF;
   box-shadow: 0px 4px 26px -4px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
-  padding: 10px 40px;
+  padding: 5px 20px;
   transition-duration: 1s;
   display: flex;
   flex-direction: row;
