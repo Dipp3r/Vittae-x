@@ -480,7 +480,7 @@ class ContactsComp extends React.Component {
                   <p className="label">Designation</p>
                   <input id="newCusDesi"  className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='occupation'/>
             
-                  <p className="label">Mobile number</p>
+                  <p className="label">Mobile number<a class="required">*</a></p>
                   <input id="newCusMobile"  className="field" type="number" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='phone'   />
           
                   <p className="label">Email ID</p>
@@ -501,17 +501,6 @@ class ContactsComp extends React.Component {
                   <div id="dobField">
                     <input id="newCusDOB"  type="date" className="field" onChange={this.changeInVal} name='date_of_birth'  />
                   </div>
-          
-                  <p className="label">Marital status</p>
-                  <div className="dropDownDiv field"   >
-                    <select id="newCusMaritalStatus"  className="select" name="marital_status" onChange={this.changeInVal} defaultValue=""  >
-                      <option value="" disabled >Select your option</option>
-                      <option value="1">Single</option>
-                      <option value="2">Married</option>
-                    </select>
-                    <img src={arwDwn} alt="arrowDown" />
-                  </div>
-          
           
                   <button className="Button" onClick={this.submit}  >
                     ADD CLIENT
