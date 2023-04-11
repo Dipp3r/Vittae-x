@@ -86,27 +86,33 @@ class MonthlyView extends React.Component {
         let dateIndex = 0
         //filtering task list for this month .filter((element)=>{ return (new Date(element.day).getMonth() == currentDate.getMonth())})
         let tasksList = this.state.tasksList
-
+        
         //generating dates
         for(let dt = new Date(currentDate.getFullYear(),currentDate.getMonth(),1);dt< new Date(currentDate.getFullYear(),currentDate.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
             button = document.createElement("button")
             if(dt.toDateString() === this.state.currentDate.toDateString()) button.className = "today"
             button.className = null
+            let imgDot = document.createElement("img")
             // button.style.color = "black"
             // button.style.backgroundColor = "transparent"
-            
+            if (dt.toDateString() == new Date().toDateString()){
+                button.style.color = "white"
+                button.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
+                button.style.fontWeight = "600"
+            }
             if(dateIndex < tasksList.length){
                 let date2 = new Date(tasksList[dateIndex].date)
                 console.log(dt,date2)
                 if(dt.getDate() == date2.getDate() && dt.getMonth() == date2.getMonth() && dt.getFullYear() == date2.getFullYear()){
-                    button.className = "hasTasks"
+                    imgDot.src = calendarDot
                     dateIndex+=1
                 }
             }
-            time = document.createElement("time")
+            time = document.createElement("i")
             time.innerText = dt.getDate()
             button.value = dt.getDate()
-            button.appendChild(time)
+            button.append(time)
+            button.append(imgDot)
             button.onclick = this.selectDate
             container.appendChild(button)
         }
@@ -116,10 +122,16 @@ class MonthlyView extends React.Component {
         let target = e?e.currentTarget:document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1];
         let value = Number.parseInt(target.getAttribute("value"))
         let prevTarget = document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1]
-
-        prevTarget.style.color = null
-        prevTarget.style.backgroundColor = null
-        prevTarget.style.fontWeight = null
+        // console.log(new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString(),this.state.currentDate.toDateString(),new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == this.state.currentDate.toDateString())
+        if (new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == new Date().toDateString()){
+            prevTarget.style.color = "white"
+            prevTarget.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
+            prevTarget.style.fontWeight = "600"
+        }else{
+            prevTarget.style.color = null
+            prevTarget.style.backgroundColor = null
+            prevTarget.style.fontWeight = null
+        }
         target.style.color = "white"
         target.style.backgroundColor = "#223F80"
         target.style.fontWeight = "600"
@@ -324,7 +336,7 @@ class MonthlyView extends React.Component {
                         <a href="#" className="nav" onClick={this.changeMonth} value={-1}>
                             <img src={calendar_left_arrow} alt="previous"/>
                         </a>
-                        <div className="month_name">{months[this.state.currentDate.getMonth()].slice(0,3)} <span>{this.state.currentDate.getFullYear()}</span></div>
+                        <div id="month_name">{months[this.state.currentDate.getMonth()].slice(0,3)} <span>{this.state.currentDate.getFullYear()}</span></div>
                         <a href="#" className="nav"onClick={this.changeMonth} value={1}>
                             <img src={calendar_right_arrow} alt="next"/>
                             </a>
