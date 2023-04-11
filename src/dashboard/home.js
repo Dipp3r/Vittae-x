@@ -81,8 +81,8 @@ class HomeComp extends React.Component{
 
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
-            date.style.backgroundColor = '#a5b3cd'
-            date.style.color = 'white'
+            // date.style.backgroundColor = '#a5b3cd'
+            // date.style.color = 'white'
             dateDiv.name = dateIndex 
             
             dateIndex+=1
@@ -90,14 +90,14 @@ class HomeComp extends React.Component{
             remainder.style.visibility = 'visible'
           }
         }
-
+        if (dt.toDateString() == today.toDateString()){
+          date.style.backgroundColor = '#a5b3cd'
+          date.style.color = 'white'
+        }
         if(!this.state.lastSelectedDate){
-
-
           if (dt.toDateString() == today.toDateString()){
-            
-            date.style.backgroundColor = '#223f80'
-            date.style.color = 'white'
+            // date.style.backgroundColor = '#a5b3cd'
+            // date.style.color = 'white'
             // console.log(dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'}))
             dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
             this.setState({lastSelectedDate:dt.getDate()},()=>{
@@ -125,12 +125,12 @@ class HomeComp extends React.Component{
 
       let lastSelectedDateDiv = dateDivList[this.state.lastSelectedDate-1]
 
-      if(lastSelectedDateDiv.name == -1){
-        lastSelectedDateDiv.querySelector('#date').style.backgroundColor = 'transparent'
-        lastSelectedDateDiv.querySelector('#date').style.color = 'black'
-      }else{
+      if (lastSelectedDateDiv.querySelector('#date').innerText == new Date().getDate()){
         lastSelectedDateDiv.querySelector('#date').style.backgroundColor = '#a5b3cd'
         lastSelectedDateDiv.querySelector('#date').style.color = 'white'
+      }else{
+        lastSelectedDateDiv.querySelector('#date').style.backgroundColor = 'transparent'
+        lastSelectedDateDiv.querySelector('#date').style.color = 'black'
       }
       e.currentTarget.querySelector('#date').style.backgroundColor = '#223f80'
       e.currentTarget.querySelector('#date').style.color = 'white'
