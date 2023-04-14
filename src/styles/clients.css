@@ -570,17 +570,20 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: flex-start;
 }
+#Client #main #addTaskScreen #addTaskDiv #portion2 #fieldDiv img {
+  margin: 5px;
+}
 #Client #main #addTaskScreen #addTaskDiv #portion2 #fieldDiv .field {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 120px;
+  width: 160px;
 }
 #Client #main #addTaskScreen #addTaskDiv #portion2 #fieldDiv .field input {
   padding: 5px;
-  width: 82px;
+  width: 130px;
   height: 18px;
   border: 1.5px solid #B8B8B8;
   border-radius: 8px;

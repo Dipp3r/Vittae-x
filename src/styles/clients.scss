@@ -265,13 +265,16 @@
                         width:100%;
                         padding-left:100px;
                         @include flex(column,center,flex-start);
+                        img{
+                            margin:5px;
+                        }
                         .field{
                             margin-top:10px;
                             @include flex(row,space-between,center);
-                            width:120px;
+                            width: 160px;
                             input{
                                 padding:5px;
-                                width: 82px;
+                                width: 130px;
                                 height: 18px;
                                 border: 1.5px solid #B8B8B8;
                                 border-radius: 8px;
