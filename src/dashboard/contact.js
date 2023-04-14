@@ -256,7 +256,6 @@ class ContactsComp extends React.Component {
           newBool = new RegExp(element).test(string)
           bool = bool && newBool
         })
-        // 
         return bool
       })
       // console.dir(newCustomerList)
