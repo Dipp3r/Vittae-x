@@ -13,6 +13,8 @@ class SnoozeMenu extends React.Component{
             currentTask:{...this.props.currentTask}
         }
         this.snoozeTask = this.snoozeTask.bind(this)
+        this.changeInDate = this.changeInDate.bind(this)
+        this.changeInTime = this.changeInTime.bind(this)
     }
     snoozeTask(){
         let container = document.querySelector("#snoozeTaskDiv")
@@ -28,9 +30,31 @@ class SnoozeMenu extends React.Component{
               "Content-type": "application/json; charset=UTF-8",
             }
           })
+        this.props.toggleSnoozeTaskMenu();
+    }
+    changeInDate(e){
+        let value = e.currentTarget.value 
+        let date = value+"T"+new Date(this.state.currentTask.date).getHours().toString().padStart(2,"0")+":"+new Date(this.state.currentTask.date).getMinutes().toString().padStart(2,"0")
+        let currentTask = this.state.currentTask
+        currentTask.date = date
+        this.setState({currentTask:currentTask})
+    }
+    changeInTime(e){
+        let value = e.currentTarget.value 
+        console.log(value)
+        let date = dateToString(new Date(this.state.currentTask.date),2).replace(/ /g,"-")+"T"+value+"Z"
+        let currentTask = this.state.currentTask
+        currentTask.date = date
+        this.setState({currentTask:currentTask},()=>{
+            console.log(this.state.currentTask.date)
+        })
     }
     componentDidMount(){
         console.log(this.props,this.state)
+        console.log("snooze task is mounted")
+        this.setState({
+            currentTask:this.props.currentTask
+        })
     }
     render(){
         return(
@@ -46,16 +70,16 @@ class SnoozeMenu extends React.Component{
           </button>
           </div>
           <div id="portion2">
-          <input id="title" type="text" placeholder="Add title" value={this.props.currentTask.title} disabled />
-          <textarea name="" id="desc" placeholder="Description" value={this.props.currentTask.body} disabled ></textarea>
+          <input id="title" type="text" placeholder="Add title" value={this.state.currentTask.title} disabled />
+          <textarea name="" id="desc" placeholder="Description" value={this.state.currentTask.body} disabled ></textarea>
           <div id="fieldDiv">
               <div className="field">
               <img src={Date_range} alt="date"/>
-              <input type="date" id="date" value={dateToString(new Date(this.props.currentTask.date),2).replace(/ /g,"-")} />
+              <input type="date" id="date" value={dateToString(new Date(this.state.currentTask.date),2).replace(/ /g,"-")} onChange={this.changeInDate} />
               </div>
               <div className="field">
               <img src={Time} alt="time"/>
-              <input type="time" id="time" value={new Date(this.props.currentTask.date).getHours().toString().padStart(2,"0")+":"+new Date(this.props.currentTask.date).getMinutes().toString().padStart(2,"0")} />
+              <input type="time" id="time" value={new Date(this.state.currentTask.date).getHours().toString().padStart(2,"0")+":"+new Date(this.props.currentTask.date).getMinutes().toString().padStart(2,"0")} onChange={this.changeInTime} />
               </div>
           </div>
           </div>

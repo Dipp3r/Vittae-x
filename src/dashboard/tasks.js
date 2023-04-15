@@ -128,6 +128,7 @@ class Tasks extends React.Component{
                   p2.innerText = 'snooze'
                   snoozeButton.appendChild(img2)
                   snoozeButton.appendChild(p2)
+                  snoozeButton.value = i.id
                   snoozeButton.onclick = this.toggleSnoozeTaskMenu
                   task.appendChild(snoozeButton)
                 }
@@ -242,17 +243,16 @@ class Tasks extends React.Component{
       let display = this.state.snoozeTaskMenu
       let taskObj = {}
       if(display == 'none'){
-        // for(let date of this.date){
-        //   for (let task of date.tasks){
-        //     // console.log(task,e.currentTarget.getAttribute("value"))
-        //     if(task.id == Number.parseInt(e.currentTarget.getAttribute("value"))){
-        //         taskObj = task;
-        //         break;
-        //     }
-        //   }
-        // }
+        let taskList = [...this.state.data.overDue]
+        taskList.push(this.state.data.upComing)
+        for (let task of taskList){
+          if(task.id == Number.parseInt(e.currentTarget.value)){
+            taskObj = task;
+            break;
+          }
+        }
+        console.log(taskObj)
       }
-      // console.log(taskObj)
       display = display == "flex"?"none":"flex"
       this.setState({snoozeTaskMenu:display,currentTask:taskObj})
     }
@@ -337,7 +337,7 @@ class Tasks extends React.Component{
                     </button>
                 </div>      
               </div>
-              <SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />
+              {this.state.snoozeTaskMenu == "flex"?<SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />:""}
              </div>
            </section>
         )
