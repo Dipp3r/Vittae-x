@@ -316,6 +316,178 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #Client .navbar .icons .iconBox #notifCircle path {
   fill: #BB2230;
 }
+#Client #personalInfo {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  overflow: hidden scroll;
+  font-family: "Montserrat";
+  font-style: normal;
+  padding-top: 0px;
+  background-color: white;
+}
+#Client #personalInfo #backButtonDiv {
+  width: 100%;
+  margin: 10px;
+  margin-left: 0px;
+}
+#Client #personalInfo #backButtonDiv #backButton {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+#Client #personalInfo #backButtonDiv #backButton svg path {
+  border: 2px solid rgba(0, 0, 0, 0.79);
+  fill: rgba(0, 0, 0, 0.7882352941);
+}
+#Client #personalInfo .profileDiv {
+  width: 100%;
+  margin: 30px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Client #personalInfo .profileDiv p {
+  color: #223F80;
+  margin-left: 10px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  color: #223F80;
+}
+#Client #personalInfo .inputField {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Client #personalInfo .inputField .label {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 0px;
+  width: 272px;
+  color: #223F80;
+  margin-left: 5px;
+}
+#Client #personalInfo .inputField .field {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  width: 272px;
+  height: 40px;
+  border: 2px solid #B8B8B8;
+  border-radius: 12px;
+  padding: 5px;
+  padding-left: 15px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+#Client #personalInfo .inputField .dropDownDiv {
+  width: 272px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#Client #personalInfo .inputField .dropDownDiv img {
+  margin-right: 10px;
+}
+#Client #personalInfo .inputField .dropDownDiv select {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  padding: 0px;
+}
+#Client #personalInfo .inputField .dropDownDiv select:focus {
+  outline: none;
+}
+#Client #personalInfo .inputField #dobField {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+}
+#Client #personalInfo .inputField #dobField #calendarDiv {
+  margin-top: 8px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #223F80;
+  border-radius: 12px;
+  height: 47px;
+  width: 47px;
+}
+#Client #personalInfo .inputField .date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#Client #personalInfo .inputField .date input {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 5px;
+  padding-left: 15px;
+  width: 272px;
+  border: none;
+}
+#Client #personalInfo .inputField .date #calender {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 41px;
+  width: 48px;
+  background: #223F80;
+  border-radius: 12px;
+}
+#Client #personalInfo .inputField .field:invalid:focus {
+  border: 1px solid red;
+}
+#Client #personalInfo .inputField #saveButton {
+  background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
+  transition-duration: 1s;
+  width: 270px;
+  height: 50px;
+  font-family: "Montserrat";
+  margin: 10px 0px;
+  font-weight: 500;
+  font-size: 15px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  color: #FFFFFF;
+  margin-bottom: 40px;
+}
+#Client #personalInfo .inputField #saveButton:hover {
+  box-shadow: none;
+  scale: 0.95;
+}
 #Client #main {
   background-color: transparent;
   height: 100%;
@@ -398,17 +570,20 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: flex-start;
 }
+#Client #main #addTaskScreen #addTaskDiv #portion2 #fieldDiv img {
+  margin: 5px;
+}
 #Client #main #addTaskScreen #addTaskDiv #portion2 #fieldDiv .field {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 120px;
+  width: 160px;
 }
 #Client #main #addTaskScreen #addTaskDiv #portion2 #fieldDiv .field input {
   padding: 5px;
-  width: 82px;
+  width: 130px;
   height: 18px;
   border: 1.5px solid #B8B8B8;
   border-radius: 8px;
