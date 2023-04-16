@@ -221,7 +221,7 @@ class Tasks extends React.Component{
       if(completedTaskMenu == 'flex'){
           let taskObj
           let taskList = [...this.state.data.overDue]
-      taskList.push(this.state.data.upComing)
+      taskList.push(...this.state.data.upComing)
       for (let task of taskList){
         if(task.id == Number.parseInt(this.currentTask)){
           taskObj = task;
@@ -244,8 +244,9 @@ class Tasks extends React.Component{
       let taskObj = {}
       if(display == 'none'){
         let taskList = [...this.state.data.overDue]
-        taskList.push(this.state.data.upComing)
+        taskList.push(...this.state.data.upComing)
         for (let task of taskList){
+          console.log(task.id , Number.parseInt(e.currentTarget.value))
           if(task.id == Number.parseInt(e.currentTarget.value)){
             taskObj = task;
             break;

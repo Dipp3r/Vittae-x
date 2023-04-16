@@ -103,13 +103,14 @@ class HomeComp extends React.Component{
             this.setState({lastSelectedDate:dt.getDate()},()=>{
               document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
             })
-
-            if(this.date != undefined){
+            console.log(this.date,dateIndex,isDateIndexInc)
+            if(this.date == undefined){
               this.generateTasks();
             }else if (isDateIndexInc){
-              this.generateTasks(new Date(this.date[dateIndex-1].date).getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
+              console.log(this.date[dateIndex-1])
+              this.generateTasks(this.date[dateIndex-1].tasks)
             }else{
-              this.generateTasks(new Date(this.date[dateIndex].date).getDate() == today.getDate()?this.date[dateIndex].tasks:[])
+              this.generateTasks(this.date[dateIndex].tasks)
             }
           }
           }else if (dt.getDate() == this.state.lastSelectedDate){
@@ -155,6 +156,7 @@ class HomeComp extends React.Component{
       //       </div>
       //       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
       //     </div>
+      console.log(taskList)
       document.body.querySelector('#tasks').innerHTML = ''
       let task,desc,i,container
       container = document.createElement('div')
@@ -171,7 +173,6 @@ class HomeComp extends React.Component{
 
       for (let j = 0;j< taskList.length;j++){
         i = taskList[j]
-        
         task = document.createElement('div')
         task.className = 'task'
 
@@ -329,12 +330,18 @@ class HomeComp extends React.Component{
             // console.log(task,e.currentTarget.getAttribute("value"))
             if(task.id == Number.parseInt(e.currentTarget.getAttribute("value"))){
                 taskObj = task;
+                taskObj.date = new Date(taskObj.date).toISOString()
+                console.log(task)
                 break;
             }
           }
         }
+      }else{
+        let dateDiv = document.querySelectorAll(".date")[this.state.lastSelectedDate-1]
+        if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
       }
       // console.log(taskObj)
+
       display = display == "flex"?"none":"flex"
       this.setState({snoozeTaskMenu:display,currentTask:taskObj})
     }

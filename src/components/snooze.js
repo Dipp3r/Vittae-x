@@ -50,7 +50,9 @@ class SnoozeMenu extends React.Component{
         })
     }
     componentDidMount(){
-        console.log(this.props,this.state)
+        console.log(this.props.currentTask,this.state)
+        console.log(this.props.currentTask.date)
+        console.log(new Date(this.props.currentTask.date).getHours())
         console.log("snooze task is mounted")
         this.setState({
             currentTask:this.props.currentTask
