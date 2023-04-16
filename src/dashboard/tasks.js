@@ -9,6 +9,7 @@ import arrow_left_white from "../images/arrow_left_white.svg"
 import Trash from "../images/Trash.svg"
 import Date_range from "../images/Date_range.svg"
 import Time from "../images/Time.svg"
+import SnoozeMenu from "../components/snooze.js"
 class Tasks extends React.Component{
     constructor(props){
         super(props)
@@ -16,6 +17,8 @@ class Tasks extends React.Component{
             lastSession:undefined,
             currSection:0,
             completedTaskMenu:'none',
+            snoozeTaskMenu:'none',
+            currentTask:{},
             data:{  
               overDue:[
                 {title:'Follow up call',name:'AAA',due:'2',date:'Feb 1, 2023, 12:00 PM'},
@@ -37,7 +40,8 @@ class Tasks extends React.Component{
         this.changeCurrentSection = this.changeCurrentSection.bind(this)
         this.completeTask = this.completeTask.bind(this)
         this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
-    }
+        this.toggleSnoozeTaskMenu = this.toggleSnoozeTaskMenu.bind(this)
+      }
     displaySection(currSection){
         
         let taskList
@@ -124,6 +128,8 @@ class Tasks extends React.Component{
                   p2.innerText = 'snooze'
                   snoozeButton.appendChild(img2)
                   snoozeButton.appendChild(p2)
+                  snoozeButton.value = i.id
+                  snoozeButton.onclick = this.toggleSnoozeTaskMenu
                   task.appendChild(snoozeButton)
                 }
                 name.innerText = i.name
@@ -222,15 +228,33 @@ class Tasks extends React.Component{
           break;
         }
       }
-      console.log(taskList,taskObj)
-          console.log(taskObj,this.currentTask)
-          menu.querySelector('#title').value = taskObj.title
-          menu.querySelector('#desc').value = taskObj.body
-          menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
-          menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
-          menu.querySelector('#outcome').value = ""
+      menu.querySelector('#title').value = taskObj.title
+      menu.querySelector('#desc').value = taskObj.body
+      menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
+      menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
+      menu.querySelector('#outcome').value = ""
       }
-      this.setState({completedTaskMenu:completedTaskMenu})
+      this.setState({completedTaskMenu:completedTaskMenu},()=>{
+        console.log(this.state)
+      })
+    }
+    toggleSnoozeTaskMenu(e){
+      console.log("toggled snoozeMenu")
+      let display = this.state.snoozeTaskMenu
+      let taskObj = {}
+      if(display == 'none'){
+        let taskList = [...this.state.data.overDue]
+        taskList.push(this.state.data.upComing)
+        for (let task of taskList){
+          if(task.id == Number.parseInt(e.currentTarget.value)){
+            taskObj = task;
+            break;
+          }
+        }
+        console.log(taskObj)
+      }
+      display = display == "flex"?"none":"flex"
+      this.setState({snoozeTaskMenu:display,currentTask:taskObj})
     }
     componentDidMount(){
       
@@ -313,6 +337,7 @@ class Tasks extends React.Component{
                     </button>
                 </div>      
               </div>
+              {this.state.snoozeTaskMenu == "flex"?<SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />:""}
              </div>
            </section>
         )

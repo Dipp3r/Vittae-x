@@ -21,7 +21,7 @@ class Profile extends React.Component{
       let first_name = this.props.getItem('first_name')
       let last_name = this.props.getItem('last_name')
       last_name = last_name == null?'':last_name;   
-
+      // console.log(first_name)
       return(
 <section id="profile">
   <div id="backButton">

@@ -114,7 +114,7 @@ class CustomerView extends React.Component {
          
         let customer = this.state.customer
         customer.tasks.push(obj)
-        obj.date = new Date(date+"T"+time)
+        obj.date = new Date(date+"T"+time+"Z")
         obj.customer_id=this.state.customer.id
         obj.broker_id=this.props.getItem("id")
         obj.outcome = ""
@@ -330,8 +330,7 @@ class CustomerView extends React.Component {
             let taskDate = new Date(task.date)
             title.innerText = task.title
             date.innerText = dateToString(taskDate,1)
-
-            time.innerText = taskDate.getHours().toString().padStart(2, '0')+":"+taskDate.getMinutes().toString().padStart(2, '0');
+            time.innerText =new Date(taskDate).getHours().toString().padStart(2, '0')+":"+new Date(taskDate).getMinutes().toString().padStart(2, '0')
             portion2.innerText = task.body
 
             taskCard.appendChild(portion1)

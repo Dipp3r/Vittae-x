@@ -13,6 +13,8 @@ import Time from "../images/Time.svg"
 
 import "../styles/months.css"
 import dateToString from "../dateToString"
+import SnoozeMenu from "../components/snooze.js"
+
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class MonthlyView extends React.Component {
     constructor(props){
@@ -21,6 +23,8 @@ class MonthlyView extends React.Component {
             currentDate :new Date(),
             selectedDate:new Date().getDate(),
             completedTaskMenu:'none',
+            snoozeTaskMenu:'none',
+            currentTask:{},
             tasksList:[
                 {title:'Follow up call',name:'AAA',due:'10',day:'Mar 9, 2023'},
                 {title:'fafawf',name:'AAA',due:'15',day:'Thu Feb 10, 2023'},
@@ -36,6 +40,7 @@ class MonthlyView extends React.Component {
         this.displayTasks = this.displayTasks.bind(this)
 
         this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
+        this.toggleSnoozeTaskMenu = this.toggleSnoozeTaskMenu.bind(this)
         this.completeTask = this.completeTask.bind(this)
     }
     async changeMonth(e){
@@ -81,27 +86,33 @@ class MonthlyView extends React.Component {
         let dateIndex = 0
         //filtering task list for this month .filter((element)=>{ return (new Date(element.day).getMonth() == currentDate.getMonth())})
         let tasksList = this.state.tasksList
-
+        
         //generating dates
         for(let dt = new Date(currentDate.getFullYear(),currentDate.getMonth(),1);dt< new Date(currentDate.getFullYear(),currentDate.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
             button = document.createElement("button")
             if(dt.toDateString() === this.state.currentDate.toDateString()) button.className = "today"
             button.className = null
+            let imgDot = document.createElement("img")
             // button.style.color = "black"
             // button.style.backgroundColor = "transparent"
-            
+            if (dt.toDateString() == new Date().toDateString()){
+                button.style.color = "white"
+                button.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
+                button.style.fontWeight = "600"
+            }
             if(dateIndex < tasksList.length){
                 let date2 = new Date(tasksList[dateIndex].date)
                 console.log(dt,date2)
                 if(dt.getDate() == date2.getDate() && dt.getMonth() == date2.getMonth() && dt.getFullYear() == date2.getFullYear()){
-                    button.className = "hasTasks"
+                    imgDot.src = calendarDot
                     dateIndex+=1
                 }
             }
-            time = document.createElement("time")
+            time = document.createElement("i")
             time.innerText = dt.getDate()
             button.value = dt.getDate()
-            button.appendChild(time)
+            button.append(time)
+            button.append(imgDot)
             button.onclick = this.selectDate
             container.appendChild(button)
         }
@@ -111,10 +122,16 @@ class MonthlyView extends React.Component {
         let target = e?e.currentTarget:document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1];
         let value = Number.parseInt(target.getAttribute("value"))
         let prevTarget = document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1]
-
-        prevTarget.style.color = null
-        prevTarget.style.backgroundColor = null
-        prevTarget.style.fontWeight = null
+        // console.log(new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString(),this.state.currentDate.toDateString(),new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == this.state.currentDate.toDateString())
+        if (new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == new Date().toDateString()){
+            prevTarget.style.color = "white"
+            prevTarget.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
+            prevTarget.style.fontWeight = "600"
+        }else{
+            prevTarget.style.color = null
+            prevTarget.style.backgroundColor = null
+            prevTarget.style.fontWeight = null
+        }
         target.style.color = "white"
         target.style.backgroundColor = "#223F80"
         target.style.fontWeight = "600"
@@ -140,65 +157,78 @@ class MonthlyView extends React.Component {
       tasksDiv.id = 'nonEmpty'
       console.log(tasksList)
       for (let j = 0;j< tasksList.length;j++){
-        
-        i = tasksList[j]
-        if(i.completed == true) continue;
-        task = document.createElement('div')
-        task.className = 'task'
+        i = new Date(tasksList[j].date)
+        // console.log(i.getDate(), this.state.selectedDate , i.getMonth(), this.state.currentDate.getMonth(), i.getFullYear(),this.state.currentDate.getFullYear())
+        if (i.getDate() != this.state.selectedDate || i.getMonth() != this.state.currentDate.getMonth() || i.getFullYear() != this.state.currentDate.getFullYear()) continue;
+        // console.log(tasksList[j])
+        if(tasksList[j].tasks.length == 0){
+            tasksDiv.id = 'taskEmpty'
+            let p1 = document.createElement('p')
+            p1.innerText ="No task for this day"
+            tasksDiv.appendChild(p1)
+            container.appendChild(tasksDiv)
+            return
+          }
+        for (let i of tasksList[j].tasks){
+            if(i.completed == true) continue;    
+            task = document.createElement('div')
+            task.className = 'task'
 
-        desc = document.createElement('desc')
-        desc.className = 'desc'
-        let title = document.createElement('p')
-        title.id  = 'title'
-        let details = document.createElement('div')
-        details.id = 'deets'
-        let name  = document.createElement('p')
-        name.id = 'name'
-        let due = document.createElement('p')
-        due.id = 'due' 
-        let day = document.createElement('p')
-        day.id = 'day'
+            desc = document.createElement('desc')
+            desc.className = 'desc'
+            let title = document.createElement('p')
+            title.id  = 'title'
+            let details = document.createElement('div')
+            details.id = 'deets'
+            let name  = document.createElement('p')
+            name.id = 'name'
+            let due = document.createElement('p')
+            due.id = 'due' 
+            let day = document.createElement('p')
+            day.id = 'day'
 
-        details.appendChild(name)
-        details.appendChild(due)
-        desc.appendChild(title)
-        desc.appendChild(details)
-        task.appendChild(desc)
+            details.appendChild(name)
+            details.appendChild(due)
+            desc.appendChild(title)
+            desc.appendChild(details)
+            task.appendChild(desc)
 
-        let completeButton = document.createElement('button')
-        completeButton.className = 'label'
-        let img1 = document.createElement('img')
-        img1.src = Check_ring
-        img1.alt = 'completed'
-        let p1 = document.createElement('p')
-        p1.innerText = 'completed'
-        completeButton.appendChild(img1)
-        completeButton.appendChild(p1)
-        completeButton.value = i.id
-        completeButton.onclick = this.toggleCompletedTaskMenu
-        task.appendChild(completeButton)
-        console.log(i)
-        let snoozeButton = document.createElement('button')
-        snoozeButton.className = 'label'
-        let img2= document.createElement('img')
-        img2.src = Alarmclock
-        img2.alt = 'completed'
-        let p2 = document.createElement('p')
-        p2.innerText = 'snooze'
-        snoozeButton.appendChild(img2)
-        snoozeButton.appendChild(p2)
-        task.appendChild(snoozeButton)
+            let completeButton = document.createElement('button')
+            completeButton.className = 'label'
+            let img1 = document.createElement('img')
+            img1.src = Check_ring
+            img1.alt = 'completed'
+            let p1 = document.createElement('p')
+            p1.innerText = 'completed'
+            completeButton.appendChild(img1)
+            completeButton.appendChild(p1)
+            completeButton.value = i.id
+            completeButton.onclick = this.toggleCompletedTaskMenu
+            task.appendChild(completeButton)
+            console.log(i)
+            let snoozeButton = document.createElement('button')
+            snoozeButton.className = 'label'
+            let img2= document.createElement('img')
+            img2.src = Alarmclock
+            img2.alt = 'completed'
+            let p2 = document.createElement('p')
+            p2.innerText = 'snooze'
+            snoozeButton.appendChild(img2)
+            snoozeButton.appendChild(p2)
+            snoozeButton.onclick = this.toggleSnoozeTaskMenu
+            task.appendChild(snoozeButton)
 
-        name.innerText = i.name
-        title.innerText = i.title
-        day.innerText = i.day
-        due.innerText = `Due in ${i.due} days`
-        if (i.due == null) due.style.display = "none"
-        // task.appendChild(desc)
-        tasksDiv.appendChild(task)
+            name.innerText = i.name
+            title.innerText = i.title
+            day.innerText = i.day
+            due.innerText = `Due in ${i.due} days`
+            if (i.due == null) due.style.display = "none"
+            // task.appendChild(desc)
+            tasksDiv.appendChild(task)
+        }
+        break;
       }
       container.appendChild(tasksDiv)
-
     }
     completeTask(){
          
@@ -266,6 +296,24 @@ class MonthlyView extends React.Component {
         }
         this.setState({completedTaskMenu:completedTaskMenu})
       }
+    toggleSnoozeTaskMenu(e){
+    let display = this.state.snoozeTaskMenu
+    let taskObj = {}
+    if(display == 'none'){
+        for(let date of this.state.tasksList){
+            for (let task of date.tasks){
+                if(task.id == Number.parseInt(e.currentTarget.value)){
+                    taskObj = task;
+                    break;
+                }
+            }
+        }
+        console.log(taskObj)
+    }
+    // console.log(taskObj)
+    display = display == "flex"?"none":"flex"
+    this.setState({snoozeTaskMenu:display,currentTask:taskObj})
+    }
     componentDidMount(){
         fetch("/getTasksForMonth",{
             method:'POST',
@@ -301,7 +349,7 @@ class MonthlyView extends React.Component {
                         <a href="#" className="nav" onClick={this.changeMonth} value={-1}>
                             <img src={calendar_left_arrow} alt="previous"/>
                         </a>
-                        <div className="month_name">{months[this.state.currentDate.getMonth()].slice(0,3)} <span>{this.state.currentDate.getFullYear()}</span></div>
+                        <div id="month_name">{months[this.state.currentDate.getMonth()].slice(0,3)} <span>{this.state.currentDate.getFullYear()}</span></div>
                         <a href="#" className="nav"onClick={this.changeMonth} value={1}>
                             <img src={calendar_right_arrow} alt="next"/>
                             </a>
@@ -501,6 +549,7 @@ class MonthlyView extends React.Component {
                             </button>
                         </div>      
                     </div>
+                  <SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />
                 </div>
             </section>
         )

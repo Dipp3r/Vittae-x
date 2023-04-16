@@ -393,7 +393,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #Tasks #main #tasks #nonEmpty .task .label p {
   margin-left: 5px;
 }
-#Tasks #main #completedTaskScreen {
+#Tasks #main #completedTaskScreen, #Tasks #main #snoozeTaskScreen {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -406,7 +406,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
   top: 0px;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv {
+#Tasks #main #completedTaskScreen #completedTaskDiv, #Tasks #main #completedTaskScreen #snoozeTaskDiv, #Tasks #main #snoozeTaskScreen #completedTaskDiv, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv {
   position: relative;
   width: 330px;
   height: 480px;
@@ -414,35 +414,35 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-radius: 15px;
   background-color: white;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion1 {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion1, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion1, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion1, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion1 #closeIcon {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion1 #closeIcon, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion1 #closeIcon, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion1 #closeIcon, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion1 #closeIcon {
   border-radius: 20px;
   height: 24px;
   margin: 10px;
   padding: 0px;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion1 #delete {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion1 #delete, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion1 #delete, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion1 #delete, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion1 #delete {
   margin: 10px;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #title {
+#Tasks #main #completedTaskScreen #completedTaskDiv #title, #Tasks #main #completedTaskScreen #snoozeTaskDiv #title, #Tasks #main #snoozeTaskScreen #completedTaskDiv #title, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #title {
   border: none;
   border-bottom: 2px solid #223F80;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 input {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 input, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 input, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 input, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 input {
   width: 232px;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #desc {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #desc, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #desc, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #desc, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #desc {
   margin-top: 20px;
   width: 230px;
   height: 68px;
@@ -455,10 +455,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 12px;
   color: #223F80;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #desc:focus {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #desc:focus, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #desc:focus, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #desc:focus, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #desc:focus {
   outline: none;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #fieldDiv, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #fieldDiv, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #fieldDiv {
   width: 100%;
   padding-left: 100px;
   display: flex;
@@ -466,7 +466,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: flex-start;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv .field {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv .field, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #fieldDiv .field, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #fieldDiv .field, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #fieldDiv .field {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
@@ -474,14 +474,14 @@ input[type=date]::-webkit-calendar-picker-indicator {
   align-items: center;
   width: 120px;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv .field input {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv .field input, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #fieldDiv .field input, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #fieldDiv .field input, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #fieldDiv .field input {
   padding: 5px;
   width: 300px;
   height: 18px;
   border: 1.5px solid #B8B8B8;
   border-radius: 8px;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv p {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv p, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #fieldDiv p, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #fieldDiv p, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #fieldDiv p {
   margin-top: 40px;
   margin-bottom: 2px;
   font-family: "Montserrat";
@@ -491,10 +491,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 14px;
   color: #223F80;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv p a {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #fieldDiv p a, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #fieldDiv p a, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #fieldDiv p a, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #fieldDiv p a {
   color: #BB2230;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #outcome {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #outcome, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #outcome, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #outcome, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #outcome {
   margin-top: 0px;
   width: 230px;
   height: 68px;
@@ -507,10 +507,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-size: 12px;
   color: #223F80;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #outcome:focus {
+#Tasks #main #completedTaskScreen #completedTaskDiv #portion2 #outcome:focus, #Tasks #main #completedTaskScreen #snoozeTaskDiv #portion2 #outcome:focus, #Tasks #main #snoozeTaskScreen #completedTaskDiv #portion2 #outcome:focus, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #portion2 #outcome:focus {
   outline: none;
 }
-#Tasks #main #completedTaskScreen #completedTaskDiv #save {
+#Tasks #main #completedTaskScreen #completedTaskDiv #save, #Tasks #main #completedTaskScreen #snoozeTaskDiv #save, #Tasks #main #snoozeTaskScreen #completedTaskDiv #save, #Tasks #main #snoozeTaskScreen #snoozeTaskDiv #save {
   position: absolute;
   bottom: 15px;
   right: 20px;

@@ -47,7 +47,8 @@ class DashboardComp extends React.Component{
         this.setState(obj);
     }
     toggleHomeContacts(e){
-      this.setState({isHome:!this.state.isHome},()=>{
+      // console.log(e.currentTarget.getAttribute("value"))
+      this.setState({isHome:e.currentTarget.getAttribute("value") == "true"},()=>{
         this.props.setItem({dashboard:this.state})
       })
     }
@@ -103,8 +104,8 @@ class DashboardComp extends React.Component{
           
             <div id="main">
              {(this.state.isHome)?< HomeComp getItem={this.props.getItem} setItem={this.props.setItem} />:<ContactsComp getItem={this.props.getItem} setItem={this.props.setItem}  />}   
-              <div className="fixed" onClick={this.toggleHomeContacts}>
-                <div className={this.state.isHome?"downIconDivClick":"downIconDiv"}>
+              <div className="fixed">
+                <div className={this.state.isHome?"downIconDivClick":"downIconDiv"} onClick={this.toggleHomeContacts} value="true">
 
                   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -117,7 +118,7 @@ class DashboardComp extends React.Component{
                   <p>Home</p>
                 </div>
           
-                <div className={!this.state.isHome?"downIconDivClick":"downIconDiv"} onClick={this.toggleHomeContacts}>
+                <div className={!this.state.isHome?"downIconDivClick":"downIconDiv"} onClick={this.toggleHomeContacts} value="false">
                   <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="14.5" cy="12.0833" r="3.625" stroke="#223F80" strokeWidth="2" strokeLinecap="round" />
                     <circle cx="14.5" cy="14.5" r="10.875" stroke="#223F80" strokeWidth="2" />
