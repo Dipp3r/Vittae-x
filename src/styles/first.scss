@@ -2,6 +2,7 @@
 
 
 #getStartedPage{
+    @include flex(column,center,center);
     height: 100vh;
     width: 100vw;
     #logoDiv{

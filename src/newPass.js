@@ -3,6 +3,9 @@ import { WithRouter } from "./routingWrapper";
 import checkString from "./stringChecker";
 import './styles/newPass.css';
 
+import eye from "./images/eye.svg"
+import eyeOff from "./images/eye_off.svg"
+
 class NewPassComp extends React.Component{
     constructor(props){
         super(props)
@@ -17,10 +20,10 @@ class NewPassComp extends React.Component{
         let state 
         if(this.state[e.currentTarget.name] == 'password'){
             state = 'text'
-            e.currentTarget.src = require("./images/eye.svg")
+            e.currentTarget.src = eye
         }else{
             state = 'password'
-            e.currentTarget.src = require("./images/eye_off.svg")
+            e.currentTarget.src = eyeOff
         }
         let obj = {}
         obj[e.currentTarget.name] = state
@@ -113,7 +116,7 @@ class NewPassComp extends React.Component{
         <div className="passwordBox" id='passwordIn'  >
             <input type={this.state.passType} onKeyDown={this.changeInVal} onChange={this.changeInVal} 
              onFocus={()=>this.changeColor('#passwordIn','#223F80')} onBlur={()=>this.changeColor('#passwordIn','#b8b8b8')} name='password' placeholder="Example!123" className="passwordField password" value={this.state.password} />
-            <img src={require("./images/eye_off.svg")} onClick={this.changePasswordVis} name="passType" alt="eye icon" />
+            <img src={eyeOff} onClick={this.changePasswordVis} name="passType" alt="eye icon" />
         
         </div>
     </div>
@@ -123,7 +126,7 @@ class NewPassComp extends React.Component{
       <p className="inLabel" >Confirm password</p>
       <div className="passwordBox" id='cPasswordIn' >
         <input type={this.state.cPassType}  onChange={this.changeInVal} onKeyDown={this.changeInVal}  onFocus={()=>this.changeColor('#cPasswordIn','#223F80')} onBlur={()=>this.changeColor('#cPasswordIn','#b8b8b8')} placeholder="Example!123" className="passwordField password" name="cPassword" value={this.state.cPassword} />
-        <img src={require("./images/eye_off.svg")} onClick={this.changePasswordVis} name="cPassType"  alt="eye icon" />
+        <img src={eyeOff} onClick={this.changePasswordVis} name="cPassType"  alt="eye icon" />
       </div>
     </div>
     <p className="invalid">{this.state.cPasswordErr}</p>

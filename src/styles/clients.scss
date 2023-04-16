@@ -1,5 +1,6 @@
 @import 'main';
 
+
 #Client{
     font-family: 'Montserrat';
     font-style: normal;
@@ -55,6 +56,152 @@
             }
 
         }
+    }
+
+    #personalInfo{
+        display:none;
+        height:100%;
+        width:100%;
+        position:absolute;
+        z-index: 2;
+        overflow:hidden scroll;
+        font-family: 'Montserrat';
+        font-style: normal;
+        padding-top:0px;
+        background-color: white;
+        #backButtonDiv{
+            width:100%;
+            margin:10px;
+            margin-left:0px;
+            // padding:0px 10px;
+            // padding-bottom:0px;
+            // margin: 15px;
+            #backButton{
+                margin-left:10px;
+                @include flex(row,start,center);
+                svg path{
+                    border: 2px solid rgba(0, 0, 0, 0.79);
+                    fill:#000000C9;
+                }
+                
+            }
+            
+        }
+    
+        .profileDiv{
+            width:100%;
+            margin:30px 0px;
+            @include flex(column,center,center);
+            p{
+                color:#223F80;
+                margin-left: 10px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 17px;
+                color: #223F80;
+            }
+            
+        }
+        .inputField{
+            width: 100%;
+            @include flex(column,center,center);
+            .label{
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 15px;
+                margin:0px;
+                width:272px;
+                color: #223F80;
+                margin-left:5px;
+            }
+            .field{
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 15px;
+                width: 272px;
+                height:40px;
+                border: 2px solid #B8B8B8;
+                border-radius: 12px;
+                padding:5px;
+                padding-left:15px;
+                margin-top:5px;
+                margin-bottom:20px;
+            }
+
+            .dropDownDiv{
+                width:272px;
+                @include flex(row,space-between,center);
+                img{
+                    margin-right:10px;
+                }
+                select{
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    border:none;
+                    appearance: none;
+                    width: 100%;
+                    padding: 0px;
+                    &:focus{
+                        outline:none;
+                    }
+                }
+
+            }
+            #dobField{
+                width: 100%;
+                @include flex(row,center,start);
+                #calendarDiv{
+                    margin-top:8px;
+                    margin-left:5px;
+                    @include flex(row,center,center);
+                    background: #223F80;
+                    border-radius: 12px;
+                    height:47px;
+                    width:47px;
+                }
+            }
+
+            .date{
+                @include flex(row,space-between,center);
+                input{
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 15px;
+                    padding:5px;
+                    padding-left:15px;
+                    width: 272px;
+                    border:none;
+                }
+                #calender{       
+                    @include flex(column,center,center);
+                    height:41px;
+                    width:48px;
+                    background: #223F80;
+                    border-radius: 12px;
+                }
+            }
+            
+            .field:invalid:focus{
+                border:1px solid red;
+            }
+            #saveButton{
+                @include button1(270px,50px,10px,0px,500,15px);
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 19px;
+                color: #FFFFFF;
+                margin-bottom:40px;
+            }
+        }
+    
+    
     }
 
     #main{
@@ -118,13 +265,16 @@
                         width:100%;
                         padding-left:100px;
                         @include flex(column,center,flex-start);
+                        img{
+                            margin:5px;
+                        }
                         .field{
                             margin-top:10px;
                             @include flex(row,space-between,center);
-                            width:120px;
+                            width: 160px;
                             input{
                                 padding:5px;
-                                width: 82px;
+                                width: 130px;
                                 height: 18px;
                                 border: 1.5px solid #B8B8B8;
                                 border-radius: 8px;
@@ -315,6 +465,9 @@
                         p{
                             margin:0px;
                             padding:0px;
+                            color:white;
+                            font-size: 20px;
+                            font-weight: 700;
                         }
                         #edit{
                             @include flex(row,center,center);
@@ -390,13 +543,14 @@
             }
             #portion2{
                 width: 100%;
-                padding:15px;
-                padding-right:50px;
+                padding:10px;
+                padding-right:70px;
                 @include flex(row,flex-end,center);
                 .contact{
                     margin:0px 5px;
-                    height:25px;
-                    width:65px;
+                    padding:0px 3px;
+                    width: 71px;
+                    height: 23px;
                     border: 2px solid #FFFFFF;   //#8A8787
                     border-radius: 17px;
                     @include flex(row,space-around,center);
@@ -410,6 +564,7 @@
             height:37px;
             @include flex(row,space-evenly,center);
             #statusButton{
+                z-index:1;
                 width:100%;
                 font-family: 'Montserrat';
                 font-style: normal;
@@ -431,7 +586,7 @@
                 .statusButton:focus{
                     color: #223F80;
                     font-weight: 600;
-                    border-bottom:2px solid  #224080b7;
+                    border-bottom:2px solid #253564;
                 }
             }
         }
@@ -440,10 +595,13 @@
             margin:0px;
             border: 1px solid rgba(37, 53, 100, 0.4);
         }
+        
     }
 
 }
-
+#kycStatus{
+    display: none;
+}
 #infoContent{
     @include flex(column,flex-start,center);
     display:none;
@@ -472,7 +630,8 @@
     padding-bottom:100px;
     overflow-y:scroll;
     overflow-x: hidden;
-    display:none;
+    width: 85%;
+    display: none;
     #left{
         @include flex(column,flex-start,center);
         width:46%;
@@ -536,7 +695,10 @@
 
 #tasks{
     width:100%;
-    @include flex(column,flex-start,center);
+    @include flex(column,flex-start,flex-start);
+    overflow: scroll;
+    padding-bottom: 150px;
+    display: none;
     #dropDown{
         @include flex(row,flex-start,center);
         padding:25px;
@@ -558,8 +720,8 @@
     #taskCardSpace{
         width:100%;
         height:480px;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        // overflow-y: scroll;
+        // overflow-x: hidden;
         @include flex(column,flex-start,center);
         .taskCard{
             margin:14px 0px;

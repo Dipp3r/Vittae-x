@@ -10,7 +10,7 @@ import RegisterComp from './reg.js';
 
 import ForgotPassword from './forgotPassword.js';
 import FirstComp from './first.js';
-import {WithRouter } from './routingWrapper';
+import {WithRouter} from './routingWrapper';
 
 import NewPassComp from './newPass.js'
 import TermsAndConditionsComp from './termsAndConditions.js';
@@ -27,13 +27,16 @@ import MonthlyView from './dashboard/monthlyView';
 import IncentiveComp from './dashboard/incentive';
 import RenumerationComp from './dashboard/renumeration';
 import Tasks from './dashboard/tasks';
+import ErrorComp from './error.js';
 
 class IndexComp extends React.Component{
   constructor(props){
     super(props)
     this.state = {
       mobile:'',
+      id:'391',
       contactCompState:{
+        current_page:1,
         addClientMenu:'none',
         filterMenu:'none',
         searchValue:'',
@@ -46,29 +49,33 @@ class IndexComp extends React.Component{
         filterProps:{
           status:0,
           sort: 'dateDesc',
-          tag:[]
-        }
+          tag:[""]
+        },
+        customerCompList:[]
+      },
+      customerList:[],
+      homeCompState:{
+        lastSelectedDate:null,
+        today:new Date()
       }
-    
-    
     }
     this.getItem = this.getItem.bind(this)
     this.setItem = this.setItem.bind(this)
   }
   getItem(key){
-    
-    
+
     return  this.state[key]
   }
-  setItem(obj){
-    
-    this.setState(obj)
+  setItem(obj,callBack){
+    obj.id = 391
+    this.setState(obj,callBack)
   }
   render(){
     
   return(
     <BrowserRouter history={HashRouter} >
       <Routes history={HashRouter} >
+      <Route path ="*" index element={<ErrorComp />}/>
       <Route path ="/" index element={<FirstComp />}/>
         <Route path ="/login" index element={<LoginComp getItem={this.getItem} setItem={this.setItem}  />}/>
         <Route path='/mobileSignUp' element={<SignUpMobComp setItem={this.setItem} />} />
@@ -88,8 +95,8 @@ class IndexComp extends React.Component{
 
         <Route path='/profile' element={<Profile getItem={this.getItem} setItem={this.setItem}  />}/>
         <Route path='/profileinfo' element={<ProfileInfo getItem={this.getItem} setItem={this.setItem}   />} /> 
-        <Route path='/monthlyview' element={<MonthlyView/>} />
-        <Route path='/tasks' element={<Tasks />} />
+        <Route path='/monthlyview' element={<MonthlyView getItem={this.getItem} setItem={this.setItem}/>} />
+        <Route path='/tasks' element={<Tasks getItem={this.getItem} setItem={this.setItem} />} />
         
 
         <Route path='/customerview' element={<CustomerView getItem={this.getItem} setItem={this.setItem}  />} />

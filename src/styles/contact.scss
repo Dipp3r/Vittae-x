@@ -1,8 +1,9 @@
 @import 'main';
-    #main{
+    #contactMain{
         @include flex(column,flex-start,center);
         overflow: hidden;
         padding: 0px 10px;
+        height: 100%;
 
         #statusBar{
             width:100vw;
@@ -46,6 +47,7 @@
     #searchBarDiv{
         @include flex(row,center,center);
         width:100vw;
+        height:80px;
         #searchBar{
             width:80%;
             height: 40px;
@@ -96,8 +98,9 @@
         overflow-y: scroll;
         overflow-x: hidden;
         white-space: nowrap;
-        padding: 10px 5px;
+        padding: 10px 5px 150px 5px;
         flex-direction: column;
+        height:calc(100% - 120px);
         .cards {
             height: 50px;
             background: #FFFFFF;
@@ -107,18 +110,19 @@
             width: 100%;
             font-family: 'Montserrat';
             font-style: normal;
+            padding: 15px 5px;
             .details{
                 height:100%;
                 width: 100%;
                 @include flex(row,space-around,center);
                 .info{
                     height: 100%;
-                    width: stretch;
+                    width: 65px;
                     font-family: 'Montserrat';
                     font-style: normal;
                     font-weight: 600;
                     font-size: 14px;
-                    @include flex(none,center,center);
+                    @include flex(none,flex-start,center);
                     color: #223F80;
                 }
                 .phone{
@@ -126,7 +130,7 @@
                     font-size: 12px;
                 }
                 .status{
-                    width:140px;
+                    width:42px;
                     height:13px;
                     border-radius: 14px;
                     background-color: #6BDA7D; //active
@@ -168,7 +172,7 @@
         bottom:0;
         height:56px;
         background-color: white;
-        backdrop-filter: blur(1px);
+        // backdrop-filter: blur(1px);
         height:60px;
         padding: 5px 20px;
         width:100%;
@@ -213,21 +217,21 @@
         height: 100vh;
         width: 100vw;
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(1.5px);
+        background-color: rgba(0, 0, 0, 0.65);
+        // backdrop-filter: blur(1.5px);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         display: none;
         top: 0px;
-        overflow: scroll;
-        padding: 100px 5px 100px 5px;
+        left:0px;
+        overflow: auto;
         z-index: 1;
         #addBox{
+            margin: 20px 5px;
             height:fit-content;
-            width:80%;
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+            width:320px;            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
             border-radius: 15px;
             background-color: white;
             #closeIcon{
@@ -239,25 +243,44 @@
             .inputFields{
                 @include flex(column,center,center);
                 .label{
-                    width:87%;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    width:100%;
+                    text-align: start;
                     font-weight: 600;
-                    font-size: 12px;
+                    font-size: 14px;
                     line-height: 15px;
                     color: #223F80;
-                    margin-left:20px;
+                    margin:0px;
+                    margin-left:65px;
+                    margin-top:15px;
+                    margin-bottom:5px;
+                    .required{
+                        margin-left:3px;
+                        color:#BB2230;
+                    }
                 }
                 .field{
-                    width: 87%;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 13px;
+                    width: 250px;
+                    height: 46px;
                     border: 2px solid #B8B8B8;
                     border-radius: 12px;
-                    padding:10px;
-                    margin-top:5px;
-                    margin-bottom:20px;
+                    padding:5px;
+                    padding:0px 15px;
                 }
 
                 .dropDownDiv{
+                    width:250px;
                     @include flex(row,space-between,center);
                     select{
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 13px;
                         border:none;
                         appearance: none;
                         width: 100%;
@@ -286,7 +309,7 @@
                     border:1px solid red;
                 }
                 .Button{
-                    @include button1(80%,50px,30px,20px,500,15px);
+                    @include button1(272px,50px,30px,20px,500,15px);
                 }
             }
             select{
@@ -304,7 +327,7 @@
         width:100%;
         background-color: rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(1.5px);
-        @include flex(none,center,center);
+        @include flex(column,center,center);
         display: flex;
         position: absolute;
         top: 0px;

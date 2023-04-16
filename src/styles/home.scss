@@ -7,7 +7,7 @@
     padding:0px;
     background-color:#E4E4E4 ;
     overflow: hidden;
-    
+    padding-top: 0px;
     .navbar{
         @include flex(row,space-between,center);
         background-color: white;
@@ -61,8 +61,7 @@
         padding-bottom:90px;
         margin-top:2px;
         @include flex(column,flex-start,center);
-        overflow-y: scroll;
-        overflow-x: hidden;
+        height: calc(100% - 89px);
         width: 100%;
         #perks{
             height:96px;
@@ -143,7 +142,8 @@
                 .week{
                     padding:0px 0px;
                     margin:0px;
-                    height:80px;
+                    margin-top:5px;
+                    height:70px;
                     overflow: scroll;
                     width:100vw;
                     @include flex(row,flex-start,flex-start);
@@ -169,7 +169,7 @@
                             }
                             #date{
                                 // padding:2px;
-                                width:18px;
+                                width:20px;
                                 height:18px;
                                 text-align: center;
                                 background: #ffffff;;
@@ -178,7 +178,7 @@
                                 font-family: 'Montserrat';
                                 font-style: normal;
                                 font-weight: 400;
-                                font-size: 14px;
+                                font-size: 13px;
                                 color: #000000;
                                 margin:0px;
                             }
@@ -191,14 +191,15 @@
             }
 
             #tasks{
-                padding:15px 15px;
+                padding:15px 0px;
                 min-height:150px;
                 height:fit-content;
                 width:100%;
                 background: white;
-                
+                align-items: center;
+                display: flex;
                 #taskEmpty{
-                    display:none;
+                    // display:none;
                     margin-top:70px;
                     text-align: center;
                     font-family: 'Montserrat';
@@ -206,11 +207,13 @@
                     font-weight: 500;
                     font-size: 12px;
                     color: #B8B8B8;
+                    width:100%;
                 }
                 #nonEmpty{
                     // display:none;
                     .task{
                         margin:20px 0px;
+                        width:100vw;
                         @include flex(row,space-around,center);
                         .desc{
                             @include flex(column,center,flex-start);
@@ -286,7 +289,7 @@
             background-color: white;
             width:100%;
             height:58px;
-            padding:0px 20px;
+            padding:0px 25px;
             @include flex(row,space-between,center);
             p{
                 font-family: 'Montserrat';
@@ -301,12 +304,128 @@
             }
 
         }
+        #completedTaskScreen{
+            height:100%;
+            width:100%;
+            position:absolute;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(1.5px);
+            @include flex(column,center,center);
+            // display:none;
+            top:0px;
+            #completedTaskDiv{
+                position:relative;
+                width: 330px;
+                height: 480px;
+                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+                border-radius: 15px;
+                background-color: white;
+                #portion1{
+                    @include flex(row,space-between,center);
+                    #closeIcon{
+                        border-radius:20px;
+                        height:24px;
+                        margin:10px;
+                        padding:0px;
+                    }
+
+                    #delete{
+                        margin:10px;
+                    }
+
+                }
+                #title{
+                    border:none;
+                    border-bottom:2px solid #223F80;
+                }    
+                 #portion2{
+                    
+                    @include flex(column,center,center);
+                    input{
+                        width: 232px;
+                    }
+                    #desc{
+                        margin-top:20px;
+                        width:230px;
+                        height:68px;
+                        border: 1.5px solid #B8B8B8;
+                        border-radius: 15px;
+                        padding:10px;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 12px;
+                        color: #223F80;
+                        &:focus{
+                            outline:none;
+                        }
+
+                    }
+                    #fieldDiv{
+                        width:100%;
+                        padding-left:100px;
+                        @include flex(column,center,flex-start);
+                        .field{
+                            margin-top:10px;
+                            @include flex(row,space-between,center);
+                            width:120px;
+                            input{
+                                padding:5px;
+                                width: 300px;
+                                height: 18px;
+                                border: 1.5px solid #B8B8B8;
+                                border-radius: 8px;
+                            }
+                        }
+                        p{
+                            margin-top:40px;
+                            margin-bottom:2px;
+                            font-family: 'Montserrat';
+                            font-style: normal;
+                            font-weight: 500;
+                            text-align: start;
+                            font-size: 14px;
+                            color: #223F80;
+                            a{
+                                color:#BB2230;
+                            }
+                        }
+                    }
+                    #outcome{
+                        margin-top:0px;
+                        width:230px;
+                        height:68px;
+                        border: 1.5px solid #B8B8B8;
+                        border-radius: 15px;
+                        padding:10px;
+                        font-family: 'Montserrat';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 12px;
+                        color: #223F80;
+                        &:focus{
+                            outline:none;
+                        }
+                    }
+                }   
+                #save{
+                    position:absolute;
+                    bottom:15px;
+                    right:20px;
+                    font-family: 'Montserrat';
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #929292;
+                }
+            }
+        }
     }
     .fixed{
         position:fixed;
         bottom:0;
         background-color: white;
-        backdrop-filter: blur(1px);
+        // backdrop-filter: blur(1px);
         height:60px;
         padding: 5px 20px;
         width:100%;

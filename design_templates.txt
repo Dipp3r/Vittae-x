@@ -1804,3 +1804,177 @@
   <input type="title" placeholder="Title"/>
   <textarea name="notes" placeholder="Type your note" cols="30" rows="10"></textarea>
   </section> -->
+
+
+<section id="monthly_view">
+  <div id="topBar">
+    <button>
+      <img src="../static/images/back_white.svg" alt="back icon">
+    </button>
+    <p>Monthly view</p>
+    <div></div>
+  </div>
+  <div class="calendar">
+    <div class="month"><a href="#" class="nav"><img src="../static/images/calendar_left_arrow.svg" alt="previous"></a><div class="month_name">Jan <span>2023</span></div><a href="#" class="nav"><img src="../static/images/calendar_right_arrow.svg" alt="next"></a></div>
+    <div class="days">
+      <span>Sun</span>
+      <span>Mon</span>
+      <span>Tue</span>
+      <span>Wed</span>
+      <span>Thu</span>
+      <span>Fri</span>
+      <span>Sat</span>
+    </div>
+    <div class="dates">
+        <button>
+          <time>01</time>
+        </button>
+        <button>
+          <time>02</time>
+        </button>
+        <button>
+          <time>03</time>
+        </button>
+        <button>
+          <time>04</time>
+        </button>
+        <button>
+          <time>05</time>
+        </button>
+        <button>
+          <time>06</time>
+        </button>
+        <button>
+          <time>07</time>
+        </button>
+        <button>
+          <time>08</time>
+        </button>
+        <button>
+          <time>09</time>
+        </button>
+        <button>
+          <time>10</time>
+        </button>
+        <button>
+          <time>11</time>
+        </button>
+        <button>
+          <time>12</time>
+        </button>
+        <button>
+          <time>13</time>
+        </button>
+        <button>
+          <time>14</time>
+        </button>
+        <button>
+          <time>15</time>
+        </button>
+        <button>
+          <time>16</time>
+        </button>
+        <button>
+          <time>17</time>
+        </button>
+        <button class="today">
+          <time>18</time>
+        </button>
+        <button>
+          <time>19</time>
+        </button>
+        <button>
+          <time>20</time>
+        </button>
+        <button>
+          <time>21</time>
+        </button>
+        <button>
+          <time>22</time>
+        </button>
+        <button>
+          <time>23</time>
+        </button>
+        <button>
+          <time>24</time>
+        </button>
+        <button>
+          <time>25</time>
+        </button>
+        <button>
+          <time>26</time>
+        </button>
+        <button>
+          <time>27</time>
+        </button>
+        <button>
+          <time>28</time>
+        </button>
+        <button>
+          <time>29</time>
+        </button>
+        <button>
+          <time>30</time>
+        </button>
+        <button>
+          <time>31</time>
+        </button>
+    </div>
+  </div>
+  <div id="main">
+    <div id="tasks">
+      <div id="taskEmpty">
+        <p>Not task for this day</p>
+      </div>
+      <div id="nonEmpty">
+        <div class="task">
+
+          <div class="desc">
+            <p id="title">Follow up call</p>
+            <div id="deets">
+              <p id="name">Deekay</p>
+              <p id="due">
+                Due in <a id="num_days">3 days</a>
+              </p>
+            </div>
+            <p id="day">05:00 PM</p>
+          </div>
+  
+          <button class="label">
+            <img src="../static/images/Check_ring.svg" alt="completed">
+            <p>Completed</p>
+          </button>
+  
+          <button  class="label">
+            <img src="../static/images/Alarmclock.svg" alt="snooze">
+            <p>Snooze</p>
+          </button>
+        </div>
+  
+        <div class="task">
+  
+          <div class="desc">
+            <p id="title">KYC</p>
+            <div id="deets">
+              <p id="name">Deekay</p>
+              <p id="due">
+                Due in <a id="num_days">3 days</a>
+              </p>
+            </div>
+            <p id="day">05:00 PM</p>
+          </div>
+  
+          <button class="label">
+            <img src="../static/images/Check_ring.svg" alt="completed">
+            <p>Completed</p>
+          </button>
+  
+          <button  class="label">
+            <img src="../static/images/Alarmclock.svg" alt="snooze">
+            <p>Snooze</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,12 +1,26 @@
 import React from "react";
+
+//importing images
+import blueDot from "../images/blueDot.svg"
+import Check_ring from "../images/Check_ring.svg"
+import arrow_right from "../images/arrow_right.svg"
+import Alarmclock from "../images/Alarmclock.svg"
+
+import Trash from "../images/Trash.svg"
+import Date_range from "../images/Date_range.svg"
+import Time from "../images/Time.svg"
+
 import { WithRouter } from "../routingWrapper";
+import dateToString from "../dateToString";
 const dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class HomeComp extends React.Component{
     constructor(props){
       super(props)
       this.state={
-        lastselectedDate:null
+        // lastSelectedDate:null,
+        today:new Date(),
+        completedTaskMenu:'none'
       }
       this.tasks = [
         {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
@@ -17,19 +31,19 @@ class HomeComp extends React.Component{
         {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}
       ]
       this.date = [
-        {date:'2023-03-01',tasks:[
+        {date:new Date('2023-03-01'),tasks:[
           {title:'Follow up call',name:'AAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
           {title:'Follow up call',name:'BBB',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
         },
-        {date:'2023-03-05',tasks:[
+        {date:new Date('2023-03-05'),tasks:[
           {title:'Follow up call',name:'CCC',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
           {title:'Follow up call',name:'DDD',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
         },
-        {date:'2023-03-10',tasks:[
+        {date:new Date('2023-03-10'),tasks:[
           {title:'Follow up call',name:'EEE',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
           {title:'Follow up call',name:'FFF',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
         },
-        {date:'2023-03-11',tasks:[
+        {date:new Date('2023-03-11'),tasks:[
           {title:'Follow up call',name:'EFA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'},
           {title:'Follow up call',name:'AAAFFWAA',due:'2',day:'Thu Feb 9, 2023, 05:00 PM'}]
         }
@@ -37,23 +51,27 @@ class HomeComp extends React.Component{
       this.generateDates = this.generateDates.bind(this)
       this.getTasksPerDate = this.getTasksPerDate.bind(this)
       this.generateTasks = this.generateTasks.bind(this)
+      this.toggleCompletedTaskMenu = this.toggleCompletedTaskMenu.bind(this)
+      this.completeTask = this.completeTask.bind(this)
     }
-    generateDates(startDate,endDate){
+    generateDates(){
+
     //     <div className="date">
     //     <p id="day">Sun</p>
     //     <p id="date">01</p>
     //     <img id="reminderOverlay" src="../static/images/dot1.svg" alt="dot">
     //   </div>
+    console.log(this.date)
       let dates = document.querySelector('#dates')
       dates.innerHTML = ''
       let dateDiv,day,date,remainder;
       let i =0
-      let today = new Date()
-
+      let today = this.state.today
+      let isDateIndexInc = false
       let dateIndex = 0
-
+      console.log(this.date)
       for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
-        
+        isDateIndexInc = false
 
         dateDiv = document.createElement('div')
         dateDiv.className = 'date'
@@ -67,10 +85,9 @@ class HomeComp extends React.Component{
         day.id = 'day'
         remainder = document.createElement('img')
         remainder.id = 'reminderOverlay'
-        remainder.src = require("../images/blueDot.svg")
+        remainder.src = blueDot
         remainder.style.visibility = "hidden"
         
-        let dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
         day.innerText = dayName[dt.getDay()].slice(0,3)
         date.innerText = dt.getDate() < 10?`0${dt.getDate()}`:dt.getDate();
         dateDiv.append(day)
@@ -79,42 +96,70 @@ class HomeComp extends React.Component{
 
         
         remainder.style.color = 'transparent'
-        if(dateIndex < this.date.length-1){
-          
+
+        if(dateIndex < this.date.length){
+
           if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
             date.style.backgroundColor = '#a5b3cd'
             date.style.color = 'white'
             dateDiv.name = dateIndex 
+            
             dateIndex+=1
+            isDateIndexInc = true
             remainder.style.visibility = 'visible'
           }
         }
 
-        if (dt.toDateString() == today.toDateString()){
+        if(!this.state.lastSelectedDate){
+          console.log(dt,today)
+          console.log(dt.toDateString(),today.toDateString())
+          if (dt.toDateString() == today.toDateString()){
+            
+            date.style.backgroundColor = '#223f80'
+            date.style.color = 'white'
+            dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
+            this.setState({lastSelectedDate:dt.getDate()})
+            console.log(dateIndex)
+            if(this.date != undefined){
+              this.generateTasks();
+            }else if (isDateIndexInc){
+              this.generateTasks(new Date(this.date[dateIndex-1].date).getDate() == today.getDate()?this.date[dateIndex-1].tasks:[])
+            }else{
+              this.generateTasks(new Date(this.date[dateIndex].date).getDate() == today.getDate()?this.date[dateIndex].tasks:[])
+            }
+          }
+          }else if (dt.getDate() == this.state.lastSelectedDate){
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
-          this.setState({lastselectedDate:dateDiv})
-          this.generateTasks(this.date[dateIndex].tasks)
+          // this.generateTasks(this.date[this.state.lastSelectedDate-1].tasks)
+          this.generateTasks([])
         }
         dates.appendChild(dateDiv)
       }
     }
     getTasksPerDate(e){
       let dateIndex = e.currentTarget.name
-      let lastselectedDate = this.state.lastselectedDate
-      
-      if(lastselectedDate.name == -1){
-        lastselectedDate.querySelector('#date').style.backgroundColor = 'transparent'
-        lastselectedDate.querySelector('#date').style.color = 'black'
+      let dateDivList = document.querySelectorAll(".date")
+
+      let lastSelectedDateDiv = dateDivList[this.state.lastSelectedDate-1]
+      console.log(lastSelectedDateDiv)
+      if(lastSelectedDateDiv.name == -1){
+        lastSelectedDateDiv.querySelector('#date').style.backgroundColor = 'transparent'
+        lastSelectedDateDiv.querySelector('#date').style.color = 'black'
       }else{
-        lastselectedDate.querySelector('#date').style.backgroundColor = '#a5b3cd'
-        lastselectedDate.querySelector('#date').style.color = 'white'
+        lastSelectedDateDiv.querySelector('#date').style.backgroundColor = '#a5b3cd'
+        lastSelectedDateDiv.querySelector('#date').style.color = 'white'
       }
       e.currentTarget.querySelector('#date').style.backgroundColor = '#223f80'
       e.currentTarget.querySelector('#date').style.color = 'white'
       this.generateTasks(dateIndex == -1?[]:this.date[dateIndex].tasks )
-      this.setState({lastselectedDate:e.currentTarget})
+
+      let homeCompState = this.props.getItem("homeCompState")
+      let nextElementIndex = Array.prototype.indexOf.call(dateDivList,e.currentTarget)+1
+      homeCompState.lastSelectedDate = nextElementIndex
+      this.props.setItem(homeCompState)
+      this.setState({lastSelectedDate:nextElementIndex})
     }
     generateTasks(taskList){
       // <div className="task">
@@ -132,6 +177,7 @@ class HomeComp extends React.Component{
       document.body.querySelector('#tasks').innerHTML = ''
       let task,desc,i,container
       container = document.createElement('div')
+      if(taskList == undefined) taskList = []
       if(taskList.length == 0){
         container.id = 'taskEmpty'
         let p1 = document.createElement('p')
@@ -170,18 +216,20 @@ class HomeComp extends React.Component{
         let completeButton = document.createElement('button')
         completeButton.className = 'label'
         let img1 = document.createElement('img')
-        img1.src = require("../images/Check_ring.svg")
+        img1.src = Check_ring
         img1.alt = 'completed'
         let p1 = document.createElement('p')
         p1.innerText = 'completed'
         completeButton.appendChild(img1)
         completeButton.appendChild(p1)
+        completeButton.value = i.id
+        completeButton.onclick = this.toggleCompletedTaskMenu
         task.appendChild(completeButton)
 
         let snoozeButton = document.createElement('button')
         snoozeButton.className = 'label'
         let img2= document.createElement('img')
-        img2.src = require("../images/Alarmclock.svg")
+        img2.src = Alarmclock
         img2.alt = 'completed'
         let p2 = document.createElement('p')
         p2.innerText = 'snooze'
@@ -193,20 +241,99 @@ class HomeComp extends React.Component{
         title.innerText = i.title
         day.innerText = i.day
         due.innerText = `Due in ${i.due} days`
-
+        if (i.due == null) due.style.display = 'none'
         // task.appendChild(desc)
         container.appendChild(task)
       }
       document.body.querySelector('#tasks').appendChild(container)
     }
+    completeTask(){
+         
+      let menu = document.querySelector('#completedTaskDiv')
+      let customer = this.state.customer
+       
+      let outcome = menu.querySelector('#outcome').value
+      if (outcome == ""){
+          menu.querySelector('#outcome').style.borderColor = "red"
+          return
+      }else{
+          menu.querySelector('#outcome').style.borderColor = "#B8B8B8"
+      }
+      let currentTask;
+      let currentDate;
+      for(let date of this.date){
+        for (let task of date.tasks){
+          if(task.id == Number.parseInt(this.currentTask)){
+            currentTask = task;
+            currentDate = date
+            break;
+          }
+        }
+      }
+      console.log(currentDate,currentTask)
+      currentTask.completed = true
+      currentTask.outcome = outcome 
+      this.setState({customer:customer})
+      this.generateTasks(currentDate.tasks)
+      this.toggleCompletedTaskMenu()
+      fetch("/completeTask",{
+          method:'post',
+          body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+          headers: {
+              "Content-type": "application/json; charset=UTF-8",
+          }
+      })
+    }
     componentDidMount(){
-      let date = new Date()
-      
-      this.generateDates()
-      // this.generateTasks(this.tasks)
+      fetch("/getTasksForMonth",{
+        method:'POST',
+        body:JSON.stringify({date:dateToString(this.state.today).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        }
+      })
+      .then((response)=>{
+        return response.json()})
+      .then(data=>{
+
+        this.date = data
+        this.setState(this.props.getItem("homeCompState"),()=>{
+
+          this.generateDates()
+          if(this.state.lastSelectedDate) document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
+        })
+      })
+    }
+    toggleCompletedTaskMenu(e){
+      let completedTaskMenu = this.state.completedTaskMenu
+      let menu = document.querySelector('#completedTaskScreen')
+       
+      if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
+
+      completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
+       
+      if(completedTaskMenu == 'flex'){
+          let taskObj
+          for(let date of this.date){
+            for (let task of date.tasks){
+              if(task.id == Number.parseInt(this.currentTask)){
+                  taskObj = task;
+                  break;
+              }
+            }
+          }
+          
+          console.log(taskObj,this.currentTask)
+          menu.querySelector('#title').value = taskObj.title
+          menu.querySelector('#desc').value = taskObj.body
+          menu.querySelector("#date").value = dateToString(new Date(taskObj.date),2).replace(/ /g,"-")
+          menu.querySelector('#time').value = new Date(taskObj.date).getHours().toString().padStart(2, '0')+":"+new Date(taskObj.date).getMinutes().toString().padStart(2, '0');
+          menu.querySelector('#outcome').value = ""
+      }
+      this.setState({completedTaskMenu:completedTaskMenu})
     }
     render(){
-      let today = new Date()
+      
         return(
 <div id='homeMain'>
     <div id="perks">
@@ -224,11 +351,11 @@ class HomeComp extends React.Component{
       <div id="calendar">
         <div id="months">
           <p>
-            Feb 2023
+            {months[this.state.today.getMonth()].slice(0,3)} {this.state.today.getFullYear()}
           </p>
           <button id="monthView" onClick={this.props.navigate} value="../monthlyview"   >
             Monthly view
-            <img src={require("../images/arrow_right.svg")} alt="right click"/>
+            <img src={arrow_right} alt="right click"/>
           </button>
         </div>
 
@@ -245,16 +372,51 @@ class HomeComp extends React.Component{
       </div>
     <div id='tasks'>
       <div id="nonEmpty">
-          <div class="task"></div>
+          <div className="task"></div>
       </div>
     <div>
     </div>
   </div>
     <button id="overdueDiv" onClick={this.props.navigate} value="../tasks"  >
-      <p>Overdue task (12)</p>
-      <img src={require("../images/arrow_right.svg")} alt="enter icon"/>
+      <p>Overdue task</p>
+      <img src={arrow_right} alt="enter icon"/>
     </button>
 </div>
+    <div id="completedTaskScreen" style={{'display':this.state.completedTaskMenu,'zIndex':2,'position':'absolute '}} >
+      <div id="completedTaskDiv">
+          <div id="portion1">
+          <button id="closeIcon" onClick={this.toggleCompletedTaskMenu}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" fill="#7B86A7" fillOpacity="0.25" />
+              <path d="M16 8L8 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 8L16 16" stroke="#222222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+          </button>
+          <button id="delete">
+              <img src={Trash} alt="delete"/>
+          </button>
+          </div>
+          <div id="portion2">
+          <input id="title" type="text" placeholder="Add title" disabled />
+          <textarea name="" id="desc" placeholder="Description" disabled ></textarea>
+          <div id="fieldDiv">
+              <div className="field">
+              <img src={Date_range} alt="date"/>
+              <input type="date" id="date" disabled/>
+              </div>
+              <div className="field">
+              <img src={Time} alt="time"/>
+              <input type="time" id="time"disabled/>
+              </div>
+              <p>Outcome<a>*</a></p>
+          </div>
+          <textarea id="outcome" maxlength="2500"></textarea>
+          </div>
+          <button id="save" onClick={this.completeTask} >
+          Save
+          </button>
+      </div>      
+      </div>
 </div>
         )
     }

@@ -8,7 +8,7 @@ class FirstComp extends React.Component{
         this.getStarted = this.getStarted.bind(this);
     }
     getStarted(){
-        this.props.navigate("./dashboard")
+        this.props.navigate("./login");
         return
         fetch('/signIn',{
             method:'GET'
