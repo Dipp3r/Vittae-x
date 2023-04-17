@@ -95,6 +95,16 @@ app.post("/completeTask",(req,res)=>{
     }
     res.end()
 })
+app.post("/snoozeTask",(req,res)=>{
+    console.log(req.body)
+    let data = req.body
+    try{
+        let query = pool.query(`UPDATE tasks SET date = '${data.date}' WHERE id = ${data.id} and broker_id =${data.broker_id}`)
+    }catch(err){
+        console.log(err)
+    }
+    res.end()
+})
 app.post("/getTasksForMonth",async (req,res)=>{
     let data = req.body
     try{
