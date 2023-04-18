@@ -51,7 +51,6 @@ class HomeComp extends React.Component{
       let dateIndex = 0
       // this.generateTasks([])
       for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
-        isDateIndexInc = false
 
         dateDiv = document.createElement('div')
         dateDiv.className = 'date'
@@ -105,6 +104,8 @@ class HomeComp extends React.Component{
             })
             console.log(this.date,dateIndex,isDateIndexInc)
             if(this.date == undefined){
+              this.generateTasks();
+            }else if(this.date.length == 0){
               this.generateTasks();
             }else if (isDateIndexInc){
               console.log(this.date[dateIndex-1])
