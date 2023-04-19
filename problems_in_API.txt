@@ -1,3 +1,0 @@
-customer search:
-    *testing 15 => null (can't able to search full name)
-after customer view the first page (cusomter List) is loaded again

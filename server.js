@@ -134,8 +134,7 @@ app.post("/getTasksForMonth",async (req,res)=>{
         }
         res.send(arr)
     }catch (err) {
-        console.error(err.message);
-        res.send([])
+        res.status(404).send('Sorry, that resource was not found.');
     }
     
 })

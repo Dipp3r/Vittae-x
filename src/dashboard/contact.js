@@ -284,7 +284,7 @@ class ContactsComp extends React.Component {
         method:'POST',
         body:JSON.stringify(obj),
         headers: {
-        "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+        "Authorization":`Passcode ${localStorage.getItem("token")}`,
         "Content-type": "application/json; charset=UTF-8",
         'Connection':"keep-alive"}
       }).then(response=>{response.json()})
@@ -293,7 +293,7 @@ class ContactsComp extends React.Component {
       fetch(this.dataUrl,{
         method:'GET',
         headers: {
-        "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+        "Authorization":`Passcode ${localStorage.getItem("token")}`,
         "Content-type": "application/json; charset=UTF-8",
         'Connection':"keep-alive"}
       })
@@ -354,7 +354,7 @@ class ContactsComp extends React.Component {
       let data = await fetch(dataUrl,{
         method:'GET',
         headers: {
-          "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+          "Authorization":`Passcode ${localStorage.getItem("token")}`,
         "Content-type": "application/json; charset=UTF-8",
         'Connection':"keep-alive"}
       })
@@ -367,6 +367,9 @@ class ContactsComp extends React.Component {
       delete data.data
       this.setState(data,()=>{
         this.props.setItem({customerList:[...this.customerList],contactCompState:this.state})
+      })
+      .catch(()=>{
+        this.props.navigate("/*")
       })
     }
     componentDidMount(){
