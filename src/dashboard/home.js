@@ -263,7 +263,7 @@ class HomeComp extends React.Component{
       this.toggleCompletedTaskMenu()
       fetch("/completeTask",{
           method:'post',
-          body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+          body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
               "Content-type": "application/json; charset=UTF-8",
           }
@@ -272,7 +272,7 @@ class HomeComp extends React.Component{
     componentDidMount(){
       fetch("/getTasksForMonth",{
         method:'POST',
-        body:JSON.stringify({date:dateToString(this.state.today).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+        body:JSON.stringify({date:dateToString(this.state.today).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         }
@@ -280,7 +280,6 @@ class HomeComp extends React.Component{
       .then((response)=>{
         return response.json()})
       .then(data=>{
-
         this.date = data
         this.setState(this.props.getItem("homeCompState"),()=>{
 
@@ -292,6 +291,9 @@ class HomeComp extends React.Component{
           if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
         } 
         })
+      })
+      .catch(()=>{
+        this.props.navigate("/*")
       })
     }
     toggleCompletedTaskMenu(e){

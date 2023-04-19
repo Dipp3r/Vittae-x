@@ -118,7 +118,7 @@ class CustomerView extends React.Component {
         customer.tasks.push(obj)
         obj.date = new Date(date+"T"+time+"Z")
         obj.customer_id=this.state.customer.id
-        obj.broker_id=this.props.getItem("id")
+        obj.broker_id=localStorage.getItem("id")
         obj.outcome = ""
         obj.completed = false
         obj.name = this.state.customer.first_name+" "+this.state.customer.last_name
@@ -200,7 +200,7 @@ class CustomerView extends React.Component {
         this.toggleCompletedTaskMenu()
         fetch("/completeTask",{
             method:'post',
-            body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+            body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             }
@@ -358,7 +358,7 @@ class CustomerView extends React.Component {
             if (noteTitle.value != "" && noteBody.value != ""){
                 let customer = this.state.customer
 
-                let data = {id:customer.notes.length,customer_id:customer.id,broker_id:this.props.getItem("id"),title:noteTitle.value,body:noteBody.value,date: dateToString(new Date()).replace(/ /g,"-")}      
+                let data = {id:customer.notes.length,customer_id:customer.id,broker_id:localStorage.getItem("id"),title:noteTitle.value,body:noteBody.value,date: dateToString(new Date()).replace(/ /g,"-")}      
                 customer.notes.push(data)
                 this.setState({customer:customer})
                 this.generateNotes(this.state.customer.notes)
@@ -428,7 +428,7 @@ class CustomerView extends React.Component {
             //getting notes tasks
             data.notes = await fetch("getNotesList",{
                 method:'POST',
-                body:JSON.stringify({customer_id:obj.id,broker_id:this.props.getItem("id")}),
+                body:JSON.stringify({customer_id:obj.id,broker_id:localStorage.getItem("id")}),
                 headers: {
                   "Content-type": "application/json; charset=UTF-8",
                 }
@@ -441,7 +441,7 @@ class CustomerView extends React.Component {
             //getting taks list
             data.tasks = await fetch("getTasksList",{
                 method:'POST',
-                body:JSON.stringify({customer_id:obj.id,broker_id:this.props.getItem("id")}),
+                body:JSON.stringify({customer_id:obj.id,broker_id:localStorage.getItem("id")}),
                 headers: {
                   "Content-type": "application/json; charset=UTF-8",
                 }

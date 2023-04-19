@@ -6,21 +6,30 @@ import profile from "../images/profile.png"
 class Profile extends React.Component{
     constructor(props){
       super(props)
+      this.state = {
+        first_name:""
+      }
       this.deleteAcc = this.deleteAcc.bind(this)
       this.logOutAcc = this.logOutAcc.bind(this)
     }
     logOutAcc(){
       console.log('logOutAcc clicked')
-      this.props.navigate("../login")
+      localStorage.clear()
+      this.props.setItem({id:undefined,token:undefined},()=>{
+        this.props.navigate("../login")
+      })
     }
     deleteAcc(){
       console.log('Delete account clicked')
       this.props.navigate("../")
     }
+    componentDidMount(){
+      let first_name = localStorage.getItem('first_name')
+      // let last_name = localStorage.getItem('last_name')
+      // last_name = last_name == null?'':last_name;
+      this.setState({first_name:first_name})
+    }
     render(){
-      let first_name = this.props.getItem('first_name')
-      let last_name = this.props.getItem('last_name')
-      last_name = last_name == null?'':last_name;   
       // console.log(first_name)
       return(
 <section id="profile">
@@ -49,7 +58,7 @@ class Profile extends React.Component{
         alt="profile picture"
       />
     </div>
-    <p id="profileName">{first_name+last_name}</p>
+    <p id="profileName">{this.state.first_name}</p>
   </div>
   <div id="profileMenu">
     <div className="setting" onClick={this.props.navigate} value='../profileinfo'>

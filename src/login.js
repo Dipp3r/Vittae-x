@@ -98,6 +98,9 @@ class LoginComp extends React.Component{
           return response.json()
         })
         console.log(data)
+        for (let key in data){
+          localStorage.setItem(key,data[key])
+        }
         this.props.setItem(data,()=>{
           this.props.navigate("../dashboard")
         })
@@ -124,8 +127,7 @@ class LoginComp extends React.Component{
         <p className="invalid" >{this.state.passwordErr}</p>
       </div>
 
-      <div className="tickBox">
-        {/* <!--when the value is 0 the bg is set transprent otherwise its set to dark blue --> */}
+      {/* <div className="tickBox">
         <button value="0" className="tickButton" onClick={this.changeRememberMe} id="rememberMeBox">
           <svg width="12" height="10" viewBox="0 0 15 14" fill="none">
             <path d="M1.5 8L6.5 12.5L13.5 1.5" stroke="white" strokeWidth="3" strokeLinecap="round"
@@ -134,7 +136,7 @@ class LoginComp extends React.Component{
         </button>
 
         <p>Remember me</p>
-      </div>
+      </div> */}
 
       <div id="buttonDiv">
         <button id="Button" onClick={this.submit}>SIGN IN</button>

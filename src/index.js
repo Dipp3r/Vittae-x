@@ -34,7 +34,7 @@ class IndexComp extends React.Component{
     super(props)
     this.state = {
       mobile:'',
-      id:'391',
+      id:undefined,
       contactCompState:{
         current_page:1,
         addClientMenu:'none',
@@ -63,11 +63,9 @@ class IndexComp extends React.Component{
     this.setItem = this.setItem.bind(this)
   }
   getItem(key){
-
     return  this.state[key]
   }
   setItem(obj,callBack){
-    obj.id = 391
     this.setState(obj,callBack)
   }
   render(){
