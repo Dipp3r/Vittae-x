@@ -1,30 +1,28 @@
 import React from "react";
 import { WithRouter } from "./routingWrapper";
+import  { redirect}  from 'react-router-dom';
 import './styles/first.css';
 
 class FirstComp extends React.Component{
     constructor(props){
         super(props)
         this.getStarted = this.getStarted.bind(this);
+        this.loadToDashboard = this.loadToDashboard.bind(this)
     }
     getStarted(){
-        this.props.navigate("./login");
-        return
-        fetch('/signIn',{
-            method:'GET'
-        })
-        .then((response) => response.json())
-        .then(data => {
-            console.log(data)
-
-            if(data.status == true){
-                this.props.navigate("./dashboard")
-            }else{
-                this.props.navigate("./login")
-            }
-        })
+        let result = localStorage.getItem('id')
+        if(result) {
+            this.props.navigate("./dashboard")
+            return 
+        }
+        return this.props.navigate("./login");
     }
-    
+    loadToDashboard(){
+        if(localStorage.getItem('id')) {
+            this.props.navigate("./dashboard")
+            return 
+        }
+    }
     render(){
         return(
             <section id="getStartedPage">

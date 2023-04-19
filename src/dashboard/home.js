@@ -51,7 +51,6 @@ class HomeComp extends React.Component{
       let dateIndex = 0
       // this.generateTasks([])
       for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
-        isDateIndexInc = false
 
         dateDiv = document.createElement('div')
         dateDiv.className = 'date'
@@ -105,6 +104,8 @@ class HomeComp extends React.Component{
             })
             console.log(this.date,dateIndex,isDateIndexInc)
             if(this.date == undefined){
+              this.generateTasks();
+            }else if(this.date.length == 0){
               this.generateTasks();
             }else if (isDateIndexInc){
               console.log(this.date[dateIndex-1])
@@ -264,7 +265,7 @@ class HomeComp extends React.Component{
       this.toggleCompletedTaskMenu()
       fetch("/completeTask",{
           method:'post',
-          body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+          body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
               "Content-type": "application/json; charset=UTF-8",
           }
@@ -273,7 +274,7 @@ class HomeComp extends React.Component{
     componentDidMount(){
       fetch("/getTasksForMonth",{
         method:'POST',
-        body:JSON.stringify({date:dateToString(this.state.today).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+        body:JSON.stringify({date:dateToString(this.state.today).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         }
@@ -281,7 +282,6 @@ class HomeComp extends React.Component{
       .then((response)=>{
         return response.json()})
       .then(data=>{
-
         this.date = data
         this.setState(this.props.getItem("homeCompState"),()=>{
 
@@ -293,6 +293,9 @@ class HomeComp extends React.Component{
           if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
         } 
         })
+      })
+      .catch(()=>{
+        this.props.navigate("/*")
       })
     }
     toggleCompletedTaskMenu(e){

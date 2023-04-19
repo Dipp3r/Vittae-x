@@ -9,11 +9,11 @@ class ProfileInfo extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-          first_name:this.props.getItem('first_name'),
-          last_name:this.props.getItem('last_name')== null?'':this.props.getItem('last_name'),
-          phone:this.props.getItem('phone'),
-          email:this.props.getItem('email'),
-          date_of_birth:dateToString(new Date(this.props.getItem('date_of_birth')),2).replace(/ /g,"-")
+          first_name:localStorage.getItem('first_name'),
+          last_name:localStorage.getItem('last_name')== null?'':this.props.getItem('last_name'),
+          phone:localStorage.getItem('phone'),
+          email:localStorage.getItem('email'),
+          date_of_birth:dateToString(new Date(localStorage.getItem('date_of_birth')),2).replace(/ /g,"-")
         }
         this.save = this.save.bind(this)
     }
