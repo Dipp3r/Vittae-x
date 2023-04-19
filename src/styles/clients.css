@@ -125,12 +125,6 @@ li::marker {
   font-family: "Montserrat";
   src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 }
-@media only screen and (min-width: 768px) and (max-width: 1200px) {
-  /* For desktop: */
-  #root {
-    padding: 0px 200px;
-  }
-}
 body {
   margin: 0px;
   display: flex;
@@ -782,7 +776,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 #Client #main #info {
   height: 120px;
-  width: 100%;
+  width: 100vw;
   background: linear-gradient(31.88deg, #223F80 -3.29%, #444584 51.7%, #BB2230 109.03%);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -921,7 +915,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   color: white;
 }
 #Client #main #statusBar {
-  width: 100%;
+  width: 100vw;
   background-color: transparent;
   height: 37px;
   display: flex;
@@ -959,7 +953,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-bottom: 2px solid #253564;
 }
 #Client #main #statusBarEdge {
-  width: 100%;
+  width: 100vw;
   margin: 0px;
   border: 1px solid rgba(37, 53, 100, 0.4);
 }

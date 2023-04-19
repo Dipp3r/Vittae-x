@@ -106,7 +106,7 @@
             #calendar{
                 background-color: white;
                 border-bottom: 1px solid #9d9d9d;
-                width: 100%;
+                width: 100vw;
                 height:106px;
                 @include flex(column,center,center);
                 #months{
@@ -145,14 +145,14 @@
                     margin-top:5px;
                     height:70px;
                     overflow: scroll;
-                    width:100%;
+                    width:100vw;
                     @include flex(row,flex-start,flex-start);
                     .dates{
                         margin:0px 10px;
                         padding-top:0px;
                         margin-top:0px;
                         height:50px;
-                        width:100%;
+                        width:100vw;
                         padding:5px 5px;
                         @include flex(row,start,center);
                         .date{
@@ -213,7 +213,7 @@
                     // display:none;
                     .task{
                         margin:20px 0px;
-                        width:100%;
+                        width:100vw;
                         @include flex(row,space-around,center);
                         .desc{
                             @include flex(column,center,flex-start);
