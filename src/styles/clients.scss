@@ -448,7 +448,7 @@
         padding: 0px 10px;
         #info{
             height: 120px;
-            width:100vw;
+            width:100%;
             background: linear-gradient(31.88deg, #223F80 -3.29%, #444584 51.7%, #BB2230 109.03%);
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
             @include flex(column,flex-start,center);
@@ -559,7 +559,7 @@
             }
         }
         #statusBar{
-            width:100vw;
+            width:100%;
             background-color: transparent;
             height:37px;
             @include flex(row,space-evenly,center);
@@ -591,7 +591,7 @@
             }
         }
         #statusBarEdge{
-            width:100vw;
+            width:100%;
             margin:0px;
             border: 1px solid rgba(37, 53, 100, 0.4);
         }

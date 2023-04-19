@@ -125,6 +125,12 @@ li::marker {
   font-family: "Montserrat";
   src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 }
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  /* For desktop: */
+  #root {
+    padding: 0px 200px;
+  }
+}
 body {
   margin: 0px;
   display: flex;
@@ -132,20 +138,20 @@ body {
   align-items: center;
   padding-bottom: 0px;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 
 #root {
   position: fixed;
   overflow: hidden;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 
 section {
   overflow: auto;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   padding-top: 40px;
   display: flex;
   flex-direction: column;

@@ -109,6 +109,8 @@ class HomeComp extends React.Component{
             }else if (isDateIndexInc){
               console.log(this.date[dateIndex-1])
               this.generateTasks(this.date[dateIndex-1].tasks)
+            }else if(this.date.length == 0){
+              this.generateTasks()
             }else{
               this.generateTasks(this.date[dateIndex].tasks)
             }
