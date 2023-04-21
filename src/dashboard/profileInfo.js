@@ -13,12 +13,61 @@ class ProfileInfo extends React.Component{
           last_name:localStorage.getItem('last_name')== null?'':this.props.getItem('last_name'),
           phone:localStorage.getItem('phone'),
           email:localStorage.getItem('email'),
-          date_of_birth:dateToString(new Date(localStorage.getItem('date_of_birth')),2).replace(/ /g,"-")
+          date_of_birth:dateToString(new Date(localStorage.getItem('date_of_birth')),2).replace(/ /g,"-"),
+          place_of_birth_name: "",
+          bank_name: "",
+          account_number: "",
+          ifsc: ""
         }
         this.save = this.save.bind(this)
+        this.changeInVal = this.changeInVal.bind(this)
     }
+    changeInVal(e){
+      let obj = {};
+      let value
+      if (e.currentTarget.name === "place_of_birth_name" || e.currentTarget.name === "bank_name"){
+        value = e.currentTarget.value
+      }else{
+        value = e.currentTarget.value.trim()
+      }
+      obj[e.currentTarget.name] = value;
+      console.log(obj)
+      this.setState(obj);
+  }
     save(){
-        console.log('save clicked')
+      console.log('save clicked')
+      let data = {...this.state}
+      delete data.phone
+      delete data.email
+      console.log(data)
+      
+      fetch(`http://dev.api.vittae.money/broker/personal-info-update/${localStorage.getItem("id")}/`,{
+      method:'PATCH',
+      body:JSON.stringify(data),
+      headers: {
+        "Authorization":`Passcode ${localStorage.getItem("token")}`,
+        "Content-type": "application/json; charset=UTF-8",
+        'Connection':"keep-alive"}
+      })
+      .then((response)=>{
+        if(response.status == 200){
+          localStorage.setItem("first_name",data.first_name)
+          localStorage.setItem("last_name",data.last_name)
+        }
+      })
+    }
+    componentDidMount(){
+      fetch(`http://dev.api.vittae.money/broker/personal-info/${localStorage.getItem("id")}/`,{
+        method:"GET",
+        headers: {
+        "Authorization":`Passcode ${localStorage.getItem("token")}`,
+        "Content-type": "application/json; charset=UTF-8",
+        'Connection':"keep-alive"}
+      })
+      .then(response=>{return response.json()})
+      .then((data)=>{
+        this.setState(data)
+      })
     }
     render(){
         return(
@@ -43,13 +92,13 @@ class ProfileInfo extends React.Component{
           
             <div class="inputField">
               <p class="label">First name</p>
-              <input class="field" type="text" value={this.state.first_name} disabled/>
+              <input class="field" type="text" name="first_name" value={this.state.first_name} onChange={this.changeInVal}/>
               <p class="label">Last name</p>
-              <input class="field" type="text" value={this.state.last_name} disabled/>
+              <input class="field" type="text" name="last_name" value={this.state.last_name} onChange={this.changeInVal}/>
           
               <p class="label">Date of Birth</p>
               <div id="dobField">
-                <input type="date" class="field date" value={this.state.date_of_birth} disabled/>
+                <input type="date" class="field date" name="date_of_birth" value={this.state.date_of_birth} onChange={this.changeInVal}/>
               </div>
               <p class="label">Phone</p>
               <input class="field" type="text" value={this.state.phone} disabled/>
@@ -58,16 +107,16 @@ class ProfileInfo extends React.Component{
               <input class="field" type="text" value={this.state.email} disabled/>
               
               <p class="label">Place of birth</p>
-              <input class="field" type="text"/>
+              <input class="field" type="text" name="place_of_birth_name" value={this.state.place_of_birth_name} onChange={this.changeInVal}/>
           
-              <p class="label">Account name</p>
-              <input class="field" type="text"/>
+              <p class="label">Bank name</p>
+              <input class="field updateInputField" name="bank_name" type="text" value={this.state.bank_name} onChange={this.changeInVal}/>
           
               <p class="label">Account number</p>
-              <input class="field" type="number"/>
+              <input class="field updateInputField" name="account_number" type="number" value={this.state.account_number} onChange={this.changeInVal}/>
           
               <p class="label">IFSC Code</p>
-              <input class="field" type="text"/>
+              <input class="field updateInputField" type="text" name="ifsc" value={this.state.ifsc} onChange={this.changeInVal}/>
           
               <button id="saveButton" onClick={this.save}>
                 save
