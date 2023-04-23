@@ -7,9 +7,10 @@ class RenumerationComp extends React.Component {
     }
     render(){
         return(
-            <div>
+            <section>
                 <h1>renumeration page</h1>
-            </div>
+                <p>commming soon</p>
+            </section>
         )
     }
 }

@@ -106,6 +106,7 @@ app.post("/snoozeTask",(req,res)=>{
     res.end()
 })
 app.post("/getTasksForMonth",async (req,res)=>{
+    console.log(req.body)
     let data = req.body
     try{
         let tasks = await pool.query(`SELECT * FROM tasks WHERE not completed and broker_id = ${data.broker_id} and date BETWEEN DATE_TRUNC('month', '${data.date}'::timestamp) AND DATE_TRUNC('month', '${data.date}'::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond' `)
@@ -134,7 +135,7 @@ app.post("/getTasksForMonth",async (req,res)=>{
         }
         res.send(arr)
     }catch (err) {
-        res.status(404).send('Sorry, that resource was not found.');
+        console.log(err)
     }
     
 })

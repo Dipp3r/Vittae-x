@@ -1,3 +1,6 @@
+import { Descriptions } from "antd"
+import { request } from "express"
+
 fetch(`http://dev.api.vittae.money/broker/personal-info/5/`,{
         headers: {
           "Authorization":`Passcode 8421589623ba4487d92fbc545a35ce78d323fc3c`,
@@ -11,3 +14,5 @@ fetch(`http://dev.api.vittae.money/broker/personal-info/5/`,{
       .then((data)=>{
         console.log(data)
       })
+
+      

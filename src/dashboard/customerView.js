@@ -104,6 +104,7 @@ class CustomerView extends React.Component {
          
         let customer = this.state.customer
         customer.tasks.push(obj)
+        console.log(new Date(date+"T"+time+"Z"),new Date(date+"T"+time))
         obj.date = new Date(date+"T"+time+"Z")
         obj.customer_id=this.state.customer.id
         obj.broker_id=localStorage.getItem("id")

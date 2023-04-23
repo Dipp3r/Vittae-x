@@ -7,10 +7,14 @@ class Profile extends React.Component{
     constructor(props){
       super(props)
       this.state = {
-        first_name:""
+        first_name:"",
+        deleteAcc:"none",
+        description:""
       }
-      this.deleteAcc = this.deleteAcc.bind(this)
+      this.toggleDeleteAcc = this.toggleDeleteAcc.bind(this)
       this.logOutAcc = this.logOutAcc.bind(this)
+      this.changeInVal = this.changeInVal.bind(this)
+      this.deleteAcc = this.deleteAcc.bind(this)
     }
     logOutAcc(){
       console.log('logOutAcc clicked')
@@ -19,9 +23,43 @@ class Profile extends React.Component{
         this.props.navigate("../login")
       })
     }
-    deleteAcc(){
+    toggleDeleteAcc(){
       console.log('Delete account clicked')
-      this.props.navigate("../")
+      let display = this.state.deleteAcc
+      display = display == "none"?"flex":"none"
+      this.setState({deleteAcc:display})
+      // this.props.navigate("../")
+    }
+    changeInVal(e){
+      let obj = {}
+      let name = e.currentTarget.name
+      let value = e.currentTarget.value
+      obj[name] = value
+      e.currentTarget.style.borderColor = "#616161"
+      this.setState(obj)
+    }
+    deleteAcc(){
+      let reason = this.state.description
+      if(reason.length == 0){
+        console.log("no reason provided")
+        let reasonTxt = document.querySelector("#reasonTxt")
+        reasonTxt.style.borderColor = "red"
+        return
+      }
+      fetch(`http://dev.api.vittae.money/broker/agent-profile-delete/`,{
+        method:"POST",
+        headers: {
+        "Authorization":`Passcode ${localStorage.getItem("token")}`,
+        "Content-type": "application/json; charset=UTF-8",
+        'Connection':"keep-alive"}
+      })
+      .then(response=>{
+        if(response.status == 200){
+          localStorage.clear()
+          this.props.navigate("../")
+        }
+        return 
+      })
     }
     componentDidMount(){
       let first_name = localStorage.getItem('first_name')
@@ -33,6 +71,25 @@ class Profile extends React.Component{
       // console.log(first_name)
       return(
 <section id="profile">
+<div id="deleteAcc" style={{display:this.state.deleteAcc}}>
+    <div id="deleteAccDiv">
+      <button id="closeIcon" onClick={this.toggleDeleteAcc}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9" fill="#7B86A7" fill-opacity="0.25" />
+          <path d="M16 8L8 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+      <p>Reason<a>*</a></p>
+      <div id="reasonBoxDiv">
+          <textarea id="reasonTxt" name="description" onChange={this.changeInVal}>
+          </textarea>
+        <button id="Button" onClick={this.deleteAcc}>
+          Delete Account
+        </button>
+      </div>
+    </div>
+  </div>
   <div id="backButton">
     <button onClick={this.props.navigate} value='../dashboard'>
       <svg
@@ -132,7 +189,7 @@ class Profile extends React.Component{
     </svg>
   </div>
 
-  <button id="deleteButton" onClick={this.deleteAcc}>
+  <button id="deleteButton" onClick={this.toggleDeleteAcc}>
     <p id="delete">Delete my account</p>
   </button>
 </section> )
