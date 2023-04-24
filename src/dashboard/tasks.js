@@ -204,7 +204,7 @@ class Tasks extends React.Component{
       })
       fetch("/completeTask",{
           method:'post',
-          body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+          body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
               "Content-type": "application/json; charset=UTF-8",
           }
@@ -261,7 +261,7 @@ class Tasks extends React.Component{
       
       fetch("/getTasksAll",{
         method:'POST',
-        body:JSON.stringify({broker_id:this.props.getItem("id")}),
+        body:JSON.stringify({broker_id:localStorage.getItem("id")}),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         }
