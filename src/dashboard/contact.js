@@ -368,9 +368,6 @@ class ContactsComp extends React.Component {
       this.setState(data,()=>{
         this.props.setItem({customerList:[...this.customerList],contactCompState:this.state})
       })
-      .catch(()=>{
-        this.props.navigate("/*")
-      })
     }
     componentDidMount(){
       let obj = this.props.getItem('contactCompState')

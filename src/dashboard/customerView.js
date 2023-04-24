@@ -104,13 +104,13 @@ class CustomerView extends React.Component {
          
         let customer = this.state.customer
         customer.tasks.push(obj)
-        console.log(new Date(date+"T"+time+"Z"),new Date(date+"T"+time))
-        obj.date = new Date(date+"T"+time+"Z")
+        obj.date = date+"T"+time+"Z"
         obj.customer_id=this.state.customer.id
         obj.broker_id=localStorage.getItem("id")
         obj.outcome = ""
         obj.completed = false
         obj.name = this.state.customer.first_name+" "+this.state.customer.last_name
+        console.log(date+"T"+time+"Z")
         fetch("addTask",{
             method:'post',
             body:JSON.stringify(obj),
@@ -280,12 +280,11 @@ class CustomerView extends React.Component {
         let taskCardSpace = document.querySelector('#taskCardSpace')
         taskCardSpace.innerHTML = ""
         if(tasksList.length == 0){
-            let p = document.createAttribute('p')
-            p.innerText = "no tasks added"
-            taskCardSpace.appendChild(p)
+            taskCardSpace.innerText = "no tasks added"
             return
         }
         for(let task of tasksList){
+            console.log(new Date(task.date))
             console.log(task)
             if(task.completed){
                 taskType = 'CompletedTaskCard'
@@ -386,10 +385,10 @@ class CustomerView extends React.Component {
         //     </p>
         // </div>
         let noteCard,title,body
+        // console.log(noteList)
         if(noteList.length == 0){
-            let p = document.createAttribute('p')
-            p.innerText = "notes not added"
-            notesContainer.appendChild(p)
+            
+            notesContainer[0].innerText = "notes not added"
             return
         }
         for(let note of noteList){

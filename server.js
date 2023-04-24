@@ -121,16 +121,17 @@ app.post("/getTasksForMonth",async (req,res)=>{
             obj.tasks = []
             for(let i = 0;i<maxLength;i++){
                 let date2 = new Date(tempdata[i].date)
+                console.log(dt,date2)
                 if(dt.getDate() == date2.getDate() && dt.getMonth() == date2.getMonth() && dt.getFullYear() == date2.getFullYear()){
                     obj.date = `${dt.getFullYear()}-${dt.getMonth()+1}-${dt.getDate()}`
                     tempdata[i].due = Math.ceil((new Date() - date2)/(1000 * 60 * 60 * 24))-1
                     tempdata[i].due = tempdata[i].due >= 0? null:-1 * tempdata[i].due;
                     obj.tasks.push(tempdata[i])
-                    tempdata.splice(i,1)
-                    maxLength-=1
+                    // tempdata.splice(i,1)
+                    // maxLength-=1
                 }
             }
-
+            console.log(obj)
             if (obj.tasks.length > 0) arr.push({...obj})
         }
         res.send(arr)
