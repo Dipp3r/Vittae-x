@@ -53,7 +53,8 @@ class ContactsComp extends React.Component {
         this.setFilterPropStatus = this.setFilterPropStatus.bind(this)
         this.filterAndSort = this.filterAndSort.bind(this)
         this.toggleFilterSort = this.toggleFilterSort.bind(this)
-       
+        
+        this.searchInput = this.searchInput.bind(this)
         this.searchCustomer = this.searchCustomer.bind(this)
         this.setFilterPropsTag = this.setFilterPropsTag.bind(this)
         this.updateIndexState = this.updateIndexState.bind(this)
@@ -311,19 +312,20 @@ class ContactsComp extends React.Component {
     }
     searchInput(e){
       if(e.keyCode == 13){
-        this.searchCustomer()
+        let obj = {}
+        if (e.currentTarget.value.length >= 2) obj.customerCompList= []
+        obj.current_page = 1
+        this.setState(obj,()=>{
+          this.fetchCustomersList()
+        })
       }
     }
     searchCustomer(e){
       let obj = {};
       let value = e.currentTarget.value
       obj[e.currentTarget.name] =  value.replace(/ +/g," ")
-      if (value.length >= 2) obj.customerCompList= []
-      obj.current_page = 1
-      this.setState(obj,()=>{
-        // document.body.querySelector('#cardsList').innerHTML = ""
-        this.fetchCustomersList()
-      })
+      
+      this.setState(obj)
         
     }
     scrollingList(e){
@@ -341,7 +343,7 @@ class ContactsComp extends React.Component {
         })
       }
     }
-    async fetchCustomersList(){
+    async fetchCustomersList(callback){
       let page = this.state.current_page
       let search = this.state.searchValue
       let dataUrl = `http://dev.api.vittae.money/broker/customer-list/?page=${page}&page_size=10`
@@ -367,6 +369,7 @@ class ContactsComp extends React.Component {
       delete data.data
       this.setState(data,()=>{
         this.props.setItem({customerList:[...this.customerList],contactCompState:this.state})
+        
       })
     }
     componentDidMount(){
@@ -423,7 +426,7 @@ class ContactsComp extends React.Component {
               <div id="searchBarDiv">
                 <div id="searchBar">
                   <img id="icon" src={Search} alt="eye icon"/>
-                  <input type="text" name="searchValue"  onChange={this.searchCustomer} id="searchField" value={this.state.searchValue}  />
+                  <input type="text" name="searchValue"  onKeyDown={this.searchInput} onChange={this.searchCustomer} id="searchField" value={this.state.searchValue}  />
                 </div>
           
                 <button onClick={this.toggleFilterMenu} style={{"display":"none"}}  >
