@@ -19,7 +19,7 @@ class HomeComp extends React.Component{
     constructor(props){
       super(props)
       this.state={
-        // lastSelectedDate:null,
+        lastSelectedDate:null,
         today:new Date(),
         completedTaskMenu:'none',
         snoozeTaskMenu:"none",
@@ -284,12 +284,14 @@ class HomeComp extends React.Component{
         this.setState(this.props.getItem("homeCompState"),()=>{
 
         this.generateDates()
-        
+        console.log(this.state.lastSelectedDate)
         if(this.state.lastSelectedDate){
           let dateDiv = document.querySelectorAll(".date")[this.state.lastSelectedDate-1]
           dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
           if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
-        } 
+        }else{
+          this.generateTasks()
+        }
         })
       })
       .catch(()=>{

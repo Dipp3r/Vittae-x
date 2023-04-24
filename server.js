@@ -158,7 +158,8 @@ app.post("/getTasksALL",async (req,res)=>{
             }
             let date2 = new Date(tempdata[i].date)
             tempdata[i].due = Math.ceil((new Date() - date2)/(1000 * 60 * 60 * 24))-1
-            if (tempdata[i].due <= 0 && tempdata[i].completed!= true){
+            console.log(new Date() - date2,date2)
+            if ((new Date() - date2) < 0 && tempdata[i].completed!= true){
                 obj.upComing.push(tempdata[i])
                 tempdata[i].due = null
             }else if (tempdata[i].completed!= true){
