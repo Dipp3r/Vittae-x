@@ -69,6 +69,7 @@ class CustomerView extends React.Component {
         this.completeTask = this.completeTask.bind(this)
         this.toggleAddNotesPage = this.toggleAddNotesPage.bind(this)
         this.toggleEditCustomerDetail = this.toggleEditCustomerDetail.bind(this)
+        this.updateClientInfo = this.updateClientInfo.bind(this)
     }
     toggleAddTaskMenu(){
         let menu = this.state.addTaskMenu
@@ -407,6 +408,24 @@ class CustomerView extends React.Component {
             i++
         }
     }
+    updateClientInfo(){
+        let personalInfo = document.querySelector("#personalInfo")
+        let obj = {}
+        console.log(personalInfo.querySelectorAll(".inputField"))
+        for(let field of personalInfo.querySelectorAll(".inputField")){
+            console.log(field)
+            obj[field.name] = field.value
+        }
+        console.log(obj)
+        fetch(`http://dev.api.vittae.money/broker/customer-onboarding/${this.state.customer.id}/`,{
+        method:'PATCH',
+        body:JSON.stringify(obj),
+        headers: {
+            "Authorization":`Passcode ${localStorage.getItem("token")}`,
+            "Content-type": "application/json; charset=UTF-8",
+            'Connection':"keep-alive"}
+        })
+    }
     componentDidMount(){
 
         let obj = this.props.getItem("currentCustomerView")
@@ -543,15 +562,15 @@ class CustomerView extends React.Component {
                 
                     <div class="inputField">
                         <p class="label">First name</p>
-                        <input class="field" type="text" value={this.state.customer.first_name} disabled/>
+                        <input class="field inputField" type="text" name="first_name" defaultValue={this.state.customer.first_name} />
 
                         <p class="label">Last name</p>
-                        <input class="field" type="text" value={this.state.customer.last_name} disabled/>
+                        <input class="field inputField" type="text" name="last_name" defaultValue={this.state.customer.last_name} />
                     
 
                         <p className="label">Gender</p>
                         <div className="dropDownDiv field">
-                            <select id="newCusGender"  name="gender" onChange={this.changeInVal} defaultValue={this.state.customer.gender} >
+                            <select id="newCusGender" className="inputField"  name="gender" defaultValue={this.state.customer.gender} >
                             <option value="" disabled >Select your option</option>
                             <option value="1">Male</option>
                             <option value="2">Female</option>
@@ -559,11 +578,15 @@ class CustomerView extends React.Component {
                             </select>
                             <img src={arwDwn} alt=""/>
                         </div>
-                
-                        {/* <p className="label">Date of Birth</p>
+                        
+                        <p className="label">Occupation</p>
+                        <input id="newCusDOB"  type="text" className="field inputField"  name='occupation' />
+                        
+
+                        <p className="label">Date of Birth</p>
                         <div id="dobField">
-                            <input id="newCusDOB"  type="date" className="field" onChange={this.changeInVal} name='date_of_birth'  />
-                        </div> */}
+                            <input id="newCusDOB"  type="date" className="field inputField" name='date_of_birth'  />
+                        </div>
                     </div>
 
                     <div class="profileDiv">
@@ -572,24 +595,24 @@ class CustomerView extends React.Component {
 
                     <div class="inputField">
                         <p class="label">Mobile number</p>
-                        <input class="field" type="text" value={this.state.customer.phone} disabled/>
+                        <input class="field inputField" name="phone" type="text" defaultValue={this.state.customer.phone} />
                         
                         <p class="label">Email ID</p>
-                        <input class="field" type="text" value={this.state.customer.email} disabled/>
+                        <input class="field inputField" name="email" type="text" defaultValue={this.state.customer.email} />
                         
                         {/* <p class="label">Place of birth</p>
-                        <input class="field" type="text"/>
+                        <input class="field inputField" type="text"/>
                     
                         <p class="label">Account name</p>
-                        <input class="field" type="text"/>
+                        <input class="field inputField" type="text"/>
                     
                         <p class="label">Account number</p>
-                        <input class="field" type="number"/>
+                        <input class="field inputField" type="number"/>
                     
                         <p class="label">IFSC Code</p>
-                        <input class="field" type="text"/> */}
+                        <input class="field inputField" type="text"/> */}
                     
-                        <button id="saveButton" >
+                        <button id="saveButton" onClick={this.updateClientInfo}>
                             save
                         </button>
                     </div>
