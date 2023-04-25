@@ -281,17 +281,20 @@ class ContactsComp extends React.Component {
       // obj.status = "1"
       // obj.id = Number.parseInt(this.customerList.length)+1
       // obj.tag = []
-      fetch("http://dev.api.vittae.money/broker/customer-onboarding/",{
+      let data = await fetch("http://dev.api.vittae.money/broker/customer-onboarding/",{
         method:'POST',
         body:JSON.stringify(obj),
         headers: {
         "Authorization":`Passcode ${localStorage.getItem("token")}`,
         "Content-type": "application/json; charset=UTF-8",
         'Connection':"keep-alive"}
-      }).then(response=>{response.json()})
-      
+      })
+      if (data.status != 201){
+        console.log(data)
+        return
+      }
       //getting a new customer List
-      fetch(this.dataUrl,{
+      fetch("http://dev.api.vittae.money/broker/customer-list/?page=1&page_size=10",{
         method:'GET',
         headers: {
         "Authorization":`Passcode ${localStorage.getItem("token")}`,

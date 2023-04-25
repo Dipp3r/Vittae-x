@@ -63,7 +63,7 @@ class MonthlyView extends React.Component {
 
         let data = await fetch("/getTasksForMonth",{
             method:'POST',
-            body:JSON.stringify({date:dateToString(date).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+            body:JSON.stringify({date:dateToString(date).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
             headers: {
               "Content-type": "application/json; charset=UTF-8",
             }
