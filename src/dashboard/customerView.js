@@ -437,8 +437,8 @@ class CustomerView extends React.Component {
 
         let obj = this.props.getItem("currentCustomerView")
         if (!obj) {
-            this.props.navigate("./dashboard")
-            obj = this.state.customer
+            obj = {}
+            obj.id = localStorage.getItem("currentCustomerViewId")
         }
         console.log(localStorage.getItem("token"))
         try{
