@@ -48,6 +48,7 @@ class CustomerView extends React.Component {
             place_of_birth_name:null,
             kyc_completed:false,
             created_at:"",
+            date_of_birth:'',
             tasks:[],
             notes:[]
            },
@@ -70,6 +71,7 @@ class CustomerView extends React.Component {
         this.toggleAddNotesPage = this.toggleAddNotesPage.bind(this)
         this.toggleEditCustomerDetail = this.toggleEditCustomerDetail.bind(this)
         this.updateClientInfo = this.updateClientInfo.bind(this)
+        this.changeInDateValue = this.changeInDateValue.bind(this)
     }
     toggleAddTaskMenu(){
         let menu = this.state.addTaskMenu
@@ -426,6 +428,11 @@ class CustomerView extends React.Component {
             'Connection':"keep-alive"}
         })
     }
+    changeInDateValue(e){
+        let customer = this.state.customer
+        customer[e.currentTarget.name] = e.currentTarget.value
+        this.setState({customer:customer})
+    }
     componentDidMount(){
 
         let obj = this.props.getItem("currentCustomerView")
@@ -501,6 +508,7 @@ class CustomerView extends React.Component {
     }
     render(){
         console.log(this.state)
+        console.log(new Date().getFullYear(),new Date(this.state.customer.date_of_birth).getFullYear())
         return(
             <section id="Client">
                 <nav className="navbar">
@@ -584,8 +592,8 @@ class CustomerView extends React.Component {
                         
 
                         <p className="label">Date of Birth</p>
-                        <div id="dobField">
-                            <input id="newCusDOB"  type="date" className="field inputField" name='date_of_birth'  />
+                        <div id="dobField" >
+                            <input id="newCusDOB"  type="date" className="inputField field" name='date_of_birth' value={dateToString(new Date(this.state.customer.date_of_birth),2).replace(/ /g,"-")} onChange={this.changeInDateValue} />
                         </div>
                     </div>
 
@@ -677,14 +685,14 @@ class CustomerView extends React.Component {
                         <div className="grid-item">Name</div>
                         <div className="grid-item info">{this.state.customer.first_name+' '+this.state.customer.last_name}</div>
                         <div className="grid-item">Date of birth</div>  
-                        <div className="grid-item info">{"22/10/2022"}</div>
+                        <div className="grid-item info">{dateToString(new Date(this.state.customer.date_of_birth)).replace(/ /g,"-")}</div>
                         <div className="grid-item">Age</div>
-                        <div className="grid-item info">15</div>    
+                        <div className="grid-item info">{new Date().getFullYear() - new Date(this.state.customer.date_of_birth).getFullYear() }</div>    
                         <div className="grid-item">Gender</div>
                         <div className="grid-item info">{this.state.customer.gender_name}</div>
-                        <div className="grid-item">Marital status of the person</div>
-                        <div className="grid-item emptyInfo">-</div>   
-                        </div>
+                        {/* <div className="grid-item">Marital status of the person</div>
+                        <div className="grid-item emptyInfo">-</div> */}  
+                        </div> 
                     </div>
 
                     <p className="infoLabel">Contact info</p>

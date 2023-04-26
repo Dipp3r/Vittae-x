@@ -1,18 +1,3 @@
-import { Descriptions } from "antd"
-import { request } from "express"
-
-fetch(`http://dev.api.vittae.money/broker/personal-info/5/`,{
-        headers: {
-          "Authorization":`Passcode 8421589623ba4487d92fbc545a35ce78d323fc3c`,
-        "Content-type": "application/json; charset=UTF-8",
-        'Connection':"keep-alive"}
-      })
-      .then(response=>{
-        console.log(response)
-        return response.json()
-    })
-      .then((data)=>{
-        console.log(data)
-      })
-
+console.log(new Date().getFullYear() - new Date("2002-11-11").getFullYear())
+console.log(new Date().getTime()- new Date("2002-11-11").getTime())
       
