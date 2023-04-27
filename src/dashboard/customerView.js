@@ -103,7 +103,7 @@ class CustomerView extends React.Component {
         let date =menu.querySelector("#addTaskDate").value
         let time = menu.querySelector('#addTaskTime').value
         obj.type = 0
-        obj.id = this.state.customer.id+this.state.customer.tasks.length
+        obj.id = Number.parseInt(`${this.state.customer.id}${this.state.customer.tasks.length}`)
          
         let customer = this.state.customer
         customer.tasks.push(obj)

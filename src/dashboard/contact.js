@@ -289,6 +289,15 @@ class ContactsComp extends React.Component {
         "Content-type": "application/json; charset=UTF-8",
         'Connection':"keep-alive"}
       })
+      fetch("/addCustomer",{
+        method:'POST',
+        body:JSON.stringify({"id":obj.id,"name":obj.name}),
+        headers: {
+        "Authorization":`Passcode ${localStorage.getItem("token")}`,
+        "Content-type": "application/json; charset=UTF-8",
+        'Connection':"keep-alive"}
+      })
+
       if (data.status != 201){
         console.log(data)
         return
