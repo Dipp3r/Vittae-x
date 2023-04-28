@@ -85,8 +85,8 @@ class ProfileInfo extends React.Component{
           
             <div id="profileDiv">
               <div id="profileBox">
-                <img src={profile} id="profilePageImg" alt="profile picture" />
-                <div id="edit"><img src={subtract}  alt="profile picture"/></div>
+                <p id="profilePageImg">{`${localStorage.getItem("first_name")[0].toUpperCase()}`}</p>
+                {/* <div id="edit"><img src={subtract}  alt="profile picture"/></div> */}
               </div>
             </div>
           

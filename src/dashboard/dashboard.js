@@ -62,7 +62,7 @@ class DashboardComp extends React.Component{
         <section id="dashboard">
             <nav className="navbar" >
               <button className="profile" onClick={this.props.navigate} value="../profile">
-                <img id="profileImg" src= {profile} alt="" />
+                <p id="profileImg">{`${localStorage.getItem("first_name")[0].toUpperCase()}`}</p>
               </button>
           
               <div className="icons">

@@ -109,11 +109,7 @@ class Profile extends React.Component{
 
   <div id="profileDiv">
     <div id="profileBox">
-      <img
-        src={profile}
-        id="profilePageImg"
-        alt="profile picture"
-      />
+      <p id="profilePageImg">{`${localStorage.getItem("first_name")[0].toUpperCase()}`}</p>
     </div>
     <p id="profileName">{this.state.first_name}</p>
   </div>
