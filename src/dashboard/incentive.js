@@ -7,9 +7,10 @@ class IncentiveComp extends React.Component {
     }
     render(){
         return(
-            <div>
+            <section>
                 <h1>incentive page</h1>
-            </div>
+                <p>comming soon</p>
+            </section>
         )
     }
 }

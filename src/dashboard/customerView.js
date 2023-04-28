@@ -27,16 +27,16 @@ class CustomerView extends React.Component {
             KYCLog: [],
            section:1,
            customer:{
-            id:421,
-            email:"vigensh021118@gmail.com",
-            first_name:"testing",
-            last_name:"15",
+            id:undefined,
+            email:"",
+            first_name:"",
+            last_name:"",
             image:null,
-            phone:"9360748982",
+            phone:"",
             pan_number:"",
             aadhar:null,
-            gender:2,
-            gender_name:"Female",
+            gender:undefined,
+            gender_name:"",
             address1:null,
             address2:null,
             city:null,
@@ -47,21 +47,10 @@ class CustomerView extends React.Component {
             place_of_birth:null,
             place_of_birth_name:null,
             kyc_completed:false,
-            created_at:"2023-03-31T13:04:09.867437",
-            tasks:[
-                {id:0,title:'title1',type:0,date:new Date("02/03/2021"),time:'00:00',discription:'Description daff pdfplf p',},
-                {id:1,title:'title2',type:1,date:new Date("02/04/2021"),time:'00:00',discription:'tion daff pdfplf p',},
-                {id:2,title:'title3',type:1,date:new Date("02/05/2021"),time:'00:00',discription:'Descriprgdn daff pdfplf p',},
-                {id:3,title:'title4',type:2,date:new Date("02/06/2021"),time:'00:00',discription:'Descriptio pdfplf p',}
-            ],
-            notes:[
-                {id:0,title:'title1',body:"AAAlkksnklnsefelefk ksf n"},
-                {id:1,title:'title1',body:"swerkksnk lnsefelefk ksf n"},
-                {id:2,title:'title2',body:"lkk snkl nse felefk ksf n"},
-                {id:3,title:'title3',body:" kksnkln  lefk ksf n"},
-                {id:4,title:'title4',body:"nsk snkl n efele  ksf n"},
-                {id:5,title:'title5',body:"n k snk l sefe  lefk ksf n"}
-            ]
+            created_at:"",
+            date_of_birth:'',
+            tasks:[],
+            notes:[]
            },
            addTaskMenu:'none',
            completedTaskMenu:'none',
@@ -81,6 +70,8 @@ class CustomerView extends React.Component {
         this.completeTask = this.completeTask.bind(this)
         this.toggleAddNotesPage = this.toggleAddNotesPage.bind(this)
         this.toggleEditCustomerDetail = this.toggleEditCustomerDetail.bind(this)
+        this.updateClientInfo = this.updateClientInfo.bind(this)
+        this.changeInDateValue = this.changeInDateValue.bind(this)
     }
     toggleAddTaskMenu(){
         let menu = this.state.addTaskMenu
@@ -112,16 +103,17 @@ class CustomerView extends React.Component {
         let date =menu.querySelector("#addTaskDate").value
         let time = menu.querySelector('#addTaskTime').value
         obj.type = 0
-        obj.id = this.state.customer.id+this.state.customer.tasks.length
+        obj.id = Number.parseInt(`${this.state.customer.id}${this.state.customer.tasks.length}`)
          
         let customer = this.state.customer
         customer.tasks.push(obj)
-        obj.date = new Date(date+"T"+time+"Z")
+        obj.date = date+"T"+time+"Z"
         obj.customer_id=this.state.customer.id
         obj.broker_id=localStorage.getItem("id")
         obj.outcome = ""
         obj.completed = false
         obj.name = this.state.customer.first_name+" "+this.state.customer.last_name
+        console.log(date+"T"+time+"Z")
         fetch("addTask",{
             method:'post',
             body:JSON.stringify(obj),
@@ -269,7 +261,7 @@ class CustomerView extends React.Component {
         }
     }
     generateTasks(tasksList){
-
+        console.log(tasksList)
         // tasksList = {...tasksList}
         // <div className="OverdueTaskCard">
         // <div id="portion1">
@@ -290,7 +282,12 @@ class CustomerView extends React.Component {
         tasksList = tasksList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
         let taskCardSpace = document.querySelector('#taskCardSpace')
         taskCardSpace.innerHTML = ""
+        if(tasksList.length == 0){
+            taskCardSpace.innerText = "no tasks added"
+            return
+        }
         for(let task of tasksList){
+            console.log(new Date(task.date))
             console.log(task)
             if(task.completed){
                 taskType = 'CompletedTaskCard'
@@ -379,6 +376,7 @@ class CustomerView extends React.Component {
         this.setState({addNotesPage:notesPg})
     }
     generateNotes(noteList){
+        console.log(noteList)
         let notesContainer = [document.querySelector("#left"),document.querySelector("#right")]
         notesContainer[0].innerHTML = ""
         notesContainer[1].innerHTML = ""
@@ -390,6 +388,12 @@ class CustomerView extends React.Component {
         //     </p>
         // </div>
         let noteCard,title,body
+        // console.log(noteList)
+        if(noteList.length == 0){
+            
+            notesContainer[0].innerText = "notes not added"
+            return
+        }
         for(let note of noteList){
             noteCard = document.createElement('div')
             noteCard.className = "note"
@@ -406,19 +410,42 @@ class CustomerView extends React.Component {
             i++
         }
     }
+    updateClientInfo(){
+        let personalInfo = document.querySelector("#personalInfo")
+        let obj = {}
+        console.log(personalInfo.querySelectorAll(".inputField"))
+        for(let field of personalInfo.querySelectorAll(".inputField")){
+            console.log(field)
+            obj[field.name] = field.value
+        }
+        console.log(obj)
+        fetch(`http://dev.api.vittae.money/broker/customer-onboarding/${this.state.customer.id}/`,{
+        method:'PATCH',
+        body:JSON.stringify(obj),
+        headers: {
+            "Authorization":`Passcode ${localStorage.getItem("token")}`,
+            "Content-type": "application/json; charset=UTF-8",
+            'Connection':"keep-alive"}
+        })
+    }
+    changeInDateValue(e){
+        let customer = this.state.customer
+        customer[e.currentTarget.name] = e.currentTarget.value
+        this.setState({customer:customer})
+    }
     componentDidMount(){
 
         let obj = this.props.getItem("currentCustomerView")
         if (!obj) {
-            this.props.navigate("./dashboard")
-            obj = this.state.customer
+            obj = {}
+            obj.id = localStorage.getItem("currentCustomerViewId")
         }
-
+        console.log(localStorage.getItem("token"))
         try{
         fetch(`http://dev.api.vittae.money/broker/customer-detail/${obj.id}/`,{
             method:'GET',
             headers: {
-              "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
+              "Authorization":`Passcode ${localStorage.getItem("token")}`,
             "Content-type": "application/json; charset=UTF-8",
             'Connection':"keep-alive"}
           })
@@ -451,19 +478,20 @@ class CustomerView extends React.Component {
               return response.json()
             })
             //getting kyc log
-            //see id => 391
-            let KYCLog = await fetch(`http://dev.api.vittae.money/broker/customer-kyc-log/${obj.id}/`,{
-                method:'GET',
-                headers: {
-                    "Authorization":"Passcode bcb4d6b0b3492cac6ec2c7638f1f842ed60feae4",
-                    "Content-type": "application/json; charset=UTF-8",
-                    'Connection':"keep-alive"
-                }
-            }).then((response) => {
+            // see id => 391
+            let KYCLog = []
+            //  = [] await fetch(`http://dev.api.vittae.money/broker/customer-kyc-log/${obj.id}/`,{
+            //     method:'GET',
+            //     headers: {
+            //         "Authorization":`Passcode ${localStorage.token}`,
+            //         "Content-type": "application/json; charset=UTF-8",
+            //         'Connection':"keep-alive"
+            //     }
+            // }).then((response) => {
 
-              if (response.status != 200) throw new Error('Something went wrong')
-              return response.json()
-            })
+            //   if (response.status != 200) throw new Error('Something went wrong')
+            //   return response.json()
+            // })
             
 
             this.setState({customer:data,KYCLog:KYCLog},()=>{
@@ -475,27 +503,12 @@ class CustomerView extends React.Component {
           })
         }
         catch(err){
-
+            console.error(err)
             }
-        // obj.name = "kjbsfb kjsbfksef"
-        // obj.designation = 'XXX'
-        // obj.tasks = [
-        //     {id:0,title:'title1',type:0,date:new Date("02/03/2021"),time:'00 00',discription:'Description daff pdfplf p',},
-        //     {id:1,title:'title2',type:1,date:new Date("02/04/2021"),time:'00 00',discription:'tion daff pdfplf p',},
-        //     {id:2,title:'title3',type:1,date:new Date("02/05/2021"),time:'00 00',discription:'Descriprgdn daff pdfplf p',},
-        //     {id:3,title:'title4',type:2,date:new Date("02/06/2021"),time:'00 00',discription:'Descriptio pdfplf p',}
-        // ]
-        // obj.notes = [
-        //     {id:0,title:'title1',body:"AAAlkksnklnsefelefk ksf n"},
-        //     {id:1,title:'title1',body:"swerkksnk lnsefelefk ksf n"},
-        //     {id:2,title:'title2',body:"lkk snkl nse felefk ksf n"},
-        //     {id:3,title:'title3',body:" kksnkln  lefk ksf n"},
-        //     {id:4,title:'title4',body:"nsk snkl n efele  ksf n"},
-        //     {id:5,title:'title5',body:"n k snk l sefe  lefk ksf n"}
-        // ]   
     }
     render(){
-        
+        console.log(this.state)
+        console.log(new Date().getFullYear(),new Date(this.state.customer.date_of_birth).getFullYear())
         return(
             <section id="Client">
                 <nav className="navbar">
@@ -557,15 +570,15 @@ class CustomerView extends React.Component {
                 
                     <div class="inputField">
                         <p class="label">First name</p>
-                        <input class="field" type="text" value={this.state.customer.first_name} disabled/>
+                        <input class="field inputField" type="text" name="first_name" defaultValue={this.state.customer.first_name} />
 
                         <p class="label">Last name</p>
-                        <input class="field" type="text" value={this.state.customer.last_name} disabled/>
+                        <input class="field inputField" type="text" name="last_name" defaultValue={this.state.customer.last_name} />
                     
 
                         <p className="label">Gender</p>
                         <div className="dropDownDiv field">
-                            <select id="newCusGender"  name="gender" onChange={this.changeInVal} defaultValue={this.state.customer.gender} >
+                            <select id="newCusGender" className="inputField"  name="gender" defaultValue={this.state.customer.gender} >
                             <option value="" disabled >Select your option</option>
                             <option value="1">Male</option>
                             <option value="2">Female</option>
@@ -573,11 +586,15 @@ class CustomerView extends React.Component {
                             </select>
                             <img src={arwDwn} alt=""/>
                         </div>
-                
-                        {/* <p className="label">Date of Birth</p>
-                        <div id="dobField">
-                            <input id="newCusDOB"  type="date" className="field" onChange={this.changeInVal} name='date_of_birth'  />
-                        </div> */}
+                        
+                        <p className="label">Occupation</p>
+                        <input id="newCusDOB"  type="text" className="field inputField"  name='occupation' />
+                        
+
+                        <p className="label">Date of Birth</p>
+                        <div id="dobField" >
+                            <input id="newCusDOB"  type="date" className="inputField field" name='date_of_birth' value={dateToString(new Date(this.state.customer.date_of_birth),2).replace(/ /g,"-")} onChange={this.changeInDateValue} />
+                        </div>
                     </div>
 
                     <div class="profileDiv">
@@ -586,24 +603,24 @@ class CustomerView extends React.Component {
 
                     <div class="inputField">
                         <p class="label">Mobile number</p>
-                        <input class="field" type="text" value={this.state.customer.phone} disabled/>
+                        <input class="field inputField" name="phone" type="text" defaultValue={this.state.customer.phone} />
                         
                         <p class="label">Email ID</p>
-                        <input class="field" type="text" value={this.state.customer.email} disabled/>
+                        <input class="field inputField" name="email" type="text" defaultValue={this.state.customer.email} />
                         
                         {/* <p class="label">Place of birth</p>
-                        <input class="field" type="text"/>
+                        <input class="field inputField" type="text"/>
                     
                         <p class="label">Account name</p>
-                        <input class="field" type="text"/>
+                        <input class="field inputField" type="text"/>
                     
                         <p class="label">Account number</p>
-                        <input class="field" type="number"/>
+                        <input class="field inputField" type="number"/>
                     
                         <p class="label">IFSC Code</p>
-                        <input class="field" type="text"/> */}
+                        <input class="field inputField" type="text"/> */}
                     
-                        <button id="saveButton" >
+                        <button id="saveButton" onClick={this.updateClientInfo}>
                             save
                         </button>
                     </div>
@@ -668,14 +685,14 @@ class CustomerView extends React.Component {
                         <div className="grid-item">Name</div>
                         <div className="grid-item info">{this.state.customer.first_name+' '+this.state.customer.last_name}</div>
                         <div className="grid-item">Date of birth</div>  
-                        <div className="grid-item info">{"22/10/2022"}</div>
+                        <div className="grid-item info">{dateToString(new Date(this.state.customer.date_of_birth)).replace(/ /g,"-")}</div>
                         <div className="grid-item">Age</div>
-                        <div className="grid-item info">15</div>    
+                        <div className="grid-item info">{new Date().getFullYear() - new Date(this.state.customer.date_of_birth).getFullYear() }</div>    
                         <div className="grid-item">Gender</div>
                         <div className="grid-item info">{this.state.customer.gender_name}</div>
-                        <div className="grid-item">Marital status of the person</div>
-                        <div className="grid-item emptyInfo">-</div>   
-                        </div>
+                        {/* <div className="grid-item">Marital status of the person</div>
+                        <div className="grid-item emptyInfo">-</div> */}  
+                        </div> 
                     </div>
 
                     <p className="infoLabel">Contact info</p>
@@ -721,65 +738,8 @@ class CustomerView extends React.Component {
                     <button id="add" onClick={this.toggleAddNotesPage}>
                         <img src={plus} alt="add customer button"/>
                     </button>
-                    <div id="left">
-                        <div className="note">
-                        <p id="title">HTML</p>
-                        <p id="content">
-                            Areyyyyyy fgkn fkgn k;mnfg adlg;mn adfg;lmnm fgkn dfjbg jabf io;;ad fhiodf p difhpd dp fihdf  phdfih dp’ a’hf hidh gkl fg ugh ; fgjh gl;  hgfi f fgf ldfgdifgeiu ildfgdufg agdfidgfid digfidfgi dlahifgidfg aldhgfidgf lidgidfdgfgds fgjob; hadf;ho adgo;h ag;oh iahgpihgigh iadugfu iughih fihf h9difyh 
-                        </p>
-                        </div>
-
-                        <div className="note">
-                        <p id="title">HTML</p>
-                        <p id="content">
-                            adugfu iughih fihf h9difyh 
-                        </p>
-                        </div>
-
-                        <div className="note">
-                        <p id="title">HTML</p>
-                        <p id="content">
-                            Areyyyyyy  fgkn dfjbg jabf io;;ad fhiodf p difhpd dp fihdf  phdfih dp’ a’hf hidh gkl fg ugh ; fgjh gl;  hgfi f fgf ldfgdifgeiu ildfgdufg agdfidgfid digfidfgi dlahifgidfg aldhgfidgf lidgidfdgfgds fgjob; hadf;ho adgo;h ah fihf h9difyh 
-                        </p>
-                        </div>
-
-                        <div className="note">
-                        <p id="title">HTML</p>
-                        <p id="content">
-                        p fihdf  phdfih dp ahf hidh gkl fg ugh ; fgjh gl;  hgfi f fgf ldfgdifgeiu ildfgdufg agdfidgfid digfidfgi dlahifgidfg aldhgfidgf lidgidfdgfgds fgjob; hadf;ho adgo;h ag;oh iahgpihgigh iadugfu iughih fihf h9difyh 
-                        </p>
-                        </div>
-                    </div>
-
-                    <div id="right">
-                        <div className="note">
-                        <p id="title">HTML</p>
-                        <p id="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, eius. fihf h9difyh 
-                        </p>
-                        </div>
-
-                        <div className="note">
-                        <p id="title">HTML</p>
-                        <p id="content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic corporis asperiores ut soluta, sint dolores esse illo aut eius unde error deserunt delectus a perferendis molestiae repellendus, consectetur at inventore.
-                        </p>
-                        </div>
-
-                        <div className="note">
-                        <p id="title">HTML</p>
-                        <p id="content">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo sapiente necessitatibus optio eveniet eum nam ut blanditiis iste praesentium? Possimus eum dicta aliquid nulla rerum esse asperiores quas sint quisquam est voluptas perspiciatis incidunt, eligendi ipsam distinctio sit maiores? At, molestias laborum aut officiis atque sint ex alias soluta unde.
-                        </p>
-                        </div>
-
-                        <div className="note">
-                        <p id="title">HTML</p>
-                        <p id="content">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor laudantium minus praesentium quas delectus alias tenetur maiores harum cupiditate soluta. Omnis doloribus, perferendis ex dolorem dicta, nulla perspiciatis error praesentium iure alias libero tenetur recusandae illo, totam accusamus magnam sed autem dolores. Sunt porro eligendi necessitatibus? Illum sit quo ipsa natus deserunt unde, accusamus dolorum necessitatibus suscipit vero minima, vitae porro placeat fuga nemo, aliquam omnis quibusdam pariatur impedit laudantium. Itaque nihil natus, quos quia eius eveniet neque voluptate porro rem maiores facere blanditiis voluptatum adipisci fuga praesentium tempora temporibus doloremque laudantium nesciunt. Accusantium recusandae laborum quam facere at illum?
-                        </p>
-                        </div>
-                    </div>
+                    <div id="left"></div>
+                    <div id="right"></div>
                     </div>
 
                     <div id="tasks">

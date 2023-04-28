@@ -29,6 +29,8 @@ import RenumerationComp from './dashboard/renumeration';
 import Tasks from './dashboard/tasks';
 import ErrorComp from './error.js';
 
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 class IndexComp extends React.Component{
   constructor(props){
     super(props)
@@ -115,3 +117,5 @@ root.render(
     <IndexComp/>
   </div>
 );
+
+serviceWorkerRegistration.register();

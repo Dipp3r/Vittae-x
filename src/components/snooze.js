@@ -21,7 +21,7 @@ class SnoozeMenu extends React.Component{
         let date = container.querySelector("#date")
         let time = container.querySelector("#time")
         let obj = this.state.currentTask
-        obj.date = new Date(date.value +"T"+time.value+"Z")
+        obj.date = date.value +"T"+time.value
 
         fetch("/snoozeTask",{
             method:'POST',

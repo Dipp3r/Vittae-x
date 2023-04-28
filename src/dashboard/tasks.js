@@ -204,7 +204,7 @@ class Tasks extends React.Component{
       })
       fetch("/completeTask",{
           method:'post',
-          body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
+          body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
               "Content-type": "application/json; charset=UTF-8",
           }
@@ -261,7 +261,7 @@ class Tasks extends React.Component{
       
       fetch("/getTasksAll",{
         method:'POST',
-        body:JSON.stringify({broker_id:this.props.getItem("id")}),
+        body:JSON.stringify({broker_id:localStorage.getItem("id")}),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         }
@@ -286,9 +286,9 @@ class Tasks extends React.Component{
              </nav>
              <div id="statusBar">
                <div id="statusButton">
-                 <button class="statusButton" name='0' onClick={this.changeCurrentSection} style={{color:'rgba(34, 63, 128, 1)',borderBottomColor:'rgba(34, 63, 128, 1)'}}  >overDue ({this.state.data.overDue.length })</button>
-                 <button class="statusButton" name='1' onClick={this.changeCurrentSection}  >Upcoming ({this.state.data.upComing.length })</button>
-                 <button class="statusButton" name='2'onClick={this.changeCurrentSection}  >Completed ({this.state.data.completed.length })</button>
+                 <button class="statusButton" name='0' onClick={this.changeCurrentSection} style={{color:'rgba(34, 63, 128, 1)',borderBottomColor:'rgba(34, 63, 128, 1)'}}  >overDue {this.state.data.overDue.length > 0?`(${this.state.data.overDue.length})`:"" }</button>
+                 <button class="statusButton" name='1' onClick={this.changeCurrentSection}  >Upcoming {this.state.data.upComing.length > 0?`(${this.state.data.upComing.length})`:"" }</button>
+                 <button class="statusButton" name='2'onClick={this.changeCurrentSection}  >Completed {this.state.data.completed.length > 0?`(${this.state.data.completed.length})`:"" }</button>
                </div>
              </div>
              <hr id="statusBarEdge"/>

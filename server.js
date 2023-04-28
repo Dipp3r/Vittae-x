@@ -64,7 +64,7 @@ app.post('/getTasksList',async(req,res)=>{
     console.log(req.body)
     try {
         let data = req.body;
-        let notes = await pool.query(`select * from tasks where customer_id = ${data.customer_id} and broker_id = ${data.broker_id}`)
+        let notes = await pool.query(`SELECT * FROM tasks inner join customer on tasks.customer_id = customer.id where tasks.customer_id = ${data.customer_id} and tasks.broker_id = ${data.broker_id}`)
         notes.rows.forEach(element => {
             element.due = Math.ceil((new Date() - new Date(element.date)))
             // element.due = element.due <= -1? null:element.due;
@@ -75,11 +75,26 @@ app.post('/getTasksList',async(req,res)=>{
         res.send([])
     }
 })
+app.post("/addCustomer",async (req,res)=>{
+    let data = req.body
+    try{
+        let query = await pool.query(`insert into customer (id,name) values (${data.id},${data.name})`)
+    }catch (err) {
+        console.error(err.message);
+    }
+    res.send()
+})
 app.post('/addtask',async (req,res)=>{
     console.log(req.body)
     let data = req.body
     try{
         let query = await pool.query(`insert into tasks (id,customer_id,broker_id,title,body,date,completed,name) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${data.date}',false,'${data.name}')`)
+        // console.log(query)
+        query = await pool.query(`select id from customer where id = ${data.customer_id}`)
+        console.log(query)
+        if(query.rowCount == 0){
+            query = await pool.query(`insert into customer (id,name) values (${data.customer_id},'${data.name}')`)
+        }
     }catch (err) {
         console.error(err.message);
     }
@@ -106,9 +121,10 @@ app.post("/snoozeTask",(req,res)=>{
     res.end()
 })
 app.post("/getTasksForMonth",async (req,res)=>{
+    console.log(req.body)
     let data = req.body
     try{
-        let tasks = await pool.query(`SELECT * FROM tasks WHERE not completed and broker_id = ${data.broker_id} and date BETWEEN DATE_TRUNC('month', '${data.date}'::timestamp) AND DATE_TRUNC('month', '${data.date}'::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond' `)
+        let tasks = await pool.query(`SELECT * FROM tasks inner join customer on tasks.customer_id = customer.id WHERE not tasks.completed and tasks.broker_id = ${data.broker_id} and tasks.date BETWEEN DATE_TRUNC('month', '${data.date}'::timestamp) AND DATE_TRUNC('month', '${data.date}'::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond' `)
         let [day,month,year] = data.date.split("-");
         data.date = new Date(`${year}-${month}-${day}`)
         let tempdata = tasks.rows
@@ -120,21 +136,22 @@ app.post("/getTasksForMonth",async (req,res)=>{
             obj.tasks = []
             for(let i = 0;i<maxLength;i++){
                 let date2 = new Date(tempdata[i].date)
+                console.log(dt,date2)
                 if(dt.getDate() == date2.getDate() && dt.getMonth() == date2.getMonth() && dt.getFullYear() == date2.getFullYear()){
                     obj.date = `${dt.getFullYear()}-${dt.getMonth()+1}-${dt.getDate()}`
                     tempdata[i].due = Math.ceil((new Date() - date2)/(1000 * 60 * 60 * 24))-1
                     tempdata[i].due = tempdata[i].due >= 0? null:-1 * tempdata[i].due;
                     obj.tasks.push(tempdata[i])
-                    tempdata.splice(i,1)
-                    maxLength-=1
+                    // tempdata.splice(i,1)
+                    // maxLength-=1
                 }
             }
-
+            console.log(obj)
             if (obj.tasks.length > 0) arr.push({...obj})
         }
         res.send(arr)
     }catch (err) {
-        res.status(404).send('Sorry, that resource was not found.');
+        console.log(err)
     }
     
 })
@@ -145,7 +162,7 @@ app.post("/getTasksALL",async (req,res)=>{
         obj.upComing = []
         obj.completed = []
     try{
-        let tasks = await pool.query(`SELECT * FROM tasks WHERE broker_id = ${data.broker_id}`)
+        let tasks = await pool.query(`SELECT * FROM tasks inner join customer on tasks.customer_id = customer.id WHERE tasks.broker_id = ${data.broker_id}`)
         let dt = new Date()
         let tempdata = tasks.rows
         
@@ -156,7 +173,8 @@ app.post("/getTasksALL",async (req,res)=>{
             }
             let date2 = new Date(tempdata[i].date)
             tempdata[i].due = Math.ceil((new Date() - date2)/(1000 * 60 * 60 * 24))-1
-            if (tempdata[i].due <= 0 && tempdata[i].completed!= true){
+            console.log(new Date() - date2,date2)
+            if ((new Date() - date2) < 0 && tempdata[i].completed!= true){
                 obj.upComing.push(tempdata[i])
                 tempdata[i].due = null
             }else if (tempdata[i].completed!= true){

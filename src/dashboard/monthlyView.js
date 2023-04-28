@@ -47,7 +47,7 @@ class MonthlyView extends React.Component {
         let value = Number.parseInt(e.currentTarget.getAttribute("value"))
         let month = Number.parseInt(this.state.currentDate.getMonth())
         let year = Number.parseInt(this.state.currentDate.getFullYear())
-
+        console.log(month,year,value)
         month += value
         if(month ==-1){
             month = 11;
@@ -58,12 +58,12 @@ class MonthlyView extends React.Component {
         }
         let date = new Date(year,month)
         let today = new Date()
-
+        console.log(date,month,year,value)
         let selectedDate = (date.getMonth() == today.getMonth() && date.getFullYear == today.getFullYear())?today.getDate:1;
 
         let data = await fetch("/getTasksForMonth",{
             method:'POST',
-            body:JSON.stringify({date:dateToString(date).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+            body:JSON.stringify({date:dateToString(date).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
             headers: {
               "Content-type": "application/json; charset=UTF-8",
             }
@@ -72,7 +72,7 @@ class MonthlyView extends React.Component {
             return response.json()})
 
         this.setState({currentDate:date,selectedDate:selectedDate,tasksList:data},()=>{
-
+            console.log(this.state)
             this.generateDates()
             this.selectDate()
             
@@ -317,7 +317,7 @@ class MonthlyView extends React.Component {
     componentDidMount(){
         fetch("/getTasksForMonth",{
             method:'POST',
-            body:JSON.stringify({date:dateToString(new Date()).replace(/ +/g,"-"),broker_id:this.props.getItem("id")}),
+            body:JSON.stringify({date:dateToString(new Date()).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
             headers: {
               "Content-type": "application/json; charset=UTF-8",
             }
@@ -461,7 +461,7 @@ class MonthlyView extends React.Component {
                 </div>
                 <div id="main">
                     <div id="tasks">
-                    <div id="taskEmpty">
+                    {/* <div id="taskEmpty">
                         <p>Not task for this day</p>
                     </div>
                     <div id="nonEmpty">
@@ -512,7 +512,7 @@ class MonthlyView extends React.Component {
                             <p>Snooze</p>
                         </button>
                         </div>
-                    </div>
+                    </div> */}
                     </div>
                     <div id="completedTaskScreen" style={{'display':this.state.completedTaskMenu==undefined?"none":this.state.completedTaskMenu,'zIndex':2,'position':'absolute '}} >
                         <div id="completedTaskDiv">

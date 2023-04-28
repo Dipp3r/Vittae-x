@@ -14,6 +14,7 @@ class CustomerListCard extends React.Component{
     this.openCustomerView = this.openCustomerView.bind(this)
     }
     openCustomerView(){
+        localStorage.setItem("currentCustomerViewId",this.state.id)
         this.props.setItem({currentCustomerView : this.state},()=>{
         this.props.navigate('../customerview')
         })
