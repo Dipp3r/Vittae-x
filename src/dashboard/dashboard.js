@@ -62,7 +62,7 @@ class DashboardComp extends React.Component{
         <section id="dashboard">
             <nav className="navbar" >
               <button className="profile" onClick={this.props.navigate} value="../profile">
-                <p id="profileName">{`${localStorage.getItem("first_name")[0].toUpperCase()}K`}</p>
+              <p id="profileName">{`${localStorage.getItem("first_name")[0].toUpperCase()}${localStorage.getItem("last_name")[0].toUpperCase()}`}</p>
               </button>
           
               <div className="icons">

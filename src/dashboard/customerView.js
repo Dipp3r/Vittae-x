@@ -353,9 +353,14 @@ class CustomerView extends React.Component {
             let noteTitle = document.querySelector("#noteTitle")
             let noteBody = document.querySelector("#noteBody")
             if (noteTitle.value != "" && noteBody.value != ""){
-                let customer = this.state.customer
-
-                let data = {id:customer.notes.length,customer_id:customer.id,broker_id:localStorage.getItem("id"),title:noteTitle.value,body:noteBody.value,date: dateToString(new Date()).replace(/ /g,"-")}      
+                let customer = this.state.customer;
+                let data = {
+                    id:Number.parseInt(`${this.state.customer.id}${customer.notes.length}`),
+                    customer_id:customer.id,
+                    broker_id:localStorage.getItem("id"),
+                    title:noteTitle.value,
+                    body:noteBody.value,
+                    date: dateToString(new Date()).replace(/ /g,"-")}      
                 customer.notes.push(data)
                 this.setState({customer:customer})
                 this.generateNotes(this.state.customer.notes)
@@ -513,7 +518,7 @@ class CustomerView extends React.Component {
             <section id="Client">
                 <nav className="navbar">
                     <button className="profile" onClick={this.props.navigate} value="../profile">
-                    <p id="profileName">{`${localStorage.getItem("first_name")[0].toUpperCase()}`}</p>
+                    <p id="profileName">{`${localStorage.getItem("first_name")[0].toUpperCase()}${localStorage.getItem("last_name")[0].toUpperCase()}`}</p>
                     </button>
 
                     <div className="icons">
