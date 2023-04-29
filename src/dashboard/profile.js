@@ -109,7 +109,7 @@ class Profile extends React.Component{
 
   <div id="profileDiv">
     <div id="profileBox">
-      <p id="profileName">{`${localStorage.getItem("first_name")[0].toUpperCase()}`}</p>
+      <p id="profileName">{`${localStorage.getItem("first_name")[0].toUpperCase()}${localStorage.getItem("last_name")[0].toUpperCase()}`}</p>
     </div>
     <p id="profileName">{this.state.first_name}</p>
   </div>
