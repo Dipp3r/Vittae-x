@@ -381,16 +381,19 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #profile #profileDiv #profileBox {
   border-radius: 100%;
   background-color: #223F80;
-  padding: 2px;
+  width: 95px;
+  height: 95px;
   display: flex;
   flex-direction: none;
   justify-content: center;
   align-items: center;
 }
-#profile #profileDiv #profileBox #profilePageImg {
-  height: 118px;
-  width: 118px;
-  border-radius: 100%;
+#profile #profileDiv #profileBox #profileName {
+  margin: none;
+  color: white;
+  font-size: 33px;
+  font-family: "Montserrat";
+  font-weight: 600;
 }
 #profile #profileDiv #profileName {
   font-weight: 700;
