@@ -295,7 +295,8 @@ input[type=date]::-webkit-calendar-picker-indicator {
   position: relative;
   border-radius: 100%;
   background-color: #223F80;
-  padding: 2px;
+  height: 95px;
+  width: 95px;
   display: flex;
   flex-direction: none;
   justify-content: center;
@@ -313,10 +314,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: center;
 }
-#profileInfo #profileDiv #profileBox #profilePageImg {
-  width: 118px;
-  height: 118px;
-  border-radius: 100%;
+#profileInfo #profileDiv #profileBox #profileName {
+  margin: none;
+  color: white;
+  font-size: 33px;
+  font-family: "Montserrat";
+  font-weight: 600;
 }
 #profileInfo .inputField {
   width: 100%;

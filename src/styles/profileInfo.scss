@@ -41,7 +41,9 @@
             position:relative;
             border-radius:100%;
             background-color: #223F80;
-            padding:2px;
+            height:95px;
+            width:95px;
+            // padding:2px;
             @include flex(none,center,center);
             #edit{
                 width:29px;
@@ -53,12 +55,12 @@
                 @include flex(row,center,center);
                 
             }
-            #profilePageImg{
-                // display:none;
-                width:118px;
-                height:118px;
-                border-radius:100%;
-
+            #profileName{
+                margin:none;
+                color:white;
+                font-size: 33px;
+                font-family: 'Montserrat';
+                font-weight: 600;
             }
         }
     }

@@ -104,12 +104,16 @@
         #profileBox{
             border-radius:100%;
             background-color: #223F80;
-            padding:2px;
+            width:95px;
+            height: 95px;
+            // padding:2px;
             @include flex(none,center,center);
-            #profilePageImg{
-                height:118px;
-                width:118px;
-                border-radius:100%;
+            #profileName{
+                margin:none;
+                color:white;
+                font-size: 33px;
+                font-family: 'Montserrat';
+                font-weight: 600;
             }
         }
         
