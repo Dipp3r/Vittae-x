@@ -513,7 +513,7 @@ class CustomerView extends React.Component {
             <section id="Client">
                 <nav className="navbar">
                     <button className="profile" onClick={this.props.navigate} value="../profile">
-                    <p id="profileImg">{`${localStorage.getItem("first_name")[0].toUpperCase()}`}</p>
+                    <p id="profileName">{`${localStorage.getItem("first_name")[0].toUpperCase()}`}</p>
                     </button>
 
                     <div className="icons">
