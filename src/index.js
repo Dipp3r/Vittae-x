@@ -30,6 +30,7 @@ import Tasks from './dashboard/tasks';
 import ErrorComp from './error.js';
 
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import NotificationComp from './dashboard/notification.js';
 
 class IndexComp extends React.Component{
   constructor(props){
@@ -91,7 +92,7 @@ class IndexComp extends React.Component{
         <Route path='/dashboard' element = {<DashboardComp getItem={this.getItem} setItem={this.setItem}/>}/>
         <Route path='/incentive' element = {<IncentiveComp/>}/>
         <Route path='/renumeration' element = {<RenumerationComp />  }/>
-
+        <Route path='/notification' element={<NotificationComp/>}/>
 
         <Route path='/profile' element={<Profile getItem={this.getItem} setItem={this.setItem}  />}/>
         <Route path='/profileinfo' element={<ProfileInfo getItem={this.getItem} setItem={this.setItem}   />} /> 

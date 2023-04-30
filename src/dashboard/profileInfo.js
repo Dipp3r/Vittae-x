@@ -5,6 +5,7 @@ import arwDwn from "../images/arwDwn.png"
 import profile from "../images/profile.png";
 import subtract from "../images/Subtract.svg";
 import dateToString from "../dateToString"
+import bankList from "../banksList.json"
 class ProfileInfo extends React.Component{
     constructor(props){
         super(props)
@@ -36,6 +37,21 @@ class ProfileInfo extends React.Component{
   }
     save(){
       console.log('save clicked')
+      let bankInp = document.querySelector("#bankInp")
+      let banksList = document.querySelector("#banks").options
+      let isBankMatched = false
+      for (let bank of banksList){
+        if(bankInp.value == bank.value) {
+          isBankMatched = true
+          break;
+        }
+      }      
+      if(!isBankMatched){
+        bankInp.style.borderColor = "red"
+      }else{
+        bankInp.style.borderColor = "#b8b8b8"
+      }
+
       let data = {...this.state}
       delete data.phone
       delete data.email
@@ -110,8 +126,14 @@ class ProfileInfo extends React.Component{
               <input class="field" type="text" name="place_of_birth_name" value={this.state.place_of_birth_name} onChange={this.changeInVal}/>
           
               <p class="label">Bank name</p>
-              <input class="field updateInputField" name="bank_name" type="text" value={this.state.bank_name} onChange={this.changeInVal}/>
-          
+              <input id="bankInp" class="field updateInputField" list="banks" name="bank_name" type="text" value={this.state.bank_name} onChange={this.changeInVal} autocomplete="on"/>
+          <datalist id="banks">
+            {bankList.map((e)=>{
+              
+              return <option value={e} />
+            })}
+            
+            </datalist>
               <p class="label">Account number</p>
               <input class="field updateInputField" name="account_number" type="number" value={this.state.account_number} onChange={this.changeInVal}/>
           

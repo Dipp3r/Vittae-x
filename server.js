@@ -17,7 +17,6 @@ const pool = new Pool({
     database:"vittaex"
 });
 const port = 3000;
-// const cookieTime = 1000*60*60*24*10
 
 // //middleware
 app.use(cors());
@@ -53,6 +52,7 @@ app.post('/getNotesList',async(req,res)=>{
 app.post('/addNote',(req,res)=>{
     console.log(req.body)
     let data = req.body
+    data.date = new Date(data.date)
     try{
         let query = pool.query(`insert into notes (id,customer_id,broker_id,title,body,date) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${data.date}')`)
     }catch (err) {
@@ -88,7 +88,7 @@ app.post('/addtask',async (req,res)=>{
     console.log(req.body)
     let data = req.body
     try{
-        let query = await pool.query(`insert into tasks (id,customer_id,broker_id,title,body,date,completed,name) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${data.date}',false,'${data.name}')`)
+        let query = await pool.query(`insert into tasks (id,customer_id,broker_id,title,body,date,completed) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${data.date}',false)`)
         // console.log(query)
         query = await pool.query(`select id from customer where id = ${data.customer_id}`)
         console.log(query)
