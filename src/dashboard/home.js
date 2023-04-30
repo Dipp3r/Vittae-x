@@ -49,8 +49,10 @@ class HomeComp extends React.Component{
       let today = this.state.today
       let isDateIndexInc = false
       let dateIndex = 0
+      let isTaskPresent = false;
       // this.generateTasks([])
       for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt<= new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
+        isTaskPresent = false
         console.log(dt.getDate(),dt)
         dateDiv = document.createElement('div')
         dateDiv.className = 'date'
@@ -83,10 +85,10 @@ class HomeComp extends React.Component{
             // date.style.backgroundColor = '#a5b3cd'
             // date.style.color = 'white'
             dateDiv.name = dateIndex 
-            
             dateIndex+=1
             isDateIndexInc = true
             remainder.style.visibility = 'visible'
+            isTaskPresent = true
           }
         }
         if (dt.toDateString() == today.toDateString()){
@@ -102,17 +104,22 @@ class HomeComp extends React.Component{
             this.setState({lastSelectedDate:dt.getDate()},()=>{
               document.querySelectorAll(".date")[this.state.lastSelectedDate-1].scrollIntoView({ behavior: "smooth",inline:'center'})
             })
-            console.log(this.date,dateIndex,isDateIndexInc)
-            if(this.date == undefined){
-              this.generateTasks();
-            }else if(this.date.length == 0){
-              this.generateTasks();
-            }else if (isDateIndexInc){
-              console.log(this.date[dateIndex-1])
-              this.generateTasks(this.date[dateIndex-1].tasks)
+            console.log(this.date,dateIndex,isDateIndexInc,isTaskPresent)
+            if (isTaskPresent){
+              if(this.date == undefined){
+                this.generateTasks();
+              }else if(this.date.length == 0){
+                this.generateTasks();
+              }else if (isDateIndexInc){
+                console.log(this.date[dateIndex-1])
+                this.generateTasks(this.date[dateIndex-1].tasks)
+              }else{
+                this.generateTasks(this.date[dateIndex].tasks)
+              }
             }else{
-              this.generateTasks(this.date[dateIndex].tasks)
+              this.generateTasks()
             }
+            
           }
           }else if (dt.getDate() == this.state.lastSelectedDate){
           date.style.backgroundColor = '#223f80'
@@ -173,7 +180,9 @@ class HomeComp extends React.Component{
       container.id = 'nonEmpty'
 
       for (let j = 0;j< taskList.length;j++){
+        console.log(i)
         i = taskList[j]
+        if(i.completed) continue
         task = document.createElement('div')
         task.className = 'task'
 
@@ -228,6 +237,7 @@ class HomeComp extends React.Component{
         due.innerText = `Due in ${i.due} days`
         if (i.due == null) due.style.display = 'none'
         // task.appendChild(desc)
+        console.log(task)
         container.appendChild(task)
       }
       document.body.querySelector('#tasks').appendChild(container)
@@ -289,9 +299,10 @@ class HomeComp extends React.Component{
           let dateDiv = document.querySelectorAll(".date")[this.state.lastSelectedDate-1]
           dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
           if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
-        }else{
-          this.generateTasks()
         }
+        // else{
+        //   this.generateTasks()
+        // }
         })
       })
       .catch(()=>{
@@ -344,6 +355,7 @@ class HomeComp extends React.Component{
       }else{
         let dateDiv = document.querySelectorAll(".date")[this.state.lastSelectedDate-1]
         if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
+        this.componentDidMount()
       }
       // console.log(taskObj)
 

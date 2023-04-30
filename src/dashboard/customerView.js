@@ -108,7 +108,7 @@ class CustomerView extends React.Component {
         obj.id = Number.parseInt(`${this.state.customer.id}${this.state.customer.tasks.length}`)
          
         let customer = this.state.customer
-        customer.tasks.push(obj)
+        
         obj.date = date+"T"+time+"Z"
         obj.customer_id=this.state.customer.id
         obj.broker_id=localStorage.getItem("id")
@@ -123,7 +123,8 @@ class CustomerView extends React.Component {
                 "Content-type": "application/json; charset=UTF-8",
             }
         })
-
+        obj.date = new Date(date+"T"+time)
+        customer.tasks.push(obj)
 
         this.setState({customer:customer},()=>{
             this.generateTasks(this.state.customer.tasks)
@@ -617,8 +618,8 @@ class CustomerView extends React.Component {
                             
                             <p id="designation">{this.state.customer.designation}</p>
                             <div id="statusDiv">
-                            <p id="statusDot">.</p>
-                            <p id="statusTxt">{this.state.customer.status}</p>
+                            {/* <p id="statusDot">.</p>
+                            <p id="statusTxt">{this.state.customer.status}</p> */}
                             </div>
                         </div>
                         </div>

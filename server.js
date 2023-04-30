@@ -100,43 +100,47 @@ app.post('/addtask',async (req,res)=>{
     }
     res.send()
 })
-app.post("/completeTask",(req,res)=>{
+app.post("/completeTask",async (req,res)=>{
     console.log(req.body)
     let data = req.body
+    data.id = Number.parseInt(data.id)
+    data.broker_id = Number.parseInt(data.broker_id)
     try{
-        let query = pool.query(`UPDATE tasks SET completed = true, outcome = '${data.outcome}' WHERE id = ${data.id} and broker_id =${data.broker_id}`)
+        let query = await pool.query(`UPDATE tasks SET completed = true, outcome = '${data.outcome}' WHERE id = ${data.id} and broker_id =${data.broker_id};`)
+        console.log(query)
     }catch(err){
         console.log(err)
     }
     res.end()
 })
-app.post("/snoozeTask",(req,res)=>{
+app.post("/snoozeTask",async(req,res)=>{
     console.log(req.body)
     let data = req.body
+    
     try{
-        let query = pool.query(`UPDATE tasks SET date = '${data.date}' WHERE id = ${data.id} and broker_id =${data.broker_id}`)
+        let query = await pool.query(`UPDATE tasks SET date = '${data.date}' WHERE id = ${data.id} and broker_id =${data.broker_id};`)
+        console.log(query)
     }catch(err){
         console.log(err)
     }
     res.end()
 })
 app.post("/getTasksForMonth",async (req,res)=>{
-    console.log(req.body)
     let data = req.body
     try{
-        let tasks = await pool.query(`SELECT * FROM tasks inner join customer on tasks.customer_id = customer.id WHERE not tasks.completed and tasks.broker_id = ${data.broker_id} and tasks.date BETWEEN DATE_TRUNC('month', '${data.date}'::timestamp) AND DATE_TRUNC('month', '${data.date}'::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond' `)
+        let tasks = await pool.query(`SELECT tasks.*,customer.name as name FROM tasks inner join customer on tasks.customer_id = customer.id WHERE not tasks.completed and tasks.broker_id = ${data.broker_id} and tasks.date BETWEEN DATE_TRUNC('month', '${data.date}'::timestamp) AND DATE_TRUNC('month', '${data.date}'::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond' and not completed`)
         let [day,month,year] = data.date.split("-");
         data.date = new Date(`${year}-${month}-${day}`)
         let tempdata = tasks.rows
         let maxLength = tempdata.length
         let arr = []
-        for(let dt = new Date(data.date.getFullYear(),data.date.getMonth(),1);dt< new Date(data.date.getFullYear(),data.date.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
+        for(let dt = new Date(data.date.getFullYear(),data.date.getMonth(),1);dt<= new Date(data.date.getFullYear(),data.date.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
             let obj = {}
             obj.date = new Date(dt)
             obj.tasks = []
             for(let i = 0;i<maxLength;i++){
+                console.log(tempdata[i].id)
                 let date2 = new Date(tempdata[i].date)
-                console.log(dt,date2)
                 if(dt.getDate() == date2.getDate() && dt.getMonth() == date2.getMonth() && dt.getFullYear() == date2.getFullYear()){
                     obj.date = `${dt.getFullYear()}-${dt.getMonth()+1}-${dt.getDate()}`
                     tempdata[i].due = Math.ceil((new Date() - date2)/(1000 * 60 * 60 * 24))-1
@@ -146,7 +150,6 @@ app.post("/getTasksForMonth",async (req,res)=>{
                     // maxLength-=1
                 }
             }
-            console.log(obj)
             if (obj.tasks.length > 0) arr.push({...obj})
         }
         res.send(arr)
