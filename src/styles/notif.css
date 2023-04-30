@@ -252,64 +252,58 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-width: thin;
 }
 
-#terms #mainBox {
+#notifPg {
+  width: 100vw;
   font-family: "Montserrat";
+  padding-top: 0px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: hsla(0, 0%, 75%, 0.3);
-  height: 90%;
-  overflow: hidden;
-  overflow-y: scroll;
-  width: 90%;
-  border-radius: 16px;
 }
-#terms #mainBox .c4 {
+#notifPg #navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  color: #595959;
+  border-bottom: 2px solid rgba(34, 63, 128, 0.6980392157);
+}
+#notifPg #navbar p {
+  margin: 14px;
+}
+#notifPg #main {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: rgb(66, 66, 66);
-  font-size: 20px;
-  font-weight: 600;
 }
-#terms #mainBox hr {
+#notifPg #main .notifCard {
   width: 100%;
-  border: 1px solid rgba(146, 146, 146, 0.7);
-  margin-bottom: 20px;
+  height: 94px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  background: rgba(34, 63, 128, 0.7);
+  color: #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#terms #mainBox #content {
-  padding: 10px;
+#notifPg #main .notifCard:hover {
+  color: #223F80;
+  background: rgba(34, 63, 128, 0.1);
+  border-bottom: 2px solid rgba(34, 63, 128, 0.5);
 }
-#terms #mainBox #content .sub_head {
-  text-decoration: underline;
-  font-weight: 600;
-  font-size: 14px;
-}
-#terms #mainBox #content p, #terms #mainBox #content ul {
-  margin: 0px;
-  color: rgb(72, 72, 72);
-}
-#terms #mainBox #content p .number, #terms #mainBox #content ul .number {
-  margin-left: 5px;
-  font-size: 13px;
-  font-weight: 500;
-}
-#terms #mainBox #content .c1, #terms #mainBox #content .c2 {
-  margin: 5px;
-  font-size: 12px;
-  font-weight: 450;
-}
-#terms #mainBox #content .c1 {
-  width: 100%;
-}
-#terms #mainBox #content .title {
-  width: 100%;
-  text-align: start;
-  margin: 8px 0px;
-  text-align: start;
-  font-size: 14px;
-  font-weight: 600;
-}/*# sourceMappingURL=terms.css.map */
+#notifPg #main .read {
+  color: #223F80;
+  background: rgba(34, 63, 128, 0.1);
+  border-bottom: 2px solid rgba(34, 63, 128, 0.5);
+}/*# sourceMappingURL=notif.css.map */

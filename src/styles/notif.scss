@@ -1,0 +1,46 @@
+@import "main";
+
+#notifPg{
+    width:100vw;
+    font-family: 'Montserrat';
+    padding-top:0px;
+    @include flex(column,flex-start,center);
+    #navbar{
+        @include flex(row,center,center);
+        width:100%;
+        font-style: normal; 
+        font-weight: 600;
+        font-size: 18px;
+        color: #595959;
+        border-bottom: 2px solid #223F80B2;
+        p{
+            margin:14px;
+        }
+    }
+    #main{
+        width:100%;
+        @include flex(column,center,center);
+        .notifCard{
+            width:100%;
+            height: 94px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            background: rgba(34, 63, 128, 0.7);
+            color: #FFFFFF;
+            border-bottom: 2px solid #FFFFFF;
+            @include flex(column,center,center);
+            &:hover{
+                color: #223F80;
+                background: rgba(34, 63, 128, 0.1);
+                border-bottom: 2px solid rgba(34, 63, 128, 0.5); 
+            }
+        }
+        .read{
+            color: #223F80;
+            background: rgba(34, 63, 128, 0.1);
+            border-bottom: 2px solid rgba(34, 63, 128, 0.5);
+        }
+    }
+
+}

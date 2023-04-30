@@ -252,64 +252,59 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-width: thin;
 }
 
-#terms #mainBox {
-  font-family: "Montserrat";
+#incentivePg {
+  padding-top: 40px;
+}
+#incentivePg #main {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+#incentivePg #main .incentiveCard {
+  width: 150px;
+  height: 200px;
+  background: #D9D9D9;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  background-color: hsla(0, 0%, 75%, 0.3);
-  height: 90%;
-  overflow: hidden;
-  overflow-y: scroll;
-  width: 90%;
-  border-radius: 16px;
+  margin: 12.5px;
 }
-#terms #mainBox .c4 {
+#incentivePg #main .incentiveCard:hover {
+  transform: scale(1.07);
+  transition: all 0.5s;
+  transform: smooth;
+}
+#incentivePg #main .incentiveCard .imgBox {
+  height: 77%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: rgb(66, 66, 66);
-  font-size: 20px;
-  font-weight: 600;
 }
-#terms #mainBox hr {
+#incentivePg #main .incentiveCard .imgBox img {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   width: 100%;
-  border: 1px solid rgba(146, 146, 146, 0.7);
-  margin-bottom: 20px;
+  height: 100%;
 }
-#terms #mainBox #content {
-  padding: 10px;
-}
-#terms #mainBox #content .sub_head {
-  text-decoration: underline;
+#incentivePg #main .incentiveCard .unlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat";
+  opacity: 0.9;
+  height: 60px;
+  width: 100%;
   font-weight: 600;
-  font-size: 14px;
+  color: white;
+  background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
-#terms #mainBox #content p, #terms #mainBox #content ul {
+#incentivePg #main .incentiveCard .unlock p {
   margin: 0px;
-  color: rgb(72, 72, 72);
-}
-#terms #mainBox #content p .number, #terms #mainBox #content ul .number {
-  margin-left: 5px;
-  font-size: 13px;
-  font-weight: 500;
-}
-#terms #mainBox #content .c1, #terms #mainBox #content .c2 {
-  margin: 5px;
-  font-size: 12px;
-  font-weight: 450;
-}
-#terms #mainBox #content .c1 {
-  width: 100%;
-}
-#terms #mainBox #content .title {
-  width: 100%;
-  text-align: start;
-  margin: 8px 0px;
-  text-align: start;
-  font-size: 14px;
-  font-weight: 600;
-}/*# sourceMappingURL=terms.css.map */
+}/*# sourceMappingURL=incentive.css.map */
