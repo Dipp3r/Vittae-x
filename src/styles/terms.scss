@@ -2,7 +2,6 @@
 
 
 #terms{
-    padding-top:50px 25px;
     #mainBox{
         font-family: 'Montserrat';
         @include flex(column,flex-start,center);
@@ -10,50 +9,56 @@
         height: 90%;
         overflow: hidden;
         overflow-y: scroll;
-        width: 80%;
-        padding: 10px;
+        width: 90%;
         border-radius: 16px;
-        .sub_head{
-            text-decoration: underline;
-            font-weight: 600;
-            font-size:14px;
-        }
-        p,ul{
-            .number{
-                margin-left:5px;
-                font-size:13px;
-                font-weight:500;
-            }
-            margin:0px;
-            color:rgb(72, 72, 72);
-        }
         .c4{
-            margin-top:20px;
+            width:100%;
+            @include flex(column,center,center);
+            color: rgb(66, 66, 66);
             font-size: 20px;
             font-weight: 600;
         }
         hr{
             width:100%;
-            border:0.8px solid rgb(137, 137, 137);
+            border:1px solid rgba(146, 146, 146, 0.7);
             margin-bottom:20px;
         }
-        .c1,.c2{
-            margin:5px;
-            font-size: 12px;
-            font-weight: 450;
+        #content{
+            padding: 10px;
+            .sub_head{
+                text-decoration: underline;
+                font-weight: 600;
+                font-size:14px;
+            }
+            p,ul{
+                .number{
+                    margin-left:5px;
+                    font-size:13px;
+                    font-weight:500;
+                }
+                margin:0px;
+                color:rgb(72, 72, 72);
+            }
+            
+            .c1,.c2{
+                margin:5px;
+                font-size: 12px;
+                font-weight: 450;
+            }
+            .c1{
+                width:100%;
+            }
+            .title{
+                width:100%;
+                text-align:start;
+                margin:8px 0px;
+                text-align: start;
+                font-size: 14px;
+                font-weight: 600;
+    
+            }
         }
-        .c1{
-            width:100%;
-        }
-        .title{
-            width:100%;
-            text-align:start;
-            margin:8px 0px;
-            text-align: start;
-            font-size: 14px;
-            font-weight: 600;
-
-        }
+        
        
     }
 }

@@ -252,9 +252,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-width: thin;
 }
 
-#terms {
-  padding-top: 50px 25px;
-}
 #terms #mainBox {
   font-family: "Montserrat";
   display: flex;
@@ -265,43 +262,50 @@ input[type=date]::-webkit-calendar-picker-indicator {
   height: 90%;
   overflow: hidden;
   overflow-y: scroll;
-  width: 80%;
-  padding: 10px;
+  width: 90%;
   border-radius: 16px;
 }
-#terms #mainBox .sub_head {
-  text-decoration: underline;
-  font-weight: 600;
-  font-size: 14px;
-}
-#terms #mainBox p, #terms #mainBox ul {
-  margin: 0px;
-  color: rgb(72, 72, 72);
-}
-#terms #mainBox p .number, #terms #mainBox ul .number {
-  margin-left: 5px;
-  font-size: 13px;
-  font-weight: 500;
-}
 #terms #mainBox .c4 {
-  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(66, 66, 66);
   font-size: 20px;
   font-weight: 600;
 }
 #terms #mainBox hr {
   width: 100%;
-  border: 0.8px solid rgb(137, 137, 137);
+  border: 1px solid rgba(146, 146, 146, 0.7);
   margin-bottom: 20px;
 }
-#terms #mainBox .c1, #terms #mainBox .c2 {
+#terms #mainBox #content {
+  padding: 10px;
+}
+#terms #mainBox #content .sub_head {
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 14px;
+}
+#terms #mainBox #content p, #terms #mainBox #content ul {
+  margin: 0px;
+  color: rgb(72, 72, 72);
+}
+#terms #mainBox #content p .number, #terms #mainBox #content ul .number {
+  margin-left: 5px;
+  font-size: 13px;
+  font-weight: 500;
+}
+#terms #mainBox #content .c1, #terms #mainBox #content .c2 {
   margin: 5px;
   font-size: 12px;
   font-weight: 450;
 }
-#terms #mainBox .c1 {
+#terms #mainBox #content .c1 {
   width: 100%;
 }
-#terms #mainBox .title {
+#terms #mainBox #content .title {
   width: 100%;
   text-align: start;
   margin: 8px 0px;
