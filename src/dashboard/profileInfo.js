@@ -69,7 +69,9 @@ class ProfileInfo extends React.Component{
         if(response.status == 200){
           localStorage.setItem("first_name",data.first_name)
           localStorage.setItem("last_name",data.last_name)
+          this.props.navigate("../profile")
         }
+
       })
     }
     componentDidMount(){

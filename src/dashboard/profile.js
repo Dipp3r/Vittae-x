@@ -18,7 +18,7 @@ class Profile extends React.Component{
     }
     logOutAcc(){
       console.log('logOutAcc clicked')
-      localStorage.clear()
+      
       this.props.setItem({id:undefined,token:undefined},()=>{
         this.props.navigate("../login")
       })
