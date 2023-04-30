@@ -36,3 +36,5 @@
     date timestamp without time zone,
     PRIMARY KEY (id)
 );</code><br/>
+
+bankList from  https://m.rbi.org.in/scripts/bs_viewcontent.aspx?Id=3657

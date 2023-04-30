@@ -50,8 +50,8 @@ class HomeComp extends React.Component{
       let isDateIndexInc = false
       let dateIndex = 0
       // this.generateTasks([])
-      for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt< new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
-
+      for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt<= new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
+        console.log(dt.getDate(),dt)
         dateDiv = document.createElement('div')
         dateDiv.className = 'date'
         dateDiv.name = -1
