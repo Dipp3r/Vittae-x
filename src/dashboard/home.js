@@ -269,14 +269,18 @@ class HomeComp extends React.Component{
       currentTask.completed = true
       currentTask.outcome = outcome 
       this.setState({customer:customer})
-      this.generateTasks(currentDate.tasks)
-      this.toggleCompletedTaskMenu()
+      
+      
       fetch("/completeTask",{
           method:'post',
           body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
               "Content-type": "application/json; charset=UTF-8",
           }
+      })
+      .then(()=>{
+        this.toggleCompletedTaskMenu()
+        this.componentDidMount()
       })
     }
     componentDidMount(){

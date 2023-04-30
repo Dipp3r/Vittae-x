@@ -363,7 +363,7 @@ class CustomerView extends React.Component {
                     broker_id:localStorage.getItem("id"),
                     title:noteTitle.value,
                     body:noteBody.value,
-                    date: dateToString(new Date()).replace(/ /g,"-")}      
+                    date: new Date().toISOString()}      
                 customer.notes.push(data)
                 this.setState({customer:customer})
                 this.generateNotes(this.state.customer.notes)

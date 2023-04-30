@@ -52,9 +52,9 @@ app.post('/getNotesList',async(req,res)=>{
 app.post('/addNote',(req,res)=>{
     console.log(req.body)
     let data = req.body
-    data.date = new Date(data.date)
+    const date = new Date(data.date).toUTCString();
     try{
-        let query = pool.query(`insert into notes (id,customer_id,broker_id,title,body,date) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${data.date}')`)
+        let query = pool.query(`insert into notes (id,customer_id,broker_id,title,body,date) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${date}')`);
     }catch (err) {
         console.error(err.message);
     }
@@ -165,7 +165,7 @@ app.post("/getTasksALL",async (req,res)=>{
         obj.upComing = []
         obj.completed = []
     try{
-        let tasks = await pool.query(`SELECT * FROM tasks inner join customer on tasks.customer_id = customer.id WHERE tasks.broker_id = ${data.broker_id}`)
+        let tasks = await pool.query(`SELECT tasks.*,customer.name FROM tasks inner join customer on tasks.customer_id = customer.id WHERE tasks.broker_id = ${data.broker_id}`)
         let dt = new Date()
         let tempdata = tasks.rows
         
