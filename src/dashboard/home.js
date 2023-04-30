@@ -53,7 +53,7 @@ class HomeComp extends React.Component{
       // this.generateTasks([])
       for(let dt = new Date(today.getFullYear(),today.getMonth(),1);dt<= new Date(today.getFullYear(),today.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
         isTaskPresent = false
-        console.log(dt.getDate(),dt)
+        // console.log(dt.getDate(),dt)
         dateDiv = document.createElement('div')
         dateDiv.className = 'date'
         dateDiv.name = -1
@@ -359,12 +359,13 @@ class HomeComp extends React.Component{
       }else{
         let dateDiv = document.querySelectorAll(".date")[this.state.lastSelectedDate-1]
         if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
-        this.componentDidMount()
       }
       // console.log(taskObj)
 
       display = display == "flex"?"none":"flex"
-      this.setState({snoozeTaskMenu:display,currentTask:taskObj})
+      this.setState({snoozeTaskMenu:display,currentTask:taskObj},()=>{
+        this.componentDidMount()
+      })
     }
     render(){
       

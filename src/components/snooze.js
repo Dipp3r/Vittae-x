@@ -29,8 +29,8 @@ class SnoozeMenu extends React.Component{
             headers: {
               "Content-type": "application/json; charset=UTF-8",
             }
-          })
-        this.props.toggleSnoozeTaskMenu();
+        })
+        .then(this.props.toggleSnoozeTaskMenu)
     }
     changeInDate(e){
         let value = e.currentTarget.value 
