@@ -105,6 +105,9 @@ class LoginComp extends React.Component{
           this.props.navigate("../dashboard")
         })
     }
+    componentDidMount(){
+      localStorage.clear()
+    }
     render(){
 
 

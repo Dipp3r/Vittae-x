@@ -88,7 +88,7 @@ class MonthlyView extends React.Component {
         let tasksList = this.state.tasksList
         
         //generating dates
-        for(let dt = new Date(currentDate.getFullYear(),currentDate.getMonth(),1);dt< new Date(currentDate.getFullYear(),currentDate.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
+        for(let dt = new Date(currentDate.getFullYear(),currentDate.getMonth(),1);dt<= new Date(currentDate.getFullYear(),currentDate.getMonth()+1,0);dt.setDate(dt.getDate()+1)){
             button = document.createElement("button")
             if(dt.toDateString() === this.state.currentDate.toDateString()) button.className = "today"
             button.className = null
@@ -120,17 +120,22 @@ class MonthlyView extends React.Component {
     }
     selectDate(e){
         let target = e?e.currentTarget:document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1];
+        console.log(target,this.state.selectedDate-1,document.querySelector("#datesContainer").childNodes)
         let value = Number.parseInt(target.getAttribute("value"))
         let prevTarget = document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1]
         // console.log(new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString(),this.state.currentDate.toDateString(),new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == this.state.currentDate.toDateString())
-        if (new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == new Date().toDateString()){
-            prevTarget.style.color = "white"
-            prevTarget.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
-            prevTarget.style.fontWeight = "600"
-        }else{
-            prevTarget.style.color = null
-            prevTarget.style.backgroundColor = null
-            prevTarget.style.fontWeight = null
+        console.log(prevTarget)
+        // console.log(prevTarget.querySelector("i").innerText,document.querySelector("#month_name"))
+        if (prevTarget){
+            if(new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == new Date().toDateString()){
+                prevTarget.style.color = "white"
+                prevTarget.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
+                prevTarget.style.fontWeight = "600"
+            }else{
+                prevTarget.style.color = null
+                prevTarget.style.backgroundColor = null
+                prevTarget.style.fontWeight = null
+            }   
         }
         target.style.color = "white"
         target.style.backgroundColor = "#223F80"
