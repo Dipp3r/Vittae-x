@@ -239,10 +239,10 @@ class ContactsComp extends React.Component {
           newCustomerList = newCustomerList.sort((a,b)=>{return new Date(a.created_at).getTime()-new Date(b.created_at).getTime()})
           break;
         case 'nameDesc':
-          newCustomerList = newCustomerList.sort((a,b)=>{return (b.fist_name+" "+b.last_name).localeCompare((a.fist_name+" "+a.last_name))})
+          newCustomerList = newCustomerList.sort((a,b)=>{return (b.first_name+" "+b.last_name).localeCompare((a.first_name+" "+a.last_name))})
           break;
         case 'nameAsce':
-          newCustomerList = newCustomerList.sort((a,b)=>{return (a.fist_name+" "+a.last_name).localeCompare((b.fist_name+" "+b.last_name))})
+          newCustomerList = newCustomerList.sort((a,b)=>{return (a.first_name+" "+a.last_name).localeCompare((b.first_name+" "+b.last_name))})
           break;  
       }
       //filter by tag
