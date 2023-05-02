@@ -51,6 +51,7 @@ class CustomerView extends React.Component {
             kyc_completed:false,
             created_at:"",
             date_of_birth:'',
+            occupation:"",
             tasks:[],
             notes:[]
            },
@@ -459,7 +460,19 @@ class CustomerView extends React.Component {
           })
           .then(response=>{return response.json()})
           .then(async data=>{
-
+            if(!data.is_vittae_app_user){
+                data.statusText = "Didn't install vittae app"
+                data.statusBackgroundColor = '#C4C4C4'
+              }else if (!(data.is_kyc_processing||data.is_kyc_completed)){
+                data.statusText = "Didn't start KYC"
+                data.statusBackgroundColor = '#DA6B6B'
+              }else if (data.is_kyc_processing){
+                data.statusText = "KYC in process"
+                data.statusBackgroundColor = '#DAC16B'
+              }else if(data.is_kyc_completed){
+                data.statusText = "KYC done"
+                data.statusBackgroundColor = '#6BDA7D'
+              }
             //getting notes tasks
             data.notes = await fetch("getNotesList",{
                 method:'POST',
@@ -565,7 +578,7 @@ class CustomerView extends React.Component {
                         </div>
                         
                         <p className="label">Occupation</p>
-                        <input id="newCusDOB"  type="text" className="field inputField"  name='occupation' />
+                        <input id="newCusDOB"  type="text" className="field inputField"  name='occupation' defaultValue={this.state.customer.occupation} />
                         
 
                         <p className="label">Date of Birth</p>
@@ -616,10 +629,10 @@ class CustomerView extends React.Component {
                             </button>
                             </div>
                             
-                            <p id="designation">{this.state.customer.designation}</p>
+                            <p id="designation">{this.state.customer.occupation.length <15?this.state.customer.occupation:this.state.customer.occupation.splice(12)}</p>
                             <div id="statusDiv">
-                            {/* <p id="statusDot">.</p>
-                            <p id="statusTxt">{this.state.customer.status}</p> */}
+                            <p id="statusDot" style={{"color":this.state.customer.statusBackgroundColor}}>.</p>
+                            <p id="statusTxt" style={{"color":this.state.customer.statusBackgroundColor}}>{this.state.customer.statusText}</p>
                             </div>
                         </div>
                         </div>
