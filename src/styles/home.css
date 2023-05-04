@@ -349,7 +349,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   background-color: white;
 }
 #dashboard #main #perks #perk p {
-  margin-top: 0px;
+  margin: 0px;
   width: 147px;
   font-family: "Montserrat";
   font-style: normal;
