@@ -94,14 +94,10 @@
 
     .scrolling-wrapperY{
         width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow-y: scroll;
+        @include flex(column,flex-start,center);
         overflow-x: hidden;
         white-space: nowrap;
-        padding: 100px 5px 150px 5px;
-        flex-direction: column;
+        padding: 10px 5px 150px 5px;
         height:calc(100% - 120px);
         .cards {
             height: 50px;

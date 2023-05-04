@@ -362,13 +362,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #contactMain .scrolling-wrapperY {
   width: 100vw;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  overflow-y: scroll;
   overflow-x: hidden;
   white-space: nowrap;
-  padding: 100px 5px 150px 5px;
-  flex-direction: column;
+  padding: 10px 5px 150px 5px;
   height: calc(100% - 120px);
 }
 #contactMain .scrolling-wrapperY .cards {
