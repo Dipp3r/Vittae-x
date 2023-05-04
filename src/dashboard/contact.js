@@ -130,27 +130,28 @@ class ContactsComp extends React.Component {
         
 
         customerList.map(i=>{
-            if(i.is_purchased){
-              i.status = 3//active
+            if(!i.is_vittae_app_user){
+              i.status = 1
+            }else if (!(i.is_kyc_processing||i.is_kyc_completed)){
+              i.status = 2
+            }else if (i.is_kyc_processing){
+              i.status = 3
             }else if(i.is_kyc_completed){
-              i.status = 4//inactive
-            }else if(i.is_kyc_processing){
-              i.status = 2//processing
-            }else{
-              i.status = 1//started
+              i.status = 4
             }
+            
             switch (i.status) {
               case 1:
                 statusBackgroundColor = '#C4C4C4'
                 break;
               case 2:
-                statusBackgroundColor = '#DAC16B'
+                statusBackgroundColor = '#DA6B6B'
                 break;
               case 3:
-                statusBackgroundColor = '#6BDA7D'
+                statusBackgroundColor = '#DAC16B'
                 break;
               case 4:
-                statusBackgroundColor = '#DA6B6B'
+                statusBackgroundColor = '#6BDA7D'
                 break;
               default:
                 statusBackgroundColor = '#C4C4C4'
@@ -226,7 +227,19 @@ class ContactsComp extends React.Component {
       if(newCustomerList== undefined) return this.displayCustomer([])
       let filterProps = this.state.filterProps
       if(filterProps.status != '0'){
-        newCustomerList = newCustomerList.filter((element)=>{return element.kyc_type == Number.parseInt(filterProps.status)})
+        newCustomerList = newCustomerList.filter((element)=>{
+          filterProps.status = Number.parseInt(filterProps.status)
+          switch(filterProps.status){
+            case 1:
+              return !element.is_vittae_app_user
+            case 2:
+              return !(element.is_kyc_processing||element.is_kyc_completed)
+            case 3:
+              return element.is_kyc_processing
+            case 4:
+              return element.is_kyc_completed
+          }
+        })
       }
       
       
@@ -428,9 +441,9 @@ class ContactsComp extends React.Component {
             <div id="statusBar">
                 <div id="statusButton">
                   <button className="statusButton" value='0'  onClick={this.setFilterPropStatus}  >ALL</button>
-                  <button className="statusButton" value='3'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
-                  <button className="statusButton" value='2'  onClick={this.setFilterPropStatus}  >PENDING</button>
-                  <button className="statusButton" value='4 '  onClick={this.setFilterPropStatus}  >INACTIVE</button>
+                  <button className="statusButton" value='4'  onClick={this.setFilterPropStatus}  >ACTIVE</button>
+                  <button className="statusButton" value='3'  onClick={this.setFilterPropStatus}  >PENDING</button>
+                  <button className="statusButton" value='2'  onClick={this.setFilterPropStatus}  >INACTIVE</button>
                 </div>
             
               </div>
