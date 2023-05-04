@@ -347,6 +347,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 #monthly_view .calendar .dates button {
   cursor: pointer;
+  padding: 5px;
   outline: 0;
   border: 0;
   background: transparent;
