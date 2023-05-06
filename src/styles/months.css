@@ -609,4 +609,9 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-weight: 500;
   font-size: 14px;
   color: #929292;
+}
+
+i {
+  font-style: normal;
+  font-family: "Montserrat";
 }/*# sourceMappingURL=months.css.map */
