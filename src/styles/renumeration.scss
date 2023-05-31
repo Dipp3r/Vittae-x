@@ -1,0 +1,117 @@
+@import 'main';
+
+#renumerationPg{
+    padding:0px;
+    background: #E4E4E4;
+    font-family: 'Montserrat';
+    font-style: normal;
+    @include flex(column,flex-start,center);
+    #nav{
+        margin-bottom:45px;
+        width: 100vw;
+        height: 54px;
+        background: #223F80;
+        @include flex(row,space-between,center);
+        img{
+            margin-left: 10px;
+        }
+        div{
+            width:100%;
+            margin-right:25px;
+            #title{
+                @include flex(row,center,center);
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 15px;
+                color: #FFFFFF;
+            }
+        }
+    }
+    #main{
+        @include flex(column,center,center);
+        width:100vw;
+        .renuCard{
+            position:relative;
+            @include flex(column,flex-start,center);
+            width: 356px;
+            height: 216px;
+            background: #FFFFFF;
+            box-shadow: 0px 0px 11px 3px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            .firstPortion{
+                @include flex(column,center,center);
+                width: 310px;
+                padding:10px;
+                border-bottom: 1px solid #D7D7D7;
+            }
+            .secondPortion{
+                width:100%;
+                @include flex(row,space-around,center);
+                .c1{
+                    @include flex(column,flex-start,center);
+                    width:105px;
+                    border-bottom:1px solid #D7D7D7;
+                    .commission{
+                        margin:0px;
+                        margin-bottom:13px;
+                        font-weight: 500;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .greyThin{
+                font-weight: 500;
+                font-size: 12px;
+                color: #8A8A8A;
+            }
+            .amount{
+                margin:0px;
+                font-weight: 600;
+                font-size: 25px;
+                color: #000000;
+            }
+            .info{
+                @include flex(column,center,center);
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 500;
+                bottom:20px;
+                font-size: 12px;
+                color: #2F2F2F;
+                position:absolute;
+                width: 153px;
+                height: 60px;
+                padding:8px;
+                background: #FFFFFF;
+                box-shadow: 0px 1px 16px rgba(0, 0, 0, 0.08);
+                border-radius: 4px;
+                p{
+                    margin:0px;
+                }
+            }
+            .info1{
+                display:none;
+                left:14px;
+            }
+            .info2{
+                // display:none;
+                right:14px;
+            }
+        }
+        #note{
+            width:314px;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            color: #676767;
+        }
+        
+    }
+    .row{
+        text-align: center;
+        justify-content: center;
+        @include flex(row,center,center);
+    }
+}

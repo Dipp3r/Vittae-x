@@ -1,372 +1,417 @@
-@import 'main';
-    #contactMain{
-        @include flex(column,flex-start,center);
-        overflow: hidden;
-        padding: 0px 10px;
-        height: 100%;
+@import "main";
+#contactMain {
+    @include flex(column, flex-start, center);
+    overflow: hidden;
+    padding: 0px 10px;
+    height: 100%;
+    #statusBar {
+        width: 100vw;
+        background-color: transparent;
+        height: 40px;
+        @include flex(row, space-evenly, center);
+        #statusButton {
+            width: 100%;
+            font-family: "Montserrat";
+            font-style: normal;
+            line-height: 15px;
+            align-items: flex-end;
+            color: #6d7593;
+            @include flex(row, flex-start, center);
 
-        #statusBar{
-            width:100vw;
-            background-color: transparent;
-            height:40px;
-            @include flex(row,space-evenly,center);
-            #statusButton{
-                width:100%;
-                font-family: 'Montserrat';
+            .statusButton {
+                // margin-top:10px;
+                font-family: "Montserrat";
                 font-style: normal;
-                
-                line-height: 15px;
-                align-items: flex-end;
-                color: #6D7593;
-                @include flex(row,flex-start,center);
-    
-                .statusButton{
-                    // margin-top:10px;
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 12px;
-                    color: rgba(109, 117, 147, 1);
-                    width:33.333%;
-                    height:32px;
-                    text-align: center;
-                    border-bottom:2px solid  rgba(109, 117, 147, 1);
-                }
-                // .statusButton:focus{
-                //     color: #223F80;
-                //     border-bottom:1px solid  #223F80;
-                // }
+                font-weight: 500;
+                font-size: 12px;
+                color: rgba(109, 117, 147, 1);
+                width: 33.333%;
+                height: 32px;
+                text-align: center;
+                border-bottom: 2px solid rgba(109, 117, 147, 1);
             }
+            // .statusButton:focus{
+            //     color: #223F80;
+            //     border-bottom:1px solid  #223F80;
+            // }
         }
-    #statusBarEdge{
-        width:100vw;
-        margin:0px;
+    }
+    #statusBarEdge {
+        width: 100vw;
+        margin: 0px;
         border: 0.5px solid rgba(37, 53, 100, 0.4);
     }
 
-    #searchBarDiv{
-        @include flex(row,center,center);
-        width:100vw;
-        height:80px;
-        #searchBar{
-            width:80%;
+    #searchBarDiv {
+        @include flex(row, center, center);
+        width: 100vw;
+        height: 80px;
+        #searchBar {
+            width: 80%;
             height: 40px;
-            margin:30px 10px;
-            @include flex(row,space-between,center);
+            margin: 30px 10px;
+            @include flex(row, space-between, center);
             background: rgba(109, 117, 147, 0.22);
             border-radius: 9px;
-            #icon{
-                margin:5px;
+            #icon {
+                margin: 5px;
             }
-            #searchField{
+            #searchField {
                 width: 100%;
                 background-color: transparent;
                 border: none;
-                color: #6D7593;
-                margin-right:10px;
+                color: #6d7593;
+                margin-right: 10px;
             }
         }
     }
 
-    #labelBar{
-        width:100vw;
+    #labelBar {
+        width: 100vw;
         background: rgba(34, 63, 128, 0.13);
-        height:40px;
-        border:none;
-        @include flex(row,space-evenly,center);
-        #labels{
-            width:100%;
-            font-family: 'Montserrat';
+        height: 40px;
+        border: none;
+        @include flex(row, space-evenly, center);
+        #labels {
+            width: 100%;
+            font-family: "Montserrat";
             font-style: normal;
-            color: #6D7593;
-            @include flex(row,center,center);
-            .label{
-                color:white;
-                width:25%;
-                height:40px;
-                font-weight:500;
+            color: #6d7593;
+            @include flex(row, center, center);
+            .label {
+                color: #223f80;
+                width: 25%;
+                height: 40px;
+                font-weight: 500;
                 font-size: 12px;
                 line-height: 15px;
-                @include flex(none,center,center);
+                @include flex(none, center, center);
             }
         }
     }
 
-    .scrolling-wrapperY{
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        white-space: nowrap;
-        padding: 100px 5px 150px 5px;
-        flex-direction: column;
-        height:calc(100% - 120px);
-        .cards {
-            height: 50px;
+    .scrolling-wrapperY {
+        #infoCard{
+            @include flex(column,flex-start,center);
+            position: absolute;
+            padding:17px;
+            top:10px;
+            right:20px;
+            width: 246px;
+            height: 150px;
             background: #FFFFFF;
-            box-shadow: 0px 4px 1px -2px rgba(0, 0, 0, 0.20);
-            border-radius: 8px;
-            margin-top:10px;
-            width: 97%;
-            font-family: 'Montserrat';
-            font-style: normal;
-            padding: 15px 5px;
-            .details{
-                height:100%;
-                width: 100%;
-                @include flex(row,space-around,center);
-                .info{
-                    height: 100%;
-                    width: 65px;
+            box-shadow: 0px 1px 16px -1px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+            .infoRow{
+                width:100%;
+                @include flex(row,flex-start,center);
+                .status{
+                    width: 40px;
+                    height: 13px;
+                    border-radius: 14px;
+                }
+                .status1{
+                    background: #C4C4C4;
+                }
+                .status2{
+                    background: #DA6B6B;
+                }
+                .status3{
+                    background: #DAC16B;
+                }
+                .status4{
+                    background: #6BDA7D;
+                }
+                p{
+                    margin-left:22px;
                     font-family: 'Montserrat';
                     font-style: normal;
                     font-weight: 600;
-                    font-size: 14px;
-                    @include flex(none,flex-start,center);
-                    color: #223F80;
+                    font-size: 12px;
                 }
-                .phone{
+            }
+        }
+        position:relative;
+        width: 100vw;
+        @include flex(column, flex-start, center);
+        overflow-x: hidden;
+        white-space: nowrap;
+        padding: 10px 5px 150px 5px;
+        height: calc(100% - 120px);
+        .cards {
+            height: 50px;
+            background: #ffffff;
+            box-shadow: 0px 4px 1px -2px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-top: 10px;
+            width: 97%;
+            font-family: "Montserrat";
+            font-style: normal;
+            padding: 15px 5px;
+            .details {
+                height: 100%;
+                width: 100%;
+                @include flex(row, space-around, center);
+                .info {
+                    height: 100%;
+                    width: 65px;
+                    font-family: "Montserrat";
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 14px;
+                    @include flex(none, flex-start, center);
+                    color: #223f80;
+                }
+                .phone {
                     font-weight: 500;
                     font-size: 12px;
                 }
-                .status{
-                    width:42px;
-                    height:13px;
+                .status {
+                    width: 42px;
+                    height: 13px;
                     border-radius: 14px;
-                    background-color: #6BDA7D; //active
+                    background-color: #6bda7d; //active
                     // background-color: #C4C4C4;
                     // background-color: #DA6B6B;
                     // background-color: #DAC16B;
-
-
-
                 }
-                .date{
+                .date {
                     font-weight: 500;
                     font-size: 10px;
-                    color:#929292;
+                    color: #929292;
                 }
 
-                .dateDiv{
-                    @include flex(column,center,center);
-                    .filterTag{
+                .dateDiv {
+                    @include flex(column, center, center);
+                    .filterTag {
                         display: none;
                         align-items: center;
-                        color:white;
+                        color: white;
                         font-weight: 500;
                         font-size: 8px;
                         background: rgba(34, 63, 128, 0.4);
                         border-radius: 2px;
-                        height:15px;
-                        width:57px;
-                        padding:3px;
-                        margin-bottom:10px;
+                        height: 15px;
+                        width: 57px;
+                        padding: 3px;
+                        margin-bottom: 10px;
                     }
                 }
             }
-
         }
     }
-    .fixed{
-        position:fixed;
-        bottom:0;
-        height:56px;
+    .fixed {
+        position: fixed;
+        bottom: 0;
+        height: 56px;
         background-color: white;
         // backdrop-filter: blur(1px);
-        height:60px;
+        height: 60px;
         padding: 5px 20px;
-        width:100%;
+        width: 100%;
         box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
-        @include flex(row,space-around,center);
-        .downIconDiv{
-            height:47px;
-            width:162px;
-            margin:10px;
-            padding:0px 20px;
-            color:#223F80;
-            stroke:#223F80;
-            &:focus{
-                background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
-                color:white;
-                stroke:white;
+        @include flex(row, space-around, center);
+        .downIconDiv {
+            height: 47px;
+            width: 162px;
+            margin: 10px;
+            padding: 0px 20px;
+            color: #223f80;
+            stroke: #223f80;
+            &:focus {
+                background: linear-gradient(41.93deg, #223f80 -18.34%, #444584 43.24%, #bb2230 100.33%);
+                color: white;
+                stroke: white;
                 opacity: 0.93;
             }
             border-radius: 13px;
-            @include flex(row,center,center);
-            p{
-                font-family: 'Montserrat';
+            @include flex(row, center, center);
+            p {
+                font-family: "Montserrat";
                 font-style: normal;
-                color:inherit;
+                color: inherit;
                 font-weight: 600;
                 font-size: 16px;
-                margin-left:10px;
+                margin-left: 10px;
             }
-            svg path{
-                stroke:inherit;
+            svg path {
+                stroke: inherit;
             }
-            svg circle{
-                stroke:inherit;
+            svg circle {
+                stroke: inherit;
             }
-        } 
+        }
     }
-    #add{
-        @include addButton(75px,60px);
+    #add {
+        @include addButton(75px, 60px);
     }
 }
-    #addCustomer{
-        height: 100vh;
-        width: 100vw;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.65);
-        // backdrop-filter: blur(1.5px);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        display: none;
-        top: 0px;
-        left:0px;
-        overflow: auto;
-        z-index: 1;
-        #addBox{
-            margin: 20px 5px;
-            height:fit-content;
-            width:320px;            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-            border-radius: 15px;
-            background-color: white;
-            #closeIcon{
-                border-radius:20px;
-                height:24px;
-                margin:10px;
-                padding:0px;
-            }
-            .inputFields{
-                @include flex(column,center,center);
-                .label{
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    width:100%;
-                    text-align: start;
-                    font-weight: 600;
-                    font-size: 14px;
-                    line-height: 15px;
-                    color: #223F80;
-                    margin:0px;
-                    margin-left:65px;
-                    margin-top:15px;
-                    margin-bottom:5px;
-                    .required{
-                        margin-left:3px;
-                        color:#BB2230;
-                    }
+#addCustomer {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.65);
+    // backdrop-filter: blur(1.5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: none;
+    top: 0px;
+    left: 0px;
+    overflow: auto;
+    z-index: 1;
+    #addBox {
+        margin: 20px 5px;
+        height: fit-content;
+        width: 320px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        border-radius: 15px;
+        background-color: white;
+        #closeIcon {
+            border-radius: 20px;
+            height: 24px;
+            margin: 10px;
+            padding: 0px;
+        }
+        .inputFields {
+            @include flex(column, center, center);
+            .label {
+                font-family: "Montserrat";
+                font-style: normal;
+                width: 100%;
+                text-align: start;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 15px;
+                color: #223f80;
+                margin: 0px;
+                margin-left: 65px;
+                margin-top: 15px;
+                margin-bottom: 5px;
+                .required {
+                    margin-left: 3px;
+                    color: #bb2230;
                 }
-                .field{
-                    font-family: 'Montserrat';
+            }
+            .field {
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 13px;
+                width: 250px;
+                height: 46px;
+                border: 2px solid #b8b8b8;
+                border-radius: 12px;
+                padding: 5px;
+                padding: 0px 15px;
+            }
+
+            .dropDownDiv {
+                width: 250px;
+                @include flex(row, space-between, center);
+                select {
+                    font-family: "Montserrat";
                     font-style: normal;
                     font-weight: 500;
                     font-size: 13px;
-                    width: 250px;
-                    height: 46px;
-                    border: 2px solid #B8B8B8;
-                    border-radius: 12px;
-                    padding:5px;
-                    padding:0px 15px;
-                }
-
-                .dropDownDiv{
-                    width:250px;
-                    @include flex(row,space-between,center);
-                    select{
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 13px;
-                        border:none;
-                        appearance: none;
-                        width: 100%;
-                        padding: 0px;
-                        &:focus{
-                            outline:none;
-                        }
-                    }
-
-                }
-                #dobField{
+                    border: none;
+                    appearance: none;
                     width: 100%;
-                    @include flex(row,center,start);
-                    #calendarDiv{
-                        margin-top:8px;
-                        margin-left:5px;
-                        @include flex(row,center,center);
-                        background: #223F80;
-                        border-radius: 12px;
-                        height:47px;
-                        width:47px;
+                    padding: 0px;
+                    &:focus {
+                        outline: none;
                     }
                 }
-                
-                .field:invalid:focus{
-                    border:1px solid red;
-                }
-                .Button{
-                    @include button1(272px,50px,30px,20px,500,15px);
+            }
+            #dobField {
+                width: 100%;
+                @include flex(row, center, start);
+                #calendarDiv {
+                    margin-top: 8px;
+                    margin-left: 5px;
+                    @include flex(row, center, center);
+                    background: #223f80;
+                    border-radius: 12px;
+                    height: 47px;
+                    width: 47px;
                 }
             }
-            select{
-                background: transparent;
-                *{
-                    padding:5px 10px;
-                }
+
+            .field:invalid:focus {
+                border: 1px solid red;
+            }
+            .Button {
+                @include button1(272px, 50px, 30px, 20px, 500, 15px);
             }
         }
-
-    }
-
-    #filter{
-        height:100%;
-        width:100%;
-        background-color: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(1.5px);
-        @include flex(column,center,center);
-        display: flex;
-        position: absolute;
-        top: 0px;
-        z-index: 2;
-        #filterBox{
-            height:fit-content;
-            width:80%;
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-            border-radius: 15px;
-            background-color: white;
-            #closeIcon{
-                border-radius:20px;
-                height:24px;
-                margin:10px;
-                padding:0px;
+        select {
+            background: transparent;
+            * {
+                padding: 5px 10px;
             }
-
-            #filterLabels{
-                @include flex(row,none,none);
-                flex-wrap: wrap;
-                padding:0px 10px;
-                padding-bottom:40px;
-                .fLabel{
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 12px;
-                    background-color:#223F8066;
-                    // background-color: #223F80;
-                    width:fit-content;
-                    color:white;
-                    margin:8px 8px;
-                    padding:5px 20px; 
-                    border-radius:5px;
-                }
-            }
-            
-            
         }
     }
+}
+
+#filter {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1.5px);
+    @include flex(column, center, center);
+    display: flex;
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+    #filterBox {
+        height: fit-content;
+        width: 80%;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        border-radius: 15px;
+        background-color: white;
+        #closeIcon {
+            border-radius: 20px;
+            height: 24px;
+            margin: 10px;
+            padding: 0px;
+        }
+
+        #filterLabels {
+            @include flex(row, none, none);
+            flex-wrap: wrap;
+            padding: 0px 10px;
+            padding-bottom: 40px;
+            .fLabel {
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 12px;
+                background-color: #223f8066;
+                // background-color: #223F80;
+                width: fit-content;
+                color: white;
+                margin: 8px 8px;
+                padding: 5px 20px;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+
+.row{
+    p{
+        margin:0px;
+    }
+    @include flex(row,center,center);
+    img{
+        margin-left:5px;
+    }
+}
+button{
+    outline: none;
+    border: none;
+    &:focus{
+        outline: none;
+    }
+}

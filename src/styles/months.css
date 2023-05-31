@@ -347,6 +347,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 #monthly_view .calendar .dates button {
   cursor: pointer;
+  padding: 5px;
   outline: 0;
   border: 0;
   background: transparent;
@@ -608,4 +609,9 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-weight: 500;
   font-size: 14px;
   color: #929292;
+}
+
+i {
+  font-style: normal;
+  font-family: "Montserrat";
 }/*# sourceMappingURL=months.css.map */

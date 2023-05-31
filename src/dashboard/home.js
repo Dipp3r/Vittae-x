@@ -374,11 +374,11 @@ class HomeComp extends React.Component{
     <div id="perks">
       <button id="perk" className="renumeration" onClick={this.props.navigate} value="../renumeration" >
         <p>₹ 0</p>
-        <p className="description">Commissions from clients</p>
+        <p className="description"> Total earnings </p>
       </button>
       <button id="perk" className="incentive" onClick={this.props.navigate} value="../incentive" >
-        <p>0/100</p>
-        <p className="description">Number of customers to reach incentives</p>
+        <p>0</p>
+        <p className="description">Number of Referrals</p>
       </button>
     </div>
 

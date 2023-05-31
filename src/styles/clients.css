@@ -628,7 +628,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  color: #929292;
+  color: #223F80;
 }
 #Client #main #completedTaskScreen {
   height: 100%;
@@ -754,7 +754,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  color: #929292;
+  color: #223F80;
 }
 #Client #main #add {
   display: flex;

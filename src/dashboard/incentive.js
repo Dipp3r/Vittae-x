@@ -1,11 +1,7 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 import "../styles/incentive.css";
-import gift from "../images/incentive.jpg" ;
-import gift1 from "../images/incentive1.webp";
-import gift2 from "../images/incentive2.webp";
-import gift3 from "../images/incentive3.png";
-import gift4 from "../images/incentive4.jpeg";
+import backbutton from '../images/back_white.svg';
 
 class IncentiveComp extends React.Component {
     // eslint-disable-next-line no-useless-constructor
@@ -15,26 +11,30 @@ class IncentiveComp extends React.Component {
     render(){
         return(
             <section id="incentivePg">
+                <nav id="nav">
+                    <button><img src={backbutton} alt="back_icon"/></button>
+                    <div>
+                        <p id="title">Number of Referrals</p>
+                    </div>
+                </nav>
                 <div id="main">
-                    <div class="incentiveCard">
-                        <div class="imgBox"><img src={gift1} alt="gift"/></div>
-                        <div class="unlock"><p>Unlock 🎉</p></div>
+                    <div id="top">
+                        <button class="topButton">
+                            <p>(70)</p>
+                            <p>SIPs in process</p>
+                        </button>
+                        <button class="topButton">
+                            <p>(20)</p>
+                            <p>SIPs started</p>
+                        </button>
                     </div>
-                    <div class="incentiveCard">
-                        <div class="imgBox"><img src={gift} alt="gift"/></div>
-                        <div class="unlock"><p>Unlock 🎉</p></div>
-                    </div>
-                    <div class="incentiveCard">
-                        <div class="imgBox"><img src={gift2} alt="gift"/></div>
-                        <div class="unlock"><p>Unlock 🎉</p></div>
-                    </div>
-                    <div class="incentiveCard">
-                        <div class="imgBox"><img src={gift3} alt="gift"/></div>
-                        <div class="unlock"><p>Unlock 🎉</p></div>
-                    </div>
-                    <div class="incentiveCard">
-                        <div class="imgBox"><img src={gift4} alt="gift"/></div>
-                        <div class="unlock"><p>Unlock 🎉</p></div>
+                    <div class="referralCard">
+                        <p id="name">Deekay</p>
+                        <p>9489642356</p>
+                        <div id="sipInProcess"></div>
+                        <div id="sipStarted">
+                            <p>SIP Started</p>
+                        </div>
                     </div>
                 </div>
             </section>

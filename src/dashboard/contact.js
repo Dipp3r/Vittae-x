@@ -6,6 +6,8 @@ import dateToString from "../dateToString"
 import { WithRouter } from "../routingWrapper";
 import CustomerListCard from "./customerListCard";
 import { ReactDOM } from "react";
+import info from "../images/infoBlue.svg";
+
 class Customer {
   constructor(){
     this.id = 0
@@ -475,7 +477,10 @@ class ContactsComp extends React.Component {
                 <div id="labels">
                   <button className="label" onClick={this.toggleFilterSort} value='2' >Name</button>
                   <p className="label">Mobile</p>
-                  <p className="label">Status</p>
+                  <button className="label row">
+                    <p>Status</p>
+                    <img src={info} alt="info_icon"/>
+                  </button>
                   <button className="label" onClick={this.toggleFilterSort} value='1'  >Added Date</button>
                 </div>
           
@@ -484,6 +489,24 @@ class ContactsComp extends React.Component {
               <div className="scrolling-wrapperY" id="cardsList" onScroll={this.scrollingList}>
                 {/* list of customers HERE  */}
                 {this.state.customerCompList.map(element=>{return element})}
+                <div id="infoCard">
+                  <div class="infoRow">
+                    <div class="status status1"></div>
+                    <p>Didn’t Install Vittae App</p>
+                  </div>
+                  <div class="infoRow">
+                    <div class="status status2"></div>
+                    <p>Didn’t start KYC</p>
+                  </div>
+                  <div class="infoRow">
+                    <div class="status status3"></div>
+                    <p>KYC in process</p>
+                  </div>
+                  <div class="infoRow">
+                    <div class="status status4"></div>
+                    <p>KYC done</p>
+                  </div>
+                </div>
               </div>
 
               <div id="addCustomer" style={{'display':`${this.state.addClientMenu}`}}  >
