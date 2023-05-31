@@ -479,7 +479,7 @@ class ContactsComp extends React.Component {
                   <p className="label">Mobile</p>
                   <button className="label row">
                     <p>Status</p>
-                    <img src={info} alt="info_icon"/>
+                    <img src={info} alt="info_icon"  onMouseEnter={()=>{document.querySelector("#infoCard").style.display = "flex"}} onMouseLeave={()=>{document.querySelector("#infoCard").style.display = "none"}} />
                   </button>
                   <button className="label" onClick={this.toggleFilterSort} value='1'  >Added Date</button>
                 </div>

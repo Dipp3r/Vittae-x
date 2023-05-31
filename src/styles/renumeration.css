@@ -377,6 +377,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   left: 14px;
 }
 #renumerationPg #main .renuCard .info2 {
+  display: none;
   right: 14px;
 }
 #renumerationPg #main #note {
