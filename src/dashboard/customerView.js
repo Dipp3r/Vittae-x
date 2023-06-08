@@ -5,11 +5,11 @@ import "../styles/notes.css"
 import dateToString from "../dateToString";
 
 import arwDwn from '../images/arwDwn.png'
-import dateRange from "../images/Date_range_fill_white.svg"
+// import dateRange from "../images/Date_range_fill_white.svg"
 import Ellipse from "../images/Ellipse.svg"
-import profile from "../images/profile.png"
+// import profile from "../images/profile.png"
 import arrow_left_white from "../images/arrow_left_white.svg"
-import three_dots from "../images/three-dots.svg"
+// import three_dots from "../images/three-dots.svg"
 import call from "../images/call.svg"
 import Message from "../images/Message.svg"
 import plus from "../images/plus.svg"
@@ -79,7 +79,7 @@ class CustomerView extends React.Component {
     toggleAddTaskMenu(){
         let menu = this.state.addTaskMenu
          
-        menu = menu == "none"?"flex":'none'
+        menu = menu === "none"?"flex":'none'
         this.setState({addTaskMenu:menu})
     }
     addTask(){
@@ -89,14 +89,14 @@ class CustomerView extends React.Component {
         obj.title = menu.querySelector('#title').value
         obj.body = menu.querySelector('#desc').value
         let isError = false
-        if(obj.title == ""){
+        if(obj.title === ""){
             menu.querySelector('#title').style.borderBottomColor = "red"
             isError = true
         }else{
             menu.querySelector('#title').style.borderBottomColor = "#223F80"
         }
         
-        if(obj.discription == "") {
+        if(obj.discription === "") {
             menu.querySelector('#desc').style.borderColor = "red"
             isError = true
         }else{
@@ -141,21 +141,21 @@ class CustomerView extends React.Component {
     }
     toggleEditCustomerDetail(){
         let editCustomerDetail = this.state.editCustomerDetail;
-        editCustomerDetail = editCustomerDetail == "block"?"none":"block";
+        editCustomerDetail = editCustomerDetail === "block"?"none":"block";
         this.setState({editCustomerDetail:editCustomerDetail})
     }
     toggleCompletedTaskMenu(e){
         let completedTaskMenu = this.state.completedTaskMenu
         let menu = document.querySelector('#completedTaskScreen')
          
-        if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
+        if(completedTaskMenu !== "flex") this.currentTask = e.currentTarget.value
 
-        completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
+        completedTaskMenu = completedTaskMenu === "none"?"flex":'none'
          
-        if(completedTaskMenu == 'flex'){
+        if(completedTaskMenu === 'flex'){
             let taskObj
             for (let task of this.state.customer.tasks){
-                if(task.id == Number.parseInt(this.currentTask)){
+                if(task.id === Number.parseInt(this.currentTask)){
                     taskObj = task;
                 }
                 
@@ -175,7 +175,7 @@ class CustomerView extends React.Component {
         let customer = this.state.customer
          
         let outcome = menu.querySelector('#outcome').value
-        if (outcome == ""){
+        if (outcome === ""){
             menu.querySelector('#outcome').style.borderColor = "red"
             return
         }else{
@@ -183,7 +183,7 @@ class CustomerView extends React.Component {
         }
         let currentTask;
         for (let task of this.state.customer.tasks){
-            if(task.id == Number.parseInt(this.currentTask)){
+            if(task.id === Number.parseInt(this.currentTask)){
                 currentTask = task;
             }
             
@@ -213,6 +213,10 @@ class CustomerView extends React.Component {
             case 2:
                 tasksList  = tasksList.filter((element)=>element.completed)
                 break;
+            case 0:
+            default:
+                tasksList = this.state.customer.tasks
+                break;            
         }
         this.generateTasks(tasksList)
     }
@@ -286,7 +290,7 @@ class CustomerView extends React.Component {
         tasksList = tasksList.sort((a,b)=>{return new Date(b.date).getTime()-new Date(a.date).getTime()})
         let taskCardSpace = document.querySelector('#taskCardSpace')
         taskCardSpace.innerHTML = ""
-        if(tasksList.length == 0){
+        if(tasksList.length === 0){
             taskCardSpace.innerText = "no tasks added"
             return
         }
@@ -350,13 +354,13 @@ class CustomerView extends React.Component {
     toggleAddNotesPage(){
         let notesPg = this.state.addNotesPage
         
-        if(notesPg == "none"){
+        if(notesPg === "none"){
             notesPg = "flex"
         }else{
             notesPg = "none"
             let noteTitle = document.querySelector("#noteTitle")
             let noteBody = document.querySelector("#noteBody")
-            if (noteTitle.value != "" && noteBody.value != ""){
+            if (noteTitle.value !== "" && noteBody.value !== ""){
                 let customer = this.state.customer;
                 let data = {
                     id:Number.parseInt(`${this.state.customer.id}${customer.notes.length}`),
@@ -398,7 +402,7 @@ class CustomerView extends React.Component {
         // </div>
         let noteCard,title,body
         // console.log(noteList)
-        if(noteList.length == 0){
+        if(noteList.length === 0){
             
             notesContainer[0].innerText = "notes not added"
             return
@@ -482,7 +486,7 @@ class CustomerView extends React.Component {
                 }
             }).then((response) => {
 
-              if (response.status != 200) throw new Error('Something went wrong')
+              if (response.status !== 200) throw new Error('Something went wrong')
               return response.json()
             })
             
@@ -495,7 +499,7 @@ class CustomerView extends React.Component {
                 }
             }).then((response) => {
 
-              if (response.status != 200) throw new Error('Something went wrong')
+              if (response.status !== 200) throw new Error('Something went wrong')
               return response.json()
             })
             //getting kyc log
@@ -510,7 +514,7 @@ class CustomerView extends React.Component {
             //     }
             // }).then((response) => {
 
-            //   if (response.status != 200) throw new Error('Something went wrong')
+            //   if (response.status !== 200) throw new Error('Something went wrong')
             //   return response.json()
             // })
             
@@ -807,7 +811,7 @@ class CustomerView extends React.Component {
                                 <img src={Time} alt="time"/>
                                 <input type="time" id="time"disabled/>
                                 </div>
-                                <p>Outcome<a>*</a></p>
+                                <p>Outcome<p>*</p></p>
                             </div>
                             <textarea id="outcome" maxlength="2500"></textarea>
                             </div>

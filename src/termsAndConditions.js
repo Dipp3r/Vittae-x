@@ -59,7 +59,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>The Company is engaged in the business
+                <p class="number">1. </p>The Company is engaged in the business
                 of providing a digital platform for end-to-end automation and
                 service of the investment process enabling Fund Houses
                 (&ldquo;Platform&rdquo;) to offer Mutual Fund Products and other
@@ -71,7 +71,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>Channel Partner is desirous of offering
+                <p class="number">2. </p>Channel Partner is desirous of offering
                 saving products specifically mutual funds, digitally, to their
                 customers.
               </span>
@@ -79,7 +79,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a>Relying on the said representations of
+                <p class="number">3. </p>Relying on the said representations of
                 the Company and the Channel Partner, the Channel Partner has
                 agreed to integrate with the Company for providing the Services,
                 subject to the terms and conditions more fully set forth in this
@@ -100,7 +100,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a> <a class="sub_head">Definitions:</a>{" "}
+                <p class="number">1. </p> <p class="sub_head">Definitions:</p>{" "}
                 In this Agreement (including in the recitals hereof or annexures
                 hereto), the following words and expressions shall have, where
                 the context so permits, the following meaning ascribed to them:
@@ -188,27 +188,27 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5 sub_head">
-                <a class="number">2. </a>Interpretations:
+                <p class="number">2. </p>Interpretations:
               </span>
             </p>
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>Headings and bold typeface are only for
+                <p class="number">1. </p>Headings and bold typeface are only for
                 convenience and shall be ignored for the purpose of
                 interpretation.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>Words denoting the singular shall
+                <p class="number">2. </p>Words denoting the singular shall
                 include the plural and words denoting any gender shall include
                 all genders.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a>A statutory provision includes a
+                <p class="number">3. </p>A statutory provision includes a
                 reference to (a) the statutory provision as modified or
                 re-enacted or both from time to time (whether before or after
                 the date of this Agreement), and (b) any subordinate legislation
@@ -218,27 +218,27 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">4. </a>A Clause or Annexure, unless the
+                <p class="number">4. </p>A Clause or Annexure, unless the
                 context otherwise requires, is a reference to a Clause of or
                 Annexure to this Agreement.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">5. </a>The terms “herein”, “hereto”, “hereof”,
+                <p class="number">5. </p>The terms “herein”, “hereto”, “hereof”,
                 “hereunder” and words of similar purport refer to this Agreement
                 as a whole.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">6. </a>The terms “include” and “including”
+                <p class="number">6. </p>The terms “include” and “including”
                 shall mean “include without limitation”.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">7. </a>The Annexures form part of this
+                <p class="number">7. </p>The Annexures form part of this
                 Agreement and shall have the same force and effect as if set out
                 in the body of this Agreement and references to this Agreement
                 include the Annexures.
@@ -246,7 +246,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">8. </a>If the due date for payment falls on a
+                <p class="number">8. </p>If the due date for payment falls on a
                 day that is not a Business Day, the due date for such payment
                 shall be deemed to be the immediately succeeding Business Day.
               </span>
@@ -257,7 +257,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>Channel Partner hereby agrees to
+                <p class="number">1. </p>Channel Partner hereby agrees to
                 integrate with the Company and the Company hereby accepts such
                 integration to provide the Platform to the customers of Channel
                 Partner, on the terms and subject to the conditions set forth in
@@ -268,14 +268,14 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>The Service will commence on a mutually
+                <p class="number">2. </p>The Service will commence on a mutually
                 agreed go-live date (&ldquo;Go-Live Date&rdquo;) after the
                 completion of integration by the Channel Partner.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a>It is agreed that the Company is
+                <p class="number">3. </p>It is agreed that the Company is
                 providing the Services to Channel Partner on a non-exclusive
                 basis and Channel Partner is availing such Services on a
                 non-exclusive basis and that this Agreement shall not affect the
@@ -285,32 +285,32 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">4. </a>The features of the platform are
+                <p class="number">4. </p>The features of the platform are
                 specified in Annexure A.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">5. </a>It is agreed that the
+                <p class="number">5. </p>It is agreed that the
                 platforms/products specified as Financial Wellness Platform on
                 the website{" "}
-                <a href="https://www.vittae.money/">www.vittae.money </a>
+                <a href="https://www.vittae.money/" rel="author">www.vittae.money </a>
                 (hereinafter referred to as &ldquo;Product&rdquo;) will be
                 provided by the Company to the customers of Channel Partner.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">6. </a> It is agreed that the reimbursement
+                <p class="number">6. </p> It is agreed that the reimbursement
                 specified in the commission document through email will be paid
                 by the Company to the Channel Partner according to the terms and
                 conditions specified in the{" "}
-                <a href="">Gold Partner Agreement</a>
+                <p >Gold Partner Agreement</p>
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">7. </a> Incase of any referral/product
+                <p class="number">7. </p> Incase of any referral/product
                 suggestion for Vittae Customer will be shared by Vittae to the
                 channel partner and post approval from Vittae&rsquo;s customer,
                 the data necessary for purchase of the product such as various
@@ -324,7 +324,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">8. </a> The customer will be with vittae post
+                <p class="number">8. </p> The customer will be with vittae post
                 onboarding on any products and the relationship with the channel
                 partner will be restricted to basic communication such as
                 reminders for payment, product cross sell etc.
@@ -332,7 +332,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">9. </a>The remuneration model is subject to
+                <p class="number">9. </p>The remuneration model is subject to
                 change and the same will be notified/discussed mutually before
                 implementation.
               </span>
@@ -347,85 +347,85 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1 sub_head">
               <span class="c5">
-                <a class="number">1. </a>Scope of Services to be provided by the
+                <p class="number">1. </p>Scope of Services to be provided by the
                 Company (hereinafter referred to as &ldquo;Services&rdquo;):
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>Managing, maintaining, and operating
+                <p class="number">1. </p>Managing, maintaining, and operating
                 the Platform.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>Collection of preliminary application
+                <p class="number">2. </p>Collection of preliminary application
                 data from Channel Partner.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a>Generating credit reports for credit
+                <p class="number">3. </p>Generating credit reports for credit
                 assessment of the prospective customer (if needed) from CIBIL
                 and/or any other agency authorised in this behalf by the RBI;
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">4. </a>Generating financial reports to help
+                <p class="number">4. </p>Generating financial reports to help
                 the customer understand the various financial gaps that they
                 might have.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">5. </a>Reassessment of their financial journey
+                <p class="number">5. </p>Reassessment of their financial journey
                 every four months once from the date of starting their SIP/Lum
                 sum or subscription journey with us.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">6. </a>Generating Aadhaar report via
+                <p class="number">6. </p>Generating Aadhaar report via
                 Digilocker for KYC process carried out by Signzy in
                 collaboration with ICICI Mutual Fund.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">7. </a>Communicating to a potential qualifying
+                <p class="number">7. </p>Communicating to a potential qualifying
                 investor the approval or rejection of his /her KYC application;
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">8. </a>Arranging the execution of the
+                <p class="number">8. </p>Arranging the execution of the
                 investment agreement(s) between our partners and the qualifying
                 investor(s);
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">9. </a>Attending to service requests /Product
+                <p class="number">9. </p>Attending to service requests /Product
                 related queries from potential qualifying investors;
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">10. </a>Adopting the guidelines on Fair
+                <p class="number">10. </p>Adopting the guidelines on Fair
                 Practice Code issued by the RBI; and
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">11. </a>Promoting good financial best
+                <p class="number">11. </p>Promoting good financial best
                 practices and products that suit them well.
               </span>
             </p>
 
             <p class="c1">
               <span class="c5">
-                <a class="number">12. </a>Other related services may be mutually
+                <p class="number">12. </p>Other related services may be mutually
                 agreed upon between the Parties in writing.
               </span>
             </p>
@@ -439,13 +439,13 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>Onboarding with the Company via mobile
+                <p class="number">1. </p>Onboarding with the Company via mobile
                 application;
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>Providing customer information i.e.
+                <p class="number">2. </p>Providing customer information i.e.
                 name, PAN, email id and mobile no., mutual fund folio and unit
                 holding information of the customer, existing insurance
                 products, and risk assessment data, to the Company as available
@@ -456,39 +456,39 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a>Collection of preliminary application
+                <p class="number">3. </p>Collection of preliminary application
                 data from Customer.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">4. </a>Helping with growing the portfolio
+                <p class="number">4. </p>Helping with growing the portfolio
                 value of the customer.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">5. </a>Assisting with the completion of KYC
+                <p class="number">5. </p>Assisting with the completion of KYC
                 and setting up calls with the Vittae team for Report Discussion
                 and Free Advisory Calls;
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">6. </a>In case of SIP failure, helping with
+                <p class="number">6. </p>In case of SIP failure, helping with
                 finding out the root cause and assisting with reinitiation of
                 the transaction.
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">7. </a>Adopting the applicable guidelines on
+                <p class="number">7. </p>Adopting the applicable guidelines on
                 Fair Practice Code as per the regulatory norms
               </span>
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">8. </a>Other related services as may be
+                <p class="number">8. </p>Other related services as may be
                 mutually agreed between the Parties in writing
               </span>
             </p>
@@ -503,7 +503,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>During the Term of this Agreement and
+                <p class="number">1. </p>During the Term of this Agreement and
                 thereafter to the extent required by Applicable Law, the Company
                 agrees that it will preserve the documents and data that are
                 directly in relation to its obligations under this Agreement
@@ -513,7 +513,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>The Company hereby agrees to ensure
+                <p class="number">2. </p>The Company hereby agrees to ensure
                 that it shall isolate and clearly identify the information,
                 documents (in hard copies or soft files), computerized
                 data/information, records, and assets of the prospective or
@@ -528,7 +528,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>The Company hereby confirms that it has
+                <p class="number">1. </p>The Company hereby confirms that it has
                 developed and established a robust framework for documenting,
                 maintaining, and testing business continuity and recovery
                 procedures, and the same are tested periodically, and agrees to
@@ -538,7 +538,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>The Company hereby agrees and
+                <p class="number">2. </p>The Company hereby agrees and
                 understands that Services to be performed under this Agreement
                 shall continue to be offered under all circumstances. In the
                 event of any difficulty in performing the required Services,
@@ -581,7 +581,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>Nothing in this Agreement is intended
+                <p class="number">1. </p>Nothing in this Agreement is intended
                 to grant any rights under the patent, copyright, or other
                 Intellectual Property Rights of any Party in favour of the
                 other, nor shall this Agreement be construed to grant any Party
@@ -594,7 +594,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>Ownership: Each Party owns and will
+                <p class="number">2. </p>Ownership: Each Party owns and will
                 continue to own all rights, titles, and interest in and to any
                 Intellectual Property rights that it owned prior to this
                 Agreement, or that it created or acquired, or creates or
@@ -614,7 +614,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a>Both Parties further agree that the
+                <p class="number">3. </p>Both Parties further agree that the
                 name, trademark and/or logo, and/or any other Intellectual
                 Property of the other Party shall not be used in any sales or
                 marketing publication or advertisement or in any other manner
@@ -625,7 +625,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">4. </a> The Parties acknowledge and agree that
+                <p class="number">4. </p> The Parties acknowledge and agree that
                 the Platform (including Updates and Upgrades, if any) shall, at
                 all times, be the sole property of the Company and Channel
                 Partner shall have no rights/claims against the same save and
@@ -639,7 +639,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>Each Party acknowledges that all
+                <p class="number">1. </p>Each Party acknowledges that all
                 information, input, and data, whether written, verbal,
                 documentary, or electronic form, of a confidential nature
                 including, without limitation, the terms of this Agreement and
@@ -663,7 +663,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>The Receiving Party hereby agrees that
+                <p class="number">2. </p>The Receiving Party hereby agrees that
                 they shall not disclose such Confidential Information to any
                 third party except when mandated under Applicable Law. However,
                 the Receiving Party shall wherever possible obtain the prior
@@ -675,7 +675,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a>The Receiving Party shall not be liable
+                <p class="number">3. </p>The Receiving Party shall not be liable
                 for the disclosure or use of the Disclosing Party&rsquo;s
                 Confidential Information which: (i) is, or becomes, publicly
                 known, other than by breach of this Agreement; (ii) is obtained
@@ -693,7 +693,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">4. </a>The Parties acknowledge and agree that
+                <p class="number">4. </p>The Parties acknowledge and agree that
                 it would be difficult to measure the damages that might result
                 from any actual or threatened breach of this Clause 7 and that
                 such actual or threatened breach by it may result in immediate,
@@ -712,7 +712,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">5. </a>5. The obligations of the Parties under
+                <p class="number">5. </p>5. The obligations of the Parties under
                 Clause 7 shall be applicable during the Term of this Agreement
                 and at all times thereafter and shall survive notwithstanding
                 the termination or expiry of this Agreement.
@@ -725,7 +725,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a>Company and Channel Partner and both
+                <p class="number">1. </p>Company and Channel Partner and both
                 its personnel shall comply with all Data Protection Legislation
                 and such compliance shall include, but not be limited to,
                 maintaining a valid and up-to-date registration or notification
@@ -735,7 +735,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a>For the purpose of this Agreement,
+                <p class="number">2. </p>For the purpose of this Agreement,
                 &quot;Data Protection Legislation&quot; means all legislation
                 and regulations, as may be applicable, relating to the
                 protection of Personal Data and processing, storage, usage,
@@ -784,7 +784,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a>Company shall only undertake to process
+                <p class="number">3. </p>Company shall only undertake to process
                 of Personal Data reasonably required in connection with the
                 performance of its obligations under this Agreement; and shall
                 comply with all reasonable procedures and processes notified by
@@ -794,7 +794,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">4. </a>Company shall not process or transfer
+                <p class="number">4. </p>Company shall not process or transfer
                 any Personal Data of the Channel Partner and its customers, in
                 India or outside India without the prior written consent of the
                 Channel Partner / its customer.
@@ -802,7 +802,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">5. </a> Company shall at all times have
+                <p class="number">5. </p> Company shall at all times have
                 appropriate technical and organizational measures in place to
                 prevent unauthorized access of any Personal Data.
               </span>
@@ -814,7 +814,7 @@ class TermsAndConditionsComp extends React.Component {
 
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a> This Agreement shall come into force
+                <p class="number">1. </p> This Agreement shall come into force
                 on the Effective Date and will be in force (&ldquo;Term&rdquo;)
                 unless terminated earlier in the manner provided for under this
                 Agreement.
@@ -822,7 +822,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a> Either Party may terminate this
+                <p class="number">2. </p> Either Party may terminate this
                 Agreement by giving 3 (three) months prior written notice to the
                 other Party, without assigning any reason whatsoever at any time
                 before the expiry of the Term.
@@ -830,7 +830,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a> In addition to any other remedies
+                <p class="number">3. </p> In addition to any other remedies
                 which may be available at law or equity, in the event of any
                 breach of this Agreement by a Party (&ldquo;Default&rdquo;), the
                 Party not in default (&ldquo;Non-Defaulting Party&rdquo;) shall
@@ -848,7 +848,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">4. </a> Notwithstanding the above, either
+                <p class="number">4. </p> Notwithstanding the above, either
                 Party shall be entitled to terminate this Agreement by giving
                 written notice of 30 (thirty) days to the other Party in the
                 event that the other Party becomes insolvent or makes any
@@ -860,7 +860,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">5. </a> Consequences of Termination: Upon
+                <p class="number">5. </p> Consequences of Termination: Upon
                 termination or expiration of the Term of this Agreement for any
                 reason:
               </span>
@@ -982,7 +982,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">1. </a> The Company covenants and undertakes
+                <p class="number">1. </p> The Company covenants and undertakes
                 that any documentation and data submitted by Channel Partner in
                 respect of the customers shall be utilized solely for the
                 purposes of this Agreement and the Company shall not directly or
@@ -992,7 +992,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">2. </a> Independent Parties: This Agreement is
+                <p class="number">2. </p> Independent Parties: This Agreement is
                 on a principal-to-principal basis and does not create and shall
                 not deem to create any employer-employee relationship between
                 Company and the Channel Partner. The Channel Partner shall not
@@ -1009,7 +1009,7 @@ class TermsAndConditionsComp extends React.Component {
             </p>
             <p class="c1">
               <span class="c5">
-                <a class="number">3. </a> Notices:
+                <p class="number">3. </p> Notices:
               </span>
             </p>
             <ul class="c3">

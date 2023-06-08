@@ -1,9 +1,9 @@
 import React from "react";
 import { WithRouter } from "../routingWrapper";
 import "../styles/profileInfo.css"
-import arwDwn from "../images/arwDwn.png"
-import profile from "../images/profile.png";
-import subtract from "../images/Subtract.svg";
+// import arwDwn from "../images/arwDwn.png"
+// import profile from "../images/profile.png";
+// import subtract from "../images/Subtract.svg";
 import dateToString from "../dateToString"
 import bankList from "../banksList.json"
 class ProfileInfo extends React.Component{
@@ -11,7 +11,7 @@ class ProfileInfo extends React.Component{
         super(props)
         this.state = {
           first_name:localStorage.getItem('first_name'),
-          last_name:localStorage.getItem('last_name')== null?'':this.props.getItem('last_name'),
+          last_name:localStorage.getItem('last_name') === null?'':this.props.getItem('last_name'),
           phone:localStorage.getItem('phone'),
           email:localStorage.getItem('email'),
           date_of_birth:dateToString(new Date(localStorage.getItem('date_of_birth')),2).replace(/ /g,"-"),
@@ -26,7 +26,7 @@ class ProfileInfo extends React.Component{
     changeInVal(e){
       let obj = {};
       let value
-      if (e.currentTarget.name === "place_of_birth_name" || e.currentTarget.name === "bank_name"){
+      if (e.currentTarget.name  === "place_of_birth_name" || e.currentTarget.name  === "bank_name"){
         value = e.currentTarget.value
       }else{
         value = e.currentTarget.value.trim()
@@ -41,7 +41,7 @@ class ProfileInfo extends React.Component{
       let banksList = document.querySelector("#banks").options
       let isBankMatched = false
       for (let bank of banksList){
-        if(bankInp.value == bank.value) {
+        if(bankInp.value  === bank.value) {
           isBankMatched = true
           break;
         }
@@ -66,7 +66,7 @@ class ProfileInfo extends React.Component{
         'Connection':"keep-alive"}
       })
       .then((response)=>{
-        if(response.status == 200){
+        if(response.status  === 200){
           localStorage.setItem("first_name",data.first_name)
           localStorage.setItem("last_name",data.last_name)
           this.props.navigate("../profile")

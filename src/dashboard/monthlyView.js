@@ -49,17 +49,17 @@ class MonthlyView extends React.Component {
         let year = Number.parseInt(this.state.currentDate.getFullYear())
         console.log(month,year,value)
         month += value
-        if(month ==-1){
+        if(month ===-1){
             month = 11;
             year-=1
-        }else if(month == 12){
+        }else if(month === 12){
             month = 0
             year+=1
         }
         let date = new Date(year,month)
         let today = new Date()
         console.log(date,month,year,value)
-        let selectedDate = (date.getMonth() == today.getMonth() && date.getFullYear == today.getFullYear())?today.getDate:1;
+        let selectedDate = (date.getMonth() === today.getMonth() && date.getFullYear === today.getFullYear())?today.getDate:1;
 
         let data = await fetch("/getTasksForMonth",{
             method:'POST',
@@ -84,7 +84,7 @@ class MonthlyView extends React.Component {
         let currentDate = this.state.currentDate
         let button,time;
         let dateIndex = 0
-        //filtering task list for this month .filter((element)=>{ return (new Date(element.day).getMonth() == currentDate.getMonth())})
+        //filtering task list for this month .filter((element)=>{ return (new Date(element.day).getMonth() === currentDate.getMonth())})
         let tasksList = this.state.tasksList
         
         //generating dates
@@ -95,7 +95,7 @@ class MonthlyView extends React.Component {
             let imgDot = document.createElement("img")
             // button.style.color = "black"
             // button.style.backgroundColor = "transparent"
-            if (dt.toDateString() == new Date().toDateString()){
+            if (dt.toDateString() === new Date().toDateString()){
                 button.style.color = "white"
                 button.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
                 button.style.fontWeight = "600"
@@ -103,7 +103,7 @@ class MonthlyView extends React.Component {
             if(dateIndex < tasksList.length){
                 let date2 = new Date(tasksList[dateIndex].date)
                 console.log(dt,date2)
-                if(dt.getDate() == date2.getDate() && dt.getMonth() == date2.getMonth() && dt.getFullYear() == date2.getFullYear()){
+                if(dt.getDate() === date2.getDate() && dt.getMonth() === date2.getMonth() && dt.getFullYear() === date2.getFullYear()){
                     imgDot.src = calendarDot
                     dateIndex+=1
                 }
@@ -123,11 +123,11 @@ class MonthlyView extends React.Component {
         console.log(target,this.state.selectedDate-1,document.querySelector("#datesContainer").childNodes)
         let value = Number.parseInt(target.getAttribute("value"))
         let prevTarget = document.querySelector("#datesContainer").childNodes[this.state.selectedDate-1]
-        // console.log(new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString(),this.state.currentDate.toDateString(),new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == this.state.currentDate.toDateString())
+        // console.log(new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString(),this.state.currentDate.toDateString(),new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() === this.state.currentDate.toDateString())
         console.log(prevTarget)
         // console.log(prevTarget.querySelector("i").innerText,document.querySelector("#month_name"))
         if (prevTarget){
-            if(new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() == new Date().toDateString()){
+            if(new Date(`${prevTarget.querySelector("i").innerText} ${document.querySelector("#month_name").innerText}`).toDateString() === new Date().toDateString()){
                 prevTarget.style.color = "white"
                 prevTarget.style.backgroundColor = 'rgba(34, 63, 128, 0.4)'
                 prevTarget.style.fontWeight = "600"
@@ -151,7 +151,7 @@ class MonthlyView extends React.Component {
         container.innerHTML = ''
         let task,desc,i,tasksDiv
       tasksDiv = document.createElement('div')
-      if(tasksList.length == 0){
+      if(tasksList.length === 0){
         tasksDiv.id = 'taskEmpty'
         let p1 = document.createElement('p')
         p1.innerText ="No task for this day"
@@ -164,9 +164,9 @@ class MonthlyView extends React.Component {
       for (let j = 0;j< tasksList.length;j++){
         i = new Date(tasksList[j].date)
         // console.log(i.getDate(), this.state.selectedDate , i.getMonth(), this.state.currentDate.getMonth(), i.getFullYear(),this.state.currentDate.getFullYear())
-        if (i.getDate() != this.state.selectedDate || i.getMonth() != this.state.currentDate.getMonth() || i.getFullYear() != this.state.currentDate.getFullYear()) continue;
+        if (i.getDate() !== this.state.selectedDate || i.getMonth() !== this.state.currentDate.getMonth() || i.getFullYear() !== this.state.currentDate.getFullYear()) continue;
         // console.log(tasksList[j])
-        if(tasksList[j].tasks.length == 0){
+        if(tasksList[j].tasks.length === 0){
             tasksDiv.id = 'taskEmpty'
             let p1 = document.createElement('p')
             p1.innerText ="No task for this day"
@@ -175,7 +175,7 @@ class MonthlyView extends React.Component {
             return
           }
         for (let i of tasksList[j].tasks){
-            if(i.completed == true) continue;    
+            if(i.completed === true) continue;    
             task = document.createElement('div')
             task.className = 'task'
 
@@ -227,7 +227,7 @@ class MonthlyView extends React.Component {
             title.innerText = i.title
             day.innerText = i.day
             due.innerText = `Due in ${i.due} days`
-            if (i.due == null) due.style.display = "none"
+            if (i.due === null) due.style.display = "none"
             // task.appendChild(desc)
             tasksDiv.appendChild(task)
         }
@@ -241,7 +241,7 @@ class MonthlyView extends React.Component {
         let customer = this.state.customer
          
         let outcome = menu.querySelector('#outcome').value
-        if (outcome == ""){
+        if (outcome === ""){
             menu.querySelector('#outcome').style.borderColor = "red"
             return
         }else{
@@ -251,7 +251,7 @@ class MonthlyView extends React.Component {
         let currentDate;
         for(let date of this.state.tasksList){
           for (let task of date.tasks){
-            if(task.id == Number.parseInt(this.currentTask)){
+            if(task.id === Number.parseInt(this.currentTask)){
               currentTask = task;
               currentDate = date
               break;
@@ -274,18 +274,18 @@ class MonthlyView extends React.Component {
         })
       }
     toggleCompletedTaskMenu(e){
-        let completedTaskMenu = this.state.completedTaskMenu == undefined?'none':this.state.completedTaskMenu ;
+        let completedTaskMenu = this.state.completedTaskMenu === undefined?'none':this.state.completedTaskMenu ;
         let menu = document.querySelector('#completedTaskScreen')
          
-        if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
+        if(completedTaskMenu !== "flex") this.currentTask = e.currentTarget.value
   
-        completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
+        completedTaskMenu = completedTaskMenu === "none"?"flex":'none'
          
-        if(completedTaskMenu == 'flex'){
+        if(completedTaskMenu === 'flex'){
             let taskObj
             for(let date of this.state.tasksList){
               for (let task of date.tasks){
-                if(task.id == Number.parseInt(this.currentTask)){
+                if(task.id === Number.parseInt(this.currentTask)){
                     taskObj = task;
                     break;
                 }
@@ -304,10 +304,10 @@ class MonthlyView extends React.Component {
     toggleSnoozeTaskMenu(e){
     let display = this.state.snoozeTaskMenu
     let taskObj = {}
-    if(display == 'none'){
+    if(display === 'none'){
         for(let date of this.state.tasksList){
             for (let task of date.tasks){
-                if(task.id == Number.parseInt(e.currentTarget.value)){
+                if(task.id === Number.parseInt(e.currentTarget.value)){
                     taskObj = task;
                     break;
                 }
@@ -316,7 +316,7 @@ class MonthlyView extends React.Component {
         console.log(taskObj)
     }
     // console.log(taskObj)
-    display = display == "flex"?"none":"flex"
+    display = display === "flex"?"none":"flex"
     this.setState({snoozeTaskMenu:display,currentTask:taskObj})
     }
     componentDidMount(){
@@ -351,13 +351,13 @@ class MonthlyView extends React.Component {
                 </div>
                 <div className="calendar">
                     <div className="month">
-                        <a href="#" className="nav" onClick={this.changeMonth} value={-1}>
+                        <p className="nav" onClick={this.changeMonth} value={-1}>
                             <img src={calendar_left_arrow} alt="previous"/>
-                        </a>
+                        </p>
                         <div id="month_name">{months[this.state.currentDate.getMonth()].slice(0,3)} <span>{this.state.currentDate.getFullYear()}</span></div>
-                        <a href="#" className="nav"onClick={this.changeMonth} value={1}>
+                        <p className="nav" onClick={this.changeMonth} value={1}>
                             <img src={calendar_right_arrow} alt="next"/>
-                            </a>
+                            </p>
                     </div>
                     <div className="days">
                     <span>Sun</span>
@@ -519,7 +519,7 @@ class MonthlyView extends React.Component {
                         </div>
                     </div> */}
                     </div>
-                    <div id="completedTaskScreen" style={{'display':this.state.completedTaskMenu==undefined?"none":this.state.completedTaskMenu,'zIndex':2,'position':'absolute '}} >
+                    <div id="completedTaskScreen" style={{'display':this.state.completedTaskMenu===undefined?"none":this.state.completedTaskMenu,'zIndex':2,'position':'absolute '}} >
                         <div id="completedTaskDiv">
                             <div id="portion1">
                             <button id="closeIcon" onClick={this.toggleCompletedTaskMenu}>
@@ -545,7 +545,7 @@ class MonthlyView extends React.Component {
                                 <img src={Time} alt="time"/>
                                 <input type="time" id="time"disabled/>
                                 </div>
-                                <p>Outcome<a>*</a></p>
+                                <p>Outcome<p>*</p></p>
                             </div>
                             <textarea id="outcome" maxlength="2500"></textarea>
                             </div>

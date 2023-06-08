@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom'
-import { BrowserRouter, Routes, Route ,useNavigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginComp from './login.js';
 import SignUpMobComp from './signUpMob'
@@ -10,7 +10,7 @@ import RegisterComp from './reg.js';
 
 import ForgotPassword from './forgotPassword.js';
 import FirstComp from './first.js';
-import {WithRouter} from './routingWrapper';
+// import {WithRouter} from './routingWrapper';
 
 import NewPassComp from './newPass.js'
 import TermsAndConditionsComp from './termsAndConditions.js';

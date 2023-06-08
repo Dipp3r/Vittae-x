@@ -104,7 +104,7 @@
             height:auto;
             width:100%;
             background-color: transparent;
-            @include flex(column,start,center);
+            @include flex(column,flex-start,center);
             #calendar{
                 background-color: white;
                 border-bottom: 1px solid #9d9d9d;
@@ -156,7 +156,7 @@
                         height:50px;
                         width:100vw;
                         padding:5px 5px;
-                        @include flex(row,start,center);
+                        @include flex(row,flex-start,center);
                         .date{
                             @include flex(column,center,center);
                             margin:0px 4px;

@@ -1,4 +1,4 @@
-import React from "react"
+// import React from "react"
 import OTPComp from "./OTP"
 import { WithRouter } from "./routingWrapper"
 

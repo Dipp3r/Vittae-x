@@ -1,5 +1,5 @@
 import React from "react";
-import Trash from "../images/Trash.svg"
+// import Trash from "../images/Trash.svg"
 import Date_range from "../images/Date_range.svg"
 import Time from "../images/Time.svg"
 import dateToString from "../dateToString";

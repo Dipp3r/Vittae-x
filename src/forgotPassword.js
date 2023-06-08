@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 import MobComp from "./mobComp";
 import { WithRouter } from "./routingWrapper";
-import checkString from "./stringChecker";
+// import checkString from "./stringChecker";
 
 class ForgotPassword extends MobComp{
     constructor(props){

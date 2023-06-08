@@ -326,7 +326,7 @@
             }
             #dobField {
                 width: 100%;
-                @include flex(row, center, start);
+                @include flex(row, center,flex-start);
                 #calendarDiv {
                     margin-top: 8px;
                     margin-left: 5px;

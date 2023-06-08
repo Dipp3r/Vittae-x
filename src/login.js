@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { redirect ,useNavigate} from 'react-router-dom';
 import { WithRouter } from './routingWrapper';
 import checkString from './stringChecker';
 import './styles/login.css';
@@ -20,10 +18,10 @@ class LoginComp extends React.Component{
     }
     changeInVal(e){
         let obj = {};
-        if(e.keyCode == 13){
+        if(e.keyCode  === 13){
           this.submit()
         }
-        if(e.currentTarget.name == 'mobile'){
+        if(e.currentTarget.name  === 'mobile'){
            if(/\D/.test(e.currentTarget.value.slice(-1))){
                 e.currentTarget.value = e.currentTarget.value.replace(/\D/,'')
                 return
@@ -33,7 +31,7 @@ class LoginComp extends React.Component{
         this.setState(obj);
     }
     changePasswordVis(e){
-        if(this.state.passwordInType == 'password'){
+        if(this.state.passwordInType  === 'password'){
             this.setState({passwordInType:'text'})
             e.currentTarget.src = eye
         }else{
@@ -94,7 +92,7 @@ class LoginComp extends React.Component{
             }
         }).then((response) => {
           console.log(response)
-          if (response.status != 200) throw new Error('Something went wrong')
+          if (response.status !== 200) throw new Error('Something went wrong')
           return response.json()
         })
         console.log(data)
@@ -150,7 +148,7 @@ class LoginComp extends React.Component{
 
       <div id="accDiv">
         <hr />
-        <p>Need an account?<a onClick={this.props.navigate} value="../mobileSignUp">Signup</a></p>
+        <p>Need an account?<p onClick={this.props.navigate} value="../mobileSignUp">Signup</p></p>
       </div>
     </div>
   </div>

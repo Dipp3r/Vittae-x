@@ -2,7 +2,7 @@ import React from "react";
 import { WithRouter } from "../routingWrapper";
 
 import "../styles/profile.css"
-import profile from "../images/profile.png"
+// import profile from "../images/profile.png"
 class Profile extends React.Component{
     constructor(props){
       super(props)
@@ -26,7 +26,7 @@ class Profile extends React.Component{
     toggleDeleteAcc(){
       console.log('Delete account clicked')
       let display = this.state.deleteAcc
-      display = display == "none"?"flex":"none"
+      display = display === "none"?"flex":"none"
       this.setState({deleteAcc:display})
       // this.props.navigate("../")
     }
@@ -40,7 +40,7 @@ class Profile extends React.Component{
     }
     deleteAcc(){
       let reason = this.state.description
-      if(reason.length == 0){
+      if(reason.length === 0){
         console.log("no reason provided")
         let reasonTxt = document.querySelector("#reasonTxt")
         reasonTxt.style.borderColor = "red"
@@ -54,7 +54,7 @@ class Profile extends React.Component{
         'Connection':"keep-alive"}
       })
       .then(response=>{
-        if(response.status == 200){
+        if(response.status === 200){
           localStorage.clear()
           this.props.navigate("../")
         }
@@ -64,7 +64,7 @@ class Profile extends React.Component{
     componentDidMount(){
       let first_name = localStorage.getItem('first_name')
       // let last_name = localStorage.getItem('last_name')
-      // last_name = last_name == null?'':last_name;
+      // last_name = last_name === null?'':last_name;
       this.setState({first_name:first_name})
     }
     render(){
@@ -80,7 +80,7 @@ class Profile extends React.Component{
           <path d="M8 8L16 16" stroke="#222222" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
-      <p>Reason<a>*</a></p>
+      <p>Reason<p>*</p></p>
       <div id="reasonBoxDiv">
           <textarea id="reasonTxt" name="description" onChange={this.changeInVal}>
           </textarea>

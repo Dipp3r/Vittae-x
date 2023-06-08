@@ -45,7 +45,6 @@ class HomeComp extends React.Component{
       let dates = document.querySelector('#dates')
       dates.innerHTML = ''
       let dateDiv,day,date,remainder;
-      let i =0
       let today = this.state.today
       let isDateIndexInc = false
       let dateIndex = 0
@@ -80,7 +79,7 @@ class HomeComp extends React.Component{
 
         if(dateIndex < this.date.length){
 
-          if(dt.toDateString() == new Date(this.date[dateIndex].date).toDateString()){
+          if(dt.toDateString() === new Date(this.date[dateIndex].date).toDateString()){
             remainder.style.color = 'rgba(34, 63, 128, 1)'
             // date.style.backgroundColor = '#a5b3cd'
             // date.style.color = 'white'
@@ -91,12 +90,12 @@ class HomeComp extends React.Component{
             isTaskPresent = true
           }
         }
-        if (dt.toDateString() == today.toDateString()){
+        if (dt.toDateString() === today.toDateString()){
           date.style.backgroundColor = '#a5b3cd'
           date.style.color = 'white'
         }
         if(!this.state.lastSelectedDate){
-          if (dt.toDateString() == today.toDateString()){
+          if (dt.toDateString() === today.toDateString()){
             // date.style.backgroundColor = '#a5b3cd'
             // date.style.color = 'white'
             // console.log(dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'}))
@@ -106,9 +105,9 @@ class HomeComp extends React.Component{
             })
             console.log(this.date,dateIndex,isDateIndexInc,isTaskPresent)
             if (isTaskPresent){
-              if(this.date == undefined){
+              if(this.date === undefined){
                 this.generateTasks();
-              }else if(this.date.length == 0){
+              }else if(this.date.length === 0){
                 this.generateTasks();
               }else if (isDateIndexInc){
                 console.log(this.date[dateIndex-1])
@@ -121,7 +120,7 @@ class HomeComp extends React.Component{
             }
             
           }
-          }else if (dt.getDate() == this.state.lastSelectedDate){
+          }else if (dt.getDate() === this.state.lastSelectedDate){
           date.style.backgroundColor = '#223f80'
           date.style.color = 'white'
         }
@@ -134,7 +133,7 @@ class HomeComp extends React.Component{
 
       let lastSelectedDateDiv = dateDivList[this.state.lastSelectedDate-1]
 
-      if (lastSelectedDateDiv.querySelector('#date').innerText == new Date().getDate()){
+      if (lastSelectedDateDiv.querySelector('#date').innerText === new Date().getDate()){
         lastSelectedDateDiv.querySelector('#date').style.backgroundColor = '#a5b3cd'
         lastSelectedDateDiv.querySelector('#date').style.color = 'white'
       }else{
@@ -143,7 +142,7 @@ class HomeComp extends React.Component{
       }
       e.currentTarget.querySelector('#date').style.backgroundColor = '#223f80'
       e.currentTarget.querySelector('#date').style.color = 'white'
-      this.generateTasks(dateIndex == -1?[]:this.date[dateIndex].tasks )
+      this.generateTasks(dateIndex === -1?[]:this.date[dateIndex].tasks )
 
       let homeCompState = this.props.getItem("homeCompState")
       let nextElementIndex = Array.prototype.indexOf.call(dateDivList,e.currentTarget)+1
@@ -168,8 +167,8 @@ class HomeComp extends React.Component{
       document.body.querySelector('#tasks').innerHTML = ''
       let task,desc,i,container
       container = document.createElement('div')
-      if(taskList == undefined) taskList = []
-      if(taskList.length == 0){
+      if(taskList === undefined) taskList = []
+      if(taskList.length === 0){
         container.id = 'taskEmpty'
         let p1 = document.createElement('p')
         p1.innerText ="No task for this day"
@@ -235,7 +234,7 @@ class HomeComp extends React.Component{
         title.innerText = i.title
         day.innerText = i.day
         due.innerText = `Due in ${i.due} days`
-        if (i.due == null) due.style.display = 'none'
+        if (i.due === null) due.style.display = 'none'
         // task.appendChild(desc)
         console.log(task)
         container.appendChild(task)
@@ -248,19 +247,17 @@ class HomeComp extends React.Component{
       let customer = this.state.customer
        
       let outcome = menu.querySelector('#outcome').value
-      if (outcome == ""){
+      if (outcome === ""){
           menu.querySelector('#outcome').style.borderColor = "red"
           return
       }else{
           menu.querySelector('#outcome').style.borderColor = "#B8B8B8"
       }
       let currentTask;
-      let currentDate;
       for(let date of this.date){
         for (let task of date.tasks){
-          if(task.id == Number.parseInt(this.currentTask)){
+          if(task.id === Number.parseInt(this.currentTask)){
             currentTask = task;
-            currentDate = date
             break;
           }
         }
@@ -302,7 +299,7 @@ class HomeComp extends React.Component{
         if(this.state.lastSelectedDate){
           let dateDiv = document.querySelectorAll(".date")[this.state.lastSelectedDate-1]
           dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'})
-          if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
+          if(dateDiv) this.generateTasks(dateDiv.name === -1?[]:this.date[dateDiv.name].tasks)
         }
         // else{
         //   this.generateTasks()
@@ -317,15 +314,15 @@ class HomeComp extends React.Component{
       let completedTaskMenu = this.state.completedTaskMenu
       let menu = document.querySelector('#completedTaskScreen')
        
-      if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
+      if(completedTaskMenu !== "flex") this.currentTask = e.currentTarget.value
 
-      completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
+      completedTaskMenu = completedTaskMenu === "none"?"flex":'none'
        
-      if(completedTaskMenu == 'flex'){
+      if(completedTaskMenu === 'flex'){
           let taskObj
           for(let date of this.date){
             for (let task of date.tasks){
-              if(task.id == Number.parseInt(this.currentTask)){
+              if(task.id === Number.parseInt(this.currentTask)){
                   taskObj = task;
                   break;
               }
@@ -344,11 +341,11 @@ class HomeComp extends React.Component{
     toggleSnoozeTaskMenu(e){
       let display = this.state.snoozeTaskMenu
       let taskObj = {}
-      if(display == 'none'){
+      if(display === 'none'){
         for(let date of this.date){
           for (let task of date.tasks){
             // console.log(task,e.currentTarget.getAttribute("value"))
-            if(task.id == Number.parseInt(e.currentTarget.getAttribute("value"))){
+            if(task.id === Number.parseInt(e.currentTarget.getAttribute("value"))){
                 taskObj = task;
                 taskObj.date = new Date(taskObj.date).toISOString()
                 console.log(task)
@@ -358,11 +355,11 @@ class HomeComp extends React.Component{
         }
       }else{
         let dateDiv = document.querySelectorAll(".date")[this.state.lastSelectedDate-1]
-        if(dateDiv) this.generateTasks(dateDiv.name == -1?[]:this.date[dateDiv.name].tasks)
+        if(dateDiv) this.generateTasks(dateDiv.name === -1?[]:this.date[dateDiv.name].tasks)
       }
       // console.log(taskObj)
 
-      display = display == "flex"?"none":"flex"
+      display = display === "flex"?"none":"flex"
       this.setState({snoozeTaskMenu:display,currentTask:taskObj},()=>{
         this.componentDidMount()
       })
@@ -443,7 +440,7 @@ class HomeComp extends React.Component{
               <img src={Time} alt="time"/>
               <input type="time" id="time"disabled/>
               </div>
-              <p>Outcome<a>*</a></p>
+              <p>Outcome<p>*</p></p>
           </div>
           <textarea id="outcome" maxlength="2500"></textarea>
           </div>
@@ -452,7 +449,7 @@ class HomeComp extends React.Component{
           </button>
       </div>      
       </div>
-      {this.state.snoozeTaskMenu == "flex"?<SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />:""}
+      {this.state.snoozeTaskMenu === "flex"?<SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />:""}
 </div>
         )
     }

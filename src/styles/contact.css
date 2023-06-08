@@ -646,7 +646,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 #addCustomer #addBox .inputFields #dobField #calendarDiv {
   margin-top: 8px;

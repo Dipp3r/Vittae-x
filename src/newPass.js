@@ -18,7 +18,7 @@ class NewPassComp extends React.Component{
     }
     changePasswordVis(e){
         let state 
-        if(this.state[e.currentTarget.name] == 'password'){
+        if(this.state[e.currentTarget.name] === 'password'){
             state = 'text'
             e.currentTarget.src = eye
         }else{
@@ -30,7 +30,7 @@ class NewPassComp extends React.Component{
         this.setState(obj)
     }
     changeInVal(e){
-        if(e.keyCode == 13){
+        if(e.keyCode === 13){
             this.submit()
           }
         var obj = {};
@@ -79,12 +79,12 @@ class NewPassComp extends React.Component{
         })
         .then((response) => {
             console.log(response.json())
-            if(response.status != 200) return{}
+            if(response.status !== 200) return{}
             this.props.navigate("../login")
             response.json()
         })
         .then((response) => {
-            if (response.status != 200) throw new Error('Something went wrong')
+            if (response.status !== 200) throw new Error('Something went wrong')
             return response.json()
           })
           .then((data)=>{

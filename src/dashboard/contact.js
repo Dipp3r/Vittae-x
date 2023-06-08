@@ -2,27 +2,27 @@ import React from "react";
 import Search from '../images/Search.svg'
 import plus from '../images/plus.png'
 import arwDwn from '../images/arwDwn.png'
-import dateToString from "../dateToString"
+// import dateToString from "../dateToString"
 import { WithRouter } from "../routingWrapper";
 import CustomerListCard from "./customerListCard";
-import { ReactDOM } from "react";
+// import { ReactDOM } from "react";
 import info from "../images/infoBlue.svg";
 
-class Customer {
-  constructor(){
-    this.id = 0
-    this.name= ''
-    this.mobile=''
-    this.status=0//1,2,3 or 4
-    this.date=new Date().toDateString()//date obj
-    this.dateOfBirth=""//date obj (NOT used in list)
-    this.tag=['']//tag1,tag2,etc
-    this.designation = ""//ANY TEXT (NOT used in list)
-    this.gender=""//Male,female or others (NOT used in list)
-    this.mail = "" // (NOT used in list)
-    this.maritalStatus = ""//Single, Married, Widowed or Divorced (NOT used in list)
-  }
-}
+// class Customer {
+//   constructor(){
+//     this.id = 0
+//     this.name= ''
+//     this.mobile=''
+//     this.status=0//1,2,3 or 4
+//     this.date=new Date().toDateString()//date obj
+//     this.dateOfBirth=""//date obj (NOT used in list)
+//     this.tag=['']//tag1,tag2,etc
+//     this.designation = ""//ANY TEXT (NOT used in list)
+//     this.gender=""//Male,female or others (NOT used in list)
+//     this.mail = "" // (NOT used in list)
+//     this.maritalStatus = ""//Single, Married, Widowed or Divorced (NOT used in list)
+//   }
+// }
 class ContactsComp extends React.Component {
     constructor(props){
         super(props)
@@ -79,14 +79,14 @@ class ContactsComp extends React.Component {
     }
     toggleAddClientMenu(){
       let menu = 'none'
-      if(this.state.addClientMenu == 'none'){
+      if(this.state.addClientMenu==='none'){
         menu = 'flex'
       }
       this.setState({addClientMenu:menu},this.updateIndexState)
     } 
     toggleFilterMenu(){      
       let menu = 'none'
-      if(this.state.filterMenu == 'none'){
+      if(this.state.filterMenu==='none'){
         menu = 'flex'
       }
       this.setState({filterMenu:menu},this.updateIndexState)
@@ -95,21 +95,21 @@ class ContactsComp extends React.Component {
       let sort = this.state.filterProps.sort
       switch (e.currentTarget.value) {
         case '1':
-          if(sort == 'dateDesc') {
+          if(sort==='dateDesc') {
             sort = 'dateAsce'
           }else{
            sort = 'dateDesc'
           }
           break;
         case '2':
-          if(sort == 'nameDesc') {
+          if(sort==='nameDesc') {
             sort = 'nameAsce'
           }else{
            sort = 'nameDesc'
           }
           break;
         default:
-          if(sort == 'dateDesc') {
+          if(sort==='dateDesc') {
             sort = 'dateAsce'
           }else{
            sort = 'dateAsce'
@@ -123,7 +123,7 @@ class ContactsComp extends React.Component {
       this.filterAndSort(this.customerList)
     }
     displayCustomer(customerList){
-        let container = document.body.querySelector('#cardsList')
+        // let container = document.body.querySelector('#cardsList')
 
         // container.innerHTML = ''
         let statusBackgroundColor
@@ -169,7 +169,7 @@ class ContactsComp extends React.Component {
               createdat={i.created_at}
               setItem={this.props.setItem}
               />)
-            
+            return i
             // cards.value = i.id
             // cards.onclick = this.openCustomerView
             // 
@@ -180,7 +180,7 @@ class ContactsComp extends React.Component {
       let target = e.currentTarget.value
       
       for (let i of this.customerList){
-        if(i.id == target){
+        if(i.id===target){
           this.props.setItem({contactCompState:this.state,currentCustomerView : i},()=>{
             this.props.navigate('../customerview')
           })
@@ -198,7 +198,7 @@ class ContactsComp extends React.Component {
       let filterProps = this.state.filterProps
       let value = e.currentTarget.value
       let index = filterProps.tag.indexOf(value)
-      if(index == -1){
+      if(index===-1){
         filterProps.tag.push(value)
         e.currentTarget.style.backgroundColor = '#223F80'
       }else{
@@ -226,9 +226,9 @@ class ContactsComp extends React.Component {
     }
     filterAndSort(customerList){
       let newCustomerList = customerList
-      if(newCustomerList== undefined) return this.displayCustomer([])
+      if(newCustomerList===undefined) return this.displayCustomer([])
       let filterProps = this.state.filterProps
-      if(filterProps.status != '0'){
+      if(filterProps.status !== '0'){
         newCustomerList = newCustomerList.filter((element)=>{
           filterProps.status = Number.parseInt(filterProps.status)
           switch(filterProps.status){
@@ -240,6 +240,8 @@ class ContactsComp extends React.Component {
               return element.is_kyc_processing
             case 4:
               return element.is_kyc_completed
+            default:
+              return true
           }
         })
       }
@@ -266,11 +268,12 @@ class ContactsComp extends React.Component {
       let string 
       newCustomerList = newCustomerList.filter((element)=>{
         
-        string = element.tag == null?"":element.tag.join(' ');
+        string = element.tag===null?"":element.tag.join(' ');
         let bool = true,newBool = false
         this.state.filterProps.tag.map((element)=> {
           newBool = new RegExp(element).test(string)
           bool = bool && newBool
+          return element
         })
         return bool
       })
@@ -313,7 +316,7 @@ class ContactsComp extends React.Component {
         'Connection':"keep-alive"}
       })
 
-      if (data.status != 201){
+      if (data.status !== 201){
         console.log(data)
         return
       }
@@ -338,7 +341,7 @@ class ContactsComp extends React.Component {
 
     }
     searchInput(e){
-      if(e.keyCode == 13){
+      if(e.keyCode===13){
         let obj = {}
         if (e.currentTarget.value.length >= 2) obj.customerCompList= []
         obj.current_page = 1
@@ -407,7 +410,7 @@ class ContactsComp extends React.Component {
       
       this.setState(obj,()=>{
 
-        if (this.customerList.length == 0) this.fetchCustomersList()
+        if (this.customerList.length===0) this.fetchCustomersList()
         //styling filter tag by last session
         
         for(let i of  document.querySelector('#filterLabels').children){
@@ -422,7 +425,7 @@ class ContactsComp extends React.Component {
         this.lastSelectedFilterButton = document.body.querySelector("#statusButton").children[0]
         //styling filter status by last session
         for(let i of document.querySelector('#statusButton').children){
-          if(i.getAttribute('value') == this.state.filterProps.status){
+          if(i.getAttribute('value')===this.state.filterProps.status){
             i.style.borderBottomColor = '#223f80'
             i.style.color = '#223f80'
             this.lastSelectedFilterButton = i
@@ -530,7 +533,7 @@ class ContactsComp extends React.Component {
                   <p className="label">Designation</p>
                   <input id="newCusDesi"  className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='occupation'/>
             
-                  <p className="label">Mobile number<a class="required">*</a></p>
+                  <p className="label">Mobile number<p class="required">*</p></p>
                   <input id="newCusMobile"  className="field" type="number" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='phone'   />
           
                   <p className="label">Email ID</p>

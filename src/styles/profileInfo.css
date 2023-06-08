@@ -266,7 +266,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   margin-left: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
 #profileInfo #backButtonDiv #backButton svg path {
@@ -383,7 +383,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 #profileInfo .inputField #dobField #calendarDiv {
   margin-top: 8px;

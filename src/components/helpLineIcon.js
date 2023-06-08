@@ -1,12 +1,9 @@
 import React from "react";
 
 export default class HelpLineIcon extends React.Component {
-    constructor(props){
-        super(props)
-    }
     render(){
         return(
-        <a className="icon" href="https://wa.me/6385039930?text=" target="_blank">
+        <a className="icon" href="https://wa.me/6385039930?text=" target="_blank" rel="noreferrer">
             <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="19.3335" y="14.5" width="4.83333" height="8.45833" rx="2.41667" fill="#223F80" stroke="#223F80"
                 strokeWidth="2" strokeLinejoin="round" />

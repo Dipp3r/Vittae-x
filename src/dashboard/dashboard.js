@@ -1,9 +1,9 @@
-import React, { createElement } from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react';
+// import ReactDOM from 'react-dom/client';
 import { WithRouter } from '../routingWrapper';
 import ContactsComp from './contact';
 import HomeComp from './home';
-import profile from "../images/profile.png"
+// import profile from "../images/profile.png"
 import "../styles/home.css"
 import "../styles/contact.css"
 import HelpLineIcon from '../components/helpLineIcon';
@@ -15,34 +15,10 @@ class DashboardComp extends React.Component{
         this.state = {
           isHome:true
         }
-        this.getListOFCustomers = this.getListOFCustomers.bind(this);
+
         this.changeInVal = this.changeInVal.bind(this)
         this.toggleHomeContacts = this.toggleHomeContacts.bind(this)
-        this.dataUrl = ``
     }
-    getListOFCustomers(){
-        var CustomerList = []
-        var URL = ''
-        var listInHTML = ''
-        fetch(URL,{
-            method:'GET'
-        })
-        .then(response => response.json())
-        .then(raw_data=>{
-            
-            var data = raw_data.data
-            for(var i = 0;i<data.length;i++){
-                var node = document.createElement('div')
-                node.innerHTML = `<div>
-                    <p>${data[i].name}</p>
-                    <p>${data[i].dataOfReg}</p>
-                    <p>${data[i].stage}</p>
-                </div>`
-                document.body.querySelector('#listContainer').appendchild(node)
-            }
-        })
-    }
-
     changeInVal(e){
         let obj = {};
         obj[e.target.name] = e.target.value.trim();
@@ -50,7 +26,7 @@ class DashboardComp extends React.Component{
     }
     toggleHomeContacts(e){
       // console.log(e.currentTarget.getAttribute("value"))
-      this.setState({isHome:e.currentTarget.getAttribute("value") == "true"},()=>{
+      this.setState({isHome:e.currentTarget.getAttribute("value") === "true"},()=>{
         this.props.setItem({dashboard:this.state})
       })
     }
