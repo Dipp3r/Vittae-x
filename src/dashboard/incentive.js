@@ -12,7 +12,7 @@ class IncentiveComp extends React.Component {
         return(
             <section id="incentivePg">
                 <nav id="nav">
-                    <button><img src={backbutton} alt="back_icon"/></button>
+                    <button><img src={backbutton} alt="back_icon" onClick={ ()=>this.props.navigate("../dashboard")}/></button>
                     <div>
                         <p id="title">Number of Referrals</p>
                     </div>
