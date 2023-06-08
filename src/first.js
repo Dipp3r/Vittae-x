@@ -1,6 +1,5 @@
 import React from "react";
 import { WithRouter } from "./routingWrapper";
-import  { redirect}  from 'react-router-dom';
 import './styles/first.css';
 
 class FirstComp extends React.Component{

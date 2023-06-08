@@ -81,7 +81,7 @@
             // margin: 15px;
             #backButton{
                 margin-left:10px;
-                @include flex(row,start,center);
+                @include flex(row,flex-start,center);
                 svg path{
                     border: 2px solid rgba(0, 0, 0, 0.79);
                     fill:#000000C9;
@@ -157,7 +157,7 @@
             }
             #dobField{
                 width: 100%;
-                @include flex(row,center,start);
+                @include flex(row,center,flex-start);
                 #calendarDiv{
                     margin-top:8px;
                     margin-left:5px;
@@ -666,7 +666,7 @@
         
     }
     #right{
-        @include flex(column,flex-start,start);
+        @include flex(column,flex-start,flex-start);
         width:46%;
         .note{
             margin:3px;

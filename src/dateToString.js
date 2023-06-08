@@ -8,13 +8,10 @@ function dateToString(dateObj,mode){
         case 1:
         default:
             return `${date} ${month} ${year}`
-            break;
         case 2:
             return `${year} ${month} ${date}`
-            break;
         case 3:
             return `${month} ${date} ${year}`
-            break;
     }
 }
 export default dateToString

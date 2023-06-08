@@ -2,11 +2,9 @@ import React from 'react';
 // import './App.css';
 import {CheckCircleOutlined} from '@ant-design/icons';
 import { Steps } from 'antd';
-const description = 'This is a description.';
+// const description = 'This is a description.';
 class KYCsteps extends React.Component{
-  constructor(props){
-    super(props)
-  }
+  
   render(){
     return (
       <div className="App">

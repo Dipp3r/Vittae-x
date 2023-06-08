@@ -30,7 +30,6 @@ function checkString(string,num = 0){
             }else{
                 obj.bool = true
                 return obj            }
-            break;
         case 2:
             if(/^([\d]+)/.test(string)){
                 obj.msg = "email shouldn't begin with digit"
@@ -45,34 +44,30 @@ function checkString(string,num = 0){
                 obj.bool = true
                 return obj
             }
-            break;
         case 3:
-            if(string[0] == '+'){
+            if(string[0] === '+'){
                 string = string.slice(3,)
             }
             string  = string.trim()
             // console.log(string)
-            if((!/^[\d]+$/.test(string))|(string.length != 10)){
+            if((!/^[\d]+$/.test(string))|(string.length !== 10)){
                 obj.msg = 'Invalid mobile number'
                 return obj
             }
             obj.bool = true
             return obj
-            break;
         case 4:
             if(!/^[a-zA-Z]+$/.test(string)){
                 obj.msg = 'Invalid name'
             }else{
                 obj.bool = true
             }
-            break;
+            return obj
         default:
             obj.bool = true
             return obj
-            break;
     }
     // console.log('\n')
-    return obj
 }
 export default checkString;
 // console.log('\npassword:')

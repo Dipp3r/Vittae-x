@@ -1,5 +1,4 @@
 import React from "react";
-import { WithRouter } from "./routingWrapper";
 import './styles/OTP.css';
 
 class OTPComp extends React.Component {
@@ -22,24 +21,24 @@ class OTPComp extends React.Component {
     }   
     changeInVal(e){
         // console.log(Number.parseInt(e.target.getAttribute('name')),e.target.value)
-        if(e.keyCode == 13){
+        if(e.keyCode === 13){
             this.submit()
           }
         var text = this.state.OTP
         var num = Number.parseInt(e.target.getAttribute('name'))
         var value = e.currentTarget.value
         var inputclass = document.body.querySelector('#otpBox').children
-        // // console.log(value == "",num)
+        // // console.log(value === "",num)
         // value = Number.parseInt(value).split(-1)
         // if(!Number.isInteger(value)) return;
         // console.log(num,value)
         
         // console.log(text,this.state.OTP)
-        if(inputclass[num].value == ""){ 
+        if(inputclass[num].value === ""){ 
             inputclass[num].value = value[0]
             text[num] = value[0]
-            // console.log('value == ""',value)
-            if(num<=2 && value != '' ){
+            // console.log('value === ""',value)
+            if(num<=2 && value !== '' ){
                 inputclass[num+1].focus()
                 // console.log('front')
             }
@@ -51,7 +50,7 @@ class OTPComp extends React.Component {
             // console.log('Split value')
             
             inputclass[num+1].focus()
-        }else if(num ==0 && value == ""){
+        }else if(num === 0 && value === ""){
             inputclass[num].value = ''
             text[num] = ''
             // console.log('remove above')
@@ -61,7 +60,7 @@ class OTPComp extends React.Component {
             text[num] = value.slice(-1)
         }
         
-        if(value == '' && num >0){
+        if(value === '' && num >0){
             inputclass[num-1].focus()
             // console.log('back')
         }
@@ -87,7 +86,7 @@ class OTPComp extends React.Component {
     changeTimer(){
         var min = Number.parseInt(this.state.min);
         var sec = Number.parseInt(this.state.sec);
-        if(min == 0 && sec == 0){
+        if(min === 0 && sec === 0){
             return
         }else{
             if(sec <= 0){
@@ -122,7 +121,7 @@ class OTPComp extends React.Component {
         }else{
             sec = `${sec}`
         }
-        if(min == 0 && sec == 0){
+        if(min === 0 && sec === 0){
             this.setState({isTimeOut:true});
         }
         clearInterval(this.state.intervalId)
@@ -136,7 +135,7 @@ class OTPComp extends React.Component {
         // return this.props.navigate(this.loc);
         if(this.state.isTimeOut) return
         var obj = {otp:this.state.OTP.join(""),phone:this.props.getItem('phone')}
-        if(obj.OTP == '') return
+        if(obj.OTP === '') return
         console.log(obj)
         let data = await fetch(this.submitLink,{
             method:'POST',
@@ -147,13 +146,13 @@ class OTPComp extends React.Component {
         })
         .then((response) =>{
             console.log(response);
-            if(response.status == 201 || response.status == 200){
+            if(response.status === 201 || response.status === 200){
                 return response.json()
             }
             return undefined
         })
         // console.log(data)
-        if(data != undefined){
+        if(data !== undefined){
             console.log(data)            
             this.props.setItem(data,this.props.navigate(this.loc))
         }
@@ -179,7 +178,7 @@ class OTPComp extends React.Component {
                     <input id='box3' type="number" value={this.state.OTP[2]} name="2" onKeyDown={this.changeInVal}   onChange={this.changeInVal} onFocus={()=>this.changeColor('#box3','#223F80')} onBlur={()=>this.changeColor('#box3','#b8b8b8')}  />
                     <input id='box4' type="number" value={this.state.OTP[3]} name="3" onKeyDown={this.changeInVal}   onChange={this.changeInVal} onFocus={()=>this.changeColor('#box4','#223F80')} onBlur={()=>this.changeColor('#box4','#b8b8b8')} />
                 </div>
-                <p id='otpTime'>{this.state.min}:{this.state.sec} <a onClick={this.reset}>Resend</a></p>
+                <p id='otpTime'>{this.state.min}:{this.state.sec} <p onClick={this.reset}>Resend</p></p>
                 
                 <div id="submit">
                     <button id="Button" type="submit" value={this.loc} onClick={this.submit}>

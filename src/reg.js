@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+// import ReactDOM from 'react-dom/client';
 
 import checkString from './stringChecker';
 import { WithRouter} from './routingWrapper';
@@ -33,18 +33,18 @@ class RegisterComp extends React.Component {
       this.submitLink = ""
     }
     changeInVal(e) {
-        if(e.keyCode == 13){
+        if(e.keyCode === 13){
           this.submit()
         }
         let value = e.target.value.trim()
-        if(e.currentTarget.name != 'name') e.currentTarget.value = value;
+        if(e.currentTarget.name !== 'name') e.currentTarget.value = value;
         var obj = {};
         obj[e.currentTarget.name] = value;
         this.setState(obj);
     }
     changeInputType(e){
         let obj = {}
-        if(this.state[e.target.getAttribute('value')]== 'password'){
+        if(this.state[e.target.getAttribute('value')]=== 'password'){
             obj[e.target.getAttribute('value')] = 'txt'
             e.currentTarget.src = eye  
         }else{
@@ -146,14 +146,14 @@ class RegisterComp extends React.Component {
             phone:this.props.getItem('phone')
         }
         //sending data to server
-        let data = await fetch(this.submitLink, {
+        fetch(this.submitLink, {
           method: 'POST',
           body: JSON.stringify(obj),
           headers: {
             "Content-type": "application/json; charset=UTF-8"
           }
         }).then((response) => {
-            if (response.status != 200) throw new Error('Something went wrong')
+            if (response.status !== 200) throw new Error('Something went wrong')
             
             return response.json()
           })
@@ -233,7 +233,7 @@ class RegisterComp extends React.Component {
           </svg>
         </button>
         <p>
-          I agree to the <a onClick={this.props.navigate} value={'../termsAndConditions'}>Terms & Conditions</a></p>
+          I agree to the <p onClick={this.props.navigate} value={'../termsAndConditions'}>Terms & Conditions</p></p>
       </div>
       <p id="invalidTC" className="invalid">{this.state.tAndCErr}</p>
       <button id="Button" onClick={this.submit}>SIGN UP</button>

@@ -1,5 +1,5 @@
 import React from "react"
-import { WithRouter } from "./routingWrapper"
+// import { WithRouter } from "./routingWrapper"
 import checkString from "./stringChecker"
 import './styles/mobComp.css';
 
@@ -19,7 +19,7 @@ class MobComp extends React.Component{
         // child components have their own process function 
     }
     changeInVal(e){
-        if(e.keyCode == 13){
+        if(e.keyCode  === 13){
             this.submit()
         }
         
@@ -53,7 +53,7 @@ class MobComp extends React.Component{
             }
         })
         .then((response) => {
-            if(response.status == 201){
+            if(response.status  === 201){
                 return response.json()
             }
             throw new Error('Something went wrong')

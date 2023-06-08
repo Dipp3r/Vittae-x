@@ -4,9 +4,7 @@ import backbutton from "../images/back_white.svg";
 import info from '../images/infoGrey.svg';
 import '../styles/renumeration.css';
 class RenumerationComp extends React.Component {
-    constructor(props){
-        super(props)
-    }
+    
     render(){
         return(
             <section id="renumerationPg">

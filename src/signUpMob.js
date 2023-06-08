@@ -1,4 +1,4 @@
-import React from "react"
+// import React from "react"
 import MobComp from "./mobComp"
 import { WithRouter } from "./routingWrapper"
 import './styles/mobComp.css';

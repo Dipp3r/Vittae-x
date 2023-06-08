@@ -69,7 +69,7 @@ class Tasks extends React.Component{
         container.innerHTML = ''
         let task,desc,i
         let card;
-        if(taskList.length == 0){
+        if(taskList.length  === 0){
             card = document.createElement('div')
             card.id = 'taskEmpty'
             let p1 = document.createElement('p')
@@ -81,7 +81,7 @@ class Tasks extends React.Component{
             card.id = 'nonEmpty'
             for (let j = 0;j< taskList.length;j++){
                 i = taskList[j]
-                if(i.completed == true && currSection != 2) continue
+                if(i.completed  === true && currSection !== 2) continue
                 task = document.createElement('div')
                 task.className = 'task'
 
@@ -137,12 +137,11 @@ class Tasks extends React.Component{
                 let dateValue = new Date(i.date)
                 let hour = dateValue.getHours()
                 let meridiem
-                let minutes = dateValue.getMinutes()
                 if (hour >= 12){
                   meridiem = 'pm'
-                  if(hour != 12) hour -= 12
+                  if(hour !== 12) hour -= 12
                 }else{
-                  if(hour == 0) hour = 12
+                  if(hour  === 0) hour = 12
                   meridiem = 'am'
                 }
                 function getFull(string){
@@ -162,7 +161,7 @@ class Tasks extends React.Component{
         let obj = {}
         obj.currSection = Number.parseInt(e.currentTarget.name)
         let lastSession = this.state.lastSession
-        if(lastSession != undefined){
+        if(lastSession !== undefined){
           lastSession.style.color = 'rgba(37, 53, 100, 0.4)'
           lastSession.style.borderBottomColor = 'rgba(37, 53, 100, 0.4)'
         }
@@ -179,18 +178,17 @@ class Tasks extends React.Component{
       let customer = this.state.customer
        
       let outcome = menu.querySelector('#outcome').value
-      if (outcome == ""){
+      if (outcome  === ""){
           menu.querySelector('#outcome').style.borderColor = "red"
           return
       }else{
           menu.querySelector('#outcome').style.borderColor = "#B8B8B8"
       }
       let currentTask;
-      let currentDate;
       let taskList = [...this.state.data.overDue]
       taskList.push(this.state.data.upComing)
       for (let task of taskList){
-        if(task.id == Number.parseInt(this.currentTask)){
+        if(task.id  === Number.parseInt(this.currentTask)){
           currentTask = task;
           break;
         }
@@ -211,19 +209,19 @@ class Tasks extends React.Component{
       })
     }
   toggleCompletedTaskMenu(e){
-      let completedTaskMenu = this.state.completedTaskMenu == undefined?'none':this.state.completedTaskMenu ;
+      let completedTaskMenu = this.state.completedTaskMenu  === undefined?'none':this.state.completedTaskMenu ;
       let menu = document.querySelector('#completedTaskScreen')
        
-      if(completedTaskMenu != "flex") this.currentTask = e.currentTarget.value
+      if(completedTaskMenu !== "flex") this.currentTask = e.currentTarget.value
 
-      completedTaskMenu = completedTaskMenu == "none"?"flex":'none'
+      completedTaskMenu = completedTaskMenu  === "none"?"flex":'none'
        
-      if(completedTaskMenu == 'flex'){
+      if(completedTaskMenu  === 'flex'){
           let taskObj
           let taskList = [...this.state.data.overDue]
       taskList.push(...this.state.data.upComing)
       for (let task of taskList){
-        if(task.id == Number.parseInt(this.currentTask)){
+        if(task.id  === Number.parseInt(this.currentTask)){
           taskObj = task;
           break;
         }
@@ -242,19 +240,19 @@ class Tasks extends React.Component{
       console.log("toggled snoozeMenu")
       let display = this.state.snoozeTaskMenu
       let taskObj = {}
-      if(display == 'none'){
+      if(display  === 'none'){
         let taskList = [...this.state.data.overDue]
         taskList.push(...this.state.data.upComing)
         for (let task of taskList){
           console.log(task.id , Number.parseInt(e.currentTarget.value))
-          if(task.id == Number.parseInt(e.currentTarget.value)){
+          if(task.id  === Number.parseInt(e.currentTarget.value)){
             taskObj = task;
             break;
           }
         }
         console.log(taskObj)
       }
-      display = display == "flex"?"none":"flex"
+      display = display  === "flex"?"none":"flex"
       this.setState({snoozeTaskMenu:display,currentTask:taskObj})
     }
     componentDidMount(){
@@ -329,7 +327,7 @@ class Tasks extends React.Component{
                         <img src={Time} alt="time"/>
                         <input type="time" id="time"disabled/>
                         </div>
-                        <p>Outcome<a>*</a></p>
+                        <p>Outcome<p>*</p></p>
                     </div>
                     <textarea id="outcome" maxlength="2500"></textarea>
                     </div>
@@ -338,7 +336,7 @@ class Tasks extends React.Component{
                     </button>
                 </div>      
               </div>
-              {this.state.snoozeTaskMenu == "flex"?<SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />:""}
+              {this.state.snoozeTaskMenu  === "flex"?<SnoozeMenu display={this.state.snoozeTaskMenu} toggleSnoozeTaskMenu={this.toggleSnoozeTaskMenu} currentTask={this.state.currentTask} />:""}
              </div>
            </section>
         )
