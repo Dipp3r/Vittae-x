@@ -533,7 +533,7 @@ class ContactsComp extends React.Component {
                   <p className="label">Designation</p>
                   <input id="newCusDesi"  className="field" type="text" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='occupation'/>
             
-                  <p className="label">Mobile number<p class="required">*</p></p>
+                  <div className="label mobBox" style={{justifyContent:"flex-start"}}><p>Mobile number</p><p className="required">*</p></div>
                   <input id="newCusMobile"  className="field" type="number" onChange={this.changeInVal} onKeyDown={this.changeInVal} name='phone'   />
           
                   <p className="label">Email ID</p>

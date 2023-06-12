@@ -284,6 +284,18 @@ textarea {
 
 }
 
+.mobBox{
+    @include flex(row,flex-start,center);
+    width:100%;
+    p{
+        margin:0px;
+    }
+    .required{
+        margin-left:3px;
+        color:#BB2230;
+    }
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
     color: black;
     opacity: 1;
