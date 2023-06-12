@@ -10,7 +10,7 @@ class NewPassComp extends React.Component{
     constructor(props){
         super(props)
         this.state = {password:'',cPassword:'',passType:'password',cPassType:'password',cPasswordErr:'',passwordErr:''}
-        this.submitLink = `http://dev.api.vittae.money/broker/reset-password/${this.props.getItem('id')}/`
+        this.submitLink = process.env.BASE_SERVER_URL+`/reset-password/${this.props.getItem('id')}/`
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
         this.changePasswordVis = this.changePasswordVis.bind(this)

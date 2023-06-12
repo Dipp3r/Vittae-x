@@ -268,7 +268,7 @@ class HomeComp extends React.Component{
       this.setState({customer:customer})
       
       
-      fetch("/completeTask",{
+      fetch(process.env.SECONDARY_SERVER_URL+"/completeTask",{
           method:'post',
           body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
@@ -281,7 +281,7 @@ class HomeComp extends React.Component{
       })
     }
     componentDidMount(){
-      fetch("/getTasksForMonth",{
+      fetch(process.env.SECONDARY_SERVER_URL+"/getTasksForMonth",{
         method:'POST',
         body:JSON.stringify({date:dateToString(this.state.today).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
         headers: {

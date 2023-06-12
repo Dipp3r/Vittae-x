@@ -10,7 +10,7 @@ class OTPComp extends React.Component {
         intervalId:0,
         isTimeOut:false
         }
-        this.submitLink = 'http://dev.api.vittae.money/broker/check-otp/'
+        this.submitLink = process.env.BASE_SERVER_URL+'/check-otp/'
         this.loc = '../'
         this.changeInVal = this.changeInVal.bind(this)
         this.changeTimer = this.changeTimer.bind(this)

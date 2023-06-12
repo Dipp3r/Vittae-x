@@ -46,7 +46,7 @@ class Profile extends React.Component{
         reasonTxt.style.borderColor = "red"
         return
       }
-      fetch(`http://dev.api.vittae.money/broker/agent-profile-delete/`,{
+      fetch(process.env.BASE_SERVER_URL+`/agent-profile-delete/`,{
         method:"POST",
         headers: {
         "Authorization":`Passcode ${localStorage.getItem("token")}`,

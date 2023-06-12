@@ -200,7 +200,7 @@ class Tasks extends React.Component{
           this.displaySection(this.state.currSection)
           this.toggleCompletedTaskMenu()
       })
-      fetch("/completeTask",{
+      fetch(process.env.SECONDARY_SERVER_URL+"/completeTask",{
           method:'post',
           body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
@@ -257,7 +257,7 @@ class Tasks extends React.Component{
     }
     componentDidMount(){
       
-      fetch("/getTasksAll",{
+      fetch(process.env.SECONDARY_SERVER_URL+"/getTasksAll",{
         method:'POST',
         body:JSON.stringify({broker_id:localStorage.getItem("id")}),
         headers: {

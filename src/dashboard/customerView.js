@@ -117,7 +117,7 @@ class CustomerView extends React.Component {
         obj.completed = false
         obj.name = this.state.customer.first_name+" "+this.state.customer.last_name
         console.log(date+"T"+time+"Z")
-        fetch("addTask",{
+        fetch(process.env.SECONDARY_SERVER_URL+"/addTask",{
             method:'post',
             body:JSON.stringify(obj),
             headers: {
@@ -194,7 +194,7 @@ class CustomerView extends React.Component {
         this.setState({customer:customer})
         this.generateTasks(this.state.customer.tasks)
         this.toggleCompletedTaskMenu()
-        fetch("/completeTask",{
+        fetch(process.env.SECONDARY_SERVER_URL+"/completeTask",{
             method:'post',
             body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
             headers: {
@@ -373,7 +373,7 @@ class CustomerView extends React.Component {
                 this.setState({customer:customer})
                 this.generateNotes(this.state.customer.notes)
                 
-                fetch("addNote",{
+                fetch(process.env.SECONDARY_SERVER_URL+"/addNote",{
                     method:'post',
                     body:JSON.stringify(data),
                     headers: {
@@ -432,7 +432,7 @@ class CustomerView extends React.Component {
             obj[field.name] = field.value
         }
         console.log(obj)
-        fetch(`http://dev.api.vittae.money/broker/customer-onboarding/${this.state.customer.id}/`,{
+        fetch(process.env.BASE_SERVER_URL+`/customer-onboarding/${this.state.customer.id}/`,{
         method:'PATCH',
         body:JSON.stringify(obj),
         headers: {
@@ -455,7 +455,7 @@ class CustomerView extends React.Component {
         }
         console.log(localStorage.getItem("token"))
         try{
-        fetch(`http://dev.api.vittae.money/broker/customer-detail/${obj.id}/`,{
+        fetch(process.env.BASE_SERVER_URL+`/customer-detail/${obj.id}/`,{
             method:'GET',
             headers: {
               "Authorization":`Passcode ${localStorage.getItem("token")}`,
@@ -478,7 +478,7 @@ class CustomerView extends React.Component {
                 data.statusBackgroundColor = '#6BDA7D'
               }
             //getting notes tasks
-            data.notes = await fetch("getNotesList",{
+            data.notes = await fetch(process.env.SECONDARY_SERVER_URL+"/getNotesList",{
                 method:'POST',
                 body:JSON.stringify({customer_id:obj.id,broker_id:localStorage.getItem("id")}),
                 headers: {
@@ -491,7 +491,7 @@ class CustomerView extends React.Component {
             })
             
             //getting taks list
-            data.tasks = await fetch("getTasksList",{
+            data.tasks = await fetch(process.env.SECONDARY_SERVER_URL+"/getTasksList",{
                 method:'POST',
                 body:JSON.stringify({customer_id:obj.id,broker_id:localStorage.getItem("id")}),
                 headers: {
@@ -505,20 +505,7 @@ class CustomerView extends React.Component {
             //getting kyc log
             // see id => 391
             let KYCLog = []
-            //  = [] await fetch(`http://dev.api.vittae.money/broker/customer-kyc-log/${obj.id}/`,{
-            //     method:'GET',
-            //     headers: {
-            //         "Authorization":`Passcode ${localStorage.token}`,
-            //         "Content-type": "application/json; charset=UTF-8",
-            //         'Connection':"keep-alive"
-            //     }
-            // }).then((response) => {
-
-            //   if (response.status !== 200) throw new Error('Something went wrong')
-            //   return response.json()
-            // })
             
-
             this.setState({customer:data,KYCLog:KYCLog},()=>{
                 this.generateNotes(this.state.customer.notes)
                 this.generateTasks(this.state.customer.tasks)

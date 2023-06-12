@@ -167,7 +167,7 @@ class RegisterComp extends React.Component {
       console.log(this.props.getItem)
       console.log(this.state)
       console.log(this.props.getItem('id'))
-      this.submitLink = `http://dev.api.vittae.money/broker/set-password/${this.props.getItem('id')}/`
+      this.submitLink = process.env.BASE_SERVER_URL+`/set-password/${this.props.getItem('id')}/`
     }
     render() {
       // console.log(this.state)

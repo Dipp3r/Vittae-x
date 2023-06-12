@@ -299,7 +299,7 @@ class ContactsComp extends React.Component {
       // obj.status = "1"
       // obj.id = Number.parseInt(this.customerList.length)+1
       // obj.tag = []
-      let data = await fetch("http://dev.api.vittae.money/broker/customer-onboarding/",{
+      let data = await fetch(process.env.BASE_SERVER_URL+"/customer-onboarding/",{
         method:'POST',
         body:JSON.stringify(obj),
         headers: {
@@ -307,7 +307,7 @@ class ContactsComp extends React.Component {
         "Content-type": "application/json; charset=UTF-8",
         'Connection':"keep-alive"}
       })
-      fetch("/addCustomer",{
+      fetch(process.env.SECONDARY_SERVER_URL+"/addCustomer",{
         method:'POST',
         body:JSON.stringify({"id":obj.id,"name":obj.name}),
         headers: {
@@ -321,7 +321,7 @@ class ContactsComp extends React.Component {
         return
       }
       //getting a new customer List
-      fetch("http://dev.api.vittae.money/broker/customer-list/?page=1&page_size=10",{
+      fetch(process.env.BASE_SERVER_URL+"/customer-list/?page=1&page_size=10",{
         method:'GET',
         headers: {
         "Authorization":`Passcode ${localStorage.getItem("token")}`,
@@ -376,7 +376,7 @@ class ContactsComp extends React.Component {
     async fetchCustomersList(callback){
       let page = this.state.current_page
       let search = this.state.searchValue
-      let dataUrl = `http://dev.api.vittae.money/broker/customer-list/?page=${page}&page_size=10`
+      let dataUrl = process.env.BASE_SERVER_URL+`/customer-list/?page=${page}&page_size=10`
 
       if (search) 
         if(search.length>=3){

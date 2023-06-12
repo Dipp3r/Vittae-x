@@ -57,7 +57,7 @@ class ProfileInfo extends React.Component{
       delete data.email
       console.log(data)
       
-      fetch(`http://dev.api.vittae.money/broker/personal-info-update/${localStorage.getItem("id")}/`,{
+      fetch(process.env.BASE_SERVER_URL+`/personal-info-update/${localStorage.getItem("id")}/`,{
       method:'PATCH',
       body:JSON.stringify(data),
       headers: {
@@ -75,7 +75,7 @@ class ProfileInfo extends React.Component{
       })
     }
     componentDidMount(){
-      fetch(`http://dev.api.vittae.money/broker/personal-info/${localStorage.getItem("id")}/`,{
+      fetch(process.env.BASE_SERVER_URL+`/personal-info/${localStorage.getItem("id")}/`,{
         method:"GET",
         headers: {
         "Authorization":`Passcode ${localStorage.getItem("token")}`,

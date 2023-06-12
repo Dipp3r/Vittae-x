@@ -9,7 +9,7 @@ class LoginComp extends React.Component{
     constructor(){
         super()
         this.state = {phone:'',password:'',mobileErr:'',passwordErr:'',passwordInType:'password',rememberMe:false}
-        this.submitLink = 'http://dev.api.vittae.money/broker/broker-login/'
+        this.submitLink = process.env.BASE_SERVER_URL+'/broker-login/'
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
         this.changePasswordVis = this.changePasswordVis.bind(this)

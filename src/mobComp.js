@@ -7,7 +7,7 @@ class MobComp extends React.Component{
     constructor(props){
         super(props)
         this.state = {}
-        this.submitLink = 'http://dev.api.vittae.money/broker/send-otp/'
+        this.submitLink = process.env.BASE_SERVER_URL+'/send-otp/'
         this.loc = '../'
         this.title='TITLE HERE'
         this.changeInVal = this.changeInVal.bind(this)

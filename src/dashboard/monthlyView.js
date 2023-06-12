@@ -61,7 +61,7 @@ class MonthlyView extends React.Component {
         console.log(date,month,year,value)
         let selectedDate = (date.getMonth() === today.getMonth() && date.getFullYear === today.getFullYear())?today.getDate:1;
 
-        let data = await fetch("/getTasksForMonth",{
+        let data = await fetch(process.env.SECONDARY_SERVER_URL+"/getTasksForMonth",{
             method:'POST',
             body:JSON.stringify({date:dateToString(date).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
             headers: {
@@ -265,7 +265,7 @@ class MonthlyView extends React.Component {
             this.displayTasks()
             this.toggleCompletedTaskMenu()
         })
-        fetch("/completeTask",{
+        fetch(process.env.SECONDARY_SERVER_URL+"/completeTask",{
             method:'post',
             body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
             headers: {
@@ -320,7 +320,7 @@ class MonthlyView extends React.Component {
     this.setState({snoozeTaskMenu:display,currentTask:taskObj})
     }
     componentDidMount(){
-        fetch("/getTasksForMonth",{
+        fetch(process.env.SECONDARY_SERVER_URL+"/getTasksForMonth",{
             method:'POST',
             body:JSON.stringify({date:dateToString(new Date()).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
             headers: {
