@@ -245,12 +245,15 @@ textarea {
 .mobBox {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
 }
-.mobBox .required {
+.mobBox p {
   margin: 0px;
+}
+.mobBox .required {
+  margin-left: 3px;
   color: #BB2230;
 }
 
@@ -265,7 +268,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 
 #signInPage {
-  background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
+  background: linear-gradient(221.38deg, #bb2230 1.49%, #444584 55.55%, #1e2e5a 95.91%);
   overflow: hidden;
 }
 #signInPage #signInFormDiv {
@@ -284,7 +287,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  color: #223F80;
+  color: #223f80;
   padding: 10px;
   margin-bottom: 0px;
 }
@@ -302,12 +305,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  color: #223F80;
+  color: #223f80;
   margin-bottom: 3px;
   width: 100%;
 }
 #signInPage #signInFormDiv #fieldBox #numberField {
-  border: 2px solid #B8B8B8;
+  border: 2px solid #b8b8b8;
   border-radius: 12px;
   padding-left: 8px;
   width: 275px;
@@ -323,7 +326,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  color: #223F80;
+  color: #223f80;
   margin-bottom: 3px;
   width: 100%;
 }
@@ -332,7 +335,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   flex-direction: row;
   justify-content: none;
   align-items: none;
-  border: 2px solid #B8B8B8;
+  border: 2px solid #b8b8b8;
   border-radius: 12px;
   padding-left: 5px;
   width: 275px;
@@ -365,7 +368,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   font-weight: 500;
   font-size: 16px;
   margin-top: 10px;
-  color: #223F80;
+  color: #223f80;
 }
 #signInPage #signInFormDiv #fieldBox #buttonDiv {
   display: flex;
@@ -397,12 +400,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
 #signInPage #signInFormDiv #fieldBox #forgotPwd p {
   font-family: "Montserrat";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   margin: 10px 20px;
   margin-bottom: 5px;
-  color: #223F80;
+  color: #223f80;
   text-decoration-line: underline;
-  font-size: 13px;
+  font-size: 12px;
   float: right;
 }
 #signInPage #signInFormDiv #fieldBox #accDiv {
@@ -410,23 +413,32 @@ input[type=date]::-webkit-calendar-picker-indicator {
   width: 270px;
 }
 #signInPage #signInFormDiv #fieldBox #accDiv hr {
+  border-color: rgba(184, 184, 184, 0.7098039216);
+  border-width: 1px;
   margin-top: 20px;
 }
-#signInPage #signInFormDiv #fieldBox #accDiv p {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 500;
-  font-size: small;
-  color: #B8B8B8;
-  margin: 25px;
+#signInPage #signInFormDiv #fieldBox #accDiv div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0px 10px 0px;
 }
-#signInPage #signInFormDiv #fieldBox #accDiv p a {
-  color: #223F80;
+#signInPage #signInFormDiv #fieldBox #accDiv div #grayed {
   font-family: "Montserrat";
   font-style: normal;
-  margin-left: 2px;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 12px;
+  color: #b8b8b8;
+  margin: 0px;
+}
+#signInPage #signInFormDiv #fieldBox #accDiv div #link {
+  margin: 0px;
+  color: #223f80;
+  font-family: "Montserrat";
+  font-style: normal;
+  margin-left: 5px;
+  font-weight: 400;
   font-size: 12px;
   text-decoration-line: underline;
-  font-size: small;
 }/*# sourceMappingURL=login.css.map */

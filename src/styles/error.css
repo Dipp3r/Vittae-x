@@ -245,12 +245,15 @@ textarea {
 .mobBox {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
 }
-.mobBox .required {
+.mobBox p {
   margin: 0px;
+}
+.mobBox .required {
+  margin-left: 3px;
   color: #BB2230;
 }
 
