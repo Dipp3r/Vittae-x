@@ -147,8 +147,11 @@ class LoginComp extends React.Component{
       </div>
 
       <div id="accDiv">
-        <hr />
-        <p>Need an account?<p onClick={this.props.navigate} value="../mobileSignUp">Signup</p></p>
+        <hr/>
+        <div>
+          <p id = "grayed">Need an account?</p>
+          <p id = "link" onClick={this.props.navigate} value="../mobileSignUp">Signup</p>
+        </div>
       </div>
     </div>
   </div>
