@@ -349,8 +349,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
   border-bottom: 1px solid #D7D7D7;
 }
 #renumerationPg #main .renuCard .secondPortion .c1 .commission {
-  margin: 0px;
-  margin-bottom: 13px;
+  margin: 10px 0 15px 0;
   font-weight: 500;
   font-size: 14px;
 }
