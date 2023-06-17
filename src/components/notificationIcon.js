@@ -1,5 +1,5 @@
 import React from "react";
-import { WithRouter } from "../routingWrapper";
+import { WithRouter } from "components/routingWrapper.js";
 
 class NotificationIcon extends React.Component {
     constructor(props){

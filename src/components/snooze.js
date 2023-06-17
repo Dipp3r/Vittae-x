@@ -1,8 +1,8 @@
 import React from "react";
-// import Trash from "../images/Trash.svg"
-import Date_range from "../images/Date_range.svg"
-import Time from "../images/Time.svg"
-import dateToString from "../dateToString";
+// import Trash from "assets/images/Trash.svg"
+import Date_range from "assets/images/Date_range.svg"
+import Time from "assets/images/Time.svg"
+import dateToString from "utils/dateToString.js";
 
 // import "../styles/home.css"
 class SnoozeMenu extends React.Component{
