@@ -1,12 +1,12 @@
 import React from 'react';
 // import ReactDOM from 'react-dom/client';
 
-import checkString from 'utils/stringChecker.js';
-import { WithRouter} from 'components/routingWrapper.js';
-import 'assets/styles/reg.scss';
+import checkString from '@utils/stringChecker';
+import { WithRouter} from '@components/routingWrapper';
+import '@assets/styles/reg.scss';
 
-import eye from "assets/images/eye.svg"
-import eyeOff from "assets/images/eye_off.svg"
+import eye from "@assets/images/eye.svg"
+import eyeOff from "@assets/images/eye_off.svg"
 
 class SignupComp extends React.Component {
     constructor() {
@@ -167,7 +167,7 @@ class SignupComp extends React.Component {
       console.log(this.props.getItem)
       console.log(this.state)
       console.log(this.props.getItem('id'))
-      this.submitLink = process.env.REACT_APP_BASE_SERVER_URL+`/set-password/${this.props.getItem('id')}/`
+      this.submitLink = import.meta.env.VITE_BASE_SERVER_URL+`/set-password/${this.props.getItem('id')}/`
     }
     render() {
       // console.log(this.state)

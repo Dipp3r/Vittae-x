@@ -1,5 +1,5 @@
 import React from "react";
-import error from "assets/images/error.png"
+import error from "@assets/images/error.png"
 class ErrorComp extends React.Component{
     render(){
         return(

@@ -1,15 +1,15 @@
 import React from 'react';
-import { WithRouter } from 'components/routingWrapper.js';
-import checkString from 'utils/stringChecker.js';
-import 'assets/styles/login.scss';
-import eye from "assets/images/eye.svg"
-import eyeOff from "assets/images/eye_off.svg"
+import { WithRouter } from '@components/routingWrapper';
+import checkString from '@utils/stringChecker';
+import '@assets/styles/login.scss';
+import eye from "@assets/images/eye.svg"
+import eyeOff from "@assets/images/eye_off.svg"
 
 class SigninComp extends React.Component{
     constructor(){
         super()
         this.state = {phone:'',password:'',mobileErr:'',passwordErr:'',passwordInType:'password',rememberMe:false}
-        this.submitLink = process.env.REACT_APP_BASE_SERVER_URL+'/broker-login/'
+        this.submitLink = import.meta.env.VITE_BASE_SERVER_URL+'/broker-login/'
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
         this.changePasswordVis = this.changePasswordVis.bind(this)

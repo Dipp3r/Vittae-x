@@ -1,7 +1,7 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
+import { WithRouter } from "@components/routingWrapper";
 
-import "assets/styles/profile.scss"
+import "@assets/styles/profile.scss"
 // import profile from "../images/profile.png"
 class Profile extends React.Component{
     constructor(props){
@@ -46,7 +46,7 @@ class Profile extends React.Component{
         reasonTxt.style.borderColor = "red"
         return
       }
-      fetch(process.env.REACT_APP_BASE_SERVER_URL+`/agent-profile-delete/`,{
+      fetch(import.meta.env.VITE_BASE_SERVER_URL+`/agent-profile-delete/`,{
         method:"POST",
         headers: {
         "Authorization":`Passcode ${localStorage.getItem("token")}`,

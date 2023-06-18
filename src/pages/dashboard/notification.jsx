@@ -1,7 +1,7 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
+import { WithRouter } from "@components/routingWrapper";
 // import { WithRouter } from "../routingWrapper";
-import "assets/styles/notification.scss";
+import "@assets/styles/notification.scss";
 
 class NotificationComp extends React.Component {
     // eslint-disable-next-line no-useless-constructor

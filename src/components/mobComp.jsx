@@ -1,13 +1,13 @@
 import React from "react"
 // import { WithRouter } from "./routingWrapper"
-import checkString from "utils/stringChecker.js"
-import 'assets/styles/mobComp.scss';
+import checkString from "@utils/stringChecker"
+import '@assets/styles/mobComp.scss';
 
 class MobComp extends React.Component{
     constructor(props){
         super(props)
         this.state = {}
-        this.submitLink = process.env.REACT_APP_BASE_SERVER_URL+'/send-otp/'
+        this.submitLink = import.meta.env.VITE_BASE_SERVER_URL+'/send-otp/'
         this.loc = '../'
         this.title='TITLE HERE'
         this.changeInVal = this.changeInVal.bind(this)

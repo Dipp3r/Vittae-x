@@ -1,5 +1,5 @@
 import React from "react";
-import "assets/styles/terms.scss";
+import "@assets/styles/terms.scss";
 class TermsAndConditionsComp extends React.Component {
   render() {
     return (

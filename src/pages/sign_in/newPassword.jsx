@@ -1,16 +1,16 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
-import checkString from "utils/stringChecker.js";
-import 'assets/styles/newPass.scss';
+import { WithRouter } from "@components/routingWrapper";
+import checkString from "@utils/stringChecker";
+import '@assets/styles/newPass.scss';
 
-import eye from "assets/images/eye.svg"
-import eyeOff from "assets/images/eye_off.svg"
+import eye from "@assets/images/eye.svg"
+import eyeOff from "@assets/images/eye_off.svg"
 
 class NewPasswordComp extends React.Component{
     constructor(props){
         super(props)
         this.state = {password:'',cPassword:'',passType:'password',cPassType:'password',cPasswordErr:'',passwordErr:''}
-        this.submitLink = process.env.REACT_APP_BASE_SERVER_URL+`/reset-password/${this.props.getItem('id')}/`
+        this.submitLink = import.meta.env.VITE_BASE_SERVER_URL+`/reset-password/${this.props.getItem('id')}/`
         this.changeInVal = this.changeInVal.bind(this)
         this.submit = this.submit.bind(this)
         this.changePasswordVis = this.changePasswordVis.bind(this)

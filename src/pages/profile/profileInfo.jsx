@@ -1,11 +1,11 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
-import "assets/styles/profileInfo.scss"
+import { WithRouter } from "@components/routingWrapper";
+import "@assets/styles/profileInfo.scss"
 // import arwDwn from "../images/arwDwn.png"
 // import profile from "../images/profile.png";
 // import subtract from "../images/Subtract.svg";
-import dateToString from "utils/dateToString.js"
-import bankList from "utils/banksList.json"
+import dateToString from "@utils/dateToString"
+import bankList from "@utils/banksList.json"
 class ProfileInfo extends React.Component{
     constructor(props){
         super(props)
@@ -57,7 +57,7 @@ class ProfileInfo extends React.Component{
       delete data.email
       console.log(data)
       
-      fetch(process.env.REACT_APP_BASE_SERVER_URL+`/personal-info-update/${localStorage.getItem("id")}/`,{
+      fetch(import.meta.env.VITE_BASE_SERVER_URL+`/personal-info-update/${localStorage.getItem("id")}/`,{
       method:'PATCH',
       body:JSON.stringify(data),
       headers: {
@@ -75,7 +75,7 @@ class ProfileInfo extends React.Component{
       })
     }
     componentDidMount(){
-      fetch(process.env.REACT_APP_BASE_SERVER_URL+`/personal-info/${localStorage.getItem("id")}/`,{
+      fetch(import.meta.env.VITE_BASE_SERVER_URL+`/personal-info/${localStorage.getItem("id")}/`,{
         method:"GET",
         headers: {
         "Authorization":`Passcode ${localStorage.getItem("token")}`,

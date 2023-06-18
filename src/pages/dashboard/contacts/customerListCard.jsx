@@ -1,6 +1,6 @@
 import React from "react";
-import dateToString from "utils/dateToString";
-import { WithRouter } from "components/routingWrapper.js";
+import dateToString from "@utils/dateToString";
+import { WithRouter } from "@components/routingWrapper";
 class CustomerListCard extends React.Component{
     constructor(props){
         super(props)

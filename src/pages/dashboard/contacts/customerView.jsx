@@ -1,26 +1,26 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
-import "assets/styles/clients.scss"
-import "assets/styles/notes.scss"
-import dateToString from "utils/dateToString.js";
+import { WithRouter } from "@components/routingWrapper";
+import "@assets/styles/clients.scss"
+import "@assets/styles/notes.scss"
+import dateToString from "@utils/dateToString";
 
-import arwDwn from 'assets/images/arwDwn.png'
-// import dateRange from "assets/images/Date_range_fill_white.svg"
-import Ellipse from "assets/images/Ellipse.svg"
-// import profile from "assets/images/profile.png"
-import arrow_left_white from "assets/images/arrow_left_white.svg"
-// import three_dots from "assets/images/three-dots.svg"
-import call from "assets/images/call.svg"
-import Message from "assets/images/Message.svg"
-import plus from "assets/images/plus.svg"
-import Trash from "assets/images/Trash.svg"
-import Date_range from "assets/images/Date_range.svg"
-import Time from "assets/images/Time.svg"
-import Edit_fill from "assets/images/Edit_fill.svg"
+import arwDwn from '@assets/images/arwDwn.png'
+// import dateRange from "@assets/images/Date_range_fill_white.svg"
+import Ellipse from "@assets/images/Ellipse.svg"
+// import profile from "@assets/images/profile.png"
+import arrow_left_white from "@assets/images/arrow_left_white.svg"
+// import three_dots from "@assets/images/three-dots.svg"
+import call from "@assets/images/call.svg"
+import Message from "@assets/images/Message.svg"
+import plus from "@assets/images/plus.svg"
+import Trash from "@assets/images/Trash.svg"
+import Date_range from "@assets/images/Date_range.svg"
+import Time from "@assets/images/Time.svg"
+import Edit_fill from "@assets/images/Edit_fill.svg"
 import KYCsteps from "./steps";
 
-import HelpLineIcon from 'components/helpLineIcon';
-import NotificationIcon from "components/notificationIcon";
+import HelpLineIcon from '@components/helpLineIcon';
+import NotificationIcon from "@components/notificationIcon";
 
 class CustomerView extends React.Component {
     constructor(props){
@@ -117,7 +117,7 @@ class CustomerView extends React.Component {
         obj.completed = false
         obj.name = this.state.customer.first_name+" "+this.state.customer.last_name
         console.log(date+"T"+time+"Z")
-        fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/addTask",{
+        fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/addTask",{
             method:'post',
             body:JSON.stringify(obj),
             headers: {
@@ -194,7 +194,7 @@ class CustomerView extends React.Component {
         this.setState({customer:customer})
         this.generateTasks(this.state.customer.tasks)
         this.toggleCompletedTaskMenu()
-        fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/completeTask",{
+        fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/completeTask",{
             method:'post',
             body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
             headers: {
@@ -282,7 +282,7 @@ class CustomerView extends React.Component {
         // <p id="portion2">Description daff pdfplf pdfpodmf dpofjdof dfodf oppadfm dpfof o[ffdf gf0j fogin fpsogn apsdfgion a[dfgpj</p>
         // <div id="portion3">
         //     <button>
-        //     <img src={require("assets/images/Ellipse.svg")} alt="checkbox"/>
+        //     <img src={require("@assets/images/Ellipse.svg")} alt="checkbox"/>
         //     </button>
         // </div>
         // </div>
@@ -373,7 +373,7 @@ class CustomerView extends React.Component {
                 this.setState({customer:customer})
                 this.generateNotes(this.state.customer.notes)
                 
-                fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/addNote",{
+                fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/addNote",{
                     method:'post',
                     body:JSON.stringify(data),
                     headers: {
@@ -432,7 +432,7 @@ class CustomerView extends React.Component {
             obj[field.name] = field.value
         }
         console.log(obj)
-        fetch(process.env.REACT_APP_BASE_SERVER_URL+`/customer-onboarding/${this.state.customer.id}/`,{
+        fetch(import.meta.env.VITE_BASE_SERVER_URL+`/customer-onboarding/${this.state.customer.id}/`,{
         method:'PATCH',
         body:JSON.stringify(obj),
         headers: {
@@ -455,7 +455,7 @@ class CustomerView extends React.Component {
         }
         console.log(localStorage.getItem("token"))
         try{
-        fetch(process.env.REACT_APP_BASE_SERVER_URL+`/customer-detail/${obj.id}/`,{
+        fetch(import.meta.env.VITE_BASE_SERVER_URL+`/customer-detail/${obj.id}/`,{
             method:'GET',
             headers: {
               "Authorization":`Passcode ${localStorage.getItem("token")}`,
@@ -478,7 +478,7 @@ class CustomerView extends React.Component {
                 data.statusBackgroundColor = '#6BDA7D'
               }
             //getting notes tasks
-            data.notes = await fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/getNotesList",{
+            data.notes = await fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/getNotesList",{
                 method:'POST',
                 body:JSON.stringify({customer_id:obj.id,broker_id:localStorage.getItem("id")}),
                 headers: {
@@ -491,7 +491,7 @@ class CustomerView extends React.Component {
             })
             
             //getting taks list
-            data.tasks = await fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/getTasksList",{
+            data.tasks = await fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/getTasksList",{
                 method:'POST',
                 body:JSON.stringify({customer_id:obj.id,broker_id:localStorage.getItem("id")}),
                 headers: {

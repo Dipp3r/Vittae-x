@@ -3,34 +3,34 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import SigninComp from 'pages/sign_in/signin.js';
-import SignUpMobComp from 'pages/sign_up/signUpMob.js'
-import SignUpOTP from 'pages/sign_up/signUpOTP.js';
-import SignupComp from 'pages/sign_up/signup.js';
+import SigninComp from '@pages/sign_in/signin';
+import SignUpMobComp from '@pages/sign_up/signUpMob'
+import SignUpOTP from '@pages/sign_up/signUpOTP';
+import SignupComp from '@pages/sign_up/signup';
 
-import ForgotPassword from 'pages/sign_in/forgotPassword.js';
-import FirstComp from 'pages/others/first.js';
-// import {WithRouter} from 'components/routingWrapper.js';
+import ForgotPassword from '@pages/sign_in/forgotPassword';
+import FirstComp from '@pages/others/first';
+// import {WithRouter} from 'components/routingWrapper';
 
-import NewPasswordComp from 'pages/sign_in/newPassword.js'
-import TermsAndConditionsComp from 'pages/others/termsAndConditions.js';
+import NewPasswordComp from '@pages/sign_in/newPassword'
+import TermsAndConditionsComp from '@pages/others/termsAndConditions';
 
-import ForgotOTP from 'pages/sign_in/forgotOTP.js';
+import ForgotOTP from '@pages/sign_in/forgotOTP';
 
 
-import DashboardComp  from 'pages/dashboard/dashboard.js';
-import Profile from 'pages/profile/profile.js';
-import ProfileInfo from 'pages/profile/profileInfo.js';
+import DashboardComp  from '@pages/dashboard/dashboard';
+import Profile from '@pages/profile/profile';
+import ProfileInfo from '@pages/profile/profileInfo';
 
-import CustomerView from 'pages/dashboard/contacts/customerView.js';
-import MonthlyView from 'pages/dashboard/home/monthlyView.js';
-import IncentiveComp from 'pages/dashboard/incentive.js';
-import RenumerationComp from 'pages/dashboard/renumeration.js';
-import Tasks from 'pages/dashboard/home/tasks.js';
-import ErrorComp from 'pages/others/error.js';
+import CustomerView from '@pages/dashboard/contacts/customerView';
+import MonthlyView from '@pages/dashboard/home/monthlyView';
+import IncentiveComp from '@pages/dashboard/incentive';
+import RenumerationComp from '@pages/dashboard/renumeration';
+import Tasks from '@pages/dashboard/home/tasks';
+import ErrorComp from '@pages/others/error';
 
-import * as serviceWorkerRegistration from 'utils/serviceWorkerRegistration.js';
-import NotificationComp from 'pages/dashboard/notification.js';
+import * as serviceWorkerRegistration from '@utils/serviceWorkerRegistration';
+import NotificationComp from '@pages/dashboard/notification';
 
 class IndexComp extends React.Component{
   constructor(props){

@@ -1,8 +1,8 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
-import backbutton from "assets/images/back_white.svg";
-import info from 'assets/images/infoGrey.svg';
-import 'assets/styles/renumeration.scss';
+import { WithRouter } from "@components/routingWrapper";
+import backbutton from "@assets/images/back_white.svg";
+import info from '@assets/images/infoGrey.svg';
+import '@assets/styles/renumeration.scss';
 class RenumerationComp extends React.Component {
     
     render(){

@@ -1,7 +1,7 @@
 // import React from "react"
-import MobComp from "components/mobComp.js"
-import { WithRouter } from "components/routingWrapper.js"
-import 'assets/styles/mobComp.scss';
+import MobComp from "@components/mobComp"
+import { WithRouter } from "@components/routingWrapper"
+import '@assets/styles/mobComp.scss';
 
 class SignUpMobComp extends MobComp {
     constructor(props){

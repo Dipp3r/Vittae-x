@@ -1,15 +1,15 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
-import dateToString  from "utils/dateToString";
-import 'assets/styles/tasks.scss'
-import Check_ring from "assets/images/Check_ring.svg"
-import Alarmclock from "assets/images/Alarmclock.svg"
-import arrow_left_white from "assets/images/arrow_left_white.svg"
+import { WithRouter } from "@components/routingWrapper";
+import dateToString  from "@utils/dateToString";
+import '@assets/styles/tasks.scss'
+import Check_ring from "@assets/images/Check_ring.svg"
+import Alarmclock from "@assets/images/Alarmclock.svg"
+import arrow_left_white from "@assets/images/arrow_left_white.svg"
 
-import Trash from "assets/images/Trash.svg"
-import Date_range from "assets/images/Date_range.svg"
-import Time from "assets/images/Time.svg"
-import SnoozeMenu from "components/snooze.js"
+import Trash from "@assets/images/Trash.svg"
+import Date_range from "@assets/images/Date_range.svg"
+import Time from "@assets/images/Time.svg"
+import SnoozeMenu from "@components/snooze"
 class Tasks extends React.Component{
     constructor(props){
         super(props)
@@ -200,7 +200,7 @@ class Tasks extends React.Component{
           this.displaySection(this.state.currSection)
           this.toggleCompletedTaskMenu()
       })
-      fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/completeTask",{
+      fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/completeTask",{
           method:'post',
           body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
@@ -257,7 +257,7 @@ class Tasks extends React.Component{
     }
     componentDidMount(){
       
-      fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/getTasksAll",{
+      fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/getTasksAll",{
         method:'POST',
         body:JSON.stringify({broker_id:localStorage.getItem("id")}),
         headers: {

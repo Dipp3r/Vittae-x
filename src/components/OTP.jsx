@@ -1,5 +1,5 @@
 import React from "react";
-import 'assets/styles/OTP.scss';
+import '@assets/styles/OTP.scss';
 
 class OTPComp extends React.Component {
     constructor(props){
@@ -10,7 +10,7 @@ class OTPComp extends React.Component {
         intervalId:0,
         isTimeOut:false
         }
-        this.submitLink = process.env.REACT_APP_BASE_SERVER_URL+'/check-otp/'
+        this.submitLink = import.meta.env.VITE_BASE_SERVER_URL+'/check-otp/'
         this.loc = '../'
         this.changeInVal = this.changeInVal.bind(this)
         this.changeTimer = this.changeTimer.bind(this)

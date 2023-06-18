@@ -1,19 +1,19 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
+import { WithRouter } from "@components/routingWrapper";
 
-import back_white from "assets/images/back_white.svg"
-import Check_ring from "assets/images/Check_ring.svg"
-import Alarmclock from "assets/images/Alarmclock.svg"
-import calendar_left_arrow from "assets/images/calendar_left_arrow.svg"
-import calendar_right_arrow from "assets/images/calendar_right_arrow.svg"
-import calendarDot from "assets/images/calendarDot.svg"
-import Trash from "assets/images/Trash.svg"
-import Date_range from "assets/images/Date_range.svg"
-import Time from "assets/images/Time.svg"
+import back_white from "@assets/images/back_white.svg"
+import Check_ring from "@assets/images/Check_ring.svg"
+import Alarmclock from "@assets/images/Alarmclock.svg"
+import calendar_left_arrow from "@assets/images/calendar_left_arrow.svg"
+import calendar_right_arrow from "@assets/images/calendar_right_arrow.svg"
+import calendarDot from "@assets/images/calendarDot.svg"
+import Trash from "@assets/images/Trash.svg"
+import Date_range from "@assets/images/Date_range.svg"
+import Time from "@assets/images/Time.svg"
 
-import "assets/styles/months.scss"
-import dateToString from "utils/dateToString.js"
-import SnoozeMenu from "components/snooze.js"
+import "@assets/styles/months.scss"
+import dateToString from "@utils/dateToString"
+import SnoozeMenu from "@components/snooze"
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class MonthlyView extends React.Component {
@@ -61,7 +61,7 @@ class MonthlyView extends React.Component {
         console.log(date,month,year,value)
         let selectedDate = (date.getMonth() === today.getMonth() && date.getFullYear === today.getFullYear())?today.getDate:1;
 
-        let data = await fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/getTasksForMonth",{
+        let data = await fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/getTasksForMonth",{
             method:'POST',
             body:JSON.stringify({date:dateToString(date).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
             headers: {
@@ -265,7 +265,7 @@ class MonthlyView extends React.Component {
             this.displayTasks()
             this.toggleCompletedTaskMenu()
         })
-        fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/completeTask",{
+        fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/completeTask",{
             method:'post',
             body:JSON.stringify({id :this.currentTask,broker_id:this.props.getItem("id"),outcome:outcome}),
             headers: {
@@ -320,7 +320,7 @@ class MonthlyView extends React.Component {
     this.setState({snoozeTaskMenu:display,currentTask:taskObj})
     }
     componentDidMount(){
-        fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/getTasksForMonth",{
+        fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/getTasksForMonth",{
             method:'POST',
             body:JSON.stringify({date:dateToString(new Date()).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
             headers: {

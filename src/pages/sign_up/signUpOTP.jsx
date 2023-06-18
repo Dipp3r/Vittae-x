@@ -1,6 +1,6 @@
 // import React from "react"
-import OTPComp from "components/OTP"
-import { WithRouter } from "components/routingWrapper.js"
+import OTPComp from "@components/OTP"
+import { WithRouter } from "@components/routingWrapper"
 
 class SingUpOTP extends OTPComp {
     constructor(props){

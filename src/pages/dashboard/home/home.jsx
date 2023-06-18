@@ -1,18 +1,18 @@
 import React from "react";
 
 //importing images
-import blueDot from "assets/images/blueDot.svg"
-import Check_ring from "assets/images/Check_ring.svg"
-import arrow_right from "assets/images/arrow_right.svg"
-import Alarmclock from "assets/images/Alarmclock.svg"
+import blueDot from "@assets/images/blueDot.svg"
+import Check_ring from "@assets/images/Check_ring.svg"
+import arrow_right from "@assets/images/arrow_right.svg"
+import Alarmclock from "@assets/images/Alarmclock.svg"
 
-import Trash from "assets/images/Trash.svg"
-import Date_range from "assets/images/Date_range.svg"
-import Time from "assets/images/Time.svg"
+import Trash from "@assets/images/Trash.svg"
+import Date_range from "@assets/images/Date_range.svg"
+import Time from "@assets/images/Time.svg"
 
-import { WithRouter } from "components/routingWrapper.js";
-import dateToString from "utils/dateToString.js";
-import SnoozeMenu from "components/snooze.js";
+import { WithRouter } from "@components/routingWrapper";
+import dateToString from "@utils/dateToString";
+import SnoozeMenu from "@components/snooze";
 const dayName = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 class HomeComp extends React.Component{
@@ -268,7 +268,7 @@ class HomeComp extends React.Component{
       this.setState({customer:customer})
       
       
-      fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/completeTask",{
+      fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/completeTask",{
           method:'post',
           body:JSON.stringify({id :this.currentTask,broker_id:localStorage.getItem("id"),outcome:outcome}),
           headers: {
@@ -281,7 +281,7 @@ class HomeComp extends React.Component{
       })
     }
     componentDidMount(){
-      fetch(process.env.REACT_APP_SECONDARY_SERVER_URL+"/getTasksForMonth",{
+      fetch(import.meta.env.VITE_SECONDARY_SERVER_URL+"/getTasksForMonth",{
         method:'POST',
         body:JSON.stringify({date:dateToString(this.state.today).replace(/ +/g,"-"),broker_id:localStorage.getItem("id")}),
         headers: {

@@ -1,7 +1,8 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
-import 'assets/styles/first.scss';
-
+import { WithRouter } from "@components/routingWrapper";
+import '@assets/styles/first.scss';
+import vittaeLogo from "@assets/images/VITTAE.png"
+import avatar from "@assets/images/sampleavatar.png"
 class FirstComp extends React.Component{
     constructor(props){
         super(props)
@@ -26,11 +27,11 @@ class FirstComp extends React.Component{
         return(
             <section id="getStartedPage" >
             <div id="logoDiv">
-                <img id="logoImg" src={require("assets/images/VITTAE.png")} alt="Vittae official logo" />
+                <img id="logoImg" src={vittaeLogo} alt="Vittae official logo" />
             </div>
 
             <div id="charImgDiv">
-                <img src={require("assets/images/sampleavatar.png")} alt="Vittae official logo" />
+                <img src={avatar} alt="Vittae official logo" />
                 <p id="p1">If we can look at something with words and sentences, explore it. VITTAE X</p>
             </div>
 

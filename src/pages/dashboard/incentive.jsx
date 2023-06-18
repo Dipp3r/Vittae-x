@@ -1,7 +1,7 @@
 import React from "react";
-import { WithRouter } from "components/routingWrapper.js";
-import "assets/styles/incentive.scss";
-import backbutton from 'assets/images/back_white.svg';
+import { WithRouter } from "@components/routingWrapper";
+import "@assets/styles/incentive.scss";
+import backbutton from '@assets/images/back_white.svg';
 
 class IncentiveComp extends React.Component {
     // eslint-disable-next-line no-useless-constructor

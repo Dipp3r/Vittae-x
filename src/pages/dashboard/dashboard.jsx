@@ -1,13 +1,13 @@
 import React from 'react';
 // import ReactDOM from 'react-dom/client';
-import { WithRouter } from 'components/routingWrapper.js';
-import ContactsComp from 'pages/dashboard/contacts/contact.js';
-import HomeComp from 'pages/dashboard/home/home.js';
+import { WithRouter } from '@components/routingWrapper';
+import ContactsComp from '@pages/dashboard/contacts/contact';
+import HomeComp from '@pages/dashboard/home/home';
 // import profile from "../images/profile.png"
-import "assets/styles/home.scss"
-import "assets/styles/contact.scss"
-import HelpLineIcon from 'components/helpLineIcon';
-import NotificationIcon from 'components/notificationIcon';
+import "@assets/styles/home.scss"
+import "@assets/styles/contact.scss"
+import HelpLineIcon from '@components/helpLineIcon';
+import NotificationIcon from '@components/notificationIcon';
 
 class DashboardComp extends React.Component{
     constructor(){
