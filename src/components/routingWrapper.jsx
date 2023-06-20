@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const WithRouter = (Component) => {
+export const WithRouter = (Component) => {
   const Wrapper = (props) => {
     const navigate = useNavigate();
     var changeRoute = (e) => {
@@ -25,4 +25,3 @@ const WithRouter = (Component) => {
 WithRouter.propTypes = {
   id: PropTypes.number.isRequired,
 };
-export default WithRouter;
