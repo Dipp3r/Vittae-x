@@ -50,7 +50,7 @@ function checkString(string, num = 0) {
         string = string.slice(3);
       }
       string = string.trim();
-      // console.log(string)
+      // //console.log(string)
       if (!/^[\d]+$/.test(string) | (string.length !== 10)) {
         obj.msg = "Invalid mobile number";
         return obj;
@@ -68,29 +68,29 @@ function checkString(string, num = 0) {
       obj.bool = true;
       return obj;
   }
-  // console.log('\n')
+  // //console.log('\n')
 }
 export default checkString;
-// console.log('\npassword:')
-// console.log(checkString('!Qqwerty1',1))
-// console.log(checkString('aBC12abc#$',1))
-// console.log(checkString('ASWD34',1))
-// console.log(checkString('adyAZ5wer',1))
-// console.log(checkString('ady768wer',1))
+// //console.log('\npassword:')
+// //console.log(checkString('!Qqwerty1',1))
+// //console.log(checkString('aBC12abc#$',1))
+// //console.log(checkString('ASWD34',1))
+// //console.log(checkString('adyAZ5wer',1))
+// //console.log(checkString('ady768wer',1))
 
-// console.log('\nmail:')
-// console.log(checkString('sample@gmail.com',2))
-// console.log(checkString('sample#$@gmail.com',2))
-// console.log(checkString('12sample@mail.com',2))
-// console.log(checkString('@gmail.com',2))
-// console.log(checkString('samplemail.com',2))
-// console.log(checkString('sample@mail',2))
+// //console.log('\nmail:')
+// //console.log(checkString('sample@gmail.com',2))
+// //console.log(checkString('sample#$@gmail.com',2))
+// //console.log(checkString('12sample@mail.com',2))
+// //console.log(checkString('@gmail.com',2))
+// //console.log(checkString('samplemail.com',2))
+// //console.log(checkString('sample@mail',2))
 
-// console.log('\nmobile:')
-// console.log(checkString('1234567890',3))
-// console.log(checkString('+911234567890',3))
-// console.log(checkString('+91 1234567890',3))
-// console.log(checkString('+1234567890',3))
+// //console.log('\nmobile:')
+// //console.log(checkString('1234567890',3))
+// //console.log(checkString('+911234567890',3))
+// //console.log(checkString('+91 1234567890',3))
+// //console.log(checkString('+1234567890',3))
 
 //password condition for symbole and digit
 
