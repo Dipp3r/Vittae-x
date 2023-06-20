@@ -77,7 +77,7 @@ class HomeComp extends React.Component {
       dt.setDate(dt.getDate() + 1)
     ) {
       isTaskPresent = false;
-      // console.log(dt.getDate(),dt)
+      // //console.log(dt.getDate(),dt)
       dateDiv = document.createElement("div");
       dateDiv.className = "date";
       dateDiv.name = -1;
@@ -124,7 +124,7 @@ class HomeComp extends React.Component {
         if (dt.toDateString() === today.toDateString()) {
           // date.style.backgroundColor = '#a5b3cd'
           // date.style.color = 'white'
-          // console.log(dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'}))
+          // //console.log(dateDiv.scrollIntoView({ behavior: "smooth",inline:'center'}))
           dateDiv.scrollIntoView({ behavior: "smooth", inline: "center" });
           this.setState({ lastSelectedDate: dt.getDate() }, () => {
             document
@@ -134,14 +134,14 @@ class HomeComp extends React.Component {
                 inline: "center",
               });
           });
-          console.log(this.date, dateIndex, isDateIndexInc, isTaskPresent);
+          //console.log(this.date, dateIndex, isDateIndexInc, isTaskPresent);
           if (isTaskPresent) {
             if (this.date === undefined) {
               this.generateTasks();
             } else if (this.date.length === 0) {
               this.generateTasks();
             } else if (isDateIndexInc) {
-              console.log(this.date[dateIndex - 1]);
+              //console.log(this.date[dateIndex - 1]);
               this.generateTasks(this.date[dateIndex - 1].tasks);
             } else {
               this.generateTasks(this.date[dateIndex].tasks);
@@ -199,7 +199,7 @@ class HomeComp extends React.Component {
     //       </div>
     //       <p id="day">Thu Feb 9, 2023, 05:00 PM</p>
     //     </div>
-    console.log(taskList);
+    //console.log(taskList);
     document.body.querySelector("#tasks").innerHTML = "";
     let task, desc, i, container;
     container = document.createElement("div");
@@ -215,7 +215,7 @@ class HomeComp extends React.Component {
     container.id = "nonEmpty";
 
     for (let j = 0; j < taskList.length; j++) {
-      console.log(i);
+      //console.log(i);
       i = taskList[j];
       if (i.completed) continue;
       task = document.createElement("div");
@@ -272,7 +272,7 @@ class HomeComp extends React.Component {
       due.innerText = `Due in ${i.due} days`;
       if (i.due === null) due.style.display = "none";
       // task.appendChild(desc)
-      console.log(task);
+      //console.log(task);
       container.appendChild(task);
     }
     document.body.querySelector("#tasks").appendChild(container);
@@ -335,7 +335,7 @@ class HomeComp extends React.Component {
         this.date = data;
         this.setState(this.props.getItem("homeCompState"), () => {
           this.generateDates();
-          console.log(this.state.lastSelectedDate);
+          //console.log(this.state.lastSelectedDate);
           if (this.state.lastSelectedDate) {
             let dateDiv =
               document.querySelectorAll(".date")[
@@ -395,13 +395,13 @@ class HomeComp extends React.Component {
     if (display === "none") {
       for (let date of this.date) {
         for (let task of date.tasks) {
-          // console.log(task,e.currentTarget.getAttribute("value"))
+          // //console.log(task,e.currentTarget.getAttribute("value"))
           if (
             task.id === Number.parseInt(e.currentTarget.getAttribute("value"))
           ) {
             taskObj = task;
             taskObj.date = new Date(taskObj.date).toISOString();
-            console.log(task);
+            //console.log(task);
             break;
           }
         }
@@ -414,7 +414,7 @@ class HomeComp extends React.Component {
           dateDiv.name === -1 ? [] : this.date[dateDiv.name].tasks
         );
     }
-    // console.log(taskObj)
+    // //console.log(taskObj)
 
     display = display === "flex" ? "none" : "flex";
     this.setState({ snoozeTaskMenu: display, currentTask: taskObj }, () => {

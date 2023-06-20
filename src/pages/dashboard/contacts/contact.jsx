@@ -343,7 +343,7 @@ class ContactsComp extends React.Component {
     });
 
     if (data.status !== 201) {
-      console.log(data);
+      //console.log(data);
       return;
     }
     //getting a new customer List
