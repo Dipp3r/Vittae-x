@@ -44,7 +44,7 @@ function getRandomId(len){
 }
 
 app.post('/getNotesList',async(req,res)=>{
-    console.log(req.body)
+
     try {
         let data = req.body;
         let notes = await pool.query(`select id,title,body,date from notes where customer_id = ${data.customer_id} and broker_id = ${data.broker_id}`)
@@ -55,7 +55,7 @@ app.post('/getNotesList',async(req,res)=>{
     }
 })
 app.post('/addNote',(req,res)=>{
-    console.log(req.body)
+
     let data = req.body
     const date = new Date(data.date).toUTCString();
     try{
@@ -66,7 +66,7 @@ app.post('/addNote',(req,res)=>{
     res.send()
 })
 app.post('/getTasksList',async(req,res)=>{
-    console.log(req.body)
+
     try {
         let data = req.body;
         let notes = await pool.query(`SELECT * FROM tasks inner join customer on tasks.customer_id = customer.id where tasks.customer_id = ${data.customer_id} and tasks.broker_id = ${data.broker_id}`)
@@ -90,13 +90,13 @@ app.post("/addCustomer",async (req,res)=>{
     res.send()
 })
 app.post('/addtask',async (req,res)=>{
-    console.log(req.body)
+
     let data = req.body
     try{
         let query = await pool.query(`insert into tasks (id,customer_id,broker_id,title,body,date,completed) values (${data.id},${data.customer_id},${data.broker_id},'${data.title}','${data.body}','${data.date}',false)`)
-        // console.log(query)
+
         query = await pool.query(`select id from customer where id = ${data.customer_id}`)
-        console.log(query)
+
         if(query.rowCount == 0){
             query = await pool.query(`insert into customer (id,name) values (${data.customer_id},'${data.name}')`)
         }
@@ -106,27 +106,27 @@ app.post('/addtask',async (req,res)=>{
     res.send()
 })
 app.post("/completeTask",async (req,res)=>{
-    console.log(req.body)
+
     let data = req.body
     data.id = Number.parseInt(data.id)
     data.broker_id = Number.parseInt(data.broker_id)
     try{
         let query = await pool.query(`UPDATE tasks SET completed = true, outcome = '${data.outcome}' WHERE id = ${data.id} and broker_id =${data.broker_id};`)
-        console.log(query)
+
     }catch(err){
-        console.log(err)
+        console.error(err)
     }
     res.end()
 })
 app.post("/snoozeTask",async(req,res)=>{
-    console.log(req.body)
+
     let data = req.body
     
     try{
         let query = await pool.query(`UPDATE tasks SET date = '${data.date}' WHERE id = ${data.id} and broker_id =${data.broker_id};`)
-        console.log(query)
+
     }catch(err){
-        console.log(err)
+        console.error(err)
     }
     res.end()
 })
@@ -144,7 +144,7 @@ app.post("/getTasksForMonth",async (req,res)=>{
             obj.date = new Date(dt)
             obj.tasks = []
             for(let i = 0;i<maxLength;i++){
-                console.log(tempdata[i].id)
+
                 let date2 = new Date(tempdata[i].date)
                 if(dt.getDate() == date2.getDate() && dt.getMonth() == date2.getMonth() && dt.getFullYear() == date2.getFullYear()){
                     obj.date = `${dt.getFullYear()}-${dt.getMonth()+1}-${dt.getDate()}`
@@ -159,7 +159,7 @@ app.post("/getTasksForMonth",async (req,res)=>{
         }
         res.send(arr)
     }catch (err) {
-        console.log(err)
+        console.error(err)
     }
     
 })
@@ -181,7 +181,7 @@ app.post("/getTasksALL",async (req,res)=>{
             }
             let date2 = new Date(tempdata[i].date)
             tempdata[i].due = Math.ceil((new Date() - date2)/(1000 * 60 * 60 * 24))-1
-            console.log(new Date() - date2,date2)
+
             if ((new Date() - date2) < 0 && tempdata[i].completed!= true){
                 obj.upComing.push(tempdata[i])
                 tempdata[i].due = null
@@ -197,7 +197,7 @@ app.post("/getTasksALL",async (req,res)=>{
     
 })
 app.get('*',(req,res)=>{
-    console.log(req.body)
+
     res.sendFile(path.join(__dirname,'/', "build","index.html"))
 } )
 
