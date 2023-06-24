@@ -1,249 +1,247 @@
-@import 'main';
+@import "main";
 
-#Tasks{
-    font-family: 'Montserrat';
-    font-style: normal;
-    position:static;
-    padding:0px;
-    background-color:white ;
-    overflow: hidden;
-    // display: flex;
-    #navBar{
-        @include flex(row,center,center);
-        background-color: #223F80;
+#Tasks {
+  font-family: "Montserrat";
+  font-style: normal;
+  position: static;
+  padding: 0px;
+  background-color: white;
+  overflow: hidden;
+  // display: flex;
+  #navBar {
+    @include flex(row, center, center);
+    background-color: #223f80;
+    width: 100%;
+    height: 54px;
+    p {
+      padding-right: 40px;
+      text-align: center;
+      color: white;
+      width: 90%;
+    }
+    button {
+      margin-left: 5px;
+    }
+  }
+  #statusBar {
+    width: 100vw;
+    background-color: transparent;
+    height: 40px;
+
+    @include flex(row, space-evenly, center);
+    #statusButton {
+      width: 100%;
+      font-family: "Montserrat";
+      font-style: normal;
+
+      line-height: 15px;
+      align-items: flex-end;
+      color: #6d7593;
+      @include flex(row, flex-start, center);
+
+      .statusButton {
+        margin-top: 10px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        width: 33.333%;
+        height: 32px;
+        text-align: center;
+        color: rgba(37, 53, 100, 0.4);
+        border-bottom-color: rgba(37, 53, 100, 0.4);
+      }
+    }
+  }
+  #statusBarEdge {
+    width: 100vw;
+    margin: 0px;
+    border: 1px solid rgba(37, 53, 100, 0.4);
+  }
+  #main {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100%;
+    #tasks {
+      width: 100%;
+      background: white;
+      display: flex;
+      #taskEmpty {
+        margin-top: 70px;
+        text-align: center;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        color: #b8b8b8;
         width: 100%;
-        height:54px;
-        p{
-            padding-right:40px;
-            text-align: center;
-            color: white;
-            width:90%;
-
-        }
-        button{
-            margin-left:5px;
-        }
-    }
-    #statusBar{
-        width:100vw;
-        background-color: transparent;
-        height:40px;
-
-        @include flex(row,space-evenly,center);
-        #statusButton{
-            width:100%;
-            font-family: 'Montserrat';
+      }
+      #nonEmpty {
+        // display:none;
+        .task {
+          padding: 25px 25px;
+          width: 90vw;
+          @include flex(row, space-between, center);
+          .desc {
+            @include flex(column, center, flex-start);
+            #title {
+              margin: 0px;
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 700;
+              font-size: 15px;
+              color: #363636;
+            }
+            #name {
+              margin: 0px;
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 10px;
+              line-height: 12px;
+              display: flex;
+              align-items: flex-end;
+              text-align: center;
+              color: #a2a2a4;
+            }
+            #day {
+              margin-top: 3px;
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 8px;
+              color: #bb2230; //Pending: #363636 , Completed:#62B16F
+            }
+          }
+          .label {
+            @include flex(row, center, center);
+            font-family: "Montserrat";
             font-style: normal;
-            
-            line-height: 15px;
-            align-items: flex-end;
-            color: #6D7593;
-            @include flex(row,flex-start,center);
-
-            .statusButton{
-                margin-top:10px;
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 12px;
-                width:33.333%;
-                height:32px;
-                text-align: center;
-                color: rgba(37, 53, 100, 0.4);
-                border-bottom-color: rgba(37, 53, 100, 0.4);
+            font-weight: 500;
+            font-size: 10px;
+            color: #223f80;
+            p {
+              margin-left: 5px;
             }
+          }
         }
+      }
     }
-    #statusBarEdge{
-        width:100vw;
-        margin:0px;
-        border: 1px solid rgba(37, 53, 100, 0.4);
-    }
-    #main{
-        overflow-y:scroll;
-        overflow-x:hidden;
-        width:100vw;
-        height:100%;
-        #tasks{
-            width:100%;
-            background: white;
-            display: flex;
-            #taskEmpty{
-                display:none;
-                margin-top:70px;
-                text-align: center;
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 12px;
-                color: #B8B8B8;
-            }
-            #nonEmpty{
-                // display:none;
-                .task{
-                    padding: 25px 25px;
-                    width: 90vw;
-                    @include flex(row,space-between,center);
-                    .desc{
-                        @include flex(column,center,flex-start);
-                        #title{
-                            margin: 0px;
-                            font-family: 'Montserrat';
-                            font-style: normal;
-                            font-weight: 700;
-                            font-size: 15px;
-                            color: #363636;
-                        }
-                        #name{
-                            margin:0px;
-                            font-family: 'Montserrat';
-                            font-style: normal;
-                            font-weight: 500;
-                            font-size: 10px;
-                            line-height: 12px;
-                            display: flex;
-                            align-items: flex-end;
-                            text-align: center;
-                            color: #A2A2A4;
-                        }
-                        #day{
-                            margin-top:3px;
-                            font-family: 'Montserrat';
-                            font-style: normal;
-                            font-weight: 500;
-                            font-size: 8px;
-                            color:#BB2230; //Pending: #363636 , Completed:#62B16F
-                        }
-                    }
-                    .label{
-                        @include flex(row,center,center);
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 10px;
-                        color: #223F80;
-                        p{
-                            margin-left:5px;
-                        }
-                    }
-                }
-            }
+    #completedTaskScreen,
+    #snoozeTaskScreen {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(1.5px);
+      @include flex(column, center, center);
+      // display:none;
+      top: 0px;
+      #completedTaskDiv,
+      #snoozeTaskDiv {
+        position: relative;
+        width: 330px;
+        height: 480px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        border-radius: 15px;
+        background-color: white;
+        #portion1 {
+          @include flex(row, space-between, center);
+          #closeIcon {
+            border-radius: 20px;
+            height: 24px;
+            margin: 10px;
+            padding: 0px;
+          }
+
+          #delete {
+            margin: 10px;
+          }
         }
-        #completedTaskScreen,#snoozeTaskScreen{
-            height:100%;
-            width:100%;
-            position:absolute;
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(1.5px);
-            @include flex(column,center,center);
-            // display:none;
-            top:0px;
-            #completedTaskDiv,#snoozeTaskDiv{
-                position:relative;
-                width: 330px;
-                height: 480px;
-                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-                border-radius: 15px;
-                background-color: white;
-                #portion1{
-                    @include flex(row,space-between,center);
-                    #closeIcon{
-                        border-radius:20px;
-                        height:24px;
-                        margin:10px;
-                        padding:0px;
-                    }
-
-                    #delete{
-                        margin:10px;
-                    }
-
-                }
-                #title{
-                    border:none;
-                    border-bottom:2px solid #223F80;
-                }    
-                 #portion2{
-                    
-                    @include flex(column,center,center);
-                    input{
-                        width: 232px;
-                    }
-                    #desc{
-                        margin-top:20px;
-                        width:230px;
-                        height:68px;
-                        border: 1.5px solid #B8B8B8;
-                        border-radius: 15px;
-                        padding:10px;
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 12px;
-                        color: #223F80;
-                        &:focus{
-                            outline:none;
-                        }
-
-                    }
-                    #fieldDiv{
-                        width:100%;
-                        padding-left:100px;
-                        @include flex(column,center,flex-start);
-                        .field{
-                            margin-top:10px;
-                            @include flex(row,space-between,center);
-                            width:120px;
-                            input{
-                                padding:5px;
-                                width: 300px;
-                                height: 18px;
-                                border: 1.5px solid #B8B8B8;
-                                border-radius: 8px;
-                            }
-                        }
-                        p{
-                            margin-top:40px;
-                            margin-bottom:2px;
-                            font-family: 'Montserrat';
-                            font-style: normal;
-                            font-weight: 500;
-                            text-align: start;
-                            font-size: 14px;
-                            color: #223F80;
-                            a{
-                                color:#BB2230;
-                            }
-                        }
-                    }
-                    #outcome{
-                        margin-top:0px;
-                        width:230px;
-                        height:68px;
-                        border: 1.5px solid #B8B8B8;
-                        border-radius: 15px;
-                        padding:10px;
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 12px;
-                        color: #223F80;
-                        &:focus{
-                            outline:none;
-                        }
-                    }
-                }   
-                #save{
-                    position:absolute;
-                    bottom:15px;
-                    right:20px;
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 14px;
-                    color: #929292;
-                }
-            }
+        #title {
+          border: none;
+          border-bottom: 2px solid #223f80;
         }
+        #portion2 {
+          @include flex(column, center, center);
+          input {
+            width: 232px;
+          }
+          #desc {
+            margin-top: 20px;
+            width: 230px;
+            height: 68px;
+            border: 1.5px solid #b8b8b8;
+            border-radius: 15px;
+            padding: 10px;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            color: #223f80;
+            &:focus {
+              outline: none;
+            }
+          }
+          #fieldDiv {
+            width: 100%;
+            padding-left: 100px;
+            @include flex(column, center, flex-start);
+            .field {
+              margin-top: 10px;
+              @include flex(row, space-between, center);
+              width: 120px;
+              input {
+                padding: 5px;
+                width: 300px;
+                height: 18px;
+                border: 1.5px solid #b8b8b8;
+                border-radius: 8px;
+              }
+            }
+            p {
+              margin-top: 40px;
+              margin-bottom: 2px;
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 500;
+              text-align: start;
+              font-size: 14px;
+              color: #223f80;
+              i {
+                color: #bb2230;
+              }
+            }
+          }
+          #outcome {
+            margin-top: 0px;
+            width: 230px;
+            height: 68px;
+            border: 1.5px solid #b8b8b8;
+            border-radius: 15px;
+            padding: 10px;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            color: #223f80;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        #save {
+          position: absolute;
+          bottom: 15px;
+          right: 20px;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          color: #929292;
+        }
+      }
     }
+  }
 }

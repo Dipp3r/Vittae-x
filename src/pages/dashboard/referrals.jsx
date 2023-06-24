@@ -16,6 +16,8 @@ class ReferralComp extends React.Component {
     };
   }
   init = () => {
+    let emptyCard = document.createElement("p");
+    emptyCard.id = "emptySipCard";
     fetch(import.meta.env.VITE_BASE_SERVER_URL + "/broker-referrals/", {
       method: "GET",
       headers: {
@@ -28,26 +30,51 @@ class ReferralComp extends React.Component {
         return response.json();
       })
       .then((data) => {
+        // data = {
+        //   sip_in_process_count: 0,
+        //   sip_starts_count: 1,
+        //   sip_in_process: [],
+        //   sip_starts: [
+        //     {
+        //       id: 463,
+        //       name: "five",
+        //       phone: "5360748965",
+        //     },
+        //   ],
+        // };
+
         data.inProcess = [];
         data.started = [];
-        data.sip_in_process.forEach((element) => {
+        if (data.sip_in_process_count == 0) {
           data.inProcess.push(
-            <ReferralCard
-              isSipStarted={false}
-              name={element.name}
-              phone={element.phone}
-            />
+            <ReferralCard isSipStarted={false} isEmptyCard={true} />
           );
-        });
-        data.sip_starts.forEach((element) => {
+        } else {
+          data.sip_in_process.forEach((element) => {
+            data.inProcess.push(
+              <ReferralCard
+                isSipStarted={false}
+                name={element.name}
+                phone={element.phone}
+              />
+            );
+          });
+        }
+        if (data.sip_starts_count == 0) {
           data.started.push(
-            <ReferralCard
-              isSipStarted={true}
-              name={element.name}
-              phone={element.phone}
-            />
+            <ReferralCard isSipStarted={true} isEmptyCard={true} />
           );
-        });
+        } else {
+          data.sip_starts.forEach((element) => {
+            data.started.push(
+              <ReferralCard
+                isSipStarted={true}
+                name={element.name}
+                phone={element.phone}
+              />
+            );
+          });
+        }
         this.setState(data);
       });
   };

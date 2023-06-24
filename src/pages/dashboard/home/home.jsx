@@ -7,7 +7,7 @@ import Check_ring from "@assets/images/Check_ring.svg";
 import arrow_right from "@assets/images/arrow_right.svg";
 import Alarmclock from "@assets/images/Alarmclock.svg";
 
-import Trash from "@assets/images/Trash.svg";
+// import Trash from "@assets/images/Trash.svg";
 import Date_range from "@assets/images/Date_range.svg";
 import Time from "@assets/images/Time.svg";
 
@@ -530,9 +530,9 @@ class HomeComp extends React.Component {
                   />
                 </svg>
               </button>
-              <button id="delete">
+              {/* <button id="delete">
                 <img src={Trash} alt="delete" />
-              </button>
+              </button> */}
             </div>
             <div id="portion2">
               <input id="title" type="text" placeholder="Add title" disabled />
@@ -552,7 +552,7 @@ class HomeComp extends React.Component {
                   <input type="time" id="time" disabled />
                 </div>
                 <p>
-                  Outcome<p>*</p>
+                  Outcome <i>*</i>
                 </p>
               </div>
               <textarea id="outcome" maxLength="2500"></textarea>

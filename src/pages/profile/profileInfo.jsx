@@ -15,7 +15,7 @@ class ProfileInfo extends React.Component {
       last_name:
         localStorage.getItem("last_name") === null
           ? ""
-          : this.props.getItem("last_name"),
+          : localStorage.getItem("last_name"),
       phone: localStorage.getItem("phone"),
       email: localStorage.getItem("email"),
       date_of_birth: dateToString(

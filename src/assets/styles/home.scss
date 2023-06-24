@@ -1,495 +1,497 @@
-@import 'main';
+@import "main";
 
-#dashboard{
-    font-family: 'Montserrat';
-    font-style: normal;
-    position:static;
-    padding:0px;
-    background-color:#E4E4E4 ;
-    overflow: hidden;
-    padding-top: 0px;
-    .navbar{
-        @include flex(row,space-between,center);
+#dashboard {
+  font-family: "Montserrat";
+  font-style: normal;
+  position: static;
+  padding: 0px;
+  background-color: #e4e4e4;
+  overflow: hidden;
+  padding-top: 0px;
+  .navbar {
+    @include flex(row, space-between, center);
+    background-color: white;
+    width: 100%;
+    height: 89px;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
+    .profile {
+      @include flex(none, center, center);
+      #profileName {
+        margin: none;
+        color: white;
+        font-size: 20px;
+        font-family: "Montserrat";
+        font-weight: 700;
+        // width:auto;
+      }
+      border-radius: 100%;
+      margin: 20px;
+      width: 60px;
+      height: 60px;
+      background: #223f80;
+    }
+    .icons {
+      @include flex(row, space-evenly, center);
+      width: fit-content;
+      height: 100%;
+      margin-right: 20px;
+      .icon {
+        margin: 8px;
+      }
+      .iconBox {
+        display: block;
+        position: relative;
+        #notifCircle {
+          display: block;
+          position: absolute;
+          border-radius: 13px;
+          top: 0px;
+          right: 0px;
+          width: 13px;
+          height: fit-content;
+          border: 2px solid white;
+          path {
+            fill: #bb2230;
+          }
+        }
+      }
+    }
+  }
+
+  #main {
+    padding-bottom: 90px;
+    margin-top: 2px;
+    @include flex(column, flex-start, center);
+    height: calc(100% - 89px);
+    width: 100%;
+    #perks {
+      height: 96px;
+      width: 100%;
+      @include flex(row, none, none);
+      #perk {
+        @include flex(column, space-evenly, center);
+        width: 50%;
+        height: 100%;
+        padding-top: 20px;
         background-color: white;
-        width: 100%;
-        height:89px;
-        box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.08);
-        .profile{
-            @include flex(none,center,center);
-            #profileName{
-                margin:none;
-                color:white;
-                font-size: 20px;
-                font-family: 'Montserrat';
-                font-weight: 700;
-                // width:auto;
-            }
-            border-radius: 100%;
-            margin:20px;
-            width: 60px;
-            height: 60px;
-            background: #223F80;
+        p {
+          margin: 0px;
+          width: 147px;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 18px;
+          color: #223f80;
+          line-height: 10px;
+          text-align: center;
         }
-        .icons{
-            @include flex(row,space-evenly,center);
-            width: fit-content;
-            height: 100%;
-            margin-right:20px;
-            .icon{
-                margin:8px;
-            }
-            .iconBox{
-                display: block;
-                position: relative;
-                #notifCircle{
-                    display: block;
-                    position: absolute;
-                    border-radius: 13px;
-                    top: 0px;
-                    right:0px;
-                    width:13px;
-                    height:fit-content;
-                    border: 2px solid white;
-                    path{
-                        fill:#BB2230;                    
-                    }
-                }
-            }
-
+        .description {
+          font-weight: 500;
+          font-size: 10px;
+          color: #616161;
         }
+      }
+      .incentive {
+        margin-left: 2px;
+      }
     }
 
-    #main{
-        padding-bottom:90px;
-        margin-top:2px;
-        @include flex(column,flex-start,center);
-        height: calc(100% - 89px);
-        width: 100%;
-        #perks{
-            height:96px;
-            width:100%;
-            @include flex(row,none,none);
-            #perk{
-                @include flex(column,space-evenly,center);
-                width: 50%;
-                height:100%;
-                padding-top:20px;
-                background-color: white;
-                p{
-                    margin:0px;
-                    width:147px;
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 700;
-                    font-size: 18px;
-                    color: #223F80;
-                    line-height: 10px;
-                    text-align: center;
-
-                }
-                .description{
-                    font-weight: 500;
-                    font-size: 10px;
-                    color: #616161;
-
-                }
-            }   
-            .incentive{
-                margin-left:2px;
+    #reminderDiv {
+      margin-top: 20px;
+      height: auto;
+      width: 100%;
+      background-color: transparent;
+      @include flex(column, flex-start, center);
+      #calendar {
+        background-color: white;
+        border-bottom: 1px solid #9d9d9d;
+        width: 100vw;
+        height: 106px;
+        @include flex(column, center, center);
+        #months {
+          padding: 0px 10px;
+          padding-right: 0px;
+          margin-top: 10px;
+          width: 95%;
+          p {
+            margin: 0px;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            color: #363636;
+          }
+          @include flex(row, space-between, center);
+          #monthView {
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 11px;
+            display: flex;
+            align-items: flex-end;
+            text-align: center;
+            color: #223f80;
+            @include flex(row, center, center);
+            img {
+              margin-left: 5px;
             }
+          }
         }
-
-        #reminderDiv{
-            margin-top:20px;
-            height:auto;
-            width:100%;
-            background-color: transparent;
-            @include flex(column,flex-start,center);
-            #calendar{
-                background-color: white;
-                border-bottom: 1px solid #9d9d9d;
-                width: 100vw;
-                height:106px;
-                @include flex(column,center,center);
-                #months{
-                    padding:0px 10px;
-                    padding-right:0px;
-                    margin-top:10px;
-                    width: 95%;
-                    p{
-                        margin:0px;
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 600;
-                        font-size: 16px;
-                        color: #363636;
-                    }
-                    @include flex(row,space-between,center);
-                    #monthView{
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 10px;
-                        line-height: 11px;
-                        display: flex;
-                        align-items: flex-end;
-                        text-align: center;
-                        color: #223F80;
-                        @include flex(row,center,center);
-                        img{
-                            margin-left:5px;
-                        }
-                    }
-                }   
-                .week{
-                    padding:0px 0px;
-                    margin:0px;
-                    margin-top:5px;
-                    height:70px;
-                    overflow: scroll;
-                    width:100vw;
-                    @include flex(row,flex-start,flex-start);
-                    .dates{
-                        margin:0px 10px;
-                        padding-top:0px;
-                        margin-top:0px;
-                        height:50px;
-                        width:100vw;
-                        padding:5px 5px;
-                        @include flex(row,flex-start,center);
-                        .date{
-                            @include flex(column,center,center);
-                            margin:0px 4px;
-                            #day{
-                                display: flex;
-                                margin:4px 10px;
-                                font-family: 'Montserrat';
-                                font-style: normal;
-                                font-weight: 500;
-                                font-size: 12px;
-                                color: #B8B8B8;
-                            }
-                            #date{
-                                // padding:2px;
-                                width:20px;
-                                height:18px;
-                                text-align: center;
-                                background: #ffffff;;
-                                // background: rgba(34, 63, 128, 0.4);
-                                border-radius: 3px;
-                                font-family: 'Montserrat';
-                                font-style: normal;
-                                font-weight: 400;
-                                font-size: 13px;
-                                color: #000000;
-                                margin:0px;
-                            }
-                            #reminderOverlay{
-                                margin-top:10px;
-                            }
-                        }
-                    }
-                }
-            }
-
-            #tasks{
-                padding:15px 0px;
-                min-height:150px;
-                height:fit-content;
-                width:100%;
-                background: white;
-                align-items: center;
+        .week {
+          padding: 0px 0px;
+          margin: 0px;
+          margin-top: 5px;
+          height: 70px;
+          overflow: scroll;
+          width: 100vw;
+          @include flex(row, flex-start, flex-start);
+          .dates {
+            margin: 0px 10px;
+            padding-top: 0px;
+            margin-top: 0px;
+            height: 50px;
+            width: 100vw;
+            padding: 5px 5px;
+            @include flex(row, flex-start, center);
+            .date {
+              @include flex(column, center, center);
+              margin: 0px 4px;
+              #day {
                 display: flex;
-                #taskEmpty{
-                    // display:none;
-                    margin-top:70px;
-                    text-align: center;
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 12px;
-                    color: #B8B8B8;
-                    width:100%;
-                }
-                #nonEmpty{
-                    // display:none;
-                    .task{
-                        margin:20px 0px;
-                        width:100vw;
-                        @include flex(row,space-around,center);
-                        .desc{
-                            @include flex(column,center,flex-start);
-                            #title{
-                                margin: 0px;
-                                font-family: 'Montserrat';
-                                font-style: normal;
-                                font-weight: 700;
-                                font-size: 15px;
-                                color: #363636;
-                            }
-                            #deets{
-                                @include flex(row,space-around,center);
-                                #name{
-                                    margin:0px;
-                                    font-family: 'Montserrat';
-                                    font-style: normal;
-                                    font-weight: 500;
-                                    font-size: 10px;
-                                    line-height: 12px;
-                                    display: flex;
-                                    align-items: flex-end;
-                                    text-align: center;
-                                    color: #A2A2A4;
-                                }
-                                #due{
-                                    margin:0px;
-                                    margin-left:5px;
-                                    color:white;
-                                    padding:3px 4px;
-                                    background: rgba(34, 63, 128, 0.3);
-                                    border-radius: 6px;
-                                    font-family: 'Montserrat';
-                                    font-style: normal;
-                                    font-weight: 500;
-                                    font-size: 8px;
-                                    #num_days{
-                                        font-weight: 700;
-                                        color:#414141;
-                                    }
-    
-                                }
-                                
-                            }
-                            #day{
-                                margin-top:3px;
-                                font-family: 'Montserrat';
-                                font-style: normal;
-                                font-weight: 500;
-                                font-size: 10px;
-                                color: #363636;
-                            }
-                        }
-                        .label{
-                            @include flex(row,center,center);
-                            font-family: 'Montserrat';
-                            font-style: normal;
-                            font-weight: 500;
-                            font-size: 10px;
-                            color: #223F80;
-                            p{
-                                margin-left:5px;
-                            }
-                        }
-                    }
-                }
-            }
-                
-        }
-
-        #overdueDiv{
-            margin-top:20px;
-            background-color: white;
-            width:100%;
-            height:58px;
-            padding:0px 25px;
-            @include flex(row,space-between,center);
-            p{
-                font-family: 'Montserrat';
+                margin: 4px 10px;
+                font-family: "Montserrat";
                 font-style: normal;
-                font-weight: 600;
-                font-size: 16px;
-                line-height: 20px;
-                display: flex;
-                align-items: flex-end;
+                font-weight: 500;
+                font-size: 12px;
+                color: #b8b8b8;
+              }
+              #date {
+                // padding:2px;
+                width: 20px;
+                height: 18px;
                 text-align: center;
-                color: #BB2230;
+                background: #ffffff;
+                // background: rgba(34, 63, 128, 0.4);
+                border-radius: 3px;
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 13px;
+                color: #000000;
+                margin: 0px;
+              }
+              #reminderOverlay {
+                margin-top: 10px;
+              }
             }
-
+          }
         }
-        #completedTaskScreen, #snoozeTaskScreen{
-            height:100%;
-            width:100%;
-            position:absolute;
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(1.5px);
-            @include flex(column,center,center);
-            // display:none;
-            top:0px;
-            #completedTaskDiv, #snoozeTaskDiv{
-                position:relative;
-                width: 330px;
-                height: 480px;
-                box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-                border-radius: 15px;
-                background-color: white;
-                #portion1{
-                    @include flex(row,space-between,center);
-                    #closeIcon{
-                        border-radius:20px;
-                        height:24px;
-                        margin:10px;
-                        padding:0px;
-                    }
+      }
 
-                    #delete{
-                        margin:10px;
-                    }
-
+      #tasks {
+        padding: 15px 0px;
+        min-height: 150px;
+        height: fit-content;
+        width: 100%;
+        background: white;
+        align-items: center;
+        display: flex;
+        #taskEmpty {
+          // display:none;
+          margin-top: 70px;
+          text-align: center;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          color: #b8b8b8;
+          width: 100%;
+        }
+        #nonEmpty {
+          // display:none;
+          .task {
+            margin: 20px 0px;
+            width: 100vw;
+            @include flex(row, space-around, center);
+            .desc {
+              @include flex(column, center, flex-start);
+              #title {
+                margin: 0px;
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 700;
+                font-size: 15px;
+                color: #363636;
+              }
+              #deets {
+                @include flex(row, space-around, center);
+                #name {
+                  margin: 0px;
+                  font-family: "Montserrat";
+                  font-style: normal;
+                  font-weight: 500;
+                  font-size: 10px;
+                  line-height: 12px;
+                  display: flex;
+                  align-items: flex-end;
+                  text-align: center;
+                  color: #a2a2a4;
                 }
-                #title{
-                    border:none;
-                    border-bottom:2px solid #223F80;
-                }    
-                 #portion2{
-                    
-                    @include flex(column,center,center);
-                    input{
-                        width: 232px;
-                    }
-                    #desc{
-                        margin-top:20px;
-                        width:230px;
-                        height:68px;
-                        border: 1.5px solid #B8B8B8;
-                        border-radius: 15px;
-                        padding:10px;
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 12px;
-                        color: #223F80;
-                        &:focus{
-                            outline:none;
-                        }
-
-                    }
-                    #fieldDiv{
-                        width:100%;
-                        padding-left:100px;
-                        @include flex(column,center,flex-start);
-                        .field{
-                            margin-top:10px;
-                            @include flex(row,space-between,center);
-                            width:120px;
-                            input{
-                                padding:5px;
-                                width: 300px;
-                                height: 18px;
-                                border: 1.5px solid #B8B8B8;
-                                border-radius: 8px;
-                            }
-                        }
-                        p{
-                            margin-top:40px;
-                            margin-bottom:2px;
-                            font-family: 'Montserrat';
-                            font-style: normal;
-                            font-weight: 500;
-                            text-align: start;
-                            font-size: 14px;
-                            color: #223F80;
-                            a{
-                                color:#BB2230;
-                            }
-                        }
-                    }
-                    #outcome{
-                        margin-top:0px;
-                        width:230px;
-                        height:68px;
-                        border: 1.5px solid #B8B8B8;
-                        border-radius: 15px;
-                        padding:10px;
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 500;
-                        font-size: 12px;
-                        color: #223F80;
-                        &:focus{
-                            outline:none;
-                        }
-                    }
-                }   
-                #save{
-                    position:absolute;
-                    bottom:15px;
-                    right:20px;
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 14px;
-                    color: #929292;
+                #due {
+                  margin: 0px;
+                  margin-left: 5px;
+                  color: white;
+                  padding: 3px 4px;
+                  background: rgba(34, 63, 128, 0.3);
+                  border-radius: 6px;
+                  font-family: "Montserrat";
+                  font-style: normal;
+                  font-weight: 500;
+                  font-size: 8px;
+                  #num_days {
+                    font-weight: 700;
+                    color: #414141;
+                  }
                 }
+              }
+              #day {
+                margin-top: 3px;
+                font-family: "Montserrat";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 10px;
+                color: #363636;
+              }
             }
+            .label {
+              @include flex(row, center, center);
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 10px;
+              color: #223f80;
+              p {
+                margin-left: 5px;
+              }
+            }
+          }
         }
+      }
     }
-    .fixed{
-        position:fixed;
-        bottom:0;
+
+    #overdueDiv {
+      margin-top: 20px;
+      background-color: white;
+      width: 100%;
+      height: 58px;
+      padding: 0px 25px;
+      @include flex(row, space-between, center);
+      p {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        display: flex;
+        align-items: flex-end;
+        text-align: center;
+        color: #bb2230;
+      }
+    }
+    #completedTaskScreen,
+    #snoozeTaskScreen {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(1.5px);
+      @include flex(column, center, center);
+      // display:none;
+      top: 0px;
+      #completedTaskDiv,
+      #snoozeTaskDiv {
+        position: relative;
+        width: 330px;
+        height: 480px;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        border-radius: 15px;
         background-color: white;
-        // backdrop-filter: blur(1px);
-        height:60px;
-        padding: 5px 20px;
-        width:100%;
-        box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
-        @include flex(row,space-around,center);
-        .downIconDiv{
-            margin:20px;
-            height:47px;
-            width:162px;
-            padding:0px 20px;
-            color:#223F80;
-            stroke:#223F80;
-            &:focus{
-                background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
-                color:white;
-                stroke:white;
-                opacity: 0.93;
-            }
-            border-radius: 13px;
-            @include flex(row,center,center);
-            p{
-                font-family: 'Montserrat';
-                font-style: normal;
-                color:inherit;
-                font-weight: 700;
-                font-size: 16px;
-                margin-left:10px;
-            }
-            svg path{
-                stroke:inherit;
-            }
-            svg circle{
-                stroke:inherit;
-            }
+        #portion1 {
+          @include flex(row, space-between, center);
+          #closeIcon {
+            border-radius: 20px;
+            height: 24px;
+            margin: 10px;
+            padding: 0px;
+          }
+
+          #delete {
+            margin: 10px;
+          }
         }
-        .downIconDivClick{
-            margin:20px;
-            height:47px;
-            width:162px;
-            padding:0px 20px;
-            color:#223F80;
-            stroke:#223F80;
-            background: linear-gradient(41.93deg, #223F80 -18.34%, #444584 43.24%, #BB2230 100.33%);
-            color:white;
-            stroke:white;
-            opacity: 0.93;
-            border-radius: 13px;
-            @include flex(row,center,center);
-            p{
-                font-family: 'Montserrat';
-                font-style: normal;
-                color:inherit;
-                font-weight: 700;
-                font-size: 16px;
-                margin-left:10px;
-            }
-            svg path{
-                stroke:inherit;
-            }
-            svg circle{
-                stroke:inherit;
-            }
+        #title {
+          border: none;
+          border-bottom: 2px solid #223f80;
         }
+        #portion2 {
+          @include flex(column, center, center);
+          input {
+            width: 232px;
+          }
+          #desc {
+            margin-top: 20px;
+            width: 230px;
+            height: 68px;
+            border: 1.5px solid #b8b8b8;
+            border-radius: 15px;
+            padding: 10px;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            color: #223f80;
+            &:focus {
+              outline: none;
+            }
+          }
+          #fieldDiv {
+            width: 100%;
+            padding-left: 100px;
+            @include flex(column, center, flex-start);
+            .field {
+              margin-top: 10px;
+              @include flex(row, space-between, center);
+              width: 120px;
+              input {
+                padding: 5px;
+                width: 300px;
+                height: 18px;
+                border: 1.5px solid #b8b8b8;
+                border-radius: 8px;
+              }
+            }
+            p {
+              margin-top: 40px;
+              margin-bottom: 2px;
+              font-family: "Montserrat";
+              font-style: normal;
+              font-weight: 500;
+              text-align: start;
+              font-size: 14px;
+              color: #223f80;
+              i {
+                color: #bb2230;
+              }
+            }
+          }
+          #outcome {
+            margin-top: 0px;
+            width: 230px;
+            height: 68px;
+            border: 1.5px solid #b8b8b8;
+            border-radius: 15px;
+            padding: 10px;
+            font-family: "Montserrat";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            color: #223f80;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+        #save {
+          position: absolute;
+          bottom: 15px;
+          right: 20px;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          color: #929292;
+        }
+      }
     }
+  }
+  .fixed {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    // backdrop-filter: blur(1px);
+    height: 60px;
+    padding: 5px 20px;
+    width: 100%;
+    box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
+    @include flex(row, space-around, center);
+    .downIconDiv {
+      margin: 20px;
+      height: 47px;
+      width: 162px;
+      padding: 0px 20px;
+      color: #223f80;
+      stroke: #223f80;
+      &:focus {
+        background: linear-gradient(
+          41.93deg,
+          #223f80 -18.34%,
+          #444584 43.24%,
+          #bb2230 100.33%
+        );
+        color: white;
+        stroke: white;
+        opacity: 0.93;
+      }
+      border-radius: 13px;
+      @include flex(row, center, center);
+      p {
+        font-family: "Montserrat";
+        font-style: normal;
+        color: inherit;
+        font-weight: 700;
+        font-size: 16px;
+        margin-left: 10px;
+      }
+      svg path {
+        stroke: inherit;
+      }
+      svg circle {
+        stroke: inherit;
+      }
+    }
+    .downIconDivClick {
+      margin: 20px;
+      height: 47px;
+      width: 162px;
+      padding: 0px 20px;
+      color: #223f80;
+      stroke: #223f80;
+      background: linear-gradient(
+        41.93deg,
+        #223f80 -18.34%,
+        #444584 43.24%,
+        #bb2230 100.33%
+      );
+      color: white;
+      stroke: white;
+      opacity: 0.93;
+      border-radius: 13px;
+      @include flex(row, center, center);
+      p {
+        font-family: "Montserrat";
+        font-style: normal;
+        color: inherit;
+        font-weight: 700;
+        font-size: 16px;
+        margin-left: 10px;
+      }
+      svg path {
+        stroke: inherit;
+      }
+      svg circle {
+        stroke: inherit;
+      }
+    }
+  }
 }
