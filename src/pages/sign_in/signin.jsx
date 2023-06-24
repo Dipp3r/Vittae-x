@@ -90,7 +90,7 @@ class SigninComp extends React.Component {
     };
     //console.log(obj);
     //sending data to the server
-    let data = await fetch(this.submitLink, {
+    await fetch(this.submitLink, {
       method: "POST",
       body: JSON.stringify(obj),
       headers: {
@@ -98,17 +98,24 @@ class SigninComp extends React.Component {
         "Content-type": "application/json; charset=UTF-8",
         Connection: "keep-alive",
       },
-    }).then((response) => {
+    }).then(async (response) => {
       //console.log(response);
-      if (response.status !== 200) throw new Error("Something went wrong");
-      return response.json();
-    });
-    //console.log(data);
-    for (let key in data) {
-      localStorage.setItem(key, data[key]);
-    }
-    this.props.setItem(data, () => {
-      this.props.navigate("../dashboard");
+      if (response.status == 200) {
+        let data = await response.json();
+        for (let key in data) {
+          localStorage.setItem(key, data[key]);
+        }
+        this.props.setItem(data, () => {
+          this.props.navigate("../dashboard");
+        });
+      } else if (response.status == 400) {
+        let data = await response.json();
+        console.log(data.password);
+        if (data.password) {
+          this.setState({ passwordErr: data.password });
+          this.changeColor("#passwordBox", invalidColor);
+        }
+      }
     });
   }
   componentDidMount() {
