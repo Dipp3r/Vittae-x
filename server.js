@@ -10,8 +10,13 @@ const { kMaxLength } = require('buffer');
 
 const Pool = require('pg').Pool
 const pool = new Pool({
-    user:"vittaex",
-    password:"123456",
+    // user:"vittaex",
+    // password:"123456",
+    // host:"localhost",
+    // post:5432,
+    // database:"vittaex"
+    user:"postgres",
+    password:"arun",
     host:"localhost",
     post:5432,
     database:"vittaex"
