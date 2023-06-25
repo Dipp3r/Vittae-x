@@ -189,13 +189,15 @@ class SigninComp extends React.Component {
             <div id="accDiv">
               <hr />
               <div>
-                <p id="grayed">Need an account?</p>
-                <p
-                  id="link"
-                  onClick={this.props.navigate}
-                  value="../mobileSignUp"
-                >
-                  Signup
+                <p id="grayed">
+                  Need an account?
+                  <i
+                    id="link"
+                    onClick={this.props.navigate}
+                    value="../mobileSignUp"
+                  >
+                    Signup
+                  </i>
                 </p>
               </div>
             </div>
