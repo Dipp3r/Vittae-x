@@ -128,45 +128,68 @@ app.post("/snoozeTask", async (req, res) => {
   res.end();
 });
 app.post("/getTasksForMonth", async (req, res) => {
-  let data = req.body;
   try {
-    let tasks = await pool.query(
-      `SELECT tasks.*,customer.name as name FROM tasks inner join customer on tasks.customer_id = customer.id WHERE not tasks.completed and tasks.broker_id = ${data.broker_id} and tasks.date BETWEEN DATE_TRUNC('month', '${data.date}'::timestamp) AND DATE_TRUNC('month', '${data.date}'::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond' and not completed`
-    );
+    let data = req.body;
     let [day, month, year] = data.date.split("-");
-    data.date = new Date(`${year}-${month}-${day}`);
+    let convertedDate = new Date(`${year}-${month}-${day}`);
+
+    let tasks = await pool.query(
+      `SELECT tasks.*, customer.name AS name FROM tasks
+      INNER JOIN customer ON tasks.customer_id = customer.id
+      WHERE NOT tasks.completed AND tasks.broker_id = $1
+      AND tasks.date BETWEEN DATE_TRUNC('month', $2::timestamp)
+      AND DATE_TRUNC('month', $2::timestamp) + INTERVAL '1 month' - INTERVAL '1 millisecond'
+      AND NOT completed
+      ORDER BY tasks.date ASC`,
+      [data.broker_id, data.date]
+    );
+
     let tempdata = tasks.rows;
     let maxLength = tempdata.length;
     let arr = [];
+
     for (
-      let dt = new Date(data.date.getFullYear(), data.date.getMonth(), 1);
-      dt <= new Date(data.date.getFullYear(), data.date.getMonth() + 1, 0);
+      let dt = new Date(
+        convertedDate.getFullYear(),
+        convertedDate.getMonth(),
+        1
+      );
+      dt <=
+      new Date(convertedDate.getFullYear(), convertedDate.getMonth() + 1, 0);
       dt.setDate(dt.getDate() + 1)
     ) {
-      let obj = {};
-      obj.date = new Date(dt);
-      obj.tasks = [];
+      let obj = {
+        date: `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getDate()}`,
+        tasks: [],
+      };
+
       for (let i = 0; i < maxLength; i++) {
         let date2 = new Date(tempdata[i].date);
         if (
-          dt.getDate() == date2.getDate() &&
-          dt.getMonth() == date2.getMonth() &&
-          dt.getFullYear() == date2.getFullYear()
+          dt.getDate() === date2.getDate() &&
+          dt.getMonth() === date2.getMonth() &&
+          dt.getFullYear() === date2.getFullYear()
         ) {
-          obj.date = `${dt.getFullYear()}-${dt.getMonth() + 1}-${dt.getDate()}`;
           tempdata[i].due =
             Math.ceil((new Date() - date2) / (1000 * 60 * 60 * 24)) - 1;
           tempdata[i].due = tempdata[i].due >= 0 ? null : -1 * tempdata[i].due;
           obj.tasks.push(tempdata[i]);
-          // tempdata.splice(i,1)
-          // maxLength-=1
+        } else {
+          tempdata.splice(i, 1);
+          maxLength--;
+          i--;
         }
       }
-      if (obj.tasks.length > 0) arr.push({ ...obj });
+
+      if (obj.tasks.length > 0) {
+        arr.push({ ...obj });
+      }
     }
+
     res.send(arr);
   } catch (err) {
     console.error(err);
+    res.status(500).send("Internal Server Error");
   }
 });
 app.post("/getTasksALL", async (req, res) => {
