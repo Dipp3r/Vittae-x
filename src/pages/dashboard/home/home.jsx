@@ -318,6 +318,7 @@ class HomeComp extends React.Component {
     });
   }
   componentDidMount() {
+    this.generateDates();
     fetch(import.meta.env.VITE_SECONDARY_SERVER_URL + "/getTasksForMonth", {
       method: "POST",
       body: JSON.stringify({

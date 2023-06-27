@@ -78,7 +78,7 @@ class MonthlyView extends React.Component {
       date.getFullYear === today.getFullYear()
         ? today.getDate
         : 1;
-
+    this.generateDates();
     let data = await fetch(
       import.meta.env.VITE_SECONDARY_SERVER_URL + "/getTasksForMonth",
       {
