@@ -10,9 +10,16 @@ class SignUpMobComp extends MobComp {
     // this.submitLink = ''
     this.title = "Sign up";
     this.setItem = this.props.setItem;
+    this.errorText = "";
   }
-  process() {
-    this.props.navigate(this.loc);
+  process(data) {
+    if (data.old_user) {
+      //registered user
+      this.errorText = "mobile number is already resigtered";
+    } else {
+      //unregistered user
+      this.props.navigate(this.loc);
+    }
   }
 }
 

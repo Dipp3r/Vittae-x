@@ -11,6 +11,7 @@ class MobComp extends React.Component {
     this.submitLink = import.meta.env.VITE_BASE_SERVER_URL + "/send-otp/";
     this.loc = "../";
     this.title = "TITLE HERE";
+    this.errorText = "";
     this.changeInVal = this.changeInVal.bind(this);
     this.submit = this.submit.bind(this);
     this.changeColor = this.changeColor.bind(this);
@@ -59,7 +60,7 @@ class MobComp extends React.Component {
       }
       throw new Error("Something went wrong");
     });
-
+    localStorage.setItem("phone", obj.phone);
     this.props.setItem(obj, this.process(data));
   }
   render() {
@@ -84,6 +85,9 @@ class MobComp extends React.Component {
             />
             <p className="invalid">{this.state.phoneErr}</p>
           </div>
+          {this.errorText.length > 0 && (
+            <p className="invalid">{this.errorText}</p>
+          )}
           <div id="buttonDiv">
             <button id="Button" onClick={this.submit}>
               SIGN UP

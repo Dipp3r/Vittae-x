@@ -77,7 +77,6 @@
         background: #508859;
         border-radius: 3px;
         @include flex(row, center, center);
-        display: none;
         p {
           text-align: center;
           width: 100%;

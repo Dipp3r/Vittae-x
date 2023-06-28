@@ -8,7 +8,7 @@ import Check_ring from "@assets/images/Check_ring.svg";
 import Alarmclock from "@assets/images/Alarmclock.svg";
 import arrow_left_white from "@assets/images/arrow_left_white.svg";
 
-import Trash from "@assets/images/Trash.svg";
+// import Trash from "@assets/images/Trash.svg";
 import Date_range from "@assets/images/Date_range.svg";
 import Time from "@assets/images/Time.svg";
 import SnoozeMenu from "@components/snooze";
@@ -132,7 +132,20 @@ class Tasks extends React.Component {
       card = document.createElement("div");
       card.id = "taskEmpty";
       let p1 = document.createElement("p");
-      p1.innerText = "No task for this day";
+      switch (currSection) {
+        case 0:
+          p1.innerText = "All tasks are up to date.";
+          break;
+        case 1:
+          p1.innerText = "No upcoming tasks scheduled.";
+          break;
+        case 2:
+          p1.innerText = "No tasks have been completed yet.";
+          break;
+        default:
+          p1.innerText = "No tasks";
+          break;
+      }
       card.appendChild(p1);
       container.appendChild(card);
     } else {
@@ -456,9 +469,9 @@ class Tasks extends React.Component {
                     />
                   </svg>
                 </button>
-                <button id="delete">
+                {/* <button id="delete">
                   <img src={Trash} alt="delete" />
-                </button>
+                </button> */}
               </div>
               <div id="portion2">
                 <input
@@ -483,7 +496,7 @@ class Tasks extends React.Component {
                     <input type="time" id="time" disabled />
                   </div>
                   <p>
-                    Outcome<p>*</p>
+                    Outcome <i>*</i>
                   </p>
                 </div>
                 <textarea id="outcome" maxLength="2500"></textarea>

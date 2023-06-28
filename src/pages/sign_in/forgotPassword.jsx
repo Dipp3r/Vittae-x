@@ -9,6 +9,7 @@ class ForgotPassword extends MobComp {
     this.state = {};
     this.loc = "../forgotOTP";
     this.title = "Find Your Profile";
+    this.errorText = "";
   }
   process(data) {
     if (data.old_user) {
@@ -16,6 +17,7 @@ class ForgotPassword extends MobComp {
       this.props.navigate(this.loc);
     } else {
       //unregistered user
+      this.errorText = "unregistered mobile number";
     }
   }
 }
