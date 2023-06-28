@@ -83,11 +83,10 @@ class MobComp extends React.Component {
               id="mobileField"
               value={this.state.phone}
             />
-            <p className="invalid">{this.state.phoneErr}</p>
+            {this.errorText.length > 0 && (
+              <p className="invalid">{this.errorText}</p>
+            )}
           </div>
-          {this.errorText.length > 0 && (
-            <p className="invalid">{this.errorText}</p>
-          )}
           <div id="buttonDiv">
             <button id="Button" onClick={this.submit}>
               SIGN UP
