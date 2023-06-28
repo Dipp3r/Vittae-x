@@ -1,149 +1,165 @@
-@import 'main';
+@import "main";
 
-#signInPage{
-    background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
-    // @include flex(column,center,center);
-    overflow: hidden;
-    #signInFormDiv{
-        margin:50px;
-        background-color: white;
-        // max-width: 400px;
-        border-radius: 12px;
-        width: 340px;
-        box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
-        #signInTextDiv{
-            padding:20px 30px;
-            padding-bottom:10px;
-            #signInText{
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 20px;
-                color: #223F80;
-                padding:10px;
-                margin-bottom:0px;
-            }
-        }
-        #fieldBox{
-            background-color: white;
-            margin:10px 23px;
-            @include flex(column,center,center);
-            #emailLable{
-                padding-left:15px;
-                font-family: 'Montserrat';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 14px;
-                color:#223F80;
-                margin-bottom:3px;
-                width:100%;
-            }
-            #numberField{
-                border: 2px solid #B8B8B8;
-                border-radius: 12px;
-                padding-left:8px;
-                width: 275px;
-                height:40px;
-                font-weight:400;
-            }
-            #passwordDiv{
-                margin-top:15px;
-                .inLabel {
-                    padding-left:5px;
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: 14px;
-                    color:#223F80;
-                    margin-bottom:3px;
-                    width:100%;
-                  }
-                #passwordBox{
-                    @include flex(row,none,none);
-                    border: 2px solid #B8B8B8;
-                    border-radius: 12px;
-                    padding-left:5px;
-                    width: 275px;
-                    height:40px; 
-                    #passwordField{
-                        font-weight: 400;
-                        padding:5px;
-                        width: 100%;
-                        border-radius:12px;
-                    } 
-                    img{
-                        height:20px;
-                        width:20px;
-                        margin:10px;
-                    }
-                }
-            }
-            .tickBox{
-                margin:10px;
-                width:100%;
-                height:20px;
-                margin-top:40px;
-                @include flex(row,flex-start,center);
-                p{
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size:16px;
-                    margin-top:10px;
-                    color:#223F80;
-                }
-            }
-            #buttonDiv{
-                @include flex(column,center,center);
-                margin-top:25px;
-                #Button{
-                    @include button1(272px, 50px, 0px, 0px, 400, 18px);
-                }
-                
-            }
-            #forgotPwd{
-                width:100%;
-                p{
-                    
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    margin:10px 20px;
-                    margin-bottom:5px;
-                    color:#223F80;
-                    text-decoration-line:underline;
-                    font-size: 13px;
-                    float: right;
-                }
-            }
-            #accDiv{
-                text-align:center;
-                width:270px;
-                hr{
-                    margin-top:20px;
-                }
-                p{
-                    
-                    font-family: 'Montserrat';
-                    font-style: normal;
-                    font-weight: 500;
-                    font-size: small;
-                    color: #B8B8B8;
-                    margin:25px;
-                    a{
-                       color:#223F80;
-                       font-family: 'Montserrat';
-                        font-style: normal;
-                       margin-left:2px;
-                       font-weight: 500;
-                        font-size: 12px;
-                       text-decoration-line: underline;
-                       font-size: small;
-                    }
-                }
-            }
-        }
-
+#signInPage {
+  background: linear-gradient(
+    221.38deg,
+    #bb2230 1.49%,
+    #444584 55.55%,
+    #1e2e5a 95.91%
+  );
+  // @include flex(column,center,center);
+  overflow: hidden;
+  #signInFormDiv {
+    margin: 50px;
+    background-color: white;
+    // max-width: 400px;
+    border-radius: 12px;
+    width: 340px;
+    box-shadow: 0px 4px 21px 6px rgba(0, 0, 0, 0.25);
+    #signInTextDiv {
+      padding: 20px 30px;
+      padding-bottom: 10px;
+      #signInText {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        color: #223f80;
+        padding: 10px;
+        margin-bottom: 0px;
+      }
     }
-
+    #fieldBox {
+      background-color: white;
+      margin: 10px 23px;
+      @include flex(column, center, center);
+      #emailLable {
+        padding-left: 15px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: #223f80;
+        margin-bottom: 3px;
+        width: 100%;
+      }
+      #numberField {
+        border: 2px solid #b8b8b8;
+        border-radius: 12px;
+        padding-left: 8px;
+        width: 275px;
+        height: 40px;
+        font-weight: 400;
+        background-color: transparent;
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+          -webkit-background-clip: text;
+          background-color: transparent !important;
+        }
+      }
+      #passwordDiv {
+        margin-top: 15px;
+        .inLabel {
+          padding-left: 5px;
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          color: #223f80;
+          margin-bottom: 3px;
+          width: 100%;
+        }
+        #passwordBox {
+          @include flex(row, none, none);
+          border: 2px solid #b8b8b8;
+          border-radius: 12px;
+          padding-left: 5px;
+          width: 275px;
+          height: 40px;
+          #passwordField {
+            font-weight: 400;
+            padding: 5px;
+            width: 100%;
+            border-radius: 12px;
+            background-color: transparent;
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+              -webkit-background-clip: text;
+              background-color: transparent !important;
+            }
+          }
+          img {
+            height: 20px;
+            width: 20px;
+            margin: 10px;
+          }
+        }
+      }
+      .tickBox {
+        margin: 10px;
+        width: 100%;
+        height: 20px;
+        margin-top: 40px;
+        @include flex(row, flex-start, center);
+        p {
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          margin-top: 10px;
+          color: #223f80;
+        }
+      }
+      #buttonDiv {
+        @include flex(column, center, center);
+        margin-top: 25px;
+        #Button {
+          @include button1(272px, 50px, 0px, 0px, 400, 18px);
+        }
+      }
+      #forgotPwd {
+        width: 100%;
+        p {
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          margin: 10px 20px;
+          margin-bottom: 5px;
+          color: #223f80;
+          text-decoration-line: underline;
+          font-size: 13px;
+          float: right;
+        }
+      }
+      #accDiv {
+        text-align: center;
+        width: 270px;
+        hr {
+          margin-top: 20px;
+        }
+        p {
+          font-family: "Montserrat";
+          font-style: normal;
+          font-weight: 500;
+          font-size: small;
+          color: #b8b8b8;
+          margin: 25px;
+          #link {
+            color: #223f80;
+            font-family: "Montserrat";
+            font-style: normal;
+            margin-left: 2px;
+            font-weight: 500;
+            font-size: 12px;
+            text-decoration-line: underline;
+            font-size: small;
+          }
+        }
+      }
+    }
+  }
 }

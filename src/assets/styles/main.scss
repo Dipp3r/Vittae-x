@@ -1,38 +1,37 @@
-input::placeholder{
-    color:#B8B8B8;
-    font-weight:normal;
-    opacity: 1;
+input::placeholder {
+  color: #b8b8b8;
+  font-weight: normal;
+  opacity: 1;
 }
 
-input{
-  border:2px solid #B8B8B8;
+input {
+  border: 2px solid #b8b8b8;
   background-color: transparent;
 }
-input:focus{
+input:focus {
   outline: none;
 }
-.grayText{
-    color: #8B8B8B;
+.grayText {
+  color: #8b8b8b;
 }
 
-.grayText{
-    color: #8B8B8B;
+.grayText {
+  color: #8b8b8b;
 }
 
-.password{
-    border:none;
+.password {
+  border: none;
 }
 
-div :has( > .password:focus){
-    border: 2px solid #223F80;
+div :has(> .password:focus) {
+  border: 2px solid #223f80;
 }
 
 /* to remove the feature to scroll through numbers in a number input field */
 input::-webkit-inner-spin-button,
-input::-webkit-outer-spin-button{
-    -webkit-appearance: none;
-    margin:0;
-
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* this is applicable for firefox */
@@ -40,272 +39,269 @@ input::-webkit-outer-spin-button{
     -moz-appearance: textfield;
 } */
 
-#samplephone{
-    font-weight: 550;
+#samplephone {
+  font-weight: 550;
 }
 
-#p1{
-    font-weight: 620;
-    width: 280px;
-    line-height: 1.2;
+#p1 {
+  font-weight: 620;
+  width: 280px;
+  line-height: 1.2;
 }
 
-.otp_num{
-    font-weight: 600;
+.otp_num {
+  font-weight: 600;
 }
 
-hr{
-    border-width: 1.5px;
-    border-color: #B8B8B8;
+hr {
+  border-width: 1.5px;
+  border-color: #b8b8b8;
 }
 
-.heading{
-    font-weight:500;
+.heading {
+  font-weight: 500;
 }
 
-.button{
-    background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
-    transition-duration: 1s;
-    width: 100%;
-    transition-duration: 1s;
-    width: 100%;
-    height:50px;
-    margin: 40px 0px;
-    font-weight:400;
-    font-size:18px;
-    margin: 40px 0px;
-    font-weight:400;
-    font-size:18px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
-    color:white;
-    color:white;
-    border-radius: 12px;
-    opacity:0.9;
+.button {
+  background: linear-gradient(
+    10.16deg,
+    #223f80 14.89%,
+    #444584 50.99%,
+    #bb2230 100.81%
+  );
+  transition-duration: 1s;
+  width: 100%;
+  transition-duration: 1s;
+  width: 100%;
+  height: 50px;
+  margin: 40px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  margin: 40px 0px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  color: white;
+  border-radius: 12px;
+  opacity: 0.9;
 }
 
-.button:hover{
-    box-shadow:none;
-    scale:0.95;
-
+.button:hover {
+  box-shadow: none;
+  scale: 0.95;
 }
 
-
-a{
-    cursor:pointer;
+a {
+  cursor: pointer;
 }
 
-.eye path{
-    stroke: #B8B8B8;
-    
+.eye path {
+  stroke: #b8b8b8;
 }
 
-.eye:hover path{
-    stroke:#223F80;
+.eye:hover path {
+  stroke: #223f80;
 }
 
-#password{
-    font-weight:400;
+#password {
+  font-weight: 400;
 }
 
-.invalid{
-    /* visibility: visible; */
-    color:#BB2230;
-    font-size: 12px;
-    margin:0px;
+.invalid {
+  /* visibility: visible; */
+  color: #bb2230;
+  font-size: 12px;
+  margin: 0px;
+  text-align: left;
+  width: 90%;
 }
 
-
-li::marker{
-    font-size: 10px;
+li::marker {
+  font-size: 10px;
 }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
+  font-family: "Montserrat";
+  src: url("../Montserrat/Montserrat-VariableFont_wght.ttf");
 } //Vittae-x default font
 
-
-@mixin flex($direction,$justify,$align){
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
 
-@mixin addButton($bottom,$right){
-        @include flex(row,center,center);
-        height:60px;
-        width: 60px;
-        border-radius: 100%;
-        position:fixed;
-        bottom: $bottom;
-        right:$right;
-        box-shadow: none;
-        background-color: transparent;
-        img{
-            width: fit-content;
-            height:fit-content;
-            padding:0px;
-        }
-
+@mixin addButton($bottom, $right) {
+  @include flex(row, center, center);
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  position: fixed;
+  bottom: $bottom;
+  right: $right;
+  box-shadow: none;
+  background-color: transparent;
+  img {
+    width: fit-content;
+    height: fit-content;
+    padding: 0px;
+  }
 }
 
-
-@mixin button1($width,$height,$marginTB,$marginRL,$FW,$FS){
-        background: linear-gradient(10.16deg, #223F80 14.89%, #444584 50.99%, #BB2230 100.81%);
-        transition-duration: 1s;
-        width: $width;
-        height: $height;
-        font-family: 'Montserrat';
-        margin: $marginTB $marginRL;
-        font-weight:$FW;
-        font-size:$FS;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
-        color:white;
-        border-radius: 12px;
-    &:hover{
-        box-shadow: none;
-        scale:0.95;
-    }
+@mixin button1($width, $height, $marginTB, $marginRL, $FW, $FS) {
+  background: linear-gradient(
+    10.16deg,
+    #223f80 14.89%,
+    #444584 50.99%,
+    #bb2230 100.81%
+  );
+  transition-duration: 1s;
+  width: $width;
+  height: $height;
+  font-family: "Montserrat";
+  margin: $marginTB $marginRL;
+  font-weight: $FW;
+  font-size: $FS;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  color: white;
+  border-radius: 12px;
+  &:hover {
+    box-shadow: none;
+    scale: 0.95;
+  }
 }
 
-body{
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 0px;
-    height: 100vh;
-    width: 100vw;
+body {
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0px;
+  height: 100vh;
+  width: 100vw;
+  orientation: portrait;
 }
-  
-#root{
-    position: fixed;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-}
-  
-section{
-    overflow: auto;
-    height: 100vh;
-    width: 100vw;
-    padding-top: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-  
 
-button{
-    background-color: transparent;
-    border: none;
+#root {
+  position: fixed;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+section {
+  overflow: auto;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: none;
 }
 
 .grid-container {
-    width: 240px;
-    border: 1.5px dashed #929292;
-    border-radius: 11px;
-    display: inline-grid;
-    grid-template-columns: auto auto;
-    padding: 25px;
+  width: 240px;
+  border: 1.5px dashed #929292;
+  border-radius: 11px;
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  padding: 25px;
 }
 .grid-item {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    color: rgba(34, 63, 128, 0.4);
-    padding: 5px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: rgba(34, 63, 128, 0.4);
+  padding: 5px;
 }
 
-.info{
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 12px;
-    color: #223F80;
+.info {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  color: #223f80;
 }
 
-.emptyInfo{
-    font-size:14px;
-    font-weight: 700;
-    text-align:center;
+.emptyInfo {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
 }
 
-.tickBox{
-    padding-left: 20px;
-    margin-top:40px;
-    display: flex;
-    flex-direction: row;
-    .tickButton{
-        @include flex(row,center,center);
-        margin:10px;
-        border: 2px solid #B8B8B8;
-        width:18px;
-        height:18px;
-        border-radius: 3px;
-        margin-top: 4px;
-    }
-
+.tickBox {
+  padding-left: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  .tickButton {
+    @include flex(row, center, center);
+    margin: 10px;
+    border: 2px solid #b8b8b8;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    margin-top: 4px;
+  }
 }
 
-
-
-.flex-row{
-    @include flex(row,center,center);
+.flex-row {
+  @include flex(row, center, center);
 }
 
-.down{
-    margin-top:3px;
+.down {
+  margin-top: 3px;
 }
 
-.flex-column{
-    @include flex(column,center,center);
+.flex-column {
+  @include flex(column, center, center);
 }
 
-
-
-::-webkit-scrollbar{
-    display: none;
+::-webkit-scrollbar {
+  display: none;
 }
-
 
 textarea {
-    resize: none;
-    width: 100%;
-    min-height: 50px;
-    padding:5px;
-    text-align:left;
-    font-family:'Montserrat';
-    font-weight:500;
-    font-size: 18px;
-
+  resize: none;
+  width: 100%;
+  min-height: 50px;
+  padding: 5px;
+  text-align: left;
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 18px;
 }
 
-.mobBox{
-    @include flex(row,flex-start,center);
-    width:100%;
-    p{
-        margin:0px;
-    }
-    .required{
-        margin-left:3px;
-        color:#BB2230;
-    }
+.mobBox {
+  @include flex(row, flex-start, center);
+  width: 100%;
+  p {
+    margin: 0px;
+  }
+  .required {
+    margin-left: 3px;
+    color: #bb2230;
+  }
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    color: black;
-    opacity: 1;
-    display: block;
-    background: url("../images/calendar.svg") no-repeat;
-    width: 20px;
-    height: 20px;
-    border-width: thin;
+  color: black;
+  opacity: 1;
+  display: block;
+  background: url("../images/calendar.svg") no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
 }
-
 
 // input[type="date"]::-webkit-inner-spin-button,
 // input[type="date"]::-webkit-calendar-picker-indicator {

@@ -22,67 +22,61 @@ class OTPComp extends React.Component {
     this.changeColor = this.changeColor.bind(this);
   }
   changeInVal(e) {
-    // //console.log(Number.parseInt(e.target.getAttribute('name')),e.target.value)
+    // console.log(Number.parseInt(e.target.getAttribute("name")), e.target.value);
     if (e.keyCode === 13) {
-      this.submit();
+      return this.submit();
     }
     var text = this.state.OTP;
-    var num = Number.parseInt(e.target.getAttribute("name"));
-    var value = e.currentTarget.value;
+    var num = Number.parseInt(e.currentTarget.getAttribute("name"));
+    var value = e.key;
     var inputclass = document.body.querySelector("#otpBox").children;
-    // // //console.log(value === "",num)
-    // value = Number.parseInt(value).split(-1)
-    // if(!Number.isInteger(value)) return;
-    // //console.log(num,value)
-
-    // //console.log(text,this.state.OTP)
-    if (inputclass[num].value === "") {
-      inputclass[num].value = value[0];
-      text[num] = value[0];
-      // //console.log('value === ""',value)
-      if (num <= 2 && value !== "") {
-        inputclass[num + 1].focus();
-        // //console.log('front')
+    //movement
+    if (value == "") {
+      if (num != 0) inputclass[num - 1].focus();
+    } else if (value == "Backspace") {
+      if (inputclass[num].value == "" && num != 0) {
+        inputclass[num - 1].focus();
+        text[num - 1] = "";
+        inputclass[num - 1].value = "";
+      } else {
+        if (num != 0) inputclass[num - 1].focus();
+        text[num] = "";
+        inputclass[num].value = "";
       }
-    } else if (num <= 2 && value.length > 1) {
-      inputclass[num].value = value[0];
-      inputclass[num + 1].value = value.slice(-1);
-      text[num] = value[0];
-      text[num + 1] = value.slice(-1);
-      // //console.log('Split value')
-
-      inputclass[num + 1].focus();
-    } else if (num === 0 && value === "") {
-      inputclass[num].value = "";
-      text[num] = "";
-      // //console.log('remove above')
     } else {
-      inputclass[num].value = "";
-      inputclass[num].value = value.slice(-1);
-      text[num] = value.slice(-1);
+      for (let i = 0; i < num; i++) {
+        if (inputclass[i].value == "") {
+          num = i;
+          inputclass[num].focus();
+          break;
+        }
+      }
+      if (num != inputclass.length - 1) inputclass[num + 1].focus();
     }
-
-    if (value === "" && num > 0) {
-      inputclass[num - 1].focus();
-      // //console.log('back')
-    }
-
+    text[num] = value;
+    inputclass[num].value = value;
     this.setState({ OTP: text });
   }
   reset() {
-    var obj = { OTPFor: this.props.txt };
-    fetch(this.submitLink, {
+    var obj = { phone: localStorage.getItem("phone") };
+    fetch(import.meta.env.VITE_BASE_SERVER_URL + "/send-otp/", {
       method: "POST",
       body: JSON.stringify(obj),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status) {
-          this.setTime(1, 6);
-        }
+      .then((response) => {
+        if (response.status == 201) return response.json();
+        throw new Error("didn't reset");
+      })
+      .then(() => {
+        this.setTime(5, 0);
+        [...document.body.querySelector("#otpBox").children].forEach(
+          (element) => {
+            element.value = "";
+          }
+        );
       });
   }
   changeTimer() {
@@ -145,7 +139,7 @@ class OTPComp extends React.Component {
       otp: this.state.OTP.join(""),
       phone: this.props.getItem("phone"),
     };
-    if (obj.OTP === "") return;
+    if (obj.otp === "") return;
     //console.log(obj);
     let data = await fetch(this.submitLink, {
       method: "POST",
@@ -178,7 +172,7 @@ class OTPComp extends React.Component {
           <div id="otpTextDiv">
             <p id="otpText">ENTER OTP</p>
             <p id="mobileText">An OTP is sent to your mobile</p>
-            <p id="samplephone">{this.txt}</p>
+            <p id="samplephone">{localStorage.getItem("phone")}</p>
           </div>
           <div id="otpBoxDiv">
             <div id="otpBox">
@@ -188,7 +182,6 @@ class OTPComp extends React.Component {
                 value={this.state.OTP[0]}
                 name="0"
                 onKeyDown={this.changeInVal}
-                onChange={this.changeInVal}
                 onFocus={() => this.changeColor("#box0", "#223F80")}
                 onBlur={() => this.changeColor("#box0", "#b8b8b8")}
               />
@@ -198,7 +191,6 @@ class OTPComp extends React.Component {
                 value={this.state.OTP[1]}
                 name="1"
                 onKeyDown={this.changeInVal}
-                onChange={this.changeInVal}
                 onFocus={() => this.changeColor("#box1", "#223F80")}
                 onBlur={() => this.changeColor("#box1", "#b8b8b8")}
               />
@@ -208,7 +200,6 @@ class OTPComp extends React.Component {
                 value={this.state.OTP[2]}
                 name="2"
                 onKeyDown={this.changeInVal}
-                onChange={this.changeInVal}
                 onFocus={() => this.changeColor("#box3", "#223F80")}
                 onBlur={() => this.changeColor("#box3", "#b8b8b8")}
               />
@@ -218,7 +209,6 @@ class OTPComp extends React.Component {
                 value={this.state.OTP[3]}
                 name="3"
                 onKeyDown={this.changeInVal}
-                onChange={this.changeInVal}
                 onFocus={() => this.changeColor("#box4", "#223F80")}
                 onBlur={() => this.changeColor("#box4", "#b8b8b8")}
               />
