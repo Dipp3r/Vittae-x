@@ -56,7 +56,7 @@
                     padding:0px;
                     color:#223F80;
                     text-align: center;
-                    font-weight: 700;
+                    font-weight: 500;
                     margin:0px 10px;
                     width:25%;
                     width: 46px;
@@ -68,11 +68,12 @@
 
             }
             #otpTime{
+                @include flex(row,center,center);
                 float:right;
                 margin:5px 15px;
                 font-size: small;
                 color:#B8B8B8;
-                a{
+                p{
                     margin-left:10px;
                     text-decoration-line: underline;
                     color:#223F80;

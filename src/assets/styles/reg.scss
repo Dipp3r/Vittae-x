@@ -1,6 +1,7 @@
 @import 'main';
 
 #signUpPg{
+    
     @include flex(column,flex-start,center);
     background: linear-gradient(221.38deg, #BB2230 1.49%, #444584 55.55%, #1E2E5A 95.91%);
     padding: 20px 10px;
@@ -15,6 +16,7 @@
         #SignUpTextDiv{
             width: 100%;
             #SignUpText{
+                font-family: "Montesrrat";
                 color:#223F80;
                 font-weight: 500;
                 font-size: 22px;
